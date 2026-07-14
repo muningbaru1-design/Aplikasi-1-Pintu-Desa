@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>B1 Buku Induk Penduduk</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="../../css/style.css">
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+<button onclick="history.back()">
+<i class="bi bi-arrow-left"></i>
+</button>
+
+<div>
+
+<h2>B1 Buku Induk Penduduk</h2>
+
+<small>Desa Muning Baru</small>
+
+</div>
+
+<img src="../../assets/logo/logo.png" class="logo">
+
+</header>
+
+
+<!-- STATISTIK -->
+
+<section class="dashboard">
+
+<div class="card-stat">
+
+<h3 id="totalPenduduk">0</h3>
+
+<p>Total Penduduk</p>
+
+</div>
+
+<div class="card-stat">
+
+<h3 id="totalKK">0</h3>
+
+<p>Total KK</p>
+
+</div>
+
+<div class="card-stat">
+
+<h3 id="laki">0</h3>
+
+<p>Laki-laki</p>
+
+</div>
+
+<div class="card-stat">
+
+<h3 id="perempuan">0</h3>
+
+<p>Perempuan</p>
+
+</div>
+
+</section>
+
+
+<!-- TOOLBAR -->
+
+<div class="toolbar">
+
+    <input
+        type="text"
+        id="txtCari"
+        placeholder="Cari NIK, Nama, Kepala Keluarga atau No KK">
+
+    <button id="btnCari">
+        🔍 Cari
+    </button>
+
+    <button id="btnRefresh">
+        🔄 Refresh
+    </button>
+
+    <button id="btnTambah">
+        ➕ Tambah
+    </button>
+
+    <button id="btnImport">
+        📥 Import
+    </button>
+
+    <button id="btnExport">
+        📤 Export
+    </button>
+
+    <button id="btnCetak">
+        🖨 Cetak
+    </button>
+
+</div>
+<div class="infoBar">
+
+    <span id="jumlahData">
+        Total Data : 0
+    </span>
+
+</div>
+
+
+<!-- INFO -->
+
+<section class="info-bar">
+
+<span id="jumlahData">
+
+Total Data : 0
+
+</span>
+
+</section>
+
+
+<!-- TABEL -->
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>No</th>
+
+<th>RW</th>
+
+<th>RT</th>
+
+<th>Dusun</th>
+
+<th>Alamat</th>
+
+<th>Kode KK</th>
+
+<th>Kepala Keluarga</th>
+
+<th>No</th>
+
+<th>NIK</th>
+
+<th>Nama</th>
+
+<th>JK</th>
+
+<th>Hubungan</th>
+
+<th>Tempat Lahir</th>
+
+<th>Tanggal Lahir</th>
+
+<th>Usia</th>
+
+<th>Status</th>
+
+<th>Agama</th>
+
+<th>Gol. Darah</th>
+
+<th>Warga Negara</th>
+
+<th>Suku</th>
+
+<th>Pendidikan</th>
+
+<th>Pekerjaan</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tableBody">
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- PAGINATION -->
+
+<div id="pagination">
+
+</div>
+
+
+<!-- MODAL -->
+
+<div id="modalPenduduk" class="modal">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+👨‍👩‍👧 Tambah Data Penduduk
+
+<small>Buku Induk Penduduk Desa Muning Baru</small>
+
+</div>
+
+<div class="modal-tab">
+
+<button class="tabBtn active" data-tab="tab1">
+
+📋 Data Dasar
+
+</button>
+
+<button class="tabBtn" data-tab="tab2">
+
+🪪 Data Pribadi
+
+</button>
+
+<button class="tabBtn" data-tab="tab3">
+
+📂 Data Tambahan
+
+</button>
+
+</div>
+
+<div id="tab1" class="tab-content active">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>RW</label>
+
+<input id="rw">
+
+</div>
+
+<div class="form-group">
+
+<label>RT</label>
+
+<input id="rt">
+
+</div>
+
+<div class="form-group">
+
+<label>Dusun</label>
+
+<input id="dusun">
+
+</div>
+
+<div class="form-group">
+
+<label>Alamat</label>
+
+<input id="alamat">
+
+</div>
+
+<div class="form-group">
+
+<label>No KK</label>
+
+<input id="kk">
+
+</div>
+
+<div class="form-group">
+
+<label>NIK</label>
+
+<input id="nik">
+
+</div>
+
+<div class="form-group">
+
+<label>Nama Kepala KK</label>
+
+<input id="kepala">
+
+</div>
+
+<div class="form-group">
+
+<label>Nama Anggota</label>
+
+<input id="nama">
+
+</div>
+
+<div class="form-group">
+
+<label>Hubungan</label>
+
+<input id="hubungan">
+
+</div>
+
+<div class="form-group">
+
+<label>Jenis Kelamin</label>
+
+<select id="jk">
+
+<option>Laki-laki</option>
+
+<option>Perempuan</option>
+
+</select>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="tab2" class="tab-content">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Tempat Lahir</label>
+
+<input id="tempat">
+
+</div>
+
+<div class="form-group">
+
+<label>Tanggal Lahir</label>
+
+<input type="date" id="tgl">
+
+</div>
+
+<div class="form-group">
+
+<label>Usia</label>
+
+<input id="usia">
+
+</div>
+
+<div class="form-group">
+
+<label>Agama</label>
+
+<input id="agama">
+
+</div>
+
+<div class="form-group">
+
+<label>Pendidikan</label>
+
+<input id="pendidikan">
+
+</div>
+
+<div class="form-group">
+
+<label>Pekerjaan</label>
+
+<input id="pekerjaan">
+
+</div>
+
+<div class="form-group">
+
+<label>Status</label>
+
+<input id="status">
+
+</div>
+
+<div class="form-group">
+
+<label>Golongan Darah</label>
+
+<input id="darah">
+
+</div>
+
+</div>
+
+</div>
+
+<div id="tab3" class="tab-content">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Kewarganegaraan</label>
+
+<input id="wn">
+
+</div>
+
+<div class="form-group">
+
+<label>Suku</label>
+
+<input id="suku">
+
+</div>
+
+<div class="form-group">
+
+<label>Keterangan</label>
+
+<input id="ket">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="modal-footer">
+
+<button id="btnSimpan" class="btn-success">
+
+💾 Simpan
+
+</button>
+
+<button id="closeModal" class="btn-danger">
+
+❌ Tutup
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<input
+type="file"
+id="excelFile"
+accept=".xlsx,.xls"
+style="display:none;">
+
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<script src="../../js/administrasi/b1-penduduk.js"></script>
+
+</body>
+</html>

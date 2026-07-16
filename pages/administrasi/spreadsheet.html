@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Buku Administrasi</title>
+
+<link rel="stylesheet" href="../../css/style.css">
+
+<style>
+
+body{
+    margin:0;
+    background:#f5f5f5;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#0b7a3b;
+    color:white;
+    padding:12px 20px;
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.header img{
+    width:55px;
+    height:55px;
+}
+
+.header h2{
+    margin:0;
+}
+
+iframe{
+    width:100%;
+    height:calc(100vh - 80px);
+    border:none;
+    background:white;
+}
+
+button{
+    padding:8px 16px;
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="header-left">
+
+<button onclick="history.back()">⬅ Kembali</button>
+
+<img src="../../assets/logo/logo-desa.png">
+
+<div>
+
+<h2 id="judul"></h2>
+
+<small>Desa Muning Baru</small>
+
+</div>
+
+</div>
+
+<button onclick="location.reload()">
+
+🔄 Refresh
+
+</button>
+
+</div>
+
+<iframe id="sheetFrame"></iframe>
+
+<script>
+
+const param = new URLSearchParams(location.search);
+
+document.getElementById("judul").innerHTML =
+param.get("judul");
+
+document.getElementById("sheetFrame").src =
+param.get("url");
+
+</script>
+
+</body>
+
+</html>

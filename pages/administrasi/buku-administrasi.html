@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Buku Administrasi Penduduk</title>
+
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>
+
+body{
+    margin:0;
+    background:#f3f4f6;
+    font-family:Segoe UI;
+}
+
+.header{
+
+    background:#0f766e;
+    color:white;
+
+    padding:18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.header h2{
+
+    margin:0;
+}
+
+.container{
+
+    padding:20px;
+}
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+}
+
+.card{
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.card img{
+
+    width:100%;
+
+    height:280px;
+
+    object-fit:cover;
+}
+
+.card h3{
+
+    text-align:center;
+
+    padding:15px;
+
+    margin:0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h2>
+📚 Buku Administrasi Penduduk
+</h2>
+
+</div>
+
+<div class="container">
+
+<div class="grid" id="daftarBuku">
+
+</div>
+
+</div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/administrasi/renderMenu.js"></script>
+
+<script>
+renderMenu("penduduk","daftarBuku");
+</script>

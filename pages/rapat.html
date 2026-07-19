@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Catat Rapat</title>
+
+
+    <!-- FONT POPPINS -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- BOOTSTRAP ICONS -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- CSS UTAMA -->
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+
+    <style>
+
+
+        /* =========================
+           HALAMAN RAPAT
+        ========================= */
+
+        .rapat-page {
+
+            padding: 30px;
+
+        }
+
+
+        /* =========================
+           JUDUL
+        ========================= */
+
+        .rapat-title {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .rapat-title h2 {
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .rapat-title p {
+
+            color: #777;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           GRID 4 HORIZONTAL
+        ========================= */
+
+        .rapat-container {
+
+            display: grid;
+
+            grid-template-columns:
+            repeat(4, 1fr);
+
+            gap: 20px;
+
+            max-width: 1400px;
+
+            margin: auto;
+
+        }
+
+
+        /* =========================
+           KARTU
+        ========================= */
+
+        .rapat-card {
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 25px 15px;
+
+            text-align: center;
+
+            box-shadow:
+            0 4px 15px
+            rgba(0,0,0,0.08);
+
+            transition: 0.3s;
+
+        }
+
+
+        .rapat-card:hover {
+
+            transform:
+            translateY(-5px);
+
+            box-shadow:
+            0 8px 25px
+            rgba(0,0,0,0.15);
+
+        }
+
+
+        /* =========================
+           ICON
+        ========================= */
+
+        .rapat-icon {
+
+            width: 85px;
+
+            height: 85px;
+
+            margin: auto;
+
+            margin-bottom: 15px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #E6FFFA;
+
+            border: 3px solid #99F6E4;
+
+        }
+
+
+        .rapat-icon i {
+
+            font-size: 42px;
+
+            color: #0F766E;
+
+        }
+
+
+        /* =========================
+           JUDUL KARTU
+        ========================= */
+
+        .rapat-card h3 {
+
+            font-size: 15px;
+
+            margin-bottom: 18px;
+
+            min-height: 45px;
+
+        }
+
+
+        /* =========================
+           TOMBOL
+        ========================= */
+
+        .rapat-btn {
+
+            border: none;
+
+            color: white;
+
+            padding: 10px 15px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-family: Poppins;
+
+            font-size: 12px;
+
+            transition: 0.2s;
+
+        }
+
+
+        .rapat-btn:hover {
+
+            transform:
+            scale(1.03);
+
+        }
+
+
+        /* WARNA TOMBOL */
+
+        .btn-form {
+
+            background: #16A34A;
+
+        }
+
+
+        .btn-sheet {
+
+            background: #0F766E;
+
+        }
+
+
+        .btn-dokumen {
+
+            background: #2563EB;
+
+        }
+
+
+        .btn-foto {
+
+            background: #F97316;
+
+        }
+
+
+        .rapat-btn i {
+
+            margin-right: 5px;
+
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media(max-width: 1000px) {
+
+            .rapat-container {
+
+                grid-template-columns:
+                repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        /* =========================
+           HP
+        ========================= */
+
+        @media(max-width: 600px) {
+
+            .rapat-page {
+
+                padding: 20px 12px;
+
+            }
+
+
+            .rapat-container {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+
+        <!-- TOMBOL KEMBALI -->
+
+        <button class="menu-btn"
+                onclick="history.back()">
+
+            <i class="bi bi-arrow-left"></i>
+
+        </button>
+
+
+        <!-- JUDUL -->
+
+        <div class="title">
+
+            <h2>Catat Rapat</h2>
+
+            <p>Administrasi Rapat dan Musyawarah Desa</p>
+
+        </div>
+
+
+        <!-- LOGO -->
+
+        <img src="../assets/logo/logo-desa.jpg"
+             class="logo-desa">
+
+    </header>
+
+
+    <!-- KONTEN -->
+
+    <main class="rapat-page">
+
+
+        <div class="rapat-title">
+
+            <h2>
+                RAPAT / MUSYAWARAH DESA
+            </h2>
+
+            <p>
+                Catat, lihat rekap, dan kelola dokumen rapat desa
+            </p>
+
+        </div>
+
+
+        <!-- 4 KARTU -->
+
+        <div class="rapat-container">
+
+
+            <!-- 1. CATAT RAPAT -->
+
+            <div class="rapat-card">
+
+
+                <div class="rapat-icon">
+
+                    <i class="bi bi-ui-checks-grid"></i>
+
+                </div>
+
+
+                <h3>
+
+                    CATAT RAPAT / MUSDES DI DESA
+
+                </h3>
+
+
+                <button class="rapat-btn btn-form"
+                        onclick="window.open(
+                        'https://docs.google.com/forms/d/e/1FAIpQLSdaOpsZ5hpJDwsK7FtenIvhgrjGOdwo3_LgSXlNphuCV__eeA/viewform',
+                        '_blank'
+                        )">
+
+                    <i class="bi bi-google"></i>
+
+                    Buka Google Form
+
+                </button>
+
+
+            </div>
+
+
+            <!-- 2. REKAP RAPAT -->
+
+            <div class="rapat-card">
+
+
+                <div class="rapat-icon">
+
+                    <i class="bi bi-table"></i>
+
+                </div>
+
+
+                <h3>
+
+                    LIHAT REKAP RAPAT / MUSDES
+
+                </h3>
+
+
+                <button class="rapat-btn btn-sheet"
+                        onclick="window.open(
+                        'https://docs.google.com/spreadsheets/d/1A1q5nPAw6jwRWFcKSfE3C6VfRZfxRIrDseLD9WDMy_I/edit?gid=1768347680#gid=1768347680',
+                        '_blank'
+                        )">
+
+                    <i class="bi bi-file-earmark-spreadsheet"></i>
+
+                    Lihat Spreadsheet
+
+                </button>
+
+
+            </div>
+
+
+            <!-- 3. DOKUMEN RAPAT -->
+
+            <div class="rapat-card">
+
+
+                <div class="rapat-icon">
+
+                    <i class="bi bi-folder2-open"></i>
+
+                </div>
+
+
+                <h3>
+
+                    DOKUMEN RAPAT / MUSDES
+
+                </h3>
+
+
+                <button class="rapat-btn btn-dokumen"
+                        onclick="window.open(
+                        'https://drive.google.com/drive/folders/1tfJnB0DrPnKI5N9jMu_g6DPzBH2NGEKz',
+                        '_blank'
+                        )">
+
+                    <i class="bi bi-folder2-open"></i>
+
+                    Buka Folder
+
+                </button>
+
+
+            </div>
+
+
+            <!-- 4. FOTO RAPAT -->
+
+            <div class="rapat-card">
+
+
+                <div class="rapat-icon">
+
+                    <i class="bi bi-images"></i>
+
+                </div>
+
+
+                <h3>
+
+                    LIHAT FOTO RAPAT
+
+                </h3>
+
+
+                <button class="rapat-btn btn-foto"
+                        onclick="window.open(
+                        'https://drive.google.com/drive/folders/1kaNslOvd_cIdeLo4UMFKxAfloKD6Qn-A4wexp8TgjShe96akGB0OReQAC7C9k0oZE9YL0eXv',
+                        '_blank'
+                        )">
+
+                    <i class="bi bi-images"></i>
+
+                    Buka Folder
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>

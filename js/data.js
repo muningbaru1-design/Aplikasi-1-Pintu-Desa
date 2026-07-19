@@ -13,11 +13,27 @@ const gridMenu = [
 },
 
 {
+    id:"portal",
+    nama:"Kumpulan Portal Desa",
+    icon:"bi-globe2",
+    warna:"#0F766E",
+    link:"pages/portal.html"
+},
+
+{
+id:"produkhukum",
+nama:"Produk Hukum Desa",
+icon:"bi-bank2",
+warna:"#7C3AED",
+link:"pages/menu.html?kategori=produkhukum"
+},
+
+{
     id:"spj",
     nama:"Upload SPJ",
     icon:"bi-cloud-arrow-up-fill",
     warna:"#2563EB",
-    link:"pages/spj.html"
+    link:"pages/upload-spj.html"
 },
 
 {

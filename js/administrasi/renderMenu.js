@@ -1,6 +1,8 @@
 function renderMenu(kategori, containerId){
 
 const container=document.getElementById(containerId);
+console.log("Kategori :", kategori);
+console.log("MENU :", MENU[kategori]);
 
 container.innerHTML="";
 
@@ -44,6 +46,14 @@ window.open(item.link,"_blank");
 
 container.appendChild(card);
 
-});
+    });
+
+} // <-- PENUTUP renderMenu()
+
+function toggleSidebar(){
+
+    document.getElementById("sidebar").classList.toggle("active");
+
+    document.getElementById("overlay").classList.toggle("active");
 
 }

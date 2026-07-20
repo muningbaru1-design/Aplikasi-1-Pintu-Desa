@@ -1,651 +1,528 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Upload SPJ Pelaksana Kegiatan</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <!-- Font Awesome -->
+    <title>Upload SPJ</title>
+
+
+    <!-- FONT POPPINS -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- BOOTSTRAP ICONS -->
+
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- CSS UTAMA -->
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
 
     <style>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f7f7f7;
-            color: #222;
-        }
 
         /* =========================
-           HEADER
+           HALAMAN SPJ
         ========================= */
 
-        .header {
-            background: linear-gradient(135deg, #19d900, #36c900);
-            color: white;
-            height: 58px;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        .spj-page {
+
+            padding: 30px;
+
         }
 
-        .header-title {
-            font-size: 17px;
-            font-weight: bold;
-        }
-
-        .header-title i {
-            margin-right: 8px;
-        }
 
         /* =========================
-           CONTAINER
+           JUDUL
         ========================= */
 
-        .container {
-            width: 100%;
-            max-width: 700px;
-            margin: auto;
-            padding: 25px 15px 50px;
-        }
+        .spj-title {
 
-        /* =========================
-           JUDUL HALAMAN
-        ========================= */
-
-        .page-title {
             text-align: center;
-            margin-bottom: 25px;
+
+            margin-bottom: 30px;
+
         }
 
-        .page-title h1 {
-            font-size: 22px;
-            color: #222;
+
+        .spj-title h2 {
+
             margin-bottom: 6px;
+
         }
 
-        .page-title p {
+
+        .spj-title p {
+
             color: #777;
-            font-size: 13px;
+
+            font-size: 14px;
+
         }
+
 
         /* =========================
-           KARTU SPJ
+           GRID 4 HORIZONTAL
+        ========================= */
+
+        .spj-container {
+
+            display: grid;
+
+            grid-template-columns:
+            repeat(4, 1fr);
+
+            gap: 20px;
+
+            max-width: 1400px;
+
+            margin: auto;
+
+        }
+
+
+        /* =========================
+           KARTU
         ========================= */
 
         .spj-card {
+
             background: white;
+
+            border-radius: 15px;
+
+            padding: 25px 15px;
+
             text-align: center;
-            padding: 18px 15px 22px;
-            margin-bottom: 24px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: 0.25s;
+
+            box-shadow:
+            0 4px 15px
+            rgba(0,0,0,0.08);
+
+            transition: 0.3s;
+
         }
+
 
         .spj-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 18px rgba(0,0,0,0.13);
+
+            transform:
+            translateY(-5px);
+
+            box-shadow:
+            0 8px 25px
+            rgba(0,0,0,0.15);
+
         }
 
-        /* FOTO / AVATAR */
 
-        .avatar {
-            width: 70px;
-            height: 70px;
+        /* =========================
+           ICON
+        ========================= */
+
+        .spj-icon {
+
+            width: 85px;
+
+            height: 85px;
+
+            margin: auto;
+
+            margin-bottom: 15px;
+
             border-radius: 50%;
-            margin: 0 auto 10px;
-            border: 2px solid #b7f2a9;
-            padding: 3px;
-            background: white;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
-            overflow: hidden;
+
+            background: #EFF6FF;
+
+            border: 3px solid #BFDBFE;
+
         }
 
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
+
+        .spj-icon i {
+
+            font-size: 42px;
+
+            color: #2563EB;
+
         }
 
-        /* JUDUL */
 
-        .spj-card h2 {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            text-transform: uppercase;
+        /* =========================
+           JUDUL KARTU
+        ========================= */
+
+        .spj-card h3 {
+
+            font-size: 15px;
+
+            margin-bottom: 18px;
+
+            min-height: 45px;
+
         }
 
-        .spj-card p {
-            font-size: 11px;
-            color: #777;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
 
-        /* TOMBOL UPLOAD */
+        /* =========================
+           TOMBOL
+        ========================= */
 
-        .upload-btn {
+        .spj-btn {
+
             border: none;
-            background: #22d400;
+
             color: white;
-            padding: 9px 15px;
-            border-radius: 5px;
+
+            padding: 10px 15px;
+
+            border-radius: 7px;
+
             cursor: pointer;
-            font-size: 11px;
-            font-weight: bold;
+
+            font-family: Poppins;
+
+            font-size: 12px;
+
             transition: 0.2s;
+
         }
 
-        .upload-btn:hover {
-            background: #16ad00;
-            transform: scale(1.03);
+
+        .spj-btn:hover {
+
+            transform:
+            scale(1.03);
+
         }
 
-        .upload-btn i {
+
+        .btn-spj {
+
+            background: #2563EB;
+
+        }
+
+
+        .spj-btn i {
+
             margin-right: 5px;
+
         }
+
 
         /* =========================
-           MODAL UPLOAD
+           TABLET
         ========================= */
 
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.55);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-        }
+        @media(max-width: 1000px) {
 
-        .modal-content {
-            background: white;
-            width: 100%;
-            max-width: 450px;
-            border-radius: 12px;
-            padding: 22px;
-            position: relative;
-            animation: muncul 0.25s ease;
-        }
+            .spj-container {
 
-        @keyframes muncul {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
+                grid-template-columns:
+                repeat(2, 1fr);
+
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
-        .close {
-            position: absolute;
-            right: 18px;
-            top: 12px;
-            font-size: 24px;
-            color: #777;
-            cursor: pointer;
-        }
-
-        .modal-title {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .modal-title h3 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-
-        .modal-title p {
-            font-size: 12px;
-            color: #777;
-        }
-
-        /* FORM */
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 6px;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 13px;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #21d500;
-        }
-
-        .submit-btn {
-            width: 100%;
-            border: none;
-            background: #20d000;
-            color: white;
-            padding: 11px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 13px;
-        }
-
-        .submit-btn:hover {
-            background: #15ad00;
-        }
 
         /* =========================
-           RESPONSIVE
+           HP
         ========================= */
 
-        @media (max-width: 500px) {
+        @media(max-width: 600px) {
 
-            .container {
-                padding: 20px 10px 40px;
+            .spj-page {
+
+                padding: 20px 12px;
+
             }
 
-            .spj-card {
-                margin-bottom: 20px;
+
+            .spj-container {
+
+                grid-template-columns: 1fr;
+
             }
 
-            .page-title h1 {
-                font-size: 19px;
-            }
         }
+
 
     </style>
+
 </head>
+
 
 <body>
 
+
     <!-- HEADER -->
+
     <header class="header">
-        <div class="header-title">
-            <i class="fa-solid fa-folder-open"></i>
-            UPLOAD SPJ
+
+
+        <!-- TOMBOL KEMBALI -->
+
+        <button class="menu-btn"
+                onclick="history.back()">
+
+            <i class="bi bi-arrow-left"></i>
+
+        </button>
+
+
+        <!-- JUDUL -->
+
+        <div class="title">
+
+            <h2>Upload SPJ</h2>
+
+            <p>Dokumen Pertanggungjawaban Kegiatan Desa</p>
+
         </div>
+
+
+        <!-- LOGO -->
+
+        <img src="../assets/logo/logo-desa.jpg"
+             class="logo-desa">
+
     </header>
 
 
     <!-- KONTEN -->
-    <main class="container">
 
-        <div class="page-title">
-            <h1>SPJ PELAKSANA KEGIATAN</h1>
-            <p>Silakan pilih pelaksana kegiatan untuk mengupload berkas SPJ</p>
-        </div>
+    <main class="spj-page">
 
 
-        <!-- =========================
-             KASI PEMERINTAHAN
-        ========================= -->
+        <div class="spj-title">
 
-        <div class="spj-card">
 
-            <div class="avatar">
-                <img src="../../assets/img/avatar-pria.png"
-                     onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
-            </div>
+            <h2>
 
-            <h2>SPJ PELAKSANA KEGIATAN</h2>
+                SPJ PELAKSANA KEGIATAN
 
-            <p>KASI PEMERINTAHAN</p>
+            </h2>
 
-            <button class="spj-upload-btn"
-    onclick="window.open(
-    'https://drive.google.com/drive/folders/1c9VyNys4ZowtExndZ3ATHhvcROjiKRNK?usp=drive_link',
-    '_blank'
-    )">
 
-    <i class="bi bi-folder2-open"></i>
+            <p>
 
-    Buka Folder Google Drive
+                Pilih pelaksana kegiatan untuk membuka folder SPJ
 
-</button>
+            </p>
+
 
         </div>
 
 
-        <!-- =========================
-             KASI PELAYANAN
-        ========================= -->
+        <!-- 4 KARTU -->
 
-        <div class="spj-card">
-
-            <div class="avatar">
-                <img src="../../assets/img/avatar-pria.png"
-                     onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
-            </div>
-
-            <h2>SPJ PELAKSANA KEGIATAN</h2>
-
-            <p>KASI PELAYANAN</p>
-
-            <button class="spj-upload-btn"
-    onclick="window.open(
-    'https://drive.google.com/drive/folders/1IvOW2YwiHB2MqVqHSDmclPZHJXh6oMB7?usp=drive_link',
-    '_blank'
-    )">
-
-    <i class="bi bi-folder2-open"></i>
-
-    Buka Folder Google Drive
-
-</button>
-
-        </div>
+        <div class="spj-container">
 
 
-        <!-- =========================
-             KAUR UMUM & PERENCANAAN
-        ========================= -->
+            <!-- KASI PEMERINTAHAN -->
 
-        <div class="spj-card">
+            <div class="spj-card">
 
-            <div class="avatar">
 
-                <img src="../../assets/img/avatar-pria.png"
-                     onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+                <div class="spj-icon">
+
+                    <i class="bi bi-person-badge-fill"></i>
+
+                </div>
+
+
+                <h3>
+
+                    SPJ PELAKSANA KEGIATAN
+
+                    <br>
+
+                    KASI PEMERINTAHAN
+
+                </h3>
+
+
+                <button class="spj-btn btn-spj"
+
+                        onclick="window.open(
+
+                        'https://drive.google.com/drive/folders/1c9VyNys4ZowtExndZ3ATHhvcROjiKRNK?usp=drive_link',
+
+                        '_blank'
+
+                        )">
+
+
+                    <i class="bi bi-folder2-open"></i>
+
+                    Buka Folder Google Drive
+
+
+                </button>
+
 
             </div>
 
-            <h2>SPJ PELAKSANA KEGIATAN</h2>
 
-            <p>KAUR UMUM & PERENCANAAN</p>
+            <!-- KASI PELAYANAN -->
 
-<button class="spj-upload-btn"
-    onclick="window.open(
-    'https://drive.google.com/drive/folders/13xxO8IlWIf9ZmrrqvrOJcXdUTj5jXpU-?usp=drive_link',
-    '_blank'
-    )">
-
-    <i class="bi bi-folder2-open"></i>
-
-    Buka Folder Google Drive
-
-</button>
-
-        </div>
+            <div class="spj-card">
 
 
-        <!-- =========================
-             KAUR KEUANGAN
-        ========================= -->
+                <div class="spj-icon">
 
-        <div class="spj-card">
+                    <i class="bi bi-person-badge-fill"></i>
 
-            <div class="avatar">
+                </div>
 
-                <img src="../../assets/img/avatar-wanita.png"
-                     onerror="this.src='https://cdn-icons-png.flaticon.com/512/4140/4140048.png'">
+
+                <h3>
+
+                    SPJ PELAKSANA KEGIATAN
+
+                    <br>
+
+                    KASI PELAYANAN
+
+                </h3>
+
+
+                <button class="spj-btn btn-spj"
+
+                        onclick="window.open(
+
+                        'https://drive.google.com/drive/folders/1IvOW2YwiHB2MqVqHSDmclPZHJXh6oMB7?usp=drive_link',
+
+                        '_blank'
+
+                        )">
+
+
+                    <i class="bi bi-folder2-open"></i>
+
+                    Buka Folder Google Drive
+
+
+                </button>
+
 
             </div>
 
-            <h2>SPJ PELAKSANA KEGIATAN</h2>
 
-            <p>KAUR KEUANGAN</p>
+            <!-- KAUR UMUM & PERENCANAAN -->
 
-            <button class="spj-upload-btn"
-    onclick="window.open(
-    'https://drive.google.com/drive/folders/1vBNffhbdsdRtTMfPI5eh2_IEJtIn56by?usp=drive_link',
-    '_blank'
-    )">
+            <div class="spj-card">
 
-    <i class="bi bi-folder2-open"></i>
 
-    Buka Folder Google Drive
+                <div class="spj-icon">
 
-</button>
+                    <i class="bi bi-person-badge-fill"></i>
+
+                </div>
+
+
+                <h3>
+
+                    SPJ PELAKSANA KEGIATAN
+
+                    <br>
+
+                    KAUR UMUM & PERENCANAAN
+
+                </h3>
+
+
+                <button class="spj-btn btn-spj"
+
+                        onclick="window.open(
+
+                        'https://drive.google.com/drive/folders/13xxO8IlWIf9ZmrrqvrOJcXdUTj5jXpU-?usp=drive_link',
+
+                        '_blank'
+
+                        )">
+
+
+                    <i class="bi bi-folder2-open"></i>
+
+                    Buka Folder Google Drive
+
+
+                </button>
+
+
+            </div>
+
+
+            <!-- KAUR KEUANGAN -->
+
+            <div class="spj-card">
+
+
+                <div class="spj-icon">
+
+                    <i class="bi bi-person-badge-fill"></i>
+
+                </div>
+
+
+                <h3>
+
+                    SPJ PELAKSANA KEGIATAN
+
+                    <br>
+
+                    KAUR KEUANGAN
+
+                </h3>
+
+
+                <button class="spj-btn btn-spj"
+
+                        onclick="window.open(
+
+                        'https://drive.google.com/drive/folders/1vBNffhbdsdRtTMfPI5eh2_IEJtIn56by?usp=drive_link',
+
+                        '_blank'
+
+                        )">
+
+
+                    <i class="bi bi-folder2-open"></i>
+
+                    Buka Folder Google Drive
+
+
+                </button>
+
+
+            </div>
+
 
         </div>
+
 
     </main>
 
 
-    <!-- =========================
-         MODAL UPLOAD
-    ========================= -->
-
-    <div id="uploadModal" class="modal">
-
-        <div class="modal-content">
-
-            <span class="close" onclick="tutupUpload()">
-                &times;
-            </span>
-
-
-            <div class="modal-title">
-
-                <h3>UPLOAD BERKAS SPJ</h3>
-
-                <p id="namaPelaksana">
-                    -
-                </p>
-
-            </div>
-
-
-            <form id="formUploadSPJ">
-
-                <div class="form-group">
-
-                    <label>
-                        Nama Kegiatan
-                    </label>
-
-                    <input
-                        type="text"
-                        id="namaKegiatan"
-                        placeholder="Masukkan nama kegiatan"
-                        required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Tahun Anggaran
-                    </label>
-
-                    <select id="tahunAnggaran">
-
-                        <option value="2026">
-                            2026
-                        </option>
-
-                        <option value="2025">
-                            2025
-                        </option>
-
-                        <option value="2024">
-                            2024
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Pilih Berkas SPJ
-                    </label>
-
-                    <input
-                        type="file"
-                        id="fileSPJ"
-                        accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
-                        required>
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="submit-btn">
-
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-
-                    UPLOAD BERKAS
-
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-
-    <!-- JAVASCRIPT -->
-
-    <script>
-
-        let pelaksanaTerpilih = "";
-
-
-        // MEMBUKA MODAL
-        function bukaUpload(nama) {
-
-            pelaksanaTerpilih = nama;
-
-            document.getElementById("namaPelaksana")
-                .textContent = nama;
-
-            document.getElementById("uploadModal")
-                .style.display = "flex";
-
-        }
-
-
-        // MENUTUP MODAL
-        function tutupUpload() {
-
-            document.getElementById("uploadModal")
-                .style.display = "none";
-
-        }
-
-
-        // KLIK DI LUAR MODAL
-        window.onclick = function(event) {
-
-            const modal =
-                document.getElementById("uploadModal");
-
-            if (event.target === modal) {
-
-                tutupUpload();
-
-            }
-
-        };
-
-
-        // FORM UPLOAD
-        document.getElementById("formUploadSPJ")
-            .addEventListener("submit", function(event) {
-
-                event.preventDefault();
-
-
-                const kegiatan =
-                    document.getElementById("namaKegiatan")
-                    .value;
-
-                const tahun =
-                    document.getElementById("tahunAnggaran")
-                    .value;
-
-                const file =
-                    document.getElementById("fileSPJ")
-                    .files[0];
-
-
-                if (!file) {
-
-                    alert("Silakan pilih berkas SPJ terlebih dahulu!");
-
-                    return;
-
-                }
-
-
-                alert(
-
-                    "Data siap diupload!\n\n" +
-
-                    "Pelaksana: " +
-                    pelaksanaTerpilih +
-
-                    "\nKegiatan: " +
-                    kegiatan +
-
-                    "\nTahun: " +
-                    tahun +
-
-                    "\nFile: " +
-                    file.name
-
-                );
-
-
-                /*
-                 * TAHAP BERIKUTNYA:
-                 *
-                 * File akan dikirim ke:
-                 *
-                 * Google Apps Script
-                 *
-                 * kemudian disimpan ke:
-                 *
-                 * Google Drive
-                 *
-                 * dan datanya dicatat ke:
-                 *
-                 * Google Sheets
-                 */
-
-
-                tutupUpload();
-
-            });
-
-
-    </script>
-
 </body>
+
 </html>

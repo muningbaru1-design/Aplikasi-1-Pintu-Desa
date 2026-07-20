@@ -1,63 +1,1210 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Aplikasi 1 Pintu Desa Muning Baru</title>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- FONT -->
 
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+
+<!-- ICON -->
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+
+    min-height: 100vh;
+
+    background:
+
+    linear-gradient(
+        rgba(255,255,255,0.88),
+        rgba(255,255,255,0.88)
+    ),
+
+    url("assets/logo/kantor-desa.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    color: #0B2A5B;
+
+}
+
+
+/* =========================
+   HALAMAN UTAMA
+========================= */
+
+.login-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.top-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 25px 40px;
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+
+.brand img {
+
+    width: 58px;
+
+    height: 58px;
+
+    object-fit: contain;
+
+}
+
+
+.brand h2 {
+
+    font-size: 21px;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+.brand p {
+
+    font-size: 14px;
+
+    margin-top: 3px;
+
+}
+
+
+.about-btn {
+
+    padding: 12px 22px;
+
+    border: 1px solid #D5DCE8;
+
+    border-radius: 12px;
+
+    background: white;
+
+    color: #0B2A5B;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================
+   KONTEN
+========================= */
+
+.main-content {
+
+    flex: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 80px;
+
+    padding: 40px 8%;
+
+}
+
+
+/* =========================
+   BAGIAN KIRI
+========================= */
+
+.left-content {
+
+    max-width: 580px;
+
+}
+
+
+.app-logo {
+
+    width: 580px;
+
+    max-width: 100%;
+
+    height: auto;
+
+    display: block;
+
+}
+
+
+.left-content h1 {
+
+    font-size: 38px;
+
+    letter-spacing: 7px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.left-content .tagline {
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+}
+
+
+.description {
+
+    margin-top: 28px;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    max-width: 440px;
+
+}
+
+
+/* =========================
+   FITUR
+========================= */
+
+.features {
+
+    display: flex;
+
+    gap: 35px;
+
+    margin-top: 45px;
+
+}
+
+
+.feature {
+
+    text-align: center;
+
+    width: 100px;
+
+}
+
+
+.feature-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #0B2A5B;
+
+    color: white;
+
+    font-size: 25px;
+
+}
+
+
+.feature h4 {
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+}
+
+
+.feature p {
+
+    font-size: 11px;
+
+    margin-top: 4px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================
+   LOGIN CARD
+========================= */
+
+.login-card {
+
+    width: 480px;
+
+    max-width: 100%;
+
+    padding: 45px;
+
+    background: rgba(255,255,255,0.95);
+
+    border-radius: 24px;
+
+    box-shadow:
+
+    0 15px 50px rgba(0,0,0,0.12);
+
+}
+
+
+.login-card h1 {
+
+    text-align: center;
+
+    font-size: 30px;
+
+}
+
+
+.login-card .subtitle {
+
+    text-align: center;
+
+    color: #6B7280;
+
+    margin: 10px 0 35px;
+
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-group {
+
+    position: relative;
+
+    margin-bottom: 18px;
+
+}
+
+
+.input-group i {
+
+    position: absolute;
+
+    left: 18px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #6B7280;
+
+    font-size: 20px;
+
+}
+
+
+.input-group input {
+
+    width: 100%;
+
+    padding: 17px 18px 17px 55px;
+
+    border: 1px solid #D6DCE5;
+
+    border-radius: 14px;
+
+    font-size: 15px;
+
+    font-family: Poppins;
+
+    outline: none;
+
+}
+
+
+.input-group input:focus {
+
+    border-color: #0B2A5B;
+
+}
+
+
+/* =========================
+   TOMBOL MASUK
+========================= */
+
+.login-btn {
+
+    width: 100%;
+
+    padding: 17px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background: #0B2A5B;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+}
+
+
+.login-btn:hover {
+
+    background: #123D7A;
+
+}
+
+
+/* =========================
+   TOMBOL TAMU
+========================= */
+
+.guest-btn {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid #D6DCE5;
+
+    border-radius: 13px;
+
+    background: white;
+
+    color: #0B2A5B;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    margin-top: 22px;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 20px 50px;
+
+    background: #06295B;
+
+    color: white;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 900px) {
+
+    .main-content {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+
+    .description {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+
+    .features {
+
+        justify-content: center;
+
+    }
+
+
+    .top-header {
+
+        padding: 20px;
+
+    }
+
+
+    .footer {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+        text-align: center;
+
+    }
+
+}
+
+
+@media(max-width: 550px) {
+
+    .left-content h1 {
+
+        font-size: 28px;
+
+    }
+
+
+    .left-content .tagline {
+
+        font-size: 16px;
+
+    }
+
+
+    .login-card {
+
+        padding: 28px 20px;
+
+    }
+
+}
+
+/* =========================
+   MODAL TENTANG APLIKASI
+========================= */
+
+.modal-tentang {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    background:
+    rgba(4, 25, 58, 0.65);
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+}
+
+
+/* AKTIF */
+
+.modal-tentang.active {
+
+    display: flex;
+
+}
+
+
+/* CARD */
+
+.tentang-card {
+
+    position: relative;
+
+    width: 700px;
+
+    max-width: 100%;
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 55px 50px;
+
+    text-align: center;
+
+    box-shadow:
+
+    0 20px 60px
+    rgba(0,0,0,0.25);
+
+    animation:
+
+    munculTentang
+    0.3s
+    ease;
+
+}
+
+
+@keyframes munculTentang {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+        translateY(20px)
+        scale(0.95);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+}
+
+
+/* TOMBOL TUTUP */
+
+.tutup-tentang {
+
+    position: absolute;
+
+    top: 15px;
+
+    right: 18px;
+
+    width: 35px;
+
+    height: 35px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #F1F5F9;
+
+    color: #475569;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+}
+
+
+.tutup-tentang:hover {
+
+    background: #E2E8F0;
+
+}
+
+
+/* LOGO */
+
+.tentang-logo {
+    width: 220px;
+    max-width: 80%;
+    margin-bottom: 20px;
+}
+
+
+/* JUDUL */
+
+.tentang-card h2 {
+
+    color: #0B2A5B;
+
+    font-size: 32px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.versi {
+
+    color: #64748B;
+
+    font-size: 14px;
+
+    margin-top: 5px;
+
+}
+
+
+/* DESKRIPSI */
+
+.tentang-text {
+
+    margin-top: 22px;
+
+    color: #475569;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+}
+
+
+/* INFO */
+
+.tentang-info {
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #E2E8F0;
+
+}
+
+
+.tentang-info div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    text-align: left;
+
+    margin-bottom: 12px;
+
+    color: #475569;
+
+    font-size: 14px;
+
+}
+
+
+.tentang-info i {
+
+    width: 25px;
+
+    color: #0B2A5B;
+
+    font-size: 18px;
+
+}
+
+
+/* FOOTER */
+
+.tentang-footer {
+
+    margin-top: 20px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #E2E8F0;
+
+    color: #0B2A5B;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+}
+
+</style>
 
 </head>
 
+
 <body>
 
-<header class="header">
 
-<button class="menu-btn">
-<i class="bi bi-list"></i>
+<div class="login-page">
+
+
+    <!-- HEADER -->
+
+    <header class="top-header">
+
+
+        <div class="brand">
+
+
+            <img src="assets/logo/logo-desa.jpg">
+
+
+            <div>
+
+                <h2>DESA MUNING BARU</h2>
+
+                <p>
+
+                    Kec. Daha Selatan, Kab. Hulu Sungai Selatan
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+<button class="about-btn"
+        onclick="bukaTentangAplikasi()">
+
+    <i class="bi bi-info-circle-fill"></i>
+
+    &nbsp; Tentang Aplikasi
+
 </button>
 
-<div class="title">
-<h2>Aplikasi 1 Pintu</h2>
-<p>Desa Muning Baru</p>
+
+    </header>
+
+
+    <!-- KONTEN -->
+
+    <main class="main-content">
+
+
+        <!-- KIRI -->
+
+        <section class="left-content">
+
+    <img src="assets/logo/logo-aplikasi.png"
+         class="app-logo">
+
+    <p class="description">
+
+        Aplikasi pelayanan administrasi terpadu
+        yang mudah, cepat, transparan dan
+        terintegrasi untuk masyarakat.
+
+    </p>
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="feature-icon">
+                <i class="bi bi-clock"></i>
+            </div>
+
+            <h4>Mudah</h4>
+
+            <p>
+                Proses sederhana
+                dan praktis
+            </p>
+        </div>
+
+
+        <div class="feature">
+            <div class="feature-icon">
+                <i class="bi bi-lightning-charge-fill"></i>
+            </div>
+
+            <h4>Cepat</h4>
+
+            <p>
+                Pelayanan lebih
+                efisien
+            </p>
+        </div>
+
+
+        <div class="feature">
+            <div class="feature-icon">
+                <i class="bi bi-shield-check"></i>
+            </div>
+
+            <h4>Terpercaya</h4>
+
+            <p>
+                Data aman dan
+                terlindungi
+            </p>
+        </div>
+
+
+        <div class="feature">
+            <div class="feature-icon">
+                <i class="bi bi-people"></i>
+            </div>
+
+            <h4>Terpadu</h4>
+
+            <p>
+                Semua layanan
+                dalam satu aplikasi
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+        </section>
+
+
+        <!-- KANAN -->
+
+        <section class="login-card">
+
+
+            <h1>
+
+                Selamat Datang
+
+            </h1>
+
+
+            <p class="subtitle">
+
+                Silakan masuk untuk melanjutkan
+
+            </p>
+
+
+            <div class="input-group">
+
+
+                <i class="bi bi-person-fill"></i>
+
+
+                <input
+
+                    type="text"
+
+                    placeholder="Username / Email"
+
+                    id="username"
+
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+
+                <i class="bi bi-lock-fill"></i>
+
+
+                <input
+
+                    type="password"
+
+                    placeholder="Password"
+
+                    id="password"
+
+                >
+
+            </div>
+
+
+            <button class="login-btn"
+
+                    onclick="login(admin)">
+
+
+                <i class="bi bi-box-arrow-in-right"></i>
+
+                &nbsp; MASUK
+
+            </button>
+
+
+            <button class="guest-btn"
+
+                    onclick="masukSebagaiTamu()">
+
+
+                <i class="bi bi-person"></i>
+
+                &nbsp; Masuk sebagai Tamu
+
+            </button>
+
+
+            <p style="text-align:center;
+                      margin-top:20px;
+                      color:#6B7280;
+                      font-size:13px;">
+
+                Belum punya akun?
+
+                Hubungi administrator desa.
+
+            </p>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+
+        <div>
+
+            <i class="bi bi-shield-check"></i>
+
+            &nbsp; Aplikasi 1 Pintu Desa Muning Baru
+
+            &nbsp;&nbsp; | &nbsp;&nbsp;
+
+            © 2026 Semua Hak Dilindungi
+
+        </div>
+
+
+        <div>
+
+            <i class="bi bi-headset"></i>
+
+            &nbsp; Butuh bantuan?
+
+            &nbsp;&nbsp; | &nbsp;&nbsp;
+
+            Hubungi Kami
+
+        </div>
+
+
+    </footer>
+
+
 </div>
 
-<img src="assets/logo/logo-desa.jpg" class="logo">
 
-</header>
+<script>
 
+function bukaTentangAplikasi() {
 
-<section class="welcome">
+    document
+        .getElementById("modalTentang")
+        .classList.add("active");
 
-<h3>Selamat Datang 👋</h3>
-
-<p>Pemerintah Desa Muning Baru</p>
-
-</section>
+}
 
 
-<section class="search-box">
+function tutupTentangAplikasi() {
 
-<input type="text" placeholder="Cari Menu...">
+    document
+        .getElementById("modalTentang")
+        .classList.remove("active");
 
-</section>
+}
+</script>
+
+<script src="js/auth.js"></script>
+<!-- =========================
+     MODAL TENTANG APLIKASI
+========================= -->
+
+<div id="modalTentang"
+     class="modal-tentang">
 
 
-<section id="gridMenu" class="grid-menu">
-
-</section>
+    <div class="tentang-card">
 
 
+        <!-- TOMBOL TUTUP -->
 
-<script src="js/data.js"></script>
-<script src="js/menu.js"></script>
-<script src="js/app.js"></script>
+        <button class="tutup-tentang"
+                onclick="tutupTentangAplikasi()">
 
+            <i class="bi bi-x-lg"></i>
+
+        </button>
+
+
+        <!-- LOGO -->
+
+        <img src="assets/logo/logo-aplikasi.png"
+             class="tentang-logo">
+
+
+        <h2>
+
+            APLIKASI 1 PINTU
+
+        </h2>
+
+
+        <p class="versi">
+
+            Desa Muning Baru
+
+        </p>
+
+
+        <p class="tentang-text">
+
+            Aplikasi 1 Pintu Desa Muning Baru merupakan
+
+            sistem informasi dan administrasi terpadu
+
+            yang dirancang untuk membantu mengelola
+
+            berbagai kebutuhan administrasi pemerintahan
+
+            desa secara lebih mudah, cepat, dan terintegrasi.
+
+        </p>
+
+
+        <div class="tentang-info">
+
+
+            <div>
+
+                <i class="bi bi-building"></i>
+
+                <span>
+
+                    Pemerintah Desa Muning Baru
+
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <i class="bi bi-geo-alt-fill"></i>
+
+                <span>
+
+                    Kecamatan Daha Selatan
+
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <i class="bi bi-calendar3"></i>
+
+                <span>
+
+                    Tahun 2026
+
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="tentang-footer">
+
+            <i class="bi bi-shield-check"></i>
+
+            Sistem Administrasi Terpadu Desa
+
+        </div>
+
+
+    </div>
+
+</div>
 </body>
+
 </html>

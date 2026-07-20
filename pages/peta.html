@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Peta Rumah Desa Muning Baru</title>
+
+
+    <!-- FONT POPPINS -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- BOOTSTRAP ICONS -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- CSS UTAMA -->
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+
+    <style>
+
+
+        /* =========================
+           HALAMAN PETA
+        ========================= */
+
+        .peta-page {
+
+            padding: 35px 25px 50px;
+
+        }
+
+
+        /* =========================
+           JUDUL HALAMAN
+        ========================= */
+
+        .peta-title {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .peta-title h2 {
+
+            color: #0B2A5B;
+
+            font-size: 25px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .peta-title p {
+
+            color: #64748B;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           STATISTIK / INFORMASI
+        ========================= */
+
+        .peta-statistik {
+
+            display: grid;
+
+            grid-template-columns:
+            repeat(3, 1fr);
+
+            gap: 20px;
+
+            max-width: 950px;
+
+            margin: 0 auto 35px;
+
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 25px 15px;
+
+            text-align: center;
+
+            box-shadow:
+
+            0 5px 20px
+            rgba(0,0,0,0.08);
+
+            transition: 0.3s;
+
+        }
+
+
+        .stat-card:hover {
+
+            transform:
+
+            translateY(-5px);
+
+        }
+
+
+        .stat-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            margin: 0 auto 12px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #FEF2F2;
+
+        }
+
+
+        .stat-icon i {
+
+            font-size: 30px;
+
+            color: #DC2626;
+
+        }
+
+
+        .stat-card h3 {
+
+            font-size: 15px;
+
+            color: #1E293B;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .stat-card p {
+
+            font-size: 13px;
+
+            color: #64748B;
+
+        }
+
+
+        /* =========================
+           KARTU UTAMA PETA
+        ========================= */
+
+        .peta-container {
+
+            display: flex;
+
+            justify-content: center;
+
+        }
+
+
+        .peta-card {
+
+            width: 520px;
+
+            max-width: 100%;
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 40px 35px;
+
+            text-align: center;
+
+            box-shadow:
+
+            0 8px 30px
+            rgba(0,0,0,0.12);
+
+            border-top: 5px solid #DC2626;
+
+            transition: 0.3s;
+
+        }
+
+
+        .peta-card:hover {
+
+            transform:
+
+            translateY(-5px);
+
+            box-shadow:
+
+            0 12px 35px
+            rgba(0,0,0,0.18);
+
+        }
+
+
+        /* =========================
+           ICON PETA
+        ========================= */
+
+        .peta-icon {
+
+            width: 100px;
+
+            height: 100px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #FEF2F2;
+
+            border: 4px solid #FECACA;
+
+        }
+
+
+        .peta-icon i {
+
+            font-size: 50px;
+
+            color: #DC2626;
+
+        }
+
+
+        /* =========================
+           JUDUL KARTU
+        ========================= */
+
+        .peta-card h3 {
+
+            font-size: 21px;
+
+            color: #1E293B;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .peta-card p {
+
+            color: #64748B;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* =========================
+           TOMBOL GOOGLE EARTH
+        ========================= */
+
+        .peta-btn {
+
+            border: none;
+
+            background: #DC2626;
+
+            color: white;
+
+            padding: 14px 25px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-family: Poppins;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+
+        }
+
+
+        .peta-btn:hover {
+
+            background: #B91C1C;
+
+            transform:
+
+            scale(1.04);
+
+        }
+
+
+        .peta-btn i {
+
+            margin-right: 7px;
+
+        }
+
+
+        /* =========================
+           RESPONSIVE TABLET
+        ========================= */
+
+        @media(max-width: 900px) {
+
+
+            .peta-statistik {
+
+                grid-template-columns:
+
+                repeat(3, 1fr);
+
+            }
+
+
+        }
+
+
+        /* =========================
+           RESPONSIVE HP
+        ========================= */
+
+        @media(max-width: 700px) {
+
+
+            .peta-page {
+
+                padding:
+
+                25px 15px 40px;
+
+            }
+
+
+            .peta-statistik {
+
+                grid-template-columns: 1fr;
+
+                max-width: 450px;
+
+            }
+
+
+            .peta-title h2 {
+
+                font-size: 20px;
+
+            }
+
+
+            .peta-title p {
+
+                font-size: 13px;
+
+            }
+
+
+            .peta-card {
+
+                padding:
+
+                30px 20px;
+
+            }
+
+
+            .peta-card h3 {
+
+                font-size: 18px;
+
+            }
+
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="header">
+
+
+        <!-- TOMBOL KEMBALI -->
+
+        <button class="menu-btn"
+
+                onclick="history.back()">
+
+
+            <i class="bi bi-arrow-left"></i>
+
+
+        </button>
+
+
+        <!-- JUDUL -->
+
+        <div class="title">
+
+
+            <h2>
+
+                Peta Rumah
+
+            </h2>
+
+
+            <p>
+
+                Peta Lokasi Rumah Desa Muning Baru
+
+            </p>
+
+
+        </div>
+
+
+        <!-- LOGO DESA -->
+
+        <img src="../assets/logo/logo-desa.jpg"
+
+             class="logo-desa">
+
+
+    </header>
+
+
+    <!-- =========================
+         KONTEN PETA
+    ========================= -->
+
+    <div class="peta-page">
+
+
+        <!-- JUDUL UTAMA -->
+
+        <div class="peta-title">
+
+
+            <h2>
+
+                🗺️ PETA RUMAH DESA MUNING BARU
+
+            </h2>
+
+
+            <p>
+
+                Peta digital lokasi rumah warga Desa Muning Baru
+
+            </p>
+
+
+        </div>
+
+
+        <!-- =========================
+             STATISTIK / INFORMASI
+        ========================= -->
+
+        <div class="peta-statistik">
+
+
+            <!-- DATA RUMAH -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon">
+
+
+                    <i class="bi bi-house-fill"></i>
+
+
+                </div>
+
+
+                <h3>
+
+                    DATA RUMAH
+
+                </h3>
+
+
+                <p>
+
+                    Peta lokasi rumah warga
+
+                </p>
+
+
+            </div>
+
+
+            <!-- WILAYAH DESA -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon">
+
+
+                    <i class="bi bi-geo-alt-fill"></i>
+
+
+                </div>
+
+
+                <h3>
+
+                    WILAYAH DESA
+
+                </h3>
+
+
+                <p>
+
+                    Desa Muning Baru
+
+                </p>
+
+
+            </div>
+
+
+            <!-- PETA DIGITAL -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon">
+
+
+                    <i class="bi bi-globe2"></i>
+
+
+                </div>
+
+
+                <h3>
+
+                    PETA DIGITAL
+
+                </h3>
+
+
+                <p>
+
+                    Google Earth
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =========================
+             KARTU UTAMA PETA
+        ========================= -->
+
+        <div class="peta-container">
+
+
+            <div class="peta-card">
+
+
+                <!-- ICON -->
+
+                <div class="peta-icon">
+
+
+                    <i class="bi bi-geo-alt-fill"></i>
+
+
+                </div>
+
+
+                <!-- JUDUL -->
+
+                <h3>
+
+                    PETA LOKASI RUMAH
+
+                </h3>
+
+
+                <!-- DESKRIPSI -->
+
+                <p>
+
+                    Gunakan peta digital untuk melihat
+
+                    lokasi rumah di wilayah
+
+                    Desa Muning Baru.
+
+                </p>
+
+
+                <!-- TOMBOL GOOGLE EARTH -->
+
+                <button class="peta-btn"
+
+
+                        onclick="window.open(
+
+                        'https://earth.google.com/earth/d/17y-8YChfaro_cBtSiZGvpa4apRUvnlsd?usp=sharing',
+
+                        '_blank'
+
+                        )">
+
+
+                    <i class="bi bi-globe2"></i>
+
+
+                    Buka Google Earth
+
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

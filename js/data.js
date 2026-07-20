@@ -85,8 +85,16 @@ link:"pages/menu.html?kategori=produkhukum"
 },
 
 {
+    id: "pades",
+    nama: "Catat PADes Desa",
+    icon: "bi-cash-coin",
+    warna: "#F59E0B",
+    link: "pages/pades.html"
+},
+
+{
     id:"bumdes",
-    nama:"PADes & BUMDes",
+    nama:"Catat Pendapatan BUMDes",
     icon:"bi-bank",
     warna:"#0EA5E9",
     link:"pages/bumdes.html"

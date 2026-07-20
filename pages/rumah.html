@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Data Rumah Desa Muning Baru</title>
+
+
+    <!-- ICON BOOTSTRAP -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <style>
+
+
+        * {
+
+            box-sizing: border-box;
+
+        }
+
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            background: #f4f7f9;
+
+            font-family: Arial, sans-serif;
+
+            color: #1f2937;
+
+        }
+
+
+        .container-rumah {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 20px;
+
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+
+        .header-rumah {
+
+            background:
+
+                linear-gradient(
+
+                    135deg,
+
+                    #22c55e,
+
+                    #15803d
+
+                );
+
+            color: white;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            margin-bottom: 22px;
+
+            box-shadow:
+
+                0 8px 20px
+
+                rgba(
+
+                    0,
+
+                    0,
+
+                    0,
+
+                    .15
+
+                );
+
+        }
+
+
+        .header-rumah h1 {
+
+            margin: 0;
+
+            font-size: 27px;
+
+        }
+
+
+        .header-rumah p {
+
+            margin:
+
+                8px
+
+                0
+
+                0;
+
+            font-size: 14px;
+
+            opacity: .9;
+
+        }
+
+
+        /* =========================
+           GRID STATISTIK
+        ========================= */
+
+
+        .statistik-rumah {
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(
+
+                    4,
+
+                    1fr
+
+                );
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* =========================
+           KARTU
+        ========================= */
+
+
+        .kartu-statistik {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            box-shadow:
+
+                0 5px 15px
+
+                rgba(
+
+                    0,
+
+                    0,
+
+                    0,
+
+                    .08
+
+                );
+
+            transition:
+
+                .25s;
+
+        }
+
+
+        .kartu-statistik:hover {
+
+            transform:
+
+                translateY(
+
+                    -4px
+
+                );
+
+            box-shadow:
+
+                0 10px 20px
+
+                rgba(
+
+                    0,
+
+                    0,
+
+                    0,
+
+                    .12
+
+                );
+
+        }
+
+
+        /* =========================
+           ICON
+        ========================= */
+
+
+        .icon-statistik {
+
+            width: 55px;
+
+            height: 55px;
+
+            min-width: 55px;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #dcfce7;
+
+            color: #15803d;
+
+            font-size: 27px;
+
+        }
+
+
+        /* =========================
+           ANGKA
+        ========================= */
+
+
+        .kartu-statistik h3 {
+
+            margin: 0;
+
+            font-size: 29px;
+
+            color: #166534;
+
+        }
+
+
+        .kartu-statistik p {
+
+            margin:
+
+                5px
+
+                0
+
+                0;
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================
+           BOX INFORMASI
+        ========================= */
+
+
+        .info-box {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            box-shadow:
+
+                0 5px 15px
+
+                rgba(
+
+                    0,
+
+                    0,
+
+                    0,
+
+                    .08
+
+                );
+
+        }
+
+
+        .info-box h2 {
+
+            margin:
+
+                0
+
+                0
+
+                10px;
+
+            color: #166534;
+
+            font-size: 21px;
+
+        }
+
+
+        .info-box p {
+
+            color: #6b7280;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =========================
+           STATUS DATA
+        ========================= */
+
+
+        .status-data {
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            background: #f0fdf4;
+
+            color: #166534;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+
+        @media (max-width: 1000px) {
+
+
+            .statistik-rumah {
+
+                grid-template-columns:
+
+                    repeat(
+
+                        2,
+
+                        1fr
+
+                    );
+
+            }
+
+
+        }
+
+
+        @media (max-width: 600px) {
+
+
+            .container-rumah {
+
+                padding: 12px;
+
+            }
+
+
+            .statistik-rumah {
+
+                grid-template-columns:
+
+                    1fr;
+
+            }
+
+
+            .header-rumah h1 {
+
+                font-size: 22px;
+
+            }
+
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container-rumah">
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+
+    <div class="header-rumah">
+
+
+        <h1>
+
+
+            <i class="bi bi-house-fill"></i>
+
+
+            Data Rumah Desa Muning Baru
+
+
+        </h1>
+
+
+        <p>
+
+
+            Rekapitulasi rumah dan
+
+            fasilitas dasar masyarakat
+
+
+        </p>
+
+
+    </div>
+
+
+    <!-- =========================
+         KARTU STATISTIK
+    ========================= -->
+
+
+    <div class="statistik-rumah">
+
+
+        <!-- TOTAL RUMAH -->
+
+
+        <div class="kartu-statistik">
+
+
+            <div class="icon-statistik">
+
+
+                <i class="bi bi-house-fill"></i>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h3 id="totalRumah">
+
+
+                    0
+
+
+                </h3>
+
+
+                <p>
+
+
+                    Total Rumah
+
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SUDAH WC -->
+
+
+        <div class="kartu-statistik">
+
+
+            <div class="icon-statistik">
+
+
+                <i class="bi bi-check-circle-fill"></i>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h3 id="totalWC">
+
+
+                    0
+
+
+                </h3>
+
+
+                <p>
+
+
+                    Sudah Punya WC
+
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SUDAH AIR -->
+
+
+        <div class="kartu-statistik">
+
+
+            <div class="icon-statistik">
+
+
+                <i class="bi bi-droplet-fill"></i>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h3 id="totalAir">
+
+
+                    0
+
+
+                </h3>
+
+
+                <p>
+
+
+                    Sudah Akses Air Bersih
+
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SUDAH LISTRIK -->
+
+
+        <div class="kartu-statistik">
+
+
+            <div class="icon-statistik">
+
+
+                <i class="bi bi-lightning-charge-fill"></i>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h3 id="totalPLN">
+
+
+                    0
+
+
+                </h3>
+
+
+                <p>
+
+
+                    Sudah Memiliki Listrik
+
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- BELUM WC -->
+
+
+        <div class="kartu-statistik">
+
+
+            <div class="icon-statistik">
+
+
+                <i class="bi bi-x-circle-fill"></i>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h3 id="belumWC">
+
+
+                    0
+
+
+                </h3>
+
+
+                <p>
+
+
+                    Belum Punya WC
+
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- BELUM AIR -->
+
+
+        <div class="kartu-statistik">
+
+
+            <div class="icon-statistik">
+
+
+                <i class="bi bi-droplet"></i>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h3 id="belumAir">
+
+
+                    0
+
+
+                </h3>
+
+
+                <p>
+
+
+                    Belum Akses Air Bersih
+
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- BELUM LISTRIK -->
+
+
+        <div class="kartu-statistik">
+
+
+            <div class="icon-statistik">
+
+
+                <i class="bi bi-lightning"></i>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h3 id="belumPLN">
+
+
+                    0
+
+
+                </h3>
+
+
+                <p>
+
+
+                    Belum Memiliki Listrik
+
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         INFORMASI
+    ========================= -->
+
+
+    <div class="info-box">
+
+
+        <h2>
+
+
+            <i class="bi bi-info-circle-fill"></i>
+
+
+            Informasi Data
+
+
+        </h2>
+
+
+        <p>
+
+
+            Data rumah diambil secara otomatis
+
+            dari Google Spreadsheet dan
+
+            diperbarui berdasarkan data
+
+            rekapitulasi yang tersedia.
+
+
+        </p>
+
+
+        <div class="status-data"
+
+             id="statusData">
+
+
+            Memuat data...
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+/* =================================================
+   LINK GOOGLE SPREADSHEET CSV
+================================================= */
+
+
+const LINK_CSV =
+
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vSxN7FoCSp6VhjUWzq9ZTHBVV5DQoyg7zA3Y4ucCGsqdmpjkLYBaxXCxOiLaVks0Q/pub?gid=1569121375&single=true&output=csv";
+
+
+
+/* =================================================
+   PARSE CSV
+================================================= */
+
+
+function parseCSV(text) {
+
+
+    const rows = [];
+
+
+    let row = [];
+
+
+    let cell = "";
+
+
+    let inQuotes = false;
+
+
+
+    for (
+
+        let i = 0;
+
+        i < text.length;
+
+        i++
+
+    ) {
+
+
+        const char = text[i];
+
+
+        const nextChar =
+
+            text[i + 1];
+
+
+
+        if (
+
+            char === '"' &&
+
+            inQuotes &&
+
+            nextChar === '"'
+
+        ) {
+
+
+            cell += '"';
+
+
+            i++;
+
+
+        }
+
+
+        else if (
+
+            char === '"'
+
+        ) {
+
+
+            inQuotes =
+
+                !inQuotes;
+
+
+        }
+
+
+        else if (
+
+            char === "," &&
+
+            !inQuotes
+
+        ) {
+
+
+            row.push(
+
+                cell.trim()
+
+            );
+
+
+            cell = "";
+
+
+        }
+
+
+        else if (
+
+            (
+
+                char === "\n" ||
+
+                char === "\r"
+
+            ) &&
+
+            !inQuotes
+
+        ) {
+
+
+            if (
+
+                cell !== "" ||
+
+                row.length > 0
+
+            ) {
+
+
+                row.push(
+
+                    cell.trim()
+
+                );
+
+
+                rows.push(row);
+
+
+                row = [];
+
+
+                cell = "";
+
+
+            }
+
+
+        }
+
+
+        else {
+
+
+            cell += char;
+
+
+        }
+
+
+    }
+
+
+
+    if (
+
+        cell !== "" ||
+
+        row.length > 0
+
+    ) {
+
+
+        row.push(
+
+            cell.trim()
+
+        );
+
+
+        rows.push(row);
+
+
+    }
+
+
+
+    return rows;
+
+}
+
+
+
+/* =================================================
+   BERSIHKAN ANGKA
+================================================= */
+
+
+function angkaBersih(nilai) {
+
+
+    if (
+
+        nilai === undefined ||
+
+        nilai === null
+
+    ) {
+
+
+        return 0;
+
+    }
+
+
+    const angka = String(nilai)
+
+        .replace(
+
+            /[^0-9]/g,
+
+            ""
+
+        );
+
+
+    return angka === ""
+
+        ? 0
+
+        : Number(angka);
+
+}
+
+
+
+/* =================================================
+   CARI BARIS BERDASARKAN TEKS
+================================================= */
+
+
+function cariBaris(rows, teks) {
+
+
+    const teksUpper =
+
+        teks.toUpperCase();
+
+
+    return rows.find(row => {
+
+
+        return row.some(cell => {
+
+
+            return String(cell)
+
+                .toUpperCase()
+
+                .includes(
+
+                    teksUpper
+
+                );
+
+        });
+
+    });
+
+}
+
+
+
+/* =================================================
+   AMBIL NILAI DARI KOLOM
+================================================= */
+
+
+/*
+
+    CR = kolom ke-96
+
+    Index array JavaScript = 95
+
+
+    CT = kolom ke-98
+
+    Index array JavaScript = 97
+
+*/
+
+
+const INDEX_CR = 95;
+
+
+const INDEX_CT = 97;
+
+
+
+/* =================================================
+   AMBIL DATA DARI GOOGLE SHEETS
+================================================= */
+
+
+async function ambilDataRumah() {
+
+
+    try {
+
+
+        const response =
+
+            await fetch(
+
+                LINK_CSV
+
+            );
+
+
+        if (
+
+            !response.ok
+
+        ) {
+
+
+            throw new Error(
+
+                "Gagal mengambil CSV"
+
+            );
+
+        }
+
+
+        const text =
+
+            await response.text();
+
+
+        console.log(
+
+            "CSV berhasil diambil"
+
+        );
+
+
+        const rows =
+
+            parseCSV(text);
+
+
+        console.log(
+
+            "Jumlah baris:",
+
+            rows.length
+
+        );
+
+
+        /* =========================================
+           CARI BARIS TOTAL RUMAH
+        ========================================= */
+
+
+        const barisTotalRumah =
+
+            cariBaris(
+
+                rows,
+
+                "TOTAL RUMAH"
+
+            );
+
+
+        if (
+
+            !barisTotalRumah
+
+        ) {
+
+
+            throw new Error(
+
+                "Data TOTAL RUMAH tidak ditemukan"
+
+            );
+
+        }
+
+
+        const totalRumah =
+
+            angkaBersih(
+
+                barisTotalRumah[INDEX_CR]
+
+            );
+
+
+        /* =========================================
+           CARI BARIS WC
+        ========================================= */
+
+
+        const barisWC =
+
+            cariBaris(
+
+                rows,
+
+                "SUDAH PUNYA WC"
+
+            );
+
+
+        if (
+
+            !barisWC
+
+        ) {
+
+
+            throw new Error(
+
+                "Data WC tidak ditemukan"
+
+            );
+
+        }
+
+
+        const totalWC =
+
+            angkaBersih(
+
+                barisWC[INDEX_CR]
+
+            );
+
+
+        const belumWC =
+
+            angkaBersih(
+
+                barisWC[INDEX_CT]
+
+            );
+
+
+        /* =========================================
+           CARI BARIS AIR BERSIH
+        ========================================= */
+
+
+        const barisAir =
+
+            cariBaris(
+
+                rows,
+
+                "PENERIMA MANFAAT AIR BERSIH"
+
+            );
+
+
+        if (
+
+            !barisAir
+
+        ) {
+
+
+            throw new Error(
+
+                "Data AIR BERSIH tidak ditemukan"
+
+            );
+
+        }
+
+
+        const totalAir =
+
+            angkaBersih(
+
+                barisAir[INDEX_CR]
+
+            );
+
+
+        const belumAir =
+
+            angkaBersih(
+
+                barisAir[INDEX_CT]
+
+            );
+
+
+        /* =========================================
+           CARI BARIS LISTRIK
+        ========================================= */
+
+
+        const barisListrik =
+
+            cariBaris(
+
+                rows,
+
+                "LISTRIK"
+
+            );
+
+
+        if (
+
+            !barisListrik
+
+        ) {
+
+
+            throw new Error(
+
+                "Data LISTRIK tidak ditemukan"
+
+            );
+
+        }
+
+
+        const totalPLN =
+
+            angkaBersih(
+
+                barisListrik[INDEX_CR]
+
+            );
+
+
+        const belumPLN =
+
+            angkaBersih(
+
+                barisListrik[INDEX_CT]
+
+            );
+
+
+        /* =========================================
+           TAMPILKAN DATA
+        ========================================= */
+
+
+        document
+
+            .getElementById(
+
+                "totalRumah"
+
+            )
+
+            .innerText =
+
+            totalRumah;
+
+
+        document
+
+            .getElementById(
+
+                "totalWC"
+
+            )
+
+            .innerText =
+
+            totalWC;
+
+
+        document
+
+            .getElementById(
+
+                "totalAir"
+
+            )
+
+            .innerText =
+
+            totalAir;
+
+
+        document
+
+            .getElementById(
+
+                "totalPLN"
+
+            )
+
+            .innerText =
+
+            totalPLN;
+
+
+        document
+
+            .getElementById(
+
+                "belumWC"
+
+            )
+
+            .innerText =
+
+            belumWC;
+
+
+        document
+
+            .getElementById(
+
+                "belumAir"
+
+            )
+
+            .innerText =
+
+            belumAir;
+
+
+        document
+
+            .getElementById(
+
+                "belumPLN"
+
+            )
+
+            .innerText =
+
+            belumPLN;
+
+
+        document
+
+            .getElementById(
+
+                "statusData"
+
+            )
+
+            .innerText =
+
+            "Data berhasil diperbarui dari Google Spreadsheet";
+
+
+        console.log({
+
+            totalRumah,
+
+            totalWC,
+
+            totalAir,
+
+            totalPLN,
+
+            belumWC,
+
+            belumAir,
+
+            belumPLN
+
+        });
+
+
+    }
+
+
+    catch (error) {
+
+
+        console.error(
+
+            "Gagal mengambil data:",
+
+            error
+
+        );
+
+
+        document
+
+            .getElementById(
+
+                "statusData"
+
+            )
+
+            .innerText =
+
+            error.message;
+
+
+    }
+
+
+}
+
+
+
+/* =================================================
+   JALANKAN PROGRAM
+================================================= */
+
+
+ambilDataRumah();
+
+
+</script>
+
+
+</body>
+
+</html>

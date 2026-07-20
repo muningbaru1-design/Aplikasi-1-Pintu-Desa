@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Catat PADes Desa</title>
+
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f7f9;
+
+            color: #1f2937;
+
+        }
+
+
+        .container-pades {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 20px;
+
+        }
+
+
+        .header-pades {
+
+            background:
+
+                linear-gradient(
+
+                    135deg,
+
+                    #f59e0b,
+
+                    #b45309
+
+                );
+
+            color: white;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+
+                0 8px 20px
+
+                rgba(0,0,0,.15);
+
+        }
+
+
+        .header-pades h1 {
+
+            margin: 0;
+
+            font-size: 27px;
+
+        }
+
+
+        .header-pades p {
+
+            margin: 8px 0 0;
+
+            font-size: 14px;
+
+            opacity: .9;
+
+        }
+
+
+        .ringkasan-pades {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+
+                0 5px 15px
+
+                rgba(0,0,0,.08);
+
+        }
+
+
+        .ringkasan-pades h2 {
+
+            margin: 0;
+
+            color: #92400e;
+
+            font-size: 18px;
+
+        }
+
+
+        .total-pades {
+
+            font-size: 32px;
+
+            font-weight: bold;
+
+            color: #b45309;
+
+            margin-top: 10px;
+
+        }
+
+
+        .grid-menu-pades {
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+        }
+
+
+        .kartu-pades {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            box-shadow:
+
+                0 5px 15px
+
+                rgba(0,0,0,.08);
+
+            cursor: pointer;
+
+            transition: .25s;
+
+            border: 2px solid transparent;
+
+        }
+
+
+        .kartu-pades:hover {
+
+            transform: translateY(-5px);
+
+            border-color: #f59e0b;
+
+            box-shadow:
+
+                0 10px 25px
+
+                rgba(0,0,0,.12);
+
+        }
+
+
+        .nomor-pades {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #fef3c7;
+
+            color: #b45309;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .icon-pades {
+
+            font-size: 35px;
+
+            color: #f59e0b;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .kartu-pades h3 {
+
+            margin: 0;
+
+            font-size: 16px;
+
+            line-height: 1.5;
+
+            color: #374151;
+
+        }
+
+
+        .kartu-pades p {
+
+            margin: 10px 0 0;
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+        }
+
+
+        /* MODAL */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            z-index: 1000;
+
+            inset: 0;
+
+            background:
+
+                rgba(0,0,0,.55);
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 15px;
+
+        }
+
+
+        .modal-box {
+
+            background: white;
+
+            width: 100%;
+
+            max-width: 500px;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+        }
+
+
+        .modal-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .modal-header h2 {
+
+            margin: 0;
+
+            font-size: 20px;
+
+            color: #92400e;
+
+        }
+
+
+        .tutup-modal {
+
+            border: none;
+
+            background: none;
+
+            font-size: 25px;
+
+            cursor: pointer;
+
+            color: #6b7280;
+
+        }
+
+
+        .form-group {
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 6px;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+        }
+
+
+        .form-group input,
+
+        .form-group textarea {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+        }
+
+
+        .form-group textarea {
+
+            min-height: 80px;
+
+            resize: vertical;
+
+        }
+
+
+        .btn-simpan {
+
+            width: 100%;
+
+            border: none;
+
+            padding: 13px;
+
+            border-radius: 10px;
+
+            background: #f59e0b;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+        }
+
+
+        .btn-simpan:hover {
+
+            background: #d97706;
+
+        }
+
+
+        @media (max-width: 900px) {
+
+            .grid-menu-pades {
+
+                grid-template-columns:
+
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .container-pades {
+
+                padding: 12px;
+
+            }
+
+
+            .grid-menu-pades {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .header-pades h1 {
+
+                font-size: 22px;
+
+            }
+
+        }
+
+        .rekap-pades {
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+
+        0 5px 15px
+
+        rgba(0,0,0,.08);
+
+}
+
+
+.rekap-pades h2 {
+
+    margin-top: 0;
+
+    color: #92400e;
+
+    font-size: 20px;
+
+}
+
+
+.item-rekap {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #e5e7eb;
+
+}
+
+
+.nama-rekap {
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: #374151;
+
+}
+
+
+.nilai-rekap {
+
+    font-weight: bold;
+
+    color: #b45309;
+
+    white-space: nowrap;
+
+}
+
+
+@media (max-width: 600px) {
+
+    .item-rekap {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 5px;
+
+    }
+
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container-pades">
+
+
+    <!-- HEADER -->
+
+    <div class="header-pades">
+
+        <h1>
+
+            <i class="bi bi-cash-coin"></i>
+
+            Catat PADes Desa
+
+        </h1>
+
+        <p>
+
+            Pendapatan Asli Desa Muning Baru
+
+        </p>
+
+    </div>
+
+
+    <!-- TOTAL -->
+
+    <div class="ringkasan-pades">
+
+        <h2>
+
+            <i class="bi bi-bar-chart-fill"></i>
+
+            Total Pendapatan PADes
+
+        </h2>
+
+        <div
+    class="total-pades"
+    id="totalPADes">
+
+    Memuat...
+
+</div>
+
+    </div>
+
+    <div
+    id="rekapPADes"
+    class="rekap-pades">
+
+    <h2>
+
+        <i class="bi bi-bar-chart-fill"></i>
+
+        Rekap Pendapatan PADes
+
+    </h2>
+
+    <div
+        id="daftarRekap">
+
+        Memuat data...
+
+    </div>
+
+</div>
+
+
+    <!-- MENU -->
+
+    <div class="grid-menu-pades">
+
+
+        <div class="kartu-pades"
+
+             onclick="bukaForm(1)">
+
+            <div class="nomor-pades">1</div>
+
+            <div class="icon-pades">
+
+                <i class="bi bi-water"></i>
+
+            </div>
+
+            <h3>
+
+                PENDAPATAN SEWA JUKUNG
+
+            </h3>
+
+            <p>
+
+                Klik untuk mencatat pendapatan
+
+            </p>
+
+        </div>
+
+
+        <div class="kartu-pades"
+
+             onclick="bukaForm(2)">
+
+            <div class="nomor-pades">2</div>
+
+            <div class="icon-pades">
+
+                <i class="bi bi-house-gear-fill"></i>
+
+            </div>
+
+            <h3>
+
+                PENDAPATAN SEWA TENDA, MESIN
+
+            </h3>
+
+            <p>
+
+                Klik untuk mencatat pendapatan
+
+            </p>
+
+        </div>
+
+
+        <div class="kartu-pades"
+
+             onclick="bukaForm(3)">
+
+            <div class="nomor-pades">3</div>
+
+            <div class="icon-pades">
+
+                <i class="bi bi-box-seam-fill"></i>
+
+            </div>
+
+            <h3>
+
+                PENDAPATAN SEWA RIMPA
+
+            </h3>
+
+            <p>
+
+                Klik untuk mencatat pendapatan
+
+            </p>
+
+        </div>
+
+
+        <div class="kartu-pades"
+
+             onclick="bukaForm(4)">
+
+            <div class="nomor-pades">4</div>
+
+            <div class="icon-pades">
+
+                <i class="bi bi-tree-fill"></i>
+
+            </div>
+
+            <h3>
+
+                PENDAPATAN SEWA TANAH PERKEBUNAN
+
+            </h3>
+
+            <p>
+
+                Klik untuk mencatat pendapatan
+
+            </p>
+
+        </div>
+
+
+        <div class="kartu-pades"
+
+             onclick="bukaForm(5)">
+
+            <div class="nomor-pades">5</div>
+
+            <div class="icon-pades">
+
+                <i class="bi bi-signpost-2-fill"></i>
+
+            </div>
+
+            <h3>
+
+                PENDAPATAN PEMELIHARAAN JEMBATAN DAN TITIAN PERTANIAN
+
+            </h3>
+
+            <p>
+
+                Klik untuk mencatat pendapatan
+
+            </p>
+
+        </div>
+
+
+        <div class="kartu-pades"
+
+             onclick="bukaForm(6)">
+
+            <div class="nomor-pades">6</div>
+
+            <div class="icon-pades">
+
+                <i class="bi bi-building-fill"></i>
+
+            </div>
+
+            <h3>
+
+                PENDAPATAN SEWA GEDUNG
+
+            </h3>
+
+            <p>
+
+                Klik untuk mencatat pendapatan
+
+            </p>
+
+        </div>
+
+
+        <div class="kartu-pades"
+
+             onclick="bukaForm(7)">
+
+            <div class="nomor-pades">7</div>
+
+            <div class="icon-pades">
+
+                <i class="bi bi-truck-front-fill"></i>
+
+            </div>
+
+            <h3>
+
+                PENDAPATAN SEWA MOBIL AMBULANS
+
+            </h3>
+
+            <p>
+
+                Klik untuk mencatat pendapatan
+
+            </p>
+
+        </div>
+
+
+        <div class="kartu-pades"
+
+             onclick="bukaForm(8)">
+
+            <div class="nomor-pades">8</div>
+
+            <div class="icon-pades">
+
+                <i class="bi bi-car-front-fill"></i>
+
+            </div>
+
+            <h3>
+
+                PENDAPATAN SEWA MOBIL PICK-UP
+
+            </h3>
+
+            <p>
+
+                Klik untuk mencatat pendapatan
+
+            </p>
+
+        </div>
+
+
+        <div class="kartu-pades"
+
+             onclick="bukaForm(9)">
+
+            <div class="nomor-pades">9</div>
+
+            <div class="icon-pades">
+
+                <i class="bi bi-signpost-fill"></i>
+
+            </div>
+
+            <h3>
+
+                PENDAPATAN JALAN USAHA TANI MILIK DESA
+
+            </h3>
+
+            <p>
+
+                Klik untuk mencatat pendapatan
+
+            </p>
+
+        </div>
+
+
+        <div class="kartu-pades"
+
+             onclick="bukaForm(10)">
+
+            <div class="nomor-pades">10</div>
+
+            <div class="icon-pades">
+
+                <i class="bi bi-water"></i>
+
+            </div>
+
+            <h3>
+
+                PENDAPATAN SEWA SUNGAI MILIK DESA
+
+            </h3>
+
+            <p>
+
+                Klik untuk mencatat pendapatan
+
+            </p>
+
+        </div>
+
+
+        <div class="kartu-pades"
+
+             onclick="bukaForm(11)">
+
+            <div class="nomor-pades">11</div>
+
+            <div class="icon-pades">
+
+                <i class="bi bi-building-check"></i>
+
+            </div>
+
+            <h3>
+
+                PENDAPATAN BAGI HASIL BUMDES
+
+            </h3>
+
+            <p>
+
+                Klik untuk mencatat pendapatan
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- MODAL FORM -->
+
+<div id="modalForm"
+
+     class="modal">
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+
+            <h2 id="judulForm">
+
+                Catat Pendapatan
+
+            </h2>
+
+
+            <button
+
+                class="tutup-modal"
+
+                onclick="tutupForm()">
+
+                &times;
+
+            </button>
+
+
+        </div>
+
+
+        <form
+
+            onsubmit="simpanPendapatan(event)">
+
+
+            <div class="form-group">
+
+
+                <label>
+
+                    Tanggal Pendapatan
+
+                </label>
+
+
+                <input
+
+                    type="date"
+
+                    id="tanggal"
+
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+
+                <label>
+
+                    Nama Penyewa / Pihak
+
+                </label>
+
+
+                <input
+
+                    type="text"
+
+                    id="namaPihak"
+
+                    placeholder="Masukkan nama"
+
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+
+                <label>
+
+                    Jumlah Pendapatan
+
+                </label>
+
+
+                <input
+
+                    type="number"
+
+                    id="jumlah"
+
+                    placeholder="Contoh: 500000"
+
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+
+                <label>
+
+                    Keterangan
+
+                </label>
+
+
+                <textarea
+
+                    id="keterangan"
+
+                    placeholder="Keterangan tambahan">
+
+                </textarea>
+
+            </div>
+
+
+            <button
+
+                type="submit"
+
+                class="btn-simpan">
+
+
+                <i class="bi bi-save"></i>
+
+                Simpan Pendapatan
+
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+const URL_API_PADES =
+
+    "https://script.google.com/macros/s/AKfycbwYAz5tsZ44r9LwTf4DmuFVZx1T1GOFxnHlPoMC4IbFlznoOHMzYBxbDG4PUxF_BpWhmw/exec";
+
+async function ambilDataPADes() {
+
+    try {
+
+
+        const response =
+
+            await fetch(
+
+                URL_API_PADES
+
+            );
+
+
+        const hasil =
+
+            await response.json();
+
+
+        console.log(
+
+            "Data PADes:",
+
+            hasil
+
+        );
+
+
+        if (
+
+            hasil.status !==
+
+            "success"
+
+        ) {
+
+            throw new Error(
+
+                hasil.message
+
+            );
+
+        }
+
+
+        hitungTotalPADes(
+
+            hasil.data
+
+        );
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(
+
+            "Gagal membaca data PADes:",
+
+            error
+
+        );
+
+
+        document
+
+            .getElementById(
+
+                "totalPADes"
+
+            )
+
+            .innerText =
+
+            "Gagal memuat data";
+
+
+        document
+
+            .getElementById(
+
+                "daftarRekap"
+
+            )
+
+            .innerText =
+
+            "Gagal mengambil data dari Spreadsheet";
+
+    }
+
+}
+
+function hitungTotalPADes(data) {
+
+
+    let totalSemua = 0;
+
+
+    const rekap = {};
+
+
+    data.forEach(item => {
+
+
+        const jumlah =
+
+            Number(
+
+                item.jumlah
+
+            ) || 0;
+
+
+        totalSemua +=
+
+            jumlah;
+
+
+        const jenis =
+
+            item.jenisPendapatan;
+
+
+        if (!rekap[jenis]) {
+
+            rekap[jenis] = 0;
+
+        }
+
+
+        rekap[jenis] +=
+
+            jumlah;
+
+    });
+
+
+    document
+
+        .getElementById(
+
+            "totalPADes"
+
+        )
+
+        .innerText =
+
+        formatRupiah(
+
+            totalSemua
+
+        );
+
+
+    tampilkanRekap(
+
+        rekap
+
+    );
+
+}
+
+function tampilkanRekap(rekap) {
+
+
+    const container =
+
+        document
+
+        .getElementById(
+
+            "daftarRekap"
+
+        );
+
+
+    container.innerHTML = "";
+
+
+    const jenisPADes = [
+
+        "PENDAPATAN SEWA JUKUNG",
+
+        "PENDAPATAN SEWA TENDA, MESIN",
+
+        "PENDAPATAN SEWA RIMPA",
+
+        "PENDAPATAN SEWA TANAH PERKEBUNAN",
+
+        "PENDAPATAN PEMELIHARAAN JEMBATAN DAN TITIAN PERTANIAN",
+
+        "PENDAPATAN SEWA GEDUNG",
+
+        "PENDAPATAN SEWA MOBIL AMBULANS",
+
+        "PENDAPATAN SEWA MOBIL PICK-UP",
+
+        "PENDAPATAN JALAN USAHA TANI MILIK DESA",
+
+        "PENDAPATAN SEWA SUNGAI MILIK DESA",
+
+        "PENDAPATAN BAGI HASIL BUMDES"
+
+    ];
+
+
+    jenisPADes.forEach(
+
+        jenis => {
+
+
+            const jumlah =
+
+                rekap[jenis]
+
+                || 0;
+
+
+            container.innerHTML += `
+
+                <div class="item-rekap">
+
+                    <div class="nama-rekap">
+
+                        ${jenis}
+
+                    </div>
+
+                    <div class="nilai-rekap">
+
+                        ${formatRupiah(jumlah)}
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+    );
+
+}
+
+function formatRupiah(angka) {
+
+
+    return new Intl.NumberFormat(
+
+        "id-ID",
+
+        {
+
+            style: "currency",
+
+            currency: "IDR",
+
+            maximumFractionDigits: 0
+
+        }
+
+    ).format(
+
+        angka
+
+    );
+
+}
+
+
+const namaPADes = {
+
+
+    1:
+
+    "PENDAPATAN SEWA JUKUNG",
+
+
+    2:
+
+    "PENDAPATAN SEWA TENDA, MESIN",
+
+
+    3:
+
+    "PENDAPATAN SEWA RIMPA",
+
+
+    4:
+
+    "PENDAPATAN SEWA TANAH PERKEBUNAN",
+
+
+    5:
+
+    "PENDAPATAN PEMELIHARAAN JEMBATAN DAN TITIAN PERTANIAN",
+
+
+    6:
+
+    "PENDAPATAN SEWA GEDUNG",
+
+
+    7:
+
+    "PENDAPATAN SEWA MOBIL AMBULANS",
+
+
+    8:
+
+    "PENDAPATAN SEWA MOBIL PICK-UP",
+
+
+    9:
+
+    "PENDAPATAN JALAN USAHA TANI MILIK DESA",
+
+
+    10:
+
+    "PENDAPATAN SEWA SUNGAI MILIK DESA",
+
+
+    11:
+
+    "PENDAPATAN BAGI HASIL BUMDES"
+
+};
+
+
+let jenisTerpilih = "";
+
+
+function bukaForm(nomor) {
+
+
+    jenisTerpilih =
+
+        namaPADes[nomor];
+
+
+    document
+
+        .getElementById(
+
+            "judulForm"
+
+        )
+
+        .innerText =
+
+        jenisTerpilih;
+
+
+    document
+
+        .getElementById(
+
+            "modalForm"
+
+        )
+
+        .style.display =
+
+        "flex";
+
+
+}
+
+
+function tutupForm() {
+
+
+    document
+
+        .getElementById(
+
+            "modalForm"
+
+        )
+
+        .style.display =
+
+        "none";
+
+
+}
+
+
+async function simpanPendapatan(event) {
+
+    event.preventDefault();
+
+
+    const tombol =
+
+        event.submitter;
+
+
+    tombol.disabled = true;
+
+
+    tombol.innerHTML =
+
+        '<i class="bi bi-hourglass-split"></i> Menyimpan...';
+
+
+    const data = {
+
+        tanggal:
+
+            document
+
+            .getElementById(
+
+                "tanggal"
+
+            )
+
+            .value,
+
+
+        jenisPendapatan:
+
+            jenisTerpilih,
+
+
+        namaPihak:
+
+            document
+
+            .getElementById(
+
+                "namaPihak"
+
+            )
+
+            .value,
+
+
+        jumlah:
+
+            document
+
+            .getElementById(
+
+                "jumlah"
+
+            )
+
+            .value,
+
+
+        keterangan:
+
+            document
+
+            .getElementById(
+
+                "keterangan"
+
+            )
+
+            .value
+
+    };
+
+
+    try {
+
+
+        await fetch(
+
+            "https://script.google.com/macros/s/AKfycbwYAz5tsZ44r9LwTf4DmuFVZx1T1GOFxnHlPoMC4IbFlznoOHMzYBxbDG4PUxF_BpWhmw/exec",
+
+            {
+
+                method: "POST",
+
+                mode: "no-cors",
+
+                body: JSON.stringify(data)
+
+            }
+
+        );
+
+
+        alert(
+
+            "Data PADes berhasil disimpan!"
+
+        );
+
+
+        document
+
+            .querySelector(
+
+                "form"
+
+            )
+
+            .reset();
+
+
+        tutupForm();
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(
+
+            "Gagal menyimpan data:",
+
+            error
+
+        );
+
+
+        alert(
+
+            "Gagal menyimpan data PADes."
+
+        );
+
+    }
+
+
+    finally {
+
+
+        tombol.disabled = false;
+
+
+        tombol.innerHTML =
+
+            '<i class="bi bi-save"></i> Simpan Pendapatan';
+
+
+    }
+
+}
+
+
+window.onclick = function(event) {
+
+
+    const modal =
+
+        document
+
+        .getElementById(
+
+            "modalForm"
+
+        );
+
+
+    if (
+
+        event.target === modal
+
+    ) {
+
+
+        tutupForm();
+
+    }
+
+};
+
+ambilDataPADes();
+
+</script>
+
+
+</body>
+
+</html>

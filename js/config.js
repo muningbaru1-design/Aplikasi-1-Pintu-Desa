@@ -11,43 +11,36 @@ const KATEGORI = {
 penduduk:{
 judul:"Kasi Pemerintahan",
 subjudul:"Administrasi Penduduk",
-rak:"📚 Rak Buku Administrasi Penduduk"
 },
 
 pembangunan:{
 judul:"Kasi Kesejahteraan & Pembangunan",
 subjudul:"Administrasi Pembangunan",
-rak:"📚 Rak Buku Administrasi Pembangunan"
 },
 
 sekretariat:{
 judul:"Sekretaris Desa",
 subjudul:"Administrasi Sekretariat",
-rak:"📚 Rak Buku Sekretariat"
 },
 
 umum:{
 judul:"Kaur Tata Usaha & Umum",
 subjudul:"Administrasi Umum",
-rak:"📚 Rak Buku Administrasi Umum"
 },
 
 keuangan:{
 judul:"Kaur Keuangan",
 subjudul:"Administrasi Keuangan",
-rak:"📚 Rak Buku Administrasi Keuangan"
 },
 
 kades:{
 judul:"Kepala Desa",
 subjudul:"Administrasi Kepala Desa",
-rak:"📚 Rak Buku Kepala Desa"
 },
 
 produkhukum:{
     judul:"Produk Hukum Desa",
     subjudul:"Peraturan dan Keputusan Desa",
-    rak:"⚖️ Rak Produk Hukum Desa"
 },
 
 };

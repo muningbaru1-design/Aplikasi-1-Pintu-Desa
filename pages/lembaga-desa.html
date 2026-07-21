@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Lembaga dan Kelompok Desa</title>
+
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+
+                "Segoe UI",
+
+                Arial,
+
+                sans-serif;
+
+            background:
+
+                linear-gradient(
+
+                    135deg,
+
+                    #eff6ff,
+
+                    #f0fdf4,
+
+                    #f8fafc
+
+                );
+
+            min-height: 100vh;
+
+            color: #1f2937;
+
+        }
+
+
+        .container {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 25px;
+
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+
+        .hero {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                linear-gradient(
+
+                    135deg,
+
+                    #1d4ed8,
+
+                    #2563eb,
+
+                    #0891b2
+
+                );
+
+            color: white;
+
+            padding: 35px 30px;
+
+            border-radius: 28px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+
+                0 15px 35px
+
+                rgba(
+
+                    37,
+
+                    99,
+
+                    235,
+
+                    .25
+
+                );
+
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+
+            height: 250px;
+
+            border-radius: 50%;
+
+            background:
+
+                rgba(
+
+                    255,
+
+                    255,
+
+                    255,
+
+                    .12
+
+                );
+
+            top: -110px;
+
+            right: -60px;
+
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 160px;
+
+            height: 160px;
+
+            border-radius: 50%;
+
+            background:
+
+                rgba(
+
+                    255,
+
+                    255,
+
+                    255,
+
+                    .08
+
+                );
+
+            bottom: -90px;
+
+            left: -40px;
+
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .hero-icon {
+
+            width: 70px;
+
+            height: 70px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 20px;
+
+            background:
+
+                rgba(
+
+                    255,
+
+                    255,
+
+                    255,
+
+                    .2
+
+                );
+
+            backdrop-filter:
+
+                blur(10px);
+
+            font-size: 38px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .hero h1 {
+
+            margin: 0;
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+        }
+
+
+        .hero p {
+
+            margin: 10px 0 0;
+
+            font-size: 15px;
+
+            opacity: .9;
+
+            max-width: 700px;
+
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+
+        .section {
+
+            margin-top: 28px;
+
+        }
+
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 16px;
+
+        }
+
+
+        .section-title-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: #dbeafe;
+
+            color: #1d4ed8;
+
+            font-size: 22px;
+
+        }
+
+
+        .section-title h2 {
+
+            margin: 0;
+
+            font-size: 20px;
+
+        }
+
+
+        .section-title p {
+
+            margin: 3px 0 0;
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================
+           GRID
+        ========================= */
+
+
+        .menu-grid {
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(
+
+                    auto-fit,
+
+                    minmax(
+
+                        250px,
+
+                        1fr
+
+                    )
+
+                );
+
+            gap: 17px;
+
+        }
+
+
+        .menu-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                rgba(
+
+                    255,
+
+                    255,
+
+                    255,
+
+                    .92
+
+                );
+
+            border-radius: 20px;
+
+            padding: 20px;
+
+            cursor: pointer;
+
+            border: 1px solid
+
+                rgba(
+
+                    255,
+
+                    255,
+
+                    255,
+
+                    .9
+
+                );
+
+            box-shadow:
+
+                0 7px 20px
+
+                rgba(
+
+                    0,
+
+                    0,
+
+                    0,
+
+                    .07
+
+                );
+
+            transition:
+
+                transform .3s ease,
+
+                box-shadow .3s ease;
+
+        }
+
+
+        .menu-card:hover {
+
+            transform:
+
+                translateY(-6px);
+
+            box-shadow:
+
+                0 16px 30px
+
+                rgba(
+
+                    0,
+
+                    0,
+
+                    0,
+
+                    .13
+
+                );
+
+        }
+
+
+        .menu-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 110px;
+
+            height: 110px;
+
+            border-radius: 50%;
+
+            right: -45px;
+
+            bottom: -45px;
+
+            background:
+
+                var(
+
+                    --warna
+
+                );
+
+            opacity: .1;
+
+        }
+
+
+        .menu-icon {
+
+            width: 58px;
+
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 17px;
+
+            background:
+
+                var(
+
+                    --warna
+
+                );
+
+            color: white;
+
+            font-size: 28px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .menu-card h3 {
+
+            margin: 0;
+
+            font-size: 16px;
+
+            line-height: 1.4;
+
+        }
+
+
+        .menu-card p {
+
+            margin: 7px 0 0;
+
+            font-size: 13px;
+
+            color: #6b7280;
+
+            line-height: 1.5;
+
+        }
+
+
+        .arrow {
+
+            position: absolute;
+
+            right: 18px;
+
+            top: 50%;
+
+            transform:
+
+                translateY(-50%);
+
+            color:
+
+                var(
+
+                    --warna
+
+                );
+
+            font-size: 21px;
+
+            transition:
+
+                transform .3s ease;
+
+        }
+
+
+        .menu-card:hover .arrow {
+
+            transform:
+
+                translate(
+
+                    5px,
+
+                    -50%
+
+                );
+
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+
+        .footer {
+
+            text-align: center;
+
+            color: #6b7280;
+
+            font-size: 12px;
+
+            margin-top: 35px;
+
+            padding-bottom: 15px;
+
+        }
+
+
+        @media(max-width:600px) {
+
+
+            .container {
+
+                padding: 14px;
+
+            }
+
+
+            .hero {
+
+                padding: 27px 22px;
+
+                border-radius: 22px;
+
+            }
+
+
+            .hero h1 {
+
+                font-size: 23px;
+
+            }
+
+
+            .menu-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <section class="hero">
+
+
+        <div class="hero-content">
+
+
+            <div class="hero-icon">
+
+                <i class="bi bi-diagram-3-fill"></i>
+
+            </div>
+
+
+            <h1>
+
+                LEMBAGA DAN KELOMPOK
+
+                <br>
+
+                DI DESA
+
+            </h1>
+
+
+            <p>
+
+                Mengenal lembaga pemerintahan,
+
+                organisasi kemasyarakatan,
+
+                serta kelompok masyarakat
+
+                di Desa Muning Baru.
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- LEMBAGA PEMERINTAHAN -->
+
+    <section class="section">
+
+
+        <div class="section-title">
+
+
+            <div class="section-title-icon">
+
+                <i class="bi bi-building-fill"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+
+                    Lembaga Pemerintahan
+
+                </h2>
+
+
+                <p>
+
+                    Struktur dan kelembagaan pemerintahan desa
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="menu-grid">
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#2563eb"
+
+                onclick="bukaLembaga(
+
+                    'pemerintahan-desa',
+
+                    'Lembaga Pemerintahan Desa'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-building"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Lembaga Pemerintahan Desa
+
+                </h3>
+
+
+                <p>
+
+                    Kepala Desa dan perangkat desa
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#7c3aed"
+
+                onclick="bukaLembaga(
+
+                    'bpd',
+
+                    'Badan Permusyawaratan Desa (BPD)'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-people-fill"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Badan Permusyawaratan Desa (BPD)
+
+                </h3>
+
+
+                <p>
+
+                    Lembaga perwakilan masyarakat desa
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#059669"
+
+                onclick="bukaLembaga(
+
+                    'bumdes',
+
+                    'Badan Usaha Milik Desa (BUMDes)'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-shop"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Badan Usaha Milik Desa (BUMDes)
+
+                </h3>
+
+
+                <p>
+
+                    Pengelolaan usaha dan potensi ekonomi desa
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- LEMBAGA KEMASYARAKATAN -->
+
+    <section class="section">
+
+
+        <div class="section-title">
+
+
+            <div class="section-title-icon">
+
+                <i class="bi bi-people-fill"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+
+                    Lembaga Kemasyarakatan Desa
+
+                </h2>
+
+
+                <p>
+
+                    Organisasi dan lembaga pemberdayaan masyarakat
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#f97316"
+
+                onclick="bukaLembaga(
+
+                    'rt-rw',
+
+                    'Rukun Tetangga (RT) dan Rukun Warga (RW)'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-houses-fill"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Rukun Tetangga (RT) dan RW
+
+                </h3>
+
+
+                <p>
+
+                    Organisasi kewilayahan masyarakat desa
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#db2777"
+
+                onclick="bukaLembaga(
+
+                    'pkk',
+
+                    'Pemberdayaan Kesejahteraan Keluarga (PKK)'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-heart-fill"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Pemberdayaan Kesejahteraan Keluarga (PKK)
+
+                </h3>
+
+
+                <p>
+
+                    Pemberdayaan dan kesejahteraan keluarga
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#dc2626"
+
+                onclick="bukaLembaga(
+
+                    'karang-taruna',
+
+                    'Karang Taruna'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-stars"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Karang Taruna
+
+                </h3>
+
+
+                <p>
+
+                    Organisasi kepemudaan desa
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#0891b2"
+
+                onclick="bukaLembaga(
+
+                    'lpm',
+
+                    'Lembaga Pemberdayaan Masyarakat (LPM)'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-person-workspace"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Lembaga Pemberdayaan Masyarakat (LPM)
+
+                </h3>
+
+
+                <p>
+
+                    Pemberdayaan dan pembangunan masyarakat
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- KELOMPOK KESEHATAN -->
+
+    <section class="section">
+
+
+        <div class="section-title">
+
+
+            <div class="section-title-icon">
+
+                <i class="bi bi-heart-pulse-fill"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+
+                    Kelompok Kesehatan
+
+                </h2>
+
+
+                <p>
+
+                    Kelompok pelayanan kesehatan masyarakat
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#ec4899"
+
+                onclick="bukaLembaga(
+
+                    'posyandu-tunas-harapan',
+
+                    'Posyandu Tunas Harapan'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-heart-pulse-fill"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Posyandu Tunas Harapan
+
+                </h3>
+
+
+                <p>
+
+                    Pelayanan kesehatan masyarakat
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#06b6d4"
+
+                onclick="bukaLembaga(
+
+                    'posbindu',
+
+                    'Posbindu'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-activity"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Posbindu
+
+                </h3>
+
+
+                <p>
+
+                    Pencegahan dan pengendalian penyakit
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#f97316"
+
+                onclick="bukaLembaga(
+
+                    'posyandu-remaja',
+
+                    'Posyandu Remaja Al-Kahfi'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-stars"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Posyandu Remaja Al-Kahfi
+
+                </h3>
+
+
+                <p>
+
+                    Pelayanan kesehatan remaja
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#8b5cf6"
+
+                onclick="bukaLembaga(
+
+                    'posyandu-lansia',
+
+                    'Posyandu Lansia Assa’adah'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-person-heart"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Posyandu Lansia Assa'adah
+
+                </h3>
+
+
+                <p>
+
+                    Pelayanan kesehatan lansia
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- KELOMPOK KELUARGA -->
+
+    <section class="section">
+
+
+        <div class="section-title">
+
+
+            <div class="section-title-icon">
+
+                <i class="bi bi-house-heart-fill"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+
+                    Kelompok Keluarga
+
+                </h2>
+
+
+                <p>
+
+                    Kelompok pembinaan keluarga
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#16a34a"
+
+                onclick="bukaLembaga(
+
+                    'bkb',
+
+                    'Bina Keluarga Balita (BKB)'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-balloon-heart-fill"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Bina Keluarga Balita (BKB)
+
+                </h3>
+
+
+                <p>
+
+                    Pembinaan keluarga yang memiliki balita
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#eab308"
+
+                onclick="bukaLembaga(
+
+                    'bkr',
+
+                    'Bina Keluarga Remaja (BKR)'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-people"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Bina Keluarga Remaja (BKR)
+
+                </h3>
+
+
+                <p>
+
+                    Pembinaan keluarga remaja
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#92400e"
+
+                onclick="bukaLembaga(
+
+                    'bkl',
+
+                    'Bina Keluarga Lansia (BKL)'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-person-vcard-fill"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Bina Keluarga Lansia (BKL)
+
+                </h3>
+
+
+                <p>
+
+                    Pembinaan keluarga lansia
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- KELOMPOK EKONOMI -->
+
+    <section class="section">
+
+
+        <div class="section-title">
+
+
+            <div class="section-title-icon">
+
+                <i class="bi bi-tree-fill"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+
+                    Kelompok Masyarakat
+
+                </h2>
+
+
+                <p>
+
+                    Kelompok ekonomi dan potensi masyarakat desa
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#65a30d"
+
+                onclick="bukaLembaga(
+
+                    'kelompok-tani',
+
+                    'Kelompok Tani'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-flower1"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Kelompok Tani
+
+                </h3>
+
+
+                <p>
+
+                    Kelompok masyarakat bidang pertanian
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+                class="menu-card"
+
+                style="--warna:#0284c7"
+
+                onclick="bukaLembaga(
+
+                    'kelompok-nelayan',
+
+                    'Kelompok Nelayan'
+
+                )">
+
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-water"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Kelompok Nelayan
+
+                </h3>
+
+
+                <p>
+
+                    Kelompok masyarakat bidang perikanan
+
+                </p>
+
+
+                <div class="arrow">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <div class="footer">
+
+        Lembaga dan Kelompok di Desa Muning Baru
+
+        <br>
+
+        Pemerintah Desa Muning Baru
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+function bukaLembaga(kode, nama) {
+
+    window.location.href =
+        "lembaga-detail.html?kode=" +
+        encodeURIComponent(kode) +
+        "&nama=" +
+        encodeURIComponent(nama);
+
+}
+
+</script>
+
+
+</body>
+
+</html>

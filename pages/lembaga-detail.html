@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Data Lembaga Desa</title>
+
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+rel="stylesheet">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+
+margin:0;
+
+font-family:Arial,sans-serif;
+
+background:
+linear-gradient(
+135deg,
+#eef7ff,
+#f5fff8
+);
+
+color:#123;
+
+}
+
+.container{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:20px;
+
+}
+
+.header{
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#0891b2
+);
+
+color:white;
+
+padding:22px;
+
+border-radius:18px;
+
+margin-bottom:18px;
+
+box-shadow:
+0 10px 25px
+rgba(0,0,0,.15);
+
+}
+
+.btn-kembali{
+
+display:inline-block;
+
+background:
+rgba(255,255,255,.2);
+
+color:white;
+
+padding:8px 14px;
+
+border-radius:9px;
+
+text-decoration:none;
+
+font-size:13px;
+
+margin-bottom:15px;
+
+}
+
+.header h1{
+
+font-size:21px;
+
+margin:0 0 8px;
+
+}
+
+.header p{
+
+font-size:12px;
+
+margin:0;
+
+opacity:.9;
+
+}
+
+.info{
+
+background:white;
+
+padding:18px;
+
+border-radius:16px;
+
+margin-bottom:18px;
+
+box-shadow:
+0 5px 18px
+rgba(0,0,0,.08);
+
+}
+
+.info h3{
+
+margin:0;
+
+font-size:16px;
+
+color:#164e63;
+
+}
+
+.info p{
+
+font-size:12px;
+
+color:#64748b;
+
+margin:6px 0 0;
+
+}
+
+.loading{
+
+background:white;
+
+padding:35px;
+
+text-align:center;
+
+border-radius:18px;
+
+color:#64748b;
+
+}
+
+.loading i{
+
+font-size:35px;
+
+display:block;
+
+margin-bottom:10px;
+
+}
+
+.card {
+
+    background: white;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.10);
+
+    transition: .3s ease;
+
+}
+
+.foto {
+
+    width: 100%;
+
+    height: auto;
+
+    min-height: 220px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dbeafe,
+            #e0f2fe
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+}
+
+.foto img {
+
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+
+}
+
+.foto i {
+
+    font-size: 60px;
+
+    color: #94a3b8;
+
+}
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+.foto img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+
+.foto i{
+
+font-size:70px;
+
+color:#94a3b8;
+
+}
+
+.data {
+
+    padding: 18px;
+
+}
+
+#dataLembaga {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+}
+
+.nama{
+
+font-size:18px;
+
+font-weight:bold;
+
+color:#0f172a;
+
+margin-bottom:15px;
+
+}
+
+.item{
+
+display:flex;
+
+gap:12px;
+
+margin-bottom:13px;
+
+}
+
+.item i{
+
+font-size:18px;
+
+color:#2563eb;
+
+width:20px;
+
+}
+
+.label{
+
+font-size:10px;
+
+color:#64748b;
+
+text-transform:uppercase;
+
+}
+
+.value{
+
+font-size:14px;
+
+color:#1e293b;
+
+margin-top:2px;
+
+}
+
+.error{
+
+background:white;
+
+padding:35px;
+
+border-radius:18px;
+
+text-align:center;
+
+color:#dc2626;
+
+}
+
+.error i{
+
+font-size:50px;
+
+display:block;
+
+margin-bottom:12px;
+
+}
+
+@media(max-width:600px) {
+
+    .card {
+
+        gap: 15px;
+
+        padding: 15px;
+
+    }
+
+    .foto {
+
+        width: 105px;
+
+        height: 105px;
+
+        border-radius: 16px;
+
+    }
+
+    .foto i {
+
+        font-size: 45px;
+
+    }
+
+    .nama {
+
+        font-size: 16px;
+
+    }
+
+    .value {
+
+        font-size: 12px;
+
+    }
+
+}
+
+@media (max-width: 1000px) {
+
+    #dataLembaga {
+
+        grid-template-columns:
+
+            repeat(3, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    #dataLembaga {
+
+        grid-template-columns:
+
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    #dataLembaga {
+
+        grid-template-columns:
+
+            1fr;
+
+    }
+
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+
+        <a
+
+            href="lembaga-desa.html"
+
+            class="btn-kembali">
+
+
+            <i class="bi bi-arrow-left"></i>
+
+            Kembali
+
+
+        </a>
+
+
+        <h1 id="judulLembaga">
+
+            Memuat Data...
+
+
+        </h1>
+
+
+        <p>
+
+            Data pengurus dan anggota
+
+            lembaga/kelompok Desa Muning Baru
+
+        </p>
+
+
+    </div>
+
+
+    <!-- INFO -->
+
+    <div class="info">
+
+
+        <h3>
+
+
+            <i class="bi bi-people-fill"></i>
+
+            Struktur Pengurus
+
+
+        </h3>
+
+
+        <p>
+
+
+            Daftar pengurus dan anggota
+
+            lembaga atau kelompok
+
+
+        </p>
+
+
+    </div>
+
+
+    <!-- LOADING -->
+
+    <div
+
+        id="loading"
+
+        class="loading">
+
+
+        <i
+
+            class="bi bi-arrow-repeat">
+
+
+        </i>
+
+
+        Memuat data dari Spreadsheet...
+
+
+    </div>
+
+
+    <!-- DATA -->
+
+    <div
+
+        id="dataLembaga">
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+// =====================================================
+// URL CSV GOOGLE SPREADSHEET
+// =====================================================
+
+const URL_CSV =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vS-HzVKkaSdD5zYB705-jEsdVeVx-2zDnNdbuEDWI51EH4qAzIr2ibvAEM8ZRU8VpkcdSbZ1S7scLV9/pub?gid=0&single=true&output=csv";
+
+
+// =====================================================
+// AMBIL KODE DARI URL
+// =====================================================
+
+const parameter =
+new URLSearchParams(
+    window.location.search
+);
+
+
+const kodeMenu =
+parameter.get("kode");
+
+
+const namaMenu =
+parameter.get("nama");
+
+
+// =====================================================
+// PEMETAAN KODE MENU KE KODE SPREADSHEET
+// =====================================================
+
+const PEMETAAN_KODE = {
+
+    "pemerintahan-desa":
+        "Pemerintahan Desa",
+
+    "bpd":
+        "BPD",
+
+    "bumdes":
+        "BUMDes",
+
+    "rt-rw":
+        "rt-rw",
+
+    "pkk":
+        "PKK",
+
+    "karang-taruna":
+        "Karang Taruna",
+
+    "lpm":
+        "LPM",
+
+    "posyandu-tunas-harapan":
+        "Posyandu Tunas Harapan",
+
+    "posbindu":
+        "Posbindu",
+
+    "posyandu-remaja":
+        "Posyandu Remaja Al-Kahfi",
+
+    "posyandu-lansia":
+        "Posyandu Lansia Assaadah",
+
+    "bkb":
+        "BKB",
+
+    "bkr":
+        "BKR",
+
+    "bkl":
+        "BKL",
+
+    "kelompok-tani":
+        "Kelompok Tani",
+
+    "kelompok-nelayan":
+        "Kelompok Nelayan"
+
+};
+
+
+// =====================================================
+// KODE YANG AKAN DICARI DI SPREADSHEET
+// =====================================================
+
+const kodeSpreadsheet =
+
+PEMETAAN_KODE[kodeMenu] ||
+
+kodeMenu;
+
+console.log(
+    "Kode dari URL:",
+    kodeMenu
+);
+
+
+
+// =====================================================
+// JUDUL HALAMAN
+// =====================================================
+
+const judul =
+document.getElementById(
+    "judulLembaga"
+);
+
+if (judul) {
+
+    judul.innerText =
+        kodeSpreadsheet ||
+        "Data Lembaga Desa";
+
+}
+
+
+// =====================================================
+// PARSER CSV
+// =====================================================
+
+function parseCSV(text) {
+
+    const rows = [];
+
+    let row = [];
+
+    let cell = "";
+
+    let quote = false;
+
+
+    for (
+
+        let i = 0;
+
+        i < text.length;
+
+        i++
+
+    ) {
+
+        const char =
+            text[i];
+
+        const next =
+            text[i + 1];
+
+
+        if (
+
+            char === '"' &&
+
+            quote &&
+
+            next === '"'
+
+        ) {
+
+            cell += '"';
+
+            i++;
+
+        }
+
+
+        else if (
+
+            char === '"'
+
+        ) {
+
+            quote = !quote;
+
+        }
+
+
+        else if (
+
+            char === ',' &&
+
+            !quote
+
+        ) {
+
+            row.push(
+                cell.trim()
+            );
+
+            cell = "";
+
+        }
+
+
+        else if (
+
+            (
+
+                char === "\n" ||
+
+                char === "\r"
+
+            ) &&
+
+            !quote
+
+        ) {
+
+            if (
+
+                cell !== "" ||
+
+                row.length > 0
+
+            ) {
+
+                row.push(
+                    cell.trim()
+                );
+
+                rows.push(row);
+
+            }
+
+
+            row = [];
+
+            cell = "";
+
+        }
+
+
+        else {
+
+            cell += char;
+
+        }
+
+    }
+
+
+    if (
+
+        cell !== "" ||
+
+        row.length > 0
+
+    ) {
+
+        row.push(
+            cell.trim()
+        );
+
+        rows.push(row);
+
+    }
+
+
+    return rows;
+
+}
+
+
+// =====================================================
+// MEMBERSIHKAN TEKS
+// =====================================================
+
+function bersihkanTeks(teks) {
+
+    return String(teks || "")
+
+        .toLowerCase()
+
+        .trim()
+
+        .replace(/\s+/g, " ");
+
+}
+
+
+// =====================================================
+// AMBIL DATA
+// =====================================================
+
+async function ambilData() {
+
+
+    const loading =
+
+        document.getElementById(
+
+            "loading"
+
+        );
+
+
+    const container =
+
+        document.getElementById(
+
+            "dataLembaga"
+
+        );
+
+
+    try {
+
+
+        const response =
+
+            await fetch(
+
+                URL_CSV +
+
+                "&t=" +
+
+                Date.now()
+
+            );
+
+
+        if (
+
+            !response.ok
+
+        ) {
+
+            throw new Error(
+
+                "Gagal mengambil data Spreadsheet"
+
+            );
+
+        }
+
+
+        const text =
+
+            await response.text();
+
+
+        const data =
+
+            parseCSV(text);
+
+
+        console.log(
+
+            "Data CSV:",
+
+            data
+
+        );
+
+
+        if (
+
+            data.length < 2
+
+        ) {
+
+            throw new Error(
+
+                "Data Spreadsheet kosong"
+
+            );
+
+        }
+
+
+        // =========================================
+        // FILTER DATA BERDASARKAN KOLOM KODE
+        // =========================================
+
+        const hasil =
+
+            data
+
+            .slice(1)
+
+            .filter(row => {
+
+
+                const kodeData =
+
+                    bersihkanTeks(
+
+                        row[0]
+
+                    );
+
+
+                const kodeCari =
+
+                    bersihkanTeks(
+
+                        kodeSpreadsheet
+
+                    );
+
+
+                console.log(
+
+                    "Kode Spreadsheet:",
+
+                    kodeData,
+
+                    "| Kode Dicari:",
+
+                    kodeCari
+
+                );
+
+
+                return (
+
+                    kodeData ===
+
+                    kodeCari
+
+                );
+
+
+            });
+
+
+        if (
+
+            hasil.length === 0
+
+        ) {
+
+            throw new Error(
+
+                "Tidak ada data untuk lembaga: " +
+
+                kodeSpreadsheet
+
+            );
+
+        }
+
+
+        loading.style.display =
+
+            "none";
+
+
+        container.innerHTML = "";
+
+
+        // =========================================
+        // TAMPILKAN DATA
+        // =========================================
+
+        hasil.forEach(row => {
+
+
+            const nama =
+
+                row[1] ||
+
+                "-";
+
+
+            const alamat =
+
+                row[2] ||
+
+                "-";
+
+
+            const jabatan =
+
+                row[3] ||
+
+                "-";
+
+
+            const lembaga =
+
+                row[4] ||
+
+                "-";
+
+
+            const foto =
+
+                row[5] ||
+
+                "";
+
+
+            const card =
+
+                document.createElement(
+
+                    "div"
+
+                );
+
+
+            card.className =
+
+                "card";
+
+
+            card.innerHTML = `
+
+                <div class="foto">
+
+                    ${
+
+                        foto
+
+                        ?
+
+                        `
+
+                        <img
+
+                            src="${foto}"
+
+                            alt="${nama}"
+
+                            onerror="
+
+                                this.style.display='none';
+
+                                this.parentElement.innerHTML=
+
+                                '<i class=\\'bi bi-person-circle\\'></i>';
+
+                            "
+
+                        >
+
+                        `
+
+                        :
+
+                        `
+
+                        <i
+
+                            class="bi bi-person-circle"
+
+                        ></i>
+
+                        `
+
+                    }
+
+                </div>
+
+
+                <div class="data">
+
+
+                    <div class="nama">
+
+                        ${nama}
+
+                    </div>
+
+
+                    <div class="item">
+
+                        <i
+
+                            class="bi bi-geo-alt-fill"
+
+                        ></i>
+
+
+                        <div>
+
+                            <div class="label">
+
+                                Alamat
+
+                            </div>
+
+
+                            <div class="value">
+
+                                ${alamat}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="item">
+
+                        <i
+
+                            class="bi bi-briefcase-fill"
+
+                        ></i>
+
+
+                        <div>
+
+                            <div class="label">
+
+                                Jabatan
+
+                            </div>
+
+
+                            <div class="value">
+
+                                ${jabatan}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="item">
+
+                        <i
+
+                            class="bi bi-building-fill"
+
+                        ></i>
+
+
+                        <div>
+
+                            <div class="label">
+
+                                Lembaga / Kelompok
+
+                            </div>
+
+
+                            <div class="value">
+
+                                ${lembaga}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+
+                card
+
+            );
+
+
+        });
+
+
+    }
+
+
+    catch (error) {
+
+
+        console.error(
+
+            error
+
+        );
+
+
+        loading.innerHTML = `
+
+            <div class="error">
+
+
+                <i
+
+                    class="bi bi-exclamation-triangle"
+
+                ></i>
+
+
+                <strong>
+
+                    Gagal Memuat Data
+
+                </strong>
+
+
+                <p>
+
+                    ${error.message}
+
+                </p>
+
+
+            </div>
+
+        `;
+
+
+    }
+
+}
+
+
+ambilData();
+
+</script>
+
+
+</body>
+
+</html>

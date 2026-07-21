@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Laporan Kegiatan Kader</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f5f7fb;
+
+            color: #333;
+
+        }
+
+
+        .container {
+
+            max-width: 800px;
+
+            margin: auto;
+
+            padding: 20px;
+
+        }
+
+
+        .header {
+
+            background:
+
+                linear-gradient(
+
+                    135deg,
+
+                    #ec4899,
+
+                    #9d174d
+
+                );
+
+            color: white;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+
+                0 8px 20px
+
+                rgba(0,0,0,.15);
+
+        }
+
+
+        .header h1 {
+
+            margin: 0;
+
+            font-size: 24px;
+
+        }
+
+
+        .header p {
+
+            margin-top: 8px;
+
+            font-size: 15px;
+
+        }
+
+
+        .card {
+
+            background: white;
+
+            padding: 22px;
+
+            margin-bottom: 18px;
+
+            border-radius: 18px;
+
+            box-shadow:
+
+                0 5px 15px
+
+                rgba(0,0,0,.08);
+
+        }
+
+
+        .card h2 {
+
+            margin-top: 0;
+
+            color: #9d174d;
+
+            font-size: 18px;
+
+            border-bottom: 2px solid #fce7f3;
+
+            padding-bottom: 10px;
+
+        }
+
+
+        label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        input[type="date"],
+
+        input[type="month"] {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .upload-box {
+
+            border: 2px dashed #ec4899;
+
+            background: #fdf2f8;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+        }
+
+
+        .upload-box i {
+
+            font-size: 45px;
+
+            color: #ec4899;
+
+        }
+
+
+        .upload-box p {
+
+            margin: 8px 0;
+
+            font-weight: bold;
+
+        }
+
+
+        .upload-box small {
+
+            color: #666;
+
+        }
+
+
+        #fileInput {
+
+            display: none;
+
+        }
+
+
+        .file-list {
+
+            margin-top: 20px;
+
+        }
+
+
+        .file-item {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            background: #f9fafb;
+
+            border: 1px solid #e5e7eb;
+
+            padding: 10px;
+
+            border-radius: 8px;
+
+            margin-bottom: 8px;
+
+            font-size: 13px;
+
+        }
+
+
+        .file-item span {
+
+            word-break: break-word;
+
+        }
+
+
+        .remove-file {
+
+            border: none;
+
+            background: #fee2e2;
+
+            color: #dc2626;
+
+            border-radius: 6px;
+
+            padding: 5px 8px;
+
+            cursor: pointer;
+
+        }
+
+
+        .info {
+
+            background: #eff6ff;
+
+            color: #1e40af;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            margin-top: 15px;
+
+            font-size: 13px;
+
+        }
+
+
+        .btn {
+
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .btn-simpan {
+
+            background: #ec4899;
+
+            color: white;
+
+        }
+
+
+        .btn-simpan:hover {
+
+            background: #be185d;
+
+        }
+
+
+        .btn-kembali {
+
+            background: #e5e7eb;
+
+            color: #374151;
+
+        }
+
+
+        .btn:disabled {
+
+            opacity: .6;
+
+            cursor: not-allowed;
+
+        }
+
+
+        .loading {
+
+            display: none;
+
+            text-align: center;
+
+            padding: 15px;
+
+            color: #9d174d;
+
+            font-weight: bold;
+
+        }
+
+
+        @media(max-width:600px) {
+
+            .container {
+
+                padding: 12px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h1>
+
+            <i class="bi bi-clipboard2-check-fill"></i>
+
+            Laporan Kegiatan Kader
+
+        </h1>
+
+
+        <p id="namaKader">
+
+            Memuat nama kader...
+
+        </p>
+
+    </div>
+
+
+    <!-- INFORMASI KEGIATAN -->
+
+    <div class="card">
+
+        <h2>
+
+            <i class="bi bi-calendar-event"></i>
+
+            Informasi Kegiatan
+
+        </h2>
+
+
+        <label>
+
+            Tanggal Kegiatan
+
+        </label>
+
+
+        <input
+
+            type="date"
+
+            id="tanggalKegiatan">
+
+
+        <label>
+
+            Bulan Kegiatan
+
+        </label>
+
+
+        <input
+
+            type="month"
+
+            id="bulanKegiatan">
+
+    </div>
+
+
+    <!-- UPLOAD SEMUA DOKUMEN -->
+
+    <div class="card">
+
+        <h2>
+
+            <i class="bi bi-cloud-arrow-up-fill"></i>
+
+            Upload Semua Dokumen
+
+        </h2>
+
+
+        <div
+
+            class="upload-box"
+
+            onclick="document.getElementById('fileInput').click()">
+
+
+            <i class="bi bi-images"></i>
+
+
+            <p>
+
+                Klik untuk memilih semua foto dan dokumen
+
+            </p>
+
+
+            <small>
+
+                Bisa memilih banyak file sekaligus
+
+            </small>
+
+
+        </div>
+
+
+        <input
+
+            type="file"
+
+            id="fileInput"
+
+            multiple
+
+            accept="image/*,.pdf">
+
+
+        <div
+
+            id="fileList"
+
+            class="file-list">
+
+
+        </div>
+
+
+        <div class="info">
+
+            <b>Dokumen yang diperlukan:</b>
+
+            <br><br>
+
+            • Foto Kegiatan (2 foto)
+
+            <br>
+
+            • Foto PMT (2 foto)
+
+            <br>
+
+            • Nota PMT
+
+            <br>
+
+            • Foto PMT Kader (1 foto)
+
+            <br>
+
+            • Nota PMT Kader
+
+            <br>
+
+            • Foto Undangan / Stiker
+
+            <br>
+
+            • Foto Daftar Hadir
+
+        </div>
+
+    </div>
+
+
+    <!-- STATUS -->
+
+    <div
+
+        id="statusUpload"
+
+        class="loading">
+
+
+        ⏳ Sedang mengupload semua dokumen...
+
+    </div>
+
+
+    <!-- TOMBOL -->
+
+    <button
+
+        class="btn btn-kembali"
+
+        onclick="kembaliKeMenu()">
+
+
+        <i class="bi bi-arrow-left"></i>
+
+        Kembali
+
+    </button>
+
+
+    <button
+
+        class="btn btn-simpan"
+
+        id="btnSimpan"
+
+        onclick="simpanLaporan()">
+
+
+        <i class="bi bi-cloud-arrow-up-fill"></i>
+
+        Simpan Laporan
+
+    </button>
+
+
+</div>
+
+
+<script>
+
+
+// =======================================
+// URL GOOGLE APPS SCRIPT
+// =======================================
+
+const URL_APPS_SCRIPT =
+
+    "https://script.google.com/macros/s/AKfycbxJf4aLHzkmJz2hYJ2n7CEnyxIdvNqxDBsJK48xteHZ1Vm3Ojl1A9k85OjhvWKAVN_mgQ/exec";
+
+
+// =======================================
+// NAMA KADER
+// =======================================
+
+const namaKader =
+
+    localStorage.getItem(
+
+        "namaKader"
+
+    );
+
+
+if (namaKader) {
+
+    document
+
+        .getElementById(
+
+            "namaKader"
+
+        )
+
+        .innerText =
+
+        namaKader;
+
+}
+
+
+// =======================================
+// PENYIMPANAN FILE
+// =======================================
+
+let selectedFiles = [];
+
+
+// =======================================
+// PILIH FILE
+// =======================================
+
+document
+
+    .getElementById(
+
+        "fileInput"
+
+    )
+
+    .addEventListener(
+
+        "change",
+
+        function () {
+
+
+            const files =
+
+                Array.from(
+
+                    this.files
+
+                );
+
+
+            selectedFiles = [
+
+                ...selectedFiles,
+
+                ...files
+
+            ];
+
+
+            tampilkanFile();
+
+
+            this.value = "";
+
+        }
+
+    );
+
+
+// =======================================
+// TAMPILKAN FILE
+// =======================================
+
+function tampilkanFile() {
+
+
+    const fileList =
+
+        document
+
+        .getElementById(
+
+            "fileList"
+
+        );
+
+
+    fileList.innerHTML = "";
+
+
+    if (
+
+        selectedFiles.length === 0
+
+    ) {
+
+
+        fileList.innerHTML =
+
+            "<small>Belum ada file dipilih.</small>";
+
+
+        return;
+
+    }
+
+
+    selectedFiles.forEach(
+
+        (file, index) => {
+
+
+            const item =
+
+                document
+
+                .createElement(
+
+                    "div"
+
+                );
+
+
+            item.className =
+
+                "file-item";
+
+
+            item.innerHTML = `
+
+                <span>
+
+                    <i class="bi bi-file-earmark"></i>
+
+                    ${file.name}
+
+                </span>
+
+
+                <button
+
+                    class="remove-file"
+
+                    onclick="hapusFile(${index})">
+
+                    <i class="bi bi-x"></i>
+
+                </button>
+
+            `;
+
+
+            fileList.appendChild(
+
+                item
+
+            );
+
+        }
+
+    );
+
+}
+
+
+// =======================================
+// HAPUS FILE
+// =======================================
+
+function hapusFile(index) {
+
+
+    selectedFiles.splice(
+
+        index,
+
+        1
+
+    );
+
+
+    tampilkanFile();
+
+}
+
+
+// =======================================
+// KEMBALI
+// =======================================
+
+function kembaliKeMenu() {
+
+
+    window.location.href =
+
+        "laporan-kader.html";
+
+}
+
+
+// =======================================
+// FILE KE BASE64
+// =======================================
+
+function fileKeBase64(file) {
+
+
+    return new Promise(
+
+        (
+
+            resolve,
+
+            reject
+
+        ) => {
+
+
+            const reader =
+
+                new FileReader();
+
+
+            reader.onload =
+
+                () => resolve(
+
+                    reader.result
+
+                );
+
+
+            reader.onerror =
+
+                reject;
+
+
+            reader.readAsDataURL(
+
+                file
+
+            );
+
+        }
+
+    );
+
+}
+
+
+// =======================================
+// SIMPAN LAPORAN
+// =======================================
+
+async function simpanLaporan() {
+
+
+    const tanggal =
+
+        document
+
+        .getElementById(
+
+            "tanggalKegiatan"
+
+        )
+
+        .value;
+
+
+    const bulan =
+
+        document
+
+        .getElementById(
+
+            "bulanKegiatan"
+
+        )
+
+        .value;
+
+
+    if (
+
+        !namaKader
+
+    ) {
+
+
+        alert(
+
+            "Nama kader tidak ditemukan."
+
+        );
+
+
+        return;
+
+    }
+
+
+    if (
+
+        !tanggal ||
+
+        !bulan
+
+    ) {
+
+
+        alert(
+
+            "Tanggal dan bulan kegiatan wajib diisi."
+
+        );
+
+
+        return;
+
+    }
+
+
+    if (
+
+        selectedFiles.length === 0
+
+    ) {
+
+
+        alert(
+
+            "Silakan pilih dokumen terlebih dahulu."
+
+        );
+
+
+        return;
+
+    }
+
+
+    const tombol =
+
+        document
+
+        .getElementById(
+
+            "btnSimpan"
+
+        );
+
+
+    const status =
+
+        document
+
+        .getElementById(
+
+            "statusUpload"
+
+        );
+
+
+    tombol.disabled =
+
+        true;
+
+
+    status.style.display =
+
+        "block";
+
+
+    try {
+
+
+        const fileData = [];
+
+
+        for (
+
+            const file of
+
+            selectedFiles
+
+        ) {
+
+
+            const base64 =
+
+                await fileKeBase64(
+
+                    file
+
+                );
+
+
+            fileData.push({
+
+                namaFile:
+
+                    file.name,
+
+                tipe:
+
+                    file.type,
+
+                data:
+
+                    base64
+
+            });
+
+        }
+
+
+        const data = {
+
+
+            namaKader:
+
+                namaKader,
+
+
+            tanggal:
+
+                tanggal,
+
+
+            bulan:
+
+                bulan,
+
+
+            files:
+
+                fileData
+
+        };
+
+
+        const response =
+
+            await fetch(
+
+                URL_APPS_SCRIPT,
+
+                {
+
+
+                    method:
+
+                        "POST",
+
+
+                    body:
+
+                        JSON.stringify(
+
+                            data
+
+                        )
+
+                }
+
+            );
+
+
+        const hasil =
+
+            await response.json();
+
+
+        if (
+
+            hasil.status ===
+
+            "success"
+
+        ) {
+
+
+            alert(
+
+                "✅ Semua dokumen berhasil diupload!"
+
+            );
+
+
+            window.location.href =
+
+                "laporan-kader.html";
+
+        }
+
+        else {
+
+
+            throw new Error(
+
+                hasil.message ||
+
+                "Upload gagal"
+
+            );
+
+        }
+
+
+    }
+
+    catch(error) {
+
+
+        console.error(
+
+            error
+
+        );
+
+
+        alert(
+
+            "❌ Gagal mengupload laporan: "
+
+            +
+
+            error.message
+
+        );
+
+
+        tombol.disabled =
+
+            false;
+
+
+        status.style.display =
+
+            "none";
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

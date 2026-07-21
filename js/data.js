@@ -77,11 +77,19 @@ link:"pages/menu.html?kategori=produkhukum"
 },
 
 {
-    id:"gotong",
-    nama:"Gotong Royong",
-    icon:"bi-image-fill",
-    warna:"#F97316",
-    link:"pages/gotong.html"
+    id: "laporan-kader",
+    nama: "Laporan Kegiatan Kader Desa",
+    icon: "bi-clipboard2-check-fill",
+    warna: "#EC4899",
+    link: "pages/laporan-kader.html"
+},
+
+{
+    id:"lembaga",
+    nama:"Lembaga dan Kelompok Desa",
+    icon:"bi-people-fill",
+    warna:"#2563EB",
+    link:"pages/lembaga-desa.html"
 },
 
 {

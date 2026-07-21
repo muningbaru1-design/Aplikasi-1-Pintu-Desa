@@ -537,6 +537,18 @@ link:"https://prodeskel.binapemdes.kemendagri.go.id/mpublik/"
 },
 
 {
+nama:"Silanting",
+icon:"bi-people-fill",
+link:"https://silanting.hulusungaiselatankab.go.id/login"
+},
+
+{
+nama:"Jaga Desa",
+icon:"bi-house",
+link:"https://jagadesa.kejaksaan.go.id/login"
+},
+
+{
 nama:"IDM",
 icon:"bi-house",
 link:"https://idm.kemendesa.go.id/login"
@@ -777,6 +789,20 @@ const PORTAL_DESA = [
         kategori:"Pendaftaran Peserta BPJS Kesehatan",
         logo:"../assets/logo/BPJS.jpg",
         link:"https://docs.google.com/forms/d/e/1FAIpQLSeC5CH97VErHZQiwBWqSQq7dFIDh4Q73-z3-DWwVxp59VyI2A/viewform"
+    },
+
+    {
+        nama:"JAGA DESA",
+        kategori:"Pengawasan",
+        logo:"../assets/logo/jaga-desa.jpg",
+        link:"https://jagadesa.kejaksaan.go.id/login"
+    },
+
+    {
+        nama:"SILANTING",
+        kategori:"pelayanan Dinas Dukcapil HSS",
+        logo:"../assets/logo/silanting.jpg",
+        link:"https://silanting.hulusungaiselatankab.go.id/login"
     },
 
     {

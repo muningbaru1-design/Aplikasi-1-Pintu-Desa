@@ -41,7 +41,7 @@ link:"pages/menu.html?kategori=produkhukum"
     nama:"Tanda Terima Gaji",
     icon:"bi-cash-stack",
     warna:"#F59E0B",
-    link:"pages/gaji.html"
+     link: "pages/tanda-terima-gaji.html"
 },
 
 {

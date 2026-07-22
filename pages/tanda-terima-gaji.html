@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Tanda Terima Gaji</title>
+
+
+    <!-- BOOTSTRAP ICONS -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <style>
+
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+
+            box-sizing: border-box;
+
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+
+                "Segoe UI",
+
+                Arial,
+
+                sans-serif;
+
+            min-height: 100vh;
+
+            background:
+
+                linear-gradient(
+
+                    135deg,
+
+                    #eff6ff,
+
+                    #f8fafc,
+
+                    #f0fdf4
+
+                );
+
+            color: #1e293b;
+
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 25px;
+
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                linear-gradient(
+
+                    135deg,
+
+                    #1e3a8a,
+
+                    #2563eb,
+
+                    #0891b2
+
+                );
+
+            color: white;
+
+            padding: 35px;
+
+            border-radius: 28px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+
+                0 15px 35px
+
+                rgba(
+
+                    30,
+
+                    64,
+
+                    175,
+
+                    .25
+
+                );
+
+        }
+
+
+        .header::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+
+            height: 260px;
+
+            border-radius: 50%;
+
+            background:
+
+                rgba(
+
+                    255,
+
+                    255,
+
+                    255,
+
+                    .10
+
+                );
+
+            top: -130px;
+
+            right: -60px;
+
+        }
+
+
+        .header::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+
+            height: 180px;
+
+            border-radius: 50%;
+
+            background:
+
+                rgba(
+
+                    255,
+
+                    255,
+
+                    255,
+
+                    .08
+
+                );
+
+            bottom: -100px;
+
+            left: -50px;
+
+        }
+
+
+        .header-content {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        /* =========================
+           TOMBOL KEMBALI
+        ========================= */
+
+        .btn-kembali {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: white;
+
+            text-decoration: none;
+
+            background:
+
+                rgba(
+
+                    255,
+
+                    255,
+
+                    255,
+
+                    .18
+
+                );
+
+            padding: 9px 15px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+
+            margin-bottom: 25px;
+
+            transition: .3s;
+
+        }
+
+
+        .btn-kembali:hover {
+
+            background:
+
+                rgba(
+
+                    255,
+
+                    255,
+
+                    255,
+
+                    .3
+
+                );
+
+        }
+
+
+        /* =========================
+           ICON HEADER
+        ========================= */
+
+        .icon-header {
+
+            width: 75px;
+
+            height: 75px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 22px;
+
+            background:
+
+                rgba(
+
+                    255,
+
+                    255,
+
+                    255,
+
+                    .18
+
+                );
+
+            backdrop-filter:
+
+                blur(
+
+                    10px
+
+                );
+
+            font-size: 40px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .header h1 {
+
+            margin: 0;
+
+            font-size: 30px;
+
+            font-weight: 800;
+
+        }
+
+
+        .header p {
+
+            margin: 10px 0 0;
+
+            max-width: 700px;
+
+            font-size: 15px;
+
+            opacity: .9;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+
+            background: white;
+
+            padding: 22px;
+
+            border-radius: 20px;
+
+            display: flex;
+
+            gap: 18px;
+
+            align-items: center;
+
+            margin-bottom: 22px;
+
+            box-shadow:
+
+                0 8px 22px
+
+                rgba(
+
+                    0,
+
+                    0,
+
+                    0,
+
+                    .07
+
+                );
+
+        }
+
+
+        .info-icon {
+
+            width: 55px;
+
+            height: 55px;
+
+            min-width: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+
+                #dbeafe;
+
+            color:
+
+                #2563eb;
+
+            border-radius: 16px;
+
+            font-size: 25px;
+
+        }
+
+
+        .info-box h3 {
+
+            margin: 0;
+
+            font-size: 17px;
+
+        }
+
+
+        .info-box p {
+
+            margin: 5px 0 0;
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =========================
+           GRID KARTU UTAMA
+        ========================= */
+
+        .menu-grid {
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(
+
+                    3,
+
+                    1fr
+
+                );
+
+            gap: 20px;
+
+        }
+
+
+        .card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 22px;
+
+            box-shadow:
+
+                0 8px 22px
+
+                rgba(
+
+                    0,
+
+                    0,
+
+                    0,
+
+                    .07
+
+                );
+
+            transition:
+
+                transform .3s,
+
+                box-shadow .3s;
+
+        }
+
+
+        .card:hover {
+
+            transform:
+
+                translateY(
+
+                    -6px
+
+                );
+
+            box-shadow:
+
+                0 15px 30px
+
+                rgba(
+
+                    0,
+
+                    0,
+
+                    0,
+
+                    .13
+
+                );
+
+        }
+
+
+        /* =========================
+           ICON KARTU
+        ========================= */
+
+        .card-icon {
+
+            width: 60px;
+
+            height: 60px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 18px;
+
+            font-size: 28px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .card h3 {
+
+            margin: 0 0 8px;
+
+            font-size: 17px;
+
+        }
+
+
+        .card p {
+
+            margin: 0;
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =========================
+           TOMBOL BUKA SPREADSHEET
+        ========================= */
+
+        .btn-buka {
+
+            width: 100%;
+
+            border: none;
+
+            cursor: pointer;
+
+            margin-top: 20px;
+
+            padding: 13px;
+
+            border-radius: 12px;
+
+            background:
+
+                linear-gradient(
+
+                    135deg,
+
+                    #2563eb,
+
+                    #0891b2
+
+                );
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 9px;
+
+            transition: .3s;
+
+        }
+
+
+        .btn-buka:hover {
+
+            transform:
+
+                translateY(
+
+                    -2px
+
+                );
+
+            box-shadow:
+
+                0 8px 18px
+
+                rgba(
+
+                    37,
+
+                    99,
+
+                    235,
+
+                    .3
+
+                );
+
+        }
+
+
+        /* =========================
+           DAFTAR PENERIMA PEMBAYARAN
+        ========================= */
+
+        .penerima-section {
+
+            margin-top: 25px;
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 22px;
+
+            box-shadow:
+
+                0 8px 22px
+
+                rgba(
+
+                    0,
+
+                    0,
+
+                    0,
+
+                    .07
+
+                );
+
+        }
+
+
+        .penerima-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .penerima-header-icon {
+
+            width: 55px;
+
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background:
+
+                #dcfce7;
+
+            color:
+
+                #16a34a;
+
+            font-size: 25px;
+
+        }
+
+
+        .penerima-header h2 {
+
+            margin: 0;
+
+            font-size: 20px;
+
+        }
+
+
+        .penerima-header p {
+
+            margin: 4px 0 0;
+
+            color: #64748b;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================
+           GRID PENERIMA
+        ========================= */
+
+        .penerima-grid {
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(
+
+                    3,
+
+                    1fr
+
+                );
+
+            gap: 12px;
+
+        }
+
+
+        .penerima-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 13px 15px;
+
+            background:
+
+                #f8fafc;
+
+            border: 1px solid
+
+                #e2e8f0;
+
+            border-radius: 12px;
+
+            font-size: 13px;
+
+            color: #334155;
+
+            transition: .25s;
+
+        }
+
+
+        .penerima-item:hover {
+
+            background:
+
+                #eff6ff;
+
+            border-color:
+
+                #93c5fd;
+
+            transform:
+
+                translateY(
+
+                    -2px
+
+                );
+
+        }
+
+
+        .penerima-item i {
+
+            color:
+
+                #2563eb;
+
+            font-size: 16px;
+
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 12px;
+
+            margin-top: 35px;
+
+            padding-bottom: 20px;
+
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(
+
+            max-width: 800px
+
+        ) {
+
+
+            .menu-grid {
+
+                grid-template-columns:
+
+                    1fr;
+
+            }
+
+
+            .penerima-grid {
+
+                grid-template-columns:
+
+                    1fr;
+
+            }
+
+
+            .header {
+
+                padding:
+
+                    28px 22px;
+
+            }
+
+
+            .header h1 {
+
+                font-size: 24px;
+
+            }
+
+
+            .info-box {
+
+                align-items:
+
+                    flex-start;
+
+            }
+
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <div class="header">
+
+
+        <div class="header-content">
+
+
+            <a
+
+                href="../index.html"
+
+                class="btn-kembali">
+
+
+                <i
+
+                    class="bi bi-arrow-left">
+
+                </i>
+
+
+                Kembali ke Aplikasi
+
+
+            </a>
+
+
+            <div
+
+                class="icon-header">
+
+
+                <i
+
+                    class="bi bi-wallet2">
+
+                </i>
+
+
+            </div>
+
+
+            <h1>
+
+
+                TANDA TERIMA GAJI
+
+
+            </h1>
+
+
+            <p>
+
+
+                Pusat administrasi tanda terima gaji
+
+                Pemerintah Desa Muning Baru.
+
+                Data dikelola melalui Spreadsheet
+
+                untuk memudahkan pencatatan dan
+
+                pengarsipan administrasi.
+
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         INFORMASI
+    ========================= -->
+
+    <div class="info-box">
+
+
+        <div class="info-icon">
+
+
+            <i
+
+                class="bi bi-info-circle-fill">
+
+            </i>
+
+
+        </div>
+
+
+        <div>
+
+
+            <h3>
+
+
+                Informasi Tanda Terima Gaji
+
+
+            </h3>
+
+
+            <p>
+
+
+                Silakan buka dokumen Spreadsheet
+
+                untuk melihat, mengelola, dan
+
+                mencetak data tanda terima gaji.
+
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         KARTU UTAMA
+    ========================= -->
+
+    <div class="menu-grid">
+
+
+        <!-- DATA TANDA TERIMA -->
+
+
+        <div class="card">
+
+
+            <div
+
+                class="card-icon"
+
+                style="
+
+                    background:#dbeafe;
+
+                    color:#2563eb;
+
+                ">
+
+
+                <i
+
+                    class="bi bi-file-earmark-text-fill">
+
+                </i>
+
+
+            </div>
+
+
+            <h3>
+
+
+                Data Tanda Terima Gaji
+
+
+            </h3>
+
+
+            <p>
+
+
+                Membuka dokumen utama tanda terima
+
+                gaji dan administrasi pembayaran
+
+                Pemerintah Desa Muning Baru.
+
+
+            </p>
+
+
+            <button
+
+                class="btn-buka"
+
+                onclick="bukaSpreadsheet()">
+
+
+                <i
+
+                    class="bi bi-box-arrow-up-right">
+
+                </i>
+
+
+                Buka Tanda Terima Gaji
+
+
+            </button>
+
+
+        </div>
+
+
+        <!-- ARSIP -->
+
+
+        <div class="card">
+
+
+            <div
+
+                class="card-icon"
+
+                style="
+
+                    background:#dcfce7;
+
+                    color:#16a34a;
+
+                ">
+
+
+                <i
+
+                    class="bi bi-calendar-check-fill">
+
+                </i>
+
+
+            </div>
+
+
+            <h3>
+
+
+                Arsip Pembayaran
+
+
+            </h3>
+
+
+            <p>
+
+
+                Data tanda terima gaji dapat dikelola
+
+                dan diarsipkan berdasarkan periode
+
+                pembayaran.
+
+
+            </p>
+
+
+        </div>
+
+
+        <!-- CETAK -->
+
+
+        <div class="card">
+
+
+            <div
+
+                class="card-icon"
+
+                style="
+
+                    background:#fef3c7;
+
+                    color:#d97706;
+
+                ">
+
+
+                <i
+
+                    class="bi bi-printer-fill">
+
+                </i>
+
+
+            </div>
+
+
+            <h3>
+
+
+                Cetak Dokumen
+
+
+            </h3>
+
+
+            <p>
+
+
+                Gunakan fitur cetak pada Spreadsheet
+
+                untuk mencetak tanda terima gaji
+
+                sesuai kebutuhan administrasi.
+
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         DAFTAR PENERIMA PEMBAYARAN
+    ========================= -->
+
+    <div class="penerima-section">
+
+
+        <div class="penerima-header">
+
+
+            <div
+
+                class="penerima-header-icon">
+
+
+                <i
+
+                    class="bi bi-people-fill">
+
+                </i>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h2>
+
+
+                    Daftar Penerima Pembayaran Desa
+
+
+                </h2>
+
+
+                <p>
+
+
+                    Lembaga, kelompok, dan petugas yang
+
+                    menerima pembayaran melalui
+
+                    Pemerintah Desa
+
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="penerima-grid">
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-building-fill">
+
+                </i>
+
+
+                Pemerintahan Desa
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-people-fill">
+
+                </i>
+
+
+                BPD
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-heart-fill">
+
+                </i>
+
+
+                PKK
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-heart-pulse-fill">
+
+                </i>
+
+
+                Posyandu Tunas Harapan
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-activity">
+
+                </i>
+
+
+                Posbindu
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-stars">
+
+                </i>
+
+
+                Posyandu Remaja Al-Kahfi
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-balloon-heart-fill">
+
+                </i>
+
+
+                BKB
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-people">
+
+                </i>
+
+
+                BKR
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-person-vcard-fill">
+
+                </i>
+
+
+                BKL
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-houses-fill">
+
+                </i>
+
+
+                RT / RW
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-person-heart">
+
+                </i>
+
+
+                Posyandu Lansia Assa'adah
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-trash-fill">
+
+                </i>
+
+
+                Petugas Sampah
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-recycle">
+
+                </i>
+
+
+                Petugas Bank Sampah
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-brush-fill">
+
+                </i>
+
+
+                Petugas Kebersihan
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-shield-fill">
+
+                </i>
+
+
+                Petugas Jaga Malam
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-book-fill">
+
+                </i>
+
+
+                Petugas Perpustakaan
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-person-heart">
+
+                </i>
+
+
+                Bunda PAUD
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-person-badge-fill">
+
+                </i>
+
+
+                Kader KPM
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-mortarboard-fill">
+
+                </i>
+
+
+                Guru TK PAUD
+
+
+            </div>
+
+
+            <div class="penerima-item">
+
+
+                <i
+
+                    class="bi bi-book-half">
+
+                </i>
+
+
+                Guru TK Al-Qur'an
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <div class="footer">
+
+
+        Tanda Terima Gaji
+
+
+        <br>
+
+
+        Pemerintah Desa Muning Baru
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+    /* =========================
+       LINK SPREADSHEET
+    ========================= */
+
+
+    function bukaSpreadsheet() {
+
+
+        const url =
+
+            "https://docs.google.com/spreadsheets/d/1i8Pi0doSZ39tharuJI09FdUy2uOa57mi/edit?usp=drive_link";
+
+
+        window.open(
+
+            url,
+
+            "_blank"
+
+        );
+
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>

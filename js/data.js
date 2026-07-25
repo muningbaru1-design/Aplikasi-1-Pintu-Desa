@@ -13,6 +13,14 @@ const gridMenu = [
 },
 
 {
+    id: "rpjmdes",
+    nama: "Capaian RPJMDes",
+    icon: "bi-bar-chart-line-fill",
+    warna: "#2563EB",
+    link: "pages/rpjmdes.html"
+},
+
+{
     id:"portal",
     nama:"Kumpulan Portal Desa",
     icon:"bi-globe2",

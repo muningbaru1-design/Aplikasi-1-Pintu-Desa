@@ -689,7 +689,7 @@ const PORTAL_DESA = [
         nama:"Siputra Desa",
         kategori:"Sistem Informasi Pelayanan Surat Terpadu Desa",
         logo:"../assets/logo/siputra-desa.jpg",
-        link:"https://prodeskel.binapemdes.kemendagri.go.id/mpublik/"
+        link:"http://localhost/siputradesa/main/login"
     },
 
     {

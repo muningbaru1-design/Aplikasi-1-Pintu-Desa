@@ -15,6 +15,37 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.c
 rel="stylesheet">
 
 <style>
+.btn-kembali {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    text-decoration: none;
+
+    background: white;
+    color: #1e3a8a;
+
+    padding: 11px 18px;
+
+    border-radius: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 18px;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, .08);
+
+    transition: .2s;
+}
+
+.btn-kembali:hover {
+    background: #1e3a8a;
+    color: white;
+
+    transform: translateX(-3px);
+}
 
 *{
 box-sizing:border-box;
@@ -436,6 +467,10 @@ margin-bottom:12px;
 
 
 <div class="container">
+    <a href="../index.html" class="btn-kembali">
+    <i class="bi bi-arrow-left"></i>
+    Kembali ke Menu Utama
+</a>
 
 
     <!-- HEADER -->

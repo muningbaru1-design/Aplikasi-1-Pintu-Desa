@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Capaian RPJMDes - Desa Muning Baru
+    </title>
+
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- Chart.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- PapaParse -->
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+
+    <!-- CSS UTAMA -->
+
+    <link rel="stylesheet"
+        href="../css/style.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            background: #f4f7fb;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+
+        .rpjmdes-container {
+
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 20px;
+
+        }
+
+        .btn-kembali {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    text-decoration: none;
+
+    background: white;
+
+    color: #1e3a8a;
+
+    padding: 11px 18px;
+
+    border-radius: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 18px;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, .08);
+
+    transition: .2s;
+
+}
+
+
+.btn-kembali:hover {
+
+    background: #1e3a8a;
+
+    color: white;
+
+    transform: translateX(-3px);
+
+}
+
+
+        /* HEADER */
+
+        .rpjmdes-header {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1e3a8a,
+                    #2563eb
+                );
+
+            color: white;
+
+            border-radius: 22px;
+
+            padding: 28px;
+
+            margin-bottom: 22px;
+
+            box-shadow:
+                0 10px 25px
+                rgba(37, 99, 235, .18);
+
+        }
+
+
+        .rpjmdes-header h1 {
+
+            margin: 0;
+
+            font-size: 28px;
+
+        }
+
+
+        .rpjmdes-header p {
+
+            margin: 8px 0 0;
+
+            opacity: .9;
+
+        }
+
+
+        /* STATISTIK */
+
+        .stat-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 16px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0, 0, 0, .06);
+
+        }
+
+
+        .stat-card i {
+
+            font-size: 28px;
+
+            color: #2563eb;
+
+        }
+
+
+        .stat-card h3 {
+
+            margin: 10px 0 5px;
+
+            font-size: 30px;
+
+        }
+
+
+        .stat-card p {
+
+            margin: 0;
+
+            color: #64748b;
+
+        }
+
+
+        /* CAPAIAN */
+
+        .progress-card {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0, 0, 0, .06);
+
+        }
+
+
+        .progress-title {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .progress-title h2 {
+
+            margin: 0;
+
+            font-size: 21px;
+
+        }
+
+
+        .progress-percent {
+
+            font-size: 32px;
+
+            font-weight: bold;
+
+            color: #2563eb;
+
+        }
+
+
+        .progress-bar {
+
+            height: 20px;
+
+            background: #e5e7eb;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            margin-top: 18px;
+
+        }
+
+
+        .progress-fill {
+
+            height: 100%;
+
+            width: 0%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2563eb,
+                    #60a5fa
+                );
+
+            border-radius: 20px;
+
+            transition: width 1s ease;
+
+        }
+
+
+        /* GRAFIK */
+
+        .chart-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr;
+
+            gap: 20px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .chart-card {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0, 0, 0, .06);
+
+        }
+
+
+        .chart-card h2 {
+
+            margin-top: 0;
+
+            font-size: 20px;
+
+        }
+
+
+        .chart-wrapper {
+
+            position: relative;
+
+            height: 350px;
+
+        }
+
+
+        /* FILTER */
+
+        .filter-card {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 18px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0, 0, 0, .06);
+
+        }
+
+
+        .filter-box {
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr;
+
+            gap: 12px;
+
+        }
+
+
+        .filter-box input,
+
+        .filter-box select {
+
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            background: white;
+
+        }
+
+
+        /* PROGRAM */
+
+        .program-list {
+
+            display: grid;
+
+            gap: 15px;
+
+        }
+
+
+        .program-card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0, 0, 0, .06);
+
+        }
+
+
+        .program-card h3 {
+
+            margin: 0 0 8px;
+
+            font-size: 18px;
+
+            color: #1e293b;
+
+        }
+
+
+        .program-bidang {
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            margin-bottom: 16px;
+
+        }
+
+
+        .program-info {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
+
+        }
+
+
+        .info-box {
+
+            background: #f8fafc;
+
+            padding: 12px;
+
+            border-radius: 12px;
+
+        }
+
+
+        .info-box small {
+
+            display: block;
+
+            color: #64748b;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .info-box strong {
+
+            font-size: 16px;
+
+        }
+
+
+        /* STATUS */
+
+        .status {
+
+            display: inline-block;
+
+            padding: 6px 13px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-top: 15px;
+
+        }
+
+
+        .status-tercapai {
+
+            background: #dcfce7;
+
+            color: #166534;
+
+        }
+
+
+        .status-berjalan {
+
+            background: #fef3c7;
+
+            color: #92400e;
+
+        }
+
+
+        .status-belum {
+
+            background: #fee2e2;
+
+            color: #991b1b;
+
+        }
+
+
+        /* LOADING */
+
+        .loading {
+
+            text-align: center;
+
+            padding: 50px;
+
+            color: #64748b;
+
+            background: white;
+
+            border-radius: 18px;
+
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+
+            .stat-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .chart-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+
+            .rpjmdes-container {
+
+                padding: 12px;
+
+            }
+
+
+            .rpjmdes-header h1 {
+
+                font-size: 22px;
+
+            }
+
+
+            .stat-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 10px;
+
+            }
+
+
+            .stat-card {
+
+                padding: 15px;
+
+            }
+
+
+            .stat-card h3 {
+
+                font-size: 24px;
+
+            }
+
+
+            .filter-box {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .program-info {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .chart-wrapper {
+
+                height: 280px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="rpjmdes-container">
+
+<a href="../index.html" class="btn-kembali">
+    <i class="bi bi-arrow-left"></i>
+    Kembali ke Menu Utama
+</a>
+
+
+    <!-- HEADER -->
+
+    <div class="rpjmdes-header">
+
+        <h1>
+
+            <i class="bi bi-bar-chart-line-fill"></i>
+
+            Capaian RPJMDes
+
+        </h1>
+
+
+        <p>
+
+            Rencana Pembangunan Jangka Menengah Desa Muning Baru
+
+        </p>
+
+    </div>
+
+
+    <!-- STATISTIK -->
+
+    <div class="stat-grid">
+
+
+        <div class="stat-card">
+
+            <i class="bi bi-list-check"></i>
+
+            <h3 id="totalProgram">
+
+                0
+
+            </h3>
+
+            <p>
+
+                Total Program
+
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <i class="bi bi-check-circle-fill"></i>
+
+            <h3 id="totalTercapai">
+
+                0
+
+            </h3>
+
+            <p>
+
+                Tercapai
+
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <i class="bi bi-arrow-repeat"></i>
+
+            <h3 id="totalBerjalan">
+
+                0
+
+            </h3>
+
+            <p>
+
+                Berjalan
+
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <i class="bi bi-clock-history"></i>
+
+            <h3 id="totalBelum">
+
+                0
+
+            </h3>
+
+            <p>
+
+                Belum Tercapai
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- CAPAIAN KESELURUHAN -->
+
+    <div class="progress-card">
+
+
+        <div class="progress-title">
+
+
+            <h2>
+
+                <i class="bi bi-graph-up-arrow"></i>
+
+                Capaian Keseluruhan
+
+            </h2>
+
+
+            <div
+                class="progress-percent"
+                id="totalPersentase">
+
+                0%
+
+            </div>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+
+            <div
+                class="progress-fill"
+                id="progressFill">
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- GRAFIK -->
+
+    <div class="chart-grid">
+
+
+        <div class="chart-card">
+
+
+            <h2>
+
+                <i class="bi bi-bar-chart-fill"></i>
+
+                Rata-rata Capaian per Bidang
+
+            </h2>
+
+
+            <div class="chart-wrapper">
+
+
+                <canvas
+                    id="bidangChart">
+
+                </canvas>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="chart-card">
+
+
+            <h2>
+
+                <i class="bi bi-pie-chart-fill"></i>
+
+                Status Program
+
+            </h2>
+
+
+            <div class="chart-wrapper">
+
+
+                <canvas
+                    id="statusChart">
+
+                </canvas>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FILTER -->
+
+    <div class="filter-card">
+
+
+        <div class="filter-box">
+
+
+            <input
+                type="text"
+                id="searchProgram"
+                placeholder="🔍 Cari program atau kegiatan...">
+
+
+            <select
+                id="filterBidang">
+
+
+                <option value="">
+
+                    Semua Bidang
+
+                </option>
+
+
+            </select>
+
+
+            <select
+                id="filterStatus">
+
+
+                <option value="">
+
+                    Semua Status
+
+                </option>
+
+
+                <option value="Tercapai">
+
+                    Tercapai
+
+                </option>
+
+
+                <option value="Berjalan">
+
+                    Berjalan
+
+                </option>
+
+
+                <option value="Belum Tercapai">
+
+                    Belum Tercapai
+
+                </option>
+
+
+            </select>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- DAFTAR DATA -->
+
+    <div
+        id="programList"
+        class="program-list">
+
+
+        <div class="loading">
+
+            ⏳ Memuat data RPJMDes...
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================================
+   LINK CSV GOOGLE SPREADSHEET
+===================================================== */
+
+
+const CSV_URL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vR1UCutjhw_QHlpy_g2PlOqVJKJPAtCSke1wsEKEuTvG1ruzlnQlVS0TJwRwddXbg/pub?gid=356017315&single=true&output=csv";
+
+
+/* =====================================================
+   VARIABEL
+===================================================== */
+
+
+let semuaData = [];
+
+let bidangChart = null;
+
+let statusChart = null;
+
+
+/* =====================================================
+   FORMAT PERSENTASE
+===================================================== */
+
+
+function formatPersentase(nilai) {
+
+
+    if (
+        nilai === null ||
+        nilai === undefined ||
+        nilai === ""
+    ) {
+
+        return 0;
+
+    }
+
+
+    let angka = parseFloat(
+
+        String(nilai)
+
+            .replace("%", "")
+
+            .replace(",", ".")
+
+    );
+
+
+    if (
+        isNaN(angka)
+    ) {
+
+        return 0;
+
+    }
+
+
+    if (
+        angka > 0 &&
+        angka <= 1
+    ) {
+
+        angka =
+            angka * 100;
+
+    }
+
+
+    return Math.min(
+
+        Math.round(angka),
+
+        100
+
+    );
+
+}
+
+
+/* =====================================================
+   MEMUAT DATA GOOGLE SHEETS
+===================================================== */
+
+
+function loadData() {
+
+
+    const container =
+        document.getElementById(
+            "programList"
+        );
+
+
+    container.innerHTML = `
+
+        <div class="loading">
+
+            ⏳ Mengambil data RPJMDes...
+
+        </div>
+
+    `;
+
+
+    Papa.parse(
+
+        CSV_URL +
+        "&cache=" +
+        Date.now(),
+
+        {
+
+
+            download: true,
+
+
+            header: true,
+
+
+            skipEmptyLines: true,
+
+
+            complete: function(results) {
+
+
+                console.log(
+                    "Data CSV:",
+                    results.data
+                );
+
+
+                console.log(
+                    "Error CSV:",
+                    results.errors
+                );
+
+
+                semuaData =
+
+                    results.data
+
+                    .filter(
+                        item =>
+
+                            Object.values(
+                                item
+                            )
+
+                            .some(
+                                value =>
+
+                                    value &&
+
+                                    value
+                                        .trim()
+                                        !== ""
+
+                            )
+
+                    );
+
+
+                if (
+                    semuaData.length === 0
+                ) {
+
+
+                    container.innerHTML = `
+
+                        <div class="loading">
+
+                            ❌ Data RPJMDes kosong
+
+                        </div>
+
+                    `;
+
+
+                    return;
+
+                }
+
+
+                isiFilterBidang();
+
+
+                hitungStatistik();
+
+
+                buatGrafik();
+
+
+                tampilkanData(
+                    semuaData
+                );
+
+
+            },
+
+
+            error: function(error) {
+
+
+                console.error(
+                    "Error CSV:",
+                    error
+                );
+
+
+                container.innerHTML = `
+
+                    <div class="loading">
+
+                        ❌ Gagal memuat data RPJMDes
+
+                        <br><br>
+
+                        ${error.message || error}
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+    );
+
+}
+
+
+/* =====================================================
+   STATISTIK
+===================================================== */
+
+
+function hitungStatistik() {
+
+
+    const total =
+        semuaData.length;
+
+
+    const tercapai =
+
+        semuaData.filter(
+
+            item =>
+
+                String(
+                    item["Status"] || ""
+                )
+
+                .trim()
+
+                .toLowerCase()
+
+                ===
+
+                "tercapai"
+
+        ).length;
+
+
+    const berjalan =
+
+        semuaData.filter(
+
+            item =>
+
+                String(
+                    item["Status"] || ""
+                )
+
+                .trim()
+
+                .toLowerCase()
+
+                ===
+
+                "berjalan"
+
+        ).length;
+
+
+    const belum =
+
+        semuaData.filter(
+
+            item =>
+
+                String(
+                    item["Status"] || ""
+                )
+
+                .trim()
+
+                .toLowerCase()
+
+                ===
+
+                "belum tercapai"
+
+        ).length;
+
+
+    const totalPersen =
+
+
+        semuaData.reduce(
+
+            (
+                jumlah,
+                item
+            ) => {
+
+
+                return jumlah +
+
+                    formatPersentase(
+
+                        item[
+                            "Persentase Capaian"
+                        ]
+
+                    );
+
+            },
+
+            0
+
+        );
+
+
+    const rataRata =
+
+
+        totalPersen /
+
+        (
+
+            total || 1
+
+        );
+
+
+    document.getElementById(
+        "totalProgram"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "totalTercapai"
+    ).textContent =
+        tercapai;
+
+
+    document.getElementById(
+        "totalBerjalan"
+    ).textContent =
+        berjalan;
+
+
+    document.getElementById(
+        "totalBelum"
+    ).textContent =
+        belum;
+
+
+    const nilai =
+        Math.round(
+            rataRata
+        );
+
+
+    document.getElementById(
+        "totalPersentase"
+    ).textContent =
+        nilai + "%";
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        nilai + "%";
+
+}
+
+
+/* =====================================================
+   FILTER BIDANG
+===================================================== */
+
+
+function isiFilterBidang() {
+
+
+    const select =
+        document.getElementById(
+            "filterBidang"
+        );
+
+
+    select.innerHTML = `
+
+        <option value="">
+
+            Semua Bidang
+
+        </option>
+
+    `;
+
+
+    const daftarBidang =
+
+
+        [
+
+            ...
+
+            new Set(
+
+                semuaData.map(
+
+                    item =>
+
+                        String(
+                            item["Bidang"] ||
+                            ""
+                        ).trim()
+
+                )
+
+            )
+
+        ]
+
+        .filter(
+            bidang =>
+                bidang !== ""
+        )
+
+        .sort();
+
+
+    daftarBidang.forEach(
+
+        bidang => {
+
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                bidang;
+
+
+            option.textContent =
+                bidang;
+
+
+            select.appendChild(
+                option
+            );
+
+
+        }
+
+    );
+
+}
+
+
+/* =====================================================
+   GRAFIK
+===================================================== */
+
+
+function buatGrafik() {
+
+
+    const dataBidang = {};
+
+
+    semuaData.forEach(
+
+        item => {
+
+
+            const bidang =
+
+                String(
+                    item["Bidang"] ||
+                    "Tanpa Bidang"
+                ).trim();
+
+
+            const persen =
+
+                formatPersentase(
+
+                    item[
+                        "Persentase Capaian"
+                    ]
+
+                );
+
+
+            if (
+                !dataBidang[bidang]
+            ) {
+
+
+                dataBidang[bidang] = {
+
+
+                    total: 0,
+
+
+                    jumlah: 0
+
+
+                };
+
+            }
+
+
+            dataBidang[bidang]
+                .total += persen;
+
+
+            dataBidang[bidang]
+                .jumlah++;
+
+
+        }
+
+    );
+
+
+    const labels =
+
+        Object.keys(
+            dataBidang
+        );
+
+
+    const nilai =
+
+        labels.map(
+
+            bidang => {
+
+
+                return Math.round(
+
+                    dataBidang[
+                        bidang
+                    ].total
+
+                    /
+
+                    dataBidang[
+                        bidang
+                    ].jumlah
+
+                );
+
+            }
+
+        );
+
+
+    const ctxBidang =
+
+        document.getElementById(
+            "bidangChart"
+        );
+
+
+    if (
+        bidangChart
+    ) {
+
+        bidangChart.destroy();
+
+    }
+
+
+    bidangChart =
+
+        new Chart(
+
+            ctxBidang,
+
+            {
+
+
+                type: "bar",
+
+
+                data: {
+
+
+                    labels: labels,
+
+
+                    datasets: [
+
+
+                        {
+
+
+                            label:
+                                "Capaian (%)",
+
+
+                            data: nilai,
+
+
+                            borderWidth: 1,
+
+
+                            borderRadius: 8
+
+
+                        }
+
+
+                    ]
+
+
+                },
+
+
+                options: {
+
+
+                    responsive: true,
+
+
+                    maintainAspectRatio: false,
+
+
+                    scales: {
+
+
+                        y: {
+
+
+                            beginAtZero: true,
+
+
+                            max: 100,
+
+
+                            ticks: {
+
+
+                                callback:
+                                    function(
+                                        value
+                                    ) {
+
+                                        return value
+                                            + "%";
+
+                                    }
+
+                            }
+
+                        }
+
+
+                    },
+
+
+                    plugins: {
+
+
+                        legend: {
+
+
+                            display: false
+
+
+                        }
+
+
+                    }
+
+
+                }
+
+
+            }
+
+        );
+
+
+    /* =================================================
+       GRAFIK STATUS
+    ================================================= */
+
+
+    const statusData = [
+
+
+        semuaData.filter(
+
+            item =>
+
+                String(
+                    item["Status"] ||
+                    ""
+                )
+
+                .trim()
+
+                .toLowerCase()
+
+                ===
+
+                "tercapai"
+
+        ).length,
+
+
+        semuaData.filter(
+
+            item =>
+
+                String(
+                    item["Status"] ||
+                    ""
+                )
+
+                .trim()
+
+                .toLowerCase()
+
+                ===
+
+                "berjalan"
+
+        ).length,
+
+
+        semuaData.filter(
+
+            item =>
+
+                String(
+                    item["Status"] ||
+                    ""
+                )
+
+                .trim()
+
+                .toLowerCase()
+
+                ===
+
+                "belum tercapai"
+
+        ).length
+
+
+    ];
+
+
+    const ctxStatus =
+
+        document.getElementById(
+            "statusChart"
+        );
+
+
+    if (
+        statusChart
+    ) {
+
+        statusChart.destroy();
+
+    }
+
+
+    statusChart =
+
+        new Chart(
+
+            ctxStatus,
+
+            {
+
+
+                type: "doughnut",
+
+
+                data: {
+
+
+                    labels: [
+
+
+                        "Tercapai",
+
+
+                        "Berjalan",
+
+
+                        "Belum Tercapai"
+
+
+                    ],
+
+
+                    datasets: [
+
+
+                        {
+
+
+                            data:
+                                statusData,
+
+
+                            borderWidth: 2
+
+
+                        }
+
+
+                    ]
+
+
+                },
+
+
+                options: {
+
+
+                    responsive: true,
+
+
+                    maintainAspectRatio: false,
+
+
+                    plugins: {
+
+
+                        legend: {
+
+
+                            position:
+                                "bottom"
+
+
+                        }
+
+
+                    }
+
+
+                }
+
+
+            }
+
+        );
+
+
+}
+
+
+/* =====================================================
+   MENAMPILKAN PROGRAM
+===================================================== */
+
+
+function tampilkanData(
+    data
+) {
+
+
+    const container =
+
+        document.getElementById(
+            "programList"
+        );
+
+
+    if (
+        data.length === 0
+    ) {
+
+
+        container.innerHTML = `
+
+            <div class="loading">
+
+                Tidak ada data ditemukan.
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+
+
+        data.map(
+
+            item => {
+
+
+                const persen =
+
+                    formatPersentase(
+
+                        item[
+                            "Persentase Capaian"
+                        ]
+
+                    );
+
+
+                const status =
+
+                    String(
+
+                        item[
+                            "Status"
+                        ]
+
+                        ||
+
+                        "Belum Tercapai"
+
+                    ).trim();
+
+
+                const statusLower =
+
+                    status.toLowerCase();
+
+
+                let statusClass =
+
+                    "status-belum";
+
+
+                if (
+                    statusLower
+                    ===
+                    "tercapai"
+                ) {
+
+
+                    statusClass =
+
+                        "status-tercapai";
+
+
+                }
+
+
+                else if (
+                    statusLower
+                    ===
+                    "berjalan"
+                ) {
+
+
+                    statusClass =
+
+                        "status-berjalan";
+
+
+                }
+
+
+                return `
+
+
+                    <div
+                        class="program-card">
+
+
+                        <h3>
+
+
+                            ${
+                                item[
+                                    "Program/Kegiatan"
+                                ]
+
+                                ||
+
+                                "-"
+
+                            }
+
+
+                        </h3>
+
+
+                        <div
+                            class="program-bidang">
+
+
+                            <i
+                                class="bi bi-folder-fill">
+                            </i>
+
+
+                            ${
+                                item[
+                                    "Bidang"
+                                ]
+
+                                ||
+
+                                "-"
+
+                            }
+
+
+                        </div>
+
+
+                        <div
+                            class="program-info">
+
+
+                            <div
+                                class="info-box">
+
+
+                                <small>
+
+                                    Target
+
+                                </small>
+
+
+                                <strong>
+
+
+                                    ${
+                                        item[
+                                            "Target RPJMDes"
+                                        ]
+
+                                        ||
+
+                                        "-"
+
+                                    }
+
+
+                                </strong>
+
+
+                            </div>
+
+
+                            <div
+                                class="info-box">
+
+
+                                <small>
+
+                                    Realisasi
+
+                                </small>
+
+
+                                <strong>
+
+
+                                    ${
+                                        item[
+                                            "Realisasi"
+                                        ]
+
+                                        ||
+
+                                        "-"
+
+                                    }
+
+
+                                </strong>
+
+
+                            </div>
+
+
+                            <div
+                                class="info-box">
+
+
+                                <small>
+
+                                    Satuan
+
+                                </small>
+
+
+                                <strong>
+
+
+                                    ${
+                                        item[
+                                            "Satuan"
+                                        ]
+
+                                        ||
+
+                                        "-"
+
+                                    }
+
+
+                                </strong>
+
+
+                            </div>
+
+
+                            <div
+                                class="info-box">
+
+
+                                <small>
+
+                                    Capaian
+
+                                </small>
+
+
+                                <strong>
+
+
+                                    ${persen}%
+
+
+                                </strong>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                        <span
+                            class="status
+                            ${statusClass}">
+
+
+                            ${status}
+
+
+                        </span>
+
+
+                    </div>
+
+
+                `;
+
+
+            }
+
+        )
+
+
+        .join("");
+
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+
+function filterData() {
+
+
+    const search =
+
+        document.getElementById(
+            "searchProgram"
+        )
+
+        .value
+
+        .toLowerCase();
+
+
+    const bidang =
+
+        document.getElementById(
+            "filterBidang"
+        )
+
+        .value;
+
+
+    const status =
+
+        document.getElementById(
+            "filterStatus"
+        )
+
+        .value;
+
+
+    const hasil =
+
+
+        semuaData.filter(
+
+            item => {
+
+
+                const nama =
+
+
+                    String(
+
+                        item[
+                            "Program/Kegiatan"
+                        ]
+
+                        ||
+
+                        ""
+
+                    )
+
+                    .toLowerCase();
+
+
+                const itemBidang =
+
+
+                    String(
+
+                        item[
+                            "Bidang"
+                        ]
+
+                        ||
+
+                        ""
+
+                    ).trim();
+
+
+                const itemStatus =
+
+
+                    String(
+
+                        item[
+                            "Status"
+                        ]
+
+                        ||
+
+                        ""
+
+                    ).trim();
+
+
+                const cocokSearch =
+
+
+                    nama.includes(
+                        search
+                    );
+
+
+                const cocokBidang =
+
+
+                    !bidang
+
+                    ||
+
+                    itemBidang
+                    ===
+                    bidang;
+
+
+                const cocokStatus =
+
+
+                    !status
+
+                    ||
+
+                    itemStatus
+                    ===
+                    status;
+
+
+                return
+
+
+                    cocokSearch
+
+                    &&
+
+                    cocokBidang
+
+                    &&
+
+                    cocokStatus;
+
+
+            }
+
+        );
+
+
+    tampilkanData(
+        hasil
+    );
+
+}
+
+
+/* =====================================================
+   EVENT FILTER
+===================================================== */
+
+
+document.getElementById(
+    "searchProgram"
+)
+
+.addEventListener(
+    "input",
+    filterData
+);
+
+
+document.getElementById(
+    "filterBidang"
+)
+
+.addEventListener(
+    "change",
+    filterData
+);
+
+
+document.getElementById(
+    "filterStatus"
+)
+
+.addEventListener(
+    "change",
+    filterData
+);
+
+
+/* =====================================================
+   MULAI APLIKASI
+===================================================== */
+
+
+console.log(
+    "JAVASCRIPT RPJMDES BERJALAN"
+);
+
+
+loadData();
+
+
+</script>
+
+
+</body>
+
+</html>

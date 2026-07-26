@@ -191,20 +191,61 @@
 
         .stat-card h3 {
 
-            margin: 10px 0 5px;
+    margin: 10px 0 5px;
 
-            font-size: 30px;
+    font-size: 30px;
 
-        }
+    color: #1e293b;
+
+    font-weight: 700;
+
+}
 
 
-        .stat-card p {
+        .stat-card {
 
-            margin: 0;
+    background: white;
 
-            color: #64748b;
+    border-radius: 18px;
 
-        }
+    padding: 20px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0, 0, 0, .06);
+
+}
+
+
+.stat-card i {
+
+    font-size: 28px;
+
+    color: #2563eb;
+
+}
+
+
+.stat-card h3 {
+
+    margin: 10px 0 5px;
+
+    font-size: 30px;
+
+    color: #1e293b;
+
+    font-weight: 700;
+
+}
+
+
+.stat-card p {
+
+    margin: 0;
+
+    color: #64748b;
+
+}
 
 
         /* CAPAIAN */
@@ -1346,8 +1387,8 @@ function hitungStatistik() {
 
 function isiFilterBidang() {
 
-
     const select =
+
         document.getElementById(
             "filterBidang"
         );
@@ -1364,36 +1405,36 @@ function isiFilterBidang() {
     `;
 
 
-    const daftarBidang =
+    const daftarBidang = [
 
+        ...
 
-        [
+        new Set(
 
-            ...
+            semuaData.map(
 
-            new Set(
+                item =>
 
-                semuaData.map(
-
-                    item =>
-
-                        String(
-                            item["Bidang"] ||
-                            ""
-                        ).trim()
-
-                )
+                    String(
+                        item["Bidang"] || ""
+                    )
+                    .trim()
 
             )
 
-        ]
-
-        .filter(
-            bidang =>
-                bidang !== ""
         )
 
-        .sort();
+    ]
+
+    .filter(
+
+        bidang =>
+
+            bidang !== ""
+
+    )
+
+    .sort();
 
 
     daftarBidang.forEach(
@@ -1402,16 +1443,19 @@ function isiFilterBidang() {
 
 
             const option =
+
                 document.createElement(
                     "option"
                 );
 
 
             option.value =
+
                 bidang;
 
 
             option.textContent =
+
                 bidang;
 
 
@@ -2148,19 +2192,16 @@ function tampilkanData(
    FILTER
 ===================================================== */
 
-
 function filterData() {
-
 
     const search =
 
         document.getElementById(
             "searchProgram"
         )
-
         .value
-
-        .toLowerCase();
+        .toLowerCase()
+        .trim();
 
 
     const bidang =
@@ -2168,8 +2209,9 @@ function filterData() {
         document.getElementById(
             "filterBidang"
         )
-
-        .value;
+        .value
+        .toLowerCase()
+        .trim();
 
 
     const status =
@@ -2177,122 +2219,78 @@ function filterData() {
         document.getElementById(
             "filterStatus"
         )
-
-        .value;
-
-
-    const hasil =
+        .value
+        .toLowerCase()
+        .trim();
 
 
-        semuaData.filter(
+    const hasil = semuaData.filter(
 
-            item => {
-
-
-                const nama =
+        item => {
 
 
-                    String(
+            const nama =
 
-                        item[
-                            "Program/Kegiatan"
-                        ]
-
-                        ||
-
-                        ""
-
-                    )
-
-                    .toLowerCase();
+                String(
+                    item["Program/Kegiatan"] || ""
+                )
+                .toLowerCase()
+                .trim();
 
 
-                const itemBidang =
+            const itemBidang =
+
+                String(
+                    item["Bidang"] || ""
+                )
+                .toLowerCase()
+                .trim();
 
 
-                    String(
+            const itemStatus =
 
-                        item[
-                            "Bidang"
-                        ]
-
-                        ||
-
-                        ""
-
-                    ).trim();
+                String(
+                    item["Status"] || ""
+                )
+                .toLowerCase()
+                .trim();
 
 
-                const itemStatus =
+            const cocokSearch =
+
+                nama.includes(search);
 
 
-                    String(
+            const cocokBidang =
 
-                        item[
-                            "Status"
-                        ]
+                bidang === "" ||
 
-                        ||
-
-                        ""
-
-                    ).trim();
+                itemBidang === bidang;
 
 
-                const cocokSearch =
+            const cocokStatus =
+
+                status === "" ||
+
+                itemStatus === status;
 
 
-                    nama.includes(
-                        search
-                    );
+            return (
 
+                cocokSearch &&
 
-                const cocokBidang =
+                cocokBidang &&
 
+                cocokStatus
 
-                    !bidang
+            );
 
-                    ||
+        }
 
-                    itemBidang
-                    ===
-                    bidang;
-
-
-                const cocokStatus =
-
-
-                    !status
-
-                    ||
-
-                    itemStatus
-                    ===
-                    status;
-
-
-                return
-
-
-                    cocokSearch
-
-                    &&
-
-                    cocokBidang
-
-                    &&
-
-                    cocokStatus;
-
-
-            }
-
-        );
-
-
-    tampilkanData(
-        hasil
     );
+
+
+    tampilkanData(hasil);
 
 }
 

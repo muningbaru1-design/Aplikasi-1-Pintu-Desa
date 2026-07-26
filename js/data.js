@@ -21,6 +21,14 @@ const gridMenu = [
 },
 
 {
+    id: "rpjmdes-v2",
+    nama: "Capaian RPJMDes Rinci",
+    icon: "bi-bar-chart-line",
+    warna: "#16A34A",
+    link: "pages/rpjmdes-v2.html"
+},
+
+{
     id:"portal",
     nama:"Kumpulan Portal Desa",
     icon:"bi-globe2",

@@ -1,0 +1,2390 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Capaian RPJMDes Rinci - Desa Muning Baru</title>
+
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- Chart.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- PapaParse -->
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            padding: 20px;
+
+            background: #f1f5f9;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            color: #1e293b;
+
+        }
+
+
+        .container {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+        }
+
+
+        /* HEADER */
+
+        .header {
+
+            background: linear-gradient(
+                135deg,
+                #166534,
+                #22c55e
+            );
+
+            color: white;
+
+            padding: 22px;
+
+            border-radius: 16px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 14px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(0,0,0,0.10);
+
+        }
+
+
+        .header h1 {
+
+            margin: 0;
+
+            font-size: 22px;
+
+        }
+
+
+        .header p {
+
+            margin: 6px 0 0;
+
+            font-size: 13px;
+
+        }
+
+
+        .btn-kembali {
+
+            border: none;
+
+            background: white;
+
+            color: #166534;
+
+            padding: 10px 16px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        .btn-kembali:hover {
+
+            background: #dcfce7;
+
+        }
+
+
+        /* STATISTIK */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 18px;
+
+            box-shadow:
+                0 4px 14px
+                rgba(0,0,0,0.06);
+
+        }
+
+
+        .stat-icon {
+
+            font-size: 23px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .stat-number {
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            color: #111827;
+
+        }
+
+
+        .stat-title {
+
+            margin-top: 5px;
+
+            font-size: 13px;
+
+            color: #64748b;
+
+        }
+
+
+        .total .stat-icon {
+
+            color: #2563eb;
+
+        }
+
+
+        .tercapai .stat-icon {
+
+            color: #16a34a;
+
+        }
+
+
+        .berjalan .stat-icon {
+
+            color: #f59e0b;
+
+        }
+
+
+        .belum .stat-icon {
+
+            color: #dc2626;
+
+        }
+
+
+        /* GRAFIK */
+
+        .charts {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 14px;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .chart-card {
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 14px;
+
+            min-height: 320px;
+
+        }
+
+
+        .chart-title {
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .chart-wrapper {
+
+            position: relative;
+
+            height: 260px;
+
+        }
+
+
+        /* FILTER */
+
+        .filter-box {
+
+            background: white;
+
+            padding: 14px;
+
+            border-radius: 14px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr;
+
+            gap: 10px;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .filter-box input,
+
+        .filter-box select {
+
+            width: 100%;
+
+            padding: 10px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 8px;
+
+            outline: none;
+
+        }
+
+
+        .filter-box input:focus,
+
+        .filter-box select:focus {
+
+            border-color: #16a34a;
+
+        }
+
+
+        /* TABEL */
+
+        .table-card {
+
+            background: white;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 4px 14px
+                rgba(0,0,0,0.06);
+
+        }
+
+
+        .table-title {
+
+            padding: 16px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            border-bottom: 1px solid #e2e8f0;
+
+        }
+
+
+        .table-wrapper {
+
+            overflow-x: auto;
+
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 950px;
+
+        }
+
+
+        th {
+
+            background: #166534;
+
+            color: white;
+
+            padding: 12px 10px;
+
+            text-align: left;
+
+            font-size: 12px;
+
+        }
+
+
+        td {
+
+            padding: 11px 10px;
+
+            border-bottom: 1px solid #e2e8f0;
+
+            font-size: 12px;
+
+        }
+
+
+        tr:hover {
+
+            background: #f0fdf4;
+
+        }
+
+
+        .status {
+
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+        }
+
+
+        .status-tercapai {
+
+            background: #dcfce7;
+
+            color: #166534;
+
+        }
+
+
+        .status-berjalan {
+
+            background: #fef3c7;
+
+            color: #92400e;
+
+        }
+
+
+        .status-belum {
+
+            background: #fee2e2;
+
+            color: #991b1b;
+
+        }
+
+
+        .progress {
+
+            width: 100%;
+
+            height: 8px;
+
+            background: #e5e7eb;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            min-width: 90px;
+
+        }
+
+
+        .progress-bar {
+
+            height: 100%;
+
+            background: #16a34a;
+
+        }
+
+
+        .loading,
+
+        .error,
+
+        .empty {
+
+            text-align: center;
+
+            padding: 35px;
+
+            color: #64748b;
+
+        }
+
+
+        .error {
+
+            color: #dc2626;
+
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+
+            body {
+
+                padding: 10px;
+
+            }
+
+
+            .header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+
+            }
+
+
+            .stats {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .charts {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .filter-box {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .stats {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .header h1 {
+
+                font-size: 18px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div>
+
+            <h1>
+
+                <i class="bi bi-bar-chart-line-fill"></i>
+
+                Capaian RPJMDes Rinci
+
+            </h1>
+
+            <p>
+
+                Desa Muning Baru
+
+            </p>
+
+        </div>
+
+
+        <button
+
+            class="btn-kembali"
+
+            onclick="kembaliKeMenu()">
+
+            <i class="bi bi-arrow-left"></i>
+
+            Kembali ke Menu
+
+        </button>
+
+    </div>
+
+
+
+    <!-- STATISTIK -->
+
+    <div class="stats">
+
+
+        <div class="stat-card total">
+
+            <div class="stat-icon">
+
+                <i class="bi bi-list-check"></i>
+
+            </div>
+
+            <div
+
+                class="stat-number"
+
+                id="totalProgram">
+
+                0
+
+            </div>
+
+            <div class="stat-title">
+
+                Total Kegiatan
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card tercapai">
+
+            <div class="stat-icon">
+
+                <i class="bi bi-check-circle"></i>
+
+            </div>
+
+            <div
+
+                class="stat-number"
+
+                id="totalTercapai">
+
+                0
+
+            </div>
+
+            <div class="stat-title">
+
+                Tercapai
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card berjalan">
+
+            <div class="stat-icon">
+
+                <i class="bi bi-clock-history"></i>
+
+            </div>
+
+            <div
+
+                class="stat-number"
+
+                id="totalBerjalan">
+
+                0
+
+            </div>
+
+            <div class="stat-title">
+
+                Berjalan
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card belum">
+
+            <div class="stat-icon">
+
+                <i class="bi bi-x-circle"></i>
+
+            </div>
+
+            <div
+
+                class="stat-number"
+
+                id="totalBelum">
+
+                0
+
+            </div>
+
+            <div class="stat-title">
+
+                Belum Tercapai
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- GRAFIK -->
+
+    <div class="charts">
+
+
+        <div class="chart-card">
+
+            <div class="chart-title">
+
+                Grafik Status Kegiatan
+
+            </div>
+
+
+            <div class="chart-wrapper">
+
+                <canvas id="statusChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="chart-card">
+
+            <div class="chart-title">
+
+                Grafik Capaian per Dusun / RT
+
+            </div>
+
+
+            <div class="chart-wrapper">
+
+                <canvas id="dusunChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- FILTER -->
+
+    <div class="filter-box">
+
+
+        <input
+
+            type="text"
+
+            id="searchInput"
+
+            placeholder="🔍 Cari program atau kegiatan...">
+
+
+        <select id="dusunFilter">
+
+            <option value="">
+
+                Semua Dusun / RT
+
+            </option>
+
+        </select>
+
+
+        <select id="statusFilter">
+
+            <option value="">
+
+                Semua Status
+
+            </option>
+
+            <option value="tercapai">
+
+                Tercapai
+
+            </option>
+
+            <option value="berjalan">
+
+                Berjalan
+
+            </option>
+
+            <option value="belum tercapai">
+
+                Belum Tercapai
+
+            </option>
+
+        </select>
+
+
+    </div>
+
+
+
+    <!-- TABEL -->
+
+    <div class="table-card">
+
+
+        <div class="table-title">
+
+            Rincian Capaian Kegiatan
+
+        </div>
+
+
+        <div
+
+            id="tableContainer"
+
+            class="table-wrapper">
+
+
+            <div class="loading">
+
+                ⏳ Memuat data RPJMDes...
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================================
+   URL GOOGLE SHEETS
+========================================= */
+
+
+const CSV_URL =
+
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vSqPwh03uKbj1FyXdw5eW_yZOyDosorZvTTCV0vyYtgPBvRjxgaizzOTf2KNG8RRMgyJU2ZvED-iiYR/pub?gid=0&single=true&output=csv";
+
+
+
+/* =========================================
+   VARIABEL GLOBAL
+========================================= */
+
+
+let semuaData = [];
+
+let statusChart = null;
+
+let dusunChart = null;
+
+
+
+/* =========================================
+   MEMBERSIHKAN NAMA KOLOM
+========================================= */
+
+
+function cleanKey(key) {
+
+    return String(key || "")
+
+        .replace(/\uFEFF/g, "")
+
+        .trim();
+
+}
+
+
+
+/* =========================================
+   MENCARI NILAI KOLOM
+========================================= */
+
+
+function getValue(item, namaKolom) {
+
+    const key = Object.keys(item)
+
+        .find(k =>
+
+            cleanKey(k).toLowerCase() ===
+
+            namaKolom.toLowerCase()
+
+        );
+
+
+    return key
+
+        ? String(item[key] || "").trim()
+
+        : "";
+
+}
+
+
+
+/* =========================================
+   STATUS NORMALISASI
+========================================= */
+
+
+function normalisasiStatus(status) {
+
+    status = String(status || "")
+
+        .trim()
+
+        .toLowerCase();
+
+
+    if (
+
+        status.includes("tercapai") &&
+
+        !status.includes("belum")
+
+    ) {
+
+        return "tercapai";
+
+    }
+
+
+    if (
+
+        status.includes("berjalan") ||
+
+        status.includes("proses")
+
+    ) {
+
+        return "berjalan";
+
+    }
+
+
+    if (
+
+        status.includes("belum")
+
+    ) {
+
+        return "belum tercapai";
+
+    }
+
+
+    return status;
+
+}
+
+
+
+/* =========================================
+   PERSENTASE
+========================================= */
+
+
+function ambilPersentase(item) {
+
+
+    let nilai =
+
+        getValue(item, "Persentase Capaian");
+
+
+    if (!nilai) {
+
+        nilai =
+
+            getValue(item, "Persentase");
+
+    }
+
+
+    if (!nilai) {
+
+        const target =
+
+            parseFloat(
+
+                getValue(item, "Target RPJMDes")
+
+            );
+
+
+        const realisasi =
+
+            parseFloat(
+
+                getValue(item, "Realisasi")
+
+            );
+
+
+        if (
+
+            !isNaN(target) &&
+
+            target > 0 &&
+
+            !isNaN(realisasi)
+
+        ) {
+
+            return Math.round(
+
+                (realisasi / target) * 100
+
+            );
+
+        }
+
+
+        return 0;
+
+    }
+
+
+    nilai =
+
+        nilai
+
+            .replace("%", "")
+
+            .replace(",", ".")
+
+            .trim();
+
+
+    const angka =
+
+        parseFloat(nilai);
+
+
+    return isNaN(angka)
+
+        ? 0
+
+        : angka;
+
+}
+
+
+
+/* =========================================
+   NORMALISASI DATA
+========================================= */
+
+
+function normalisasiData(data) {
+
+
+    return data
+
+        .filter(item =>
+
+            Object.values(item).some(
+
+                nilai =>
+
+                    String(nilai).trim() !== ""
+
+            )
+
+        )
+
+        .map(item => {
+
+
+const kegiatan =
+
+    getValue(item, "Program/Kegiatan") ||
+
+    getValue(item, "Program / Kegiatan") ||
+
+    getValue(item, "Program / Kegiatan RPJMDes") ||
+
+    getValue(item, "Program/Kegiatan RPJMDes") ||
+
+    getValue(item, "Nama Kegiatan") ||
+
+    getValue(item, "Uraian Kegiatan") ||
+
+    getValue(item, "Kegiatan") ||
+
+    getValue(item, "Program") ||
+
+    getValue(item, "Nama Program");
+
+            const dusun =
+
+                getValue(
+
+                    item,
+
+                    "Dusun/RT"
+
+                ) ||
+
+                getValue(
+
+                    item,
+
+                    "Dusun / RT"
+
+                ) ||
+
+                getValue(
+
+                    item,
+
+                    "Dusun"
+
+                ) ||
+
+                getValue(
+
+                    item,
+
+                    "RT");
+
+
+            const statusAsli =
+
+                getValue(
+
+                    item,
+
+                    "Status"
+
+                );
+
+
+            return {
+
+                no:
+
+                    getValue(
+
+                        item,
+
+                        "No"
+
+                    ),
+
+
+                kegiatan:
+
+
+                    kegiatan,
+
+
+                dusun:
+
+
+                    dusun,
+
+
+                target:
+
+
+                    getValue(
+
+                        item,
+
+                        "Target RPJMDes"
+
+                    ) ||
+
+
+                    getValue(
+
+                        item,
+
+                        "Target"
+
+                    ),
+
+
+                realisasi:
+
+
+                    getValue(
+
+                        item,
+
+                        "Realisasi"
+
+                    ),
+
+
+                satuan:
+
+
+                    getValue(
+
+                        item,
+
+                        "Satuan"
+
+                    ),
+
+
+                persentase:
+
+
+                    ambilPersentase(item),
+
+
+                status:
+
+
+                    normalisasiStatus(
+
+                        statusAsli
+
+                    ),
+
+
+                statusAsli:
+
+
+                    statusAsli
+
+            };
+
+        });
+
+}
+
+
+
+/* =========================================
+   LOAD DATA
+========================================= */
+
+
+async function loadData() {
+
+
+    try {
+
+
+        const response =
+
+            await fetch(
+
+                CSV_URL
+
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+
+                "Gagal mengambil CSV"
+
+            );
+
+        }
+
+
+        const csvText =
+
+            await response.text();
+
+
+        const hasil =
+
+            Papa.parse(
+
+                csvText,
+
+                {
+
+                    header: true,
+
+                    skipEmptyLines: true
+
+                }
+
+            );
+
+
+        if (
+
+            !hasil.data ||
+
+            hasil.data.length === 0
+
+        ) {
+
+            throw new Error(
+
+                "Data kosong"
+
+            );
+
+        }
+
+
+        semuaData =
+
+            normalisasiData(
+
+                hasil.data
+
+            );
+
+
+        console.log(
+
+            "Data berhasil dimuat:",
+
+            semuaData
+
+        );
+
+
+        isiFilterDusun();
+
+
+        renderSemua();
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(
+
+            "Gagal memuat data:",
+
+            error
+
+        );
+
+
+        document.getElementById(
+
+            "tableContainer"
+
+        ).innerHTML = `
+
+            <div class="error">
+
+                ❌ Gagal memuat data RPJMDes
+
+                <br><br>
+
+                <small>
+
+                    ${error.message}
+
+                </small>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =========================================
+   ISI FILTER DUSUN
+========================================= */
+
+
+function isiFilterDusun() {
+
+
+    const select =
+
+        document.getElementById(
+
+            "dusunFilter"
+
+        );
+
+
+    const daftar =
+
+        [
+
+            ...new Set(
+
+                semuaData
+
+                    .map(item => item.dusun)
+
+                    .filter(Boolean)
+
+            )
+
+        ]
+
+        .sort();
+
+
+    daftar.forEach(dusun => {
+
+
+        const option =
+
+            document.createElement(
+
+                "option"
+
+            );
+
+
+        option.value = dusun;
+
+        option.textContent = dusun;
+
+
+        select.appendChild(
+
+            option
+
+        );
+
+    });
+
+}
+
+
+
+/* =========================================
+   DATA HASIL FILTER
+========================================= */
+
+
+function getDataFilter() {
+
+
+    const keyword =
+
+        document.getElementById(
+
+            "searchInput"
+
+        )
+
+        .value
+
+        .toLowerCase();
+
+
+    const dusun =
+
+        document.getElementById(
+
+            "dusunFilter"
+
+        )
+
+        .value
+
+        .toLowerCase();
+
+
+    const status =
+
+        document.getElementById(
+
+            "statusFilter"
+
+        )
+
+        .value
+
+        .toLowerCase();
+
+
+    return semuaData.filter(item => {
+
+
+        const cocokKeyword =
+
+            !keyword ||
+
+            item.kegiatan
+
+                .toLowerCase()
+
+                .includes(keyword);
+
+
+        const cocokDusun =
+
+            !dusun ||
+
+            item.dusun
+
+                .toLowerCase()
+
+                === dusun;
+
+
+        const cocokStatus =
+
+            !status ||
+
+            item.status
+
+                .toLowerCase()
+
+                === status;
+
+
+        return (
+
+            cocokKeyword &&
+
+            cocokDusun &&
+
+            cocokStatus
+
+        );
+
+    });
+
+}
+
+
+
+/* =========================================
+   UPDATE STATISTIK
+========================================= */
+
+
+function updateStatistik(data) {
+
+
+    const tercapai =
+
+        data.filter(
+
+            item =>
+
+                item.status ===
+
+                "tercapai"
+
+        ).length;
+
+
+    const berjalan =
+
+        data.filter(
+
+            item =>
+
+                item.status ===
+
+                "berjalan"
+
+        ).length;
+
+
+    const belum =
+
+        data.filter(
+
+            item =>
+
+                item.status ===
+
+                "belum tercapai"
+
+        ).length;
+
+
+    document.getElementById(
+
+        "totalProgram"
+
+    ).textContent = data.length;
+
+
+    document.getElementById(
+
+        "totalTercapai"
+
+    ).textContent = tercapai;
+
+
+    document.getElementById(
+
+        "totalBerjalan"
+
+    ).textContent = berjalan;
+
+
+    document.getElementById(
+
+        "totalBelum"
+
+    ).textContent = belum;
+
+}
+
+
+
+/* =========================================
+   GRAFIK STATUS
+========================================= */
+
+
+function renderGrafikStatus(data) {
+
+
+    const tercapai =
+
+        data.filter(
+
+            item =>
+
+                item.status ===
+
+                "tercapai"
+
+        ).length;
+
+
+    const berjalan =
+
+        data.filter(
+
+            item =>
+
+                item.status ===
+
+                "berjalan"
+
+        ).length;
+
+
+    const belum =
+
+        data.filter(
+
+            item =>
+
+                item.status ===
+
+                "belum tercapai"
+
+        ).length;
+
+
+    const ctx =
+
+        document
+
+            .getElementById(
+
+                "statusChart"
+
+            )
+
+            .getContext(
+
+                "2d"
+
+            );
+
+
+    if (statusChart) {
+
+        statusChart.destroy();
+
+    }
+
+
+    statusChart =
+
+        new Chart(
+
+            ctx,
+
+            {
+
+                type: "doughnut",
+
+
+                data: {
+
+                    labels: [
+
+                        "Tercapai",
+
+                        "Berjalan",
+
+                        "Belum Tercapai"
+
+                    ],
+
+
+                    datasets: [{
+
+                        data: [
+
+                            tercapai,
+
+                            berjalan,
+
+                            belum
+
+                        ],
+
+
+                        backgroundColor: [
+
+                            "#16a34a",
+
+                            "#f59e0b",
+
+                            "#dc2626"
+
+                        ]
+
+                    }]
+
+                },
+
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+
+                    plugins: {
+
+                        legend: {
+
+                            position: "bottom"
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        );
+
+}
+
+
+
+/* =========================================
+   GRAFIK DUSUN / RT
+========================================= */
+
+
+function renderGrafikDusun(data) {
+
+
+    const kelompok = {};
+
+
+    data.forEach(item => {
+
+
+        const nama =
+
+            item.dusun ||
+
+            "Tidak Diketahui";
+
+
+        if (!kelompok[nama]) {
+
+            kelompok[nama] = {
+
+                total: 0,
+
+                capaian: 0
+
+            };
+
+        }
+
+
+        kelompok[nama].total++;
+
+
+        kelompok[nama].capaian +=
+
+            Number(
+
+                item.persentase
+
+            ) || 0;
+
+    });
+
+
+    const labels =
+
+        Object.keys(
+
+            kelompok
+
+        );
+
+
+    const nilai =
+
+        labels.map(nama => {
+
+
+            const total =
+
+                kelompok[nama].total;
+
+
+            const capaian =
+
+                kelompok[nama].capaian;
+
+
+            return total > 0
+
+                ? Math.round(
+
+                    capaian / total
+
+                )
+
+                : 0;
+
+        });
+
+
+    const ctx =
+
+        document
+
+            .getElementById(
+
+                "dusunChart"
+
+            )
+
+            .getContext(
+
+                "2d"
+
+            );
+
+
+    if (dusunChart) {
+
+        dusunChart.destroy();
+
+    }
+
+
+    dusunChart =
+
+        new Chart(
+
+            ctx,
+
+            {
+
+                type: "bar",
+
+
+                data: {
+
+                    labels: labels,
+
+
+                    datasets: [{
+
+                        label:
+
+                            "Rata-rata Capaian (%)",
+
+
+                        data: nilai,
+
+
+                        backgroundColor:
+
+                            "#16a34a"
+
+                    }]
+
+                },
+
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+
+                    scales: {
+
+                        y: {
+
+                            beginAtZero: true,
+
+                            max: 100
+
+                        }
+
+                    },
+
+
+                    plugins: {
+
+                        legend: {
+
+                            display: false
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        );
+
+}
+
+
+
+/* =========================================
+   STATUS HTML
+========================================= */
+
+
+function tampilkanStatus(status) {
+
+
+    if (
+
+        status ===
+
+        "tercapai"
+
+    ) {
+
+        return `
+
+            <span class="status status-tercapai">
+
+                Tercapai
+
+            </span>
+
+        `;
+
+    }
+
+
+    if (
+
+        status ===
+
+        "berjalan"
+
+    ) {
+
+        return `
+
+            <span class="status status-berjalan">
+
+                Berjalan
+
+            </span>
+
+        `;
+
+    }
+
+
+    return `
+
+        <span class="status status-belum">
+
+            Belum Tercapai
+
+        </span>
+
+    `;
+
+}
+
+
+
+/* =========================================
+   RENDER TABEL
+========================================= */
+
+
+function renderTabel(data) {
+
+
+    const container =
+
+        document.getElementById(
+
+            "tableContainer"
+
+        );
+
+
+    if (
+
+        !data ||
+
+        data.length === 0
+
+    ) {
+
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                Tidak ada data yang sesuai.
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    let html = `
+
+        <table>
+
+
+            <thead>
+
+                <tr>
+
+                    <th>No</th>
+
+                    <th>Program / Kegiatan</th>
+
+                    <th>Dusun / RT</th>
+
+                    <th>Target</th>
+
+                    <th>Realisasi</th>
+
+                    <th>Satuan</th>
+
+                    <th>Capaian</th>
+
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+    `;
+
+
+    data.forEach(item => {
+
+
+        const persen =
+
+            Math.max(
+
+                0,
+
+                Math.min(
+
+                    100,
+
+                    Number(
+
+                        item.persentase
+
+                    ) || 0
+
+                )
+
+            );
+
+
+        html += `
+
+            <tr>
+
+
+                <td>
+
+                    ${item.no}
+
+                </td>
+
+
+                <td>
+
+                    ${item.kegiatan}
+
+                </td>
+
+
+                <td>
+
+                    ${item.dusun}
+
+                </td>
+
+
+                <td>
+
+                    ${item.target}
+
+                </td>
+
+
+                <td>
+
+                    ${item.realisasi}
+
+                </td>
+
+
+                <td>
+
+                    ${item.satuan}
+
+                </td>
+
+
+                <td>
+
+                    <div>
+
+                        ${persen}%
+
+                    </div>
+
+
+                    <div class="progress">
+
+                        <div
+
+                            class="progress-bar"
+
+                            style="width:${persen}%">
+
+                        </div>
+
+                    </div>
+
+                </td>
+
+
+                <td>
+
+                    ${
+
+                        tampilkanStatus(
+
+                            item.status
+
+                        )
+
+                    }
+
+                </td>
+
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += `
+
+            </tbody>
+
+        </table>
+
+    `;
+
+
+    container.innerHTML = html;
+
+}
+
+
+
+/* =========================================
+   RENDER SEMUA
+========================================= */
+
+
+function renderSemua() {
+
+
+    const data =
+
+        getDataFilter();
+
+
+    updateStatistik(
+
+        data
+
+    );
+
+
+    renderGrafikStatus(
+
+        data
+
+    );
+
+
+    renderGrafikDusun(
+
+        data
+
+    );
+
+
+    renderTabel(
+
+        data
+
+    );
+
+}
+
+
+
+/* =========================================
+   EVENT FILTER
+========================================= */
+
+
+document
+
+    .getElementById(
+
+        "searchInput"
+
+    )
+
+    .addEventListener(
+
+        "input",
+
+        renderSemua
+
+    );
+
+
+document
+
+    .getElementById(
+
+        "dusunFilter"
+
+    )
+
+    .addEventListener(
+
+        "change",
+
+        renderSemua
+
+    );
+
+
+document
+
+    .getElementById(
+
+        "statusFilter"
+
+    )
+
+    .addEventListener(
+
+        "change",
+
+        renderSemua
+
+    );
+
+
+
+/* =========================================
+   KEMBALI KE MENU
+========================================= */
+
+
+function kembaliKeMenu() {
+
+
+    window.location.href =
+
+        "../index.html";
+
+
+}
+
+
+
+/* =========================================
+   MULAI LOAD DATA
+========================================= */
+
+
+loadData();
+
+
+</script>
+
+
+</body>
+
+</html>

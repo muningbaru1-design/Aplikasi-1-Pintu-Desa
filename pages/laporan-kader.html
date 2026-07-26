@@ -7,6 +7,15 @@
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
+          <button
+    class="btn-kembali"
+    onclick="kembaliKeMenu()">
+
+    <i class="bi bi-arrow-left"></i>
+
+    Kembali ke Menu
+
+</button>
 
     <title>Laporan Kegiatan Kader Desa</title>
 
@@ -100,7 +109,7 @@
 
         );
 
-    color: white;
+    color: rgb(20, 0, 0);
 
     text-decoration: none;
 
@@ -138,10 +147,19 @@
 }
 
 
+
         /* =========================
            HEADER
         ========================= */
+<a
+    href="javascript:history.back()"
+    class="btn-kembali">
 
+    <i class="bi bi-arrow-left"></i>
+
+    Kembali ke Aplikasi
+
+</a>
 
         .hero {
 
@@ -1220,7 +1238,11 @@ function bukaLaporan(
 
 }
 
+function kembaliKeMenu() {
 
+    window.location.href = "../index.html";
+
+}
 </script>
 
 

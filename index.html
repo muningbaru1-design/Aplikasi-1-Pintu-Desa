@@ -3,9 +3,6 @@
 
 <head>
 
-<link rel="manifest" href="manifest.json">
-
-<meta name="theme-color" content="#2563eb">
 
 <link rel="apple-touch-icon"
       href="assets/logo-192.png">
@@ -16,6 +13,10 @@
       content="width=1200">
 
 <title>Aplikasi 1 Pintu Desa Muning Baru</title>
+
+<link rel="manifest" href="./manifest.json">
+
+<meta name="theme-color" content="#2563eb">
 
 
 <!-- FONT -->
@@ -1214,29 +1215,33 @@ function tutupTentangAplikasi() {
 </div>
 <script>
 
-if (
+if ("serviceWorker" in navigator) {
 
-    "serviceWorker"
+    window.addEventListener("load", () => {
 
-    in navigator
+        navigator.serviceWorker.register(
+            "./service-worker.js"
+        )
 
-) {
+        .then(registration => {
 
-    window.addEventListener(
-
-        "load",
-
-        () => {
-
-            navigator.serviceWorker.register(
-
-                "service-worker.js"
-
+            console.log(
+                "Service Worker aktif:",
+                registration.scope
             );
 
-        }
+        })
 
-    );
+        .catch(error => {
+
+            console.error(
+                "Service Worker gagal:",
+                error
+            );
+
+        });
+
+    });
 
 }
 

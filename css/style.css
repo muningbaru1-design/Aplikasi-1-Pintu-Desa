@@ -1708,3 +1708,35 @@ color:#0F766E;
     transform: translateX(-3px);
 
 }
+
+.drive-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    margin-top: 10px;
+    padding: 14px;
+
+    background: #16a34a;
+    color: #ffffff;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.drive-btn:hover {
+    background: #15803d;
+}
+
+.drive-btn i {
+    font-size: 17px;
+}

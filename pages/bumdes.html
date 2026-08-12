@@ -1,330 +1,768 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Catat Pendapatan BUMDes - Desa Muning Baru</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+rel="stylesheet">
 
 <style>
-*{box-sizing:border-box}
-body{
+
+*{
+    box-sizing:border-box;
     margin:0;
-    font-family:Poppins,sans-serif;
-    background:linear-gradient(135deg,#f0f9ff,#eff6ff,#f8fafc);
-    color:#1f2937;
-    min-height:100vh;
+    padding:0;
 }
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f1f5f9;
+    color:#1e293b;
+}
+
+/* HEADER */
+
 .header{
-    background:linear-gradient(135deg,#0284c7,#0ea5e9);
-    color:#fff;
-    padding:18px 16px 22px;
-    border-radius:0 0 24px 24px;
-    box-shadow:0 8px 24px rgba(2,132,199,.20);
-}
-.header-top{
+    background:linear-gradient(135deg,#0284c7,#2563eb);
+    color:white;
+    padding:18px 20px;
     display:flex;
     align-items:center;
-    justify-content:space-between;
+    gap:15px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 3px 12px rgba(0,0,0,.15);
 }
+
 .back-btn{
-    display:inline-flex;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:12px;
+    background:rgba(255,255,255,.18);
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.header-text{
+    flex:1;
+}
+
+.header-text h1{
+    font-size:20px;
+    font-weight:700;
+}
+
+.header-text p{
+    font-size:12px;
+    opacity:.9;
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+/* WELCOME */
+
+.welcome{
+    background:white;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.07);
+}
+
+.welcome h2{
+    color:#0369a1;
+    font-size:20px;
+    margin-bottom:5px;
+}
+
+.welcome p{
+    font-size:13px;
+    color:#64748b;
+}
+
+/* REKAP */
+
+.section-title{
+    display:flex;
     align-items:center;
-    gap:7px;
-    color:#fff;
+    gap:9px;
+    font-size:18px;
+    font-weight:700;
+    margin:25px 0 12px;
+}
+
+.section-title i{
+    color:#0284c7;
+}
+
+.rekap{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-bottom:25px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,.07);
+}
+
+.card-icon{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+    margin-bottom:12px;
+}
+
+.penerimaan .card-icon{
+    background:#dcfce7;
+    color:#16a34a;
+}
+
+.pengeluaran .card-icon{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.saldo .card-icon{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.card small{
+    color:#64748b;
+    font-size:12px;
+}
+
+.card h3{
+    margin-top:5px;
+    font-size:21px;
+}
+
+/* UNIT */
+
+.unit-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.unit{
+    background:white;
+    border-radius:18px;
+    padding:18px 12px;
+    text-align:center;
     text-decoration:none;
-    background:rgba(255,255,255,.16);
-    padding:9px 13px;
-    border-radius:11px;
+    color:#1e293b;
+    box-shadow:0 4px 14px rgba(0,0,0,.07);
+    transition:.2s;
+    border:1px solid #e2e8f0;
+}
+
+.unit:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+.unit-icon{
+    width:58px;
+    height:58px;
+    border-radius:16px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    color:white;
+    margin-bottom:10px;
+}
+
+.unit h3{
+    font-size:14px;
+    margin-bottom:4px;
+}
+
+.unit span{
+    font-size:10px;
+    color:#64748b;
+}
+
+/* WARNA UNIT */
+
+.gas{
+    background:#dc2626;
+}
+
+.depo{
+    background:#0ea5e9;
+}
+
+.bbm{
+    background:#ef4444;
+}
+
+.atk{
+    background:#f59e0b;
+}
+
+.sewa{
+    background:#16a34a;
+}
+
+.internet{
+    background:#2563eb;
+}
+
+.ketapang{
+    background:#65a30d;
+}
+
+.sayur{
+    background:#22c55e;
+}
+
+/* LAPORAN */
+
+.report-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+}
+
+.report{
+    background:white;
+    padding:17px 10px;
+    border-radius:15px;
+    text-decoration:none;
+    color:#1e293b;
+    text-align:center;
+    border:1px solid #e2e8f0;
+    box-shadow:0 3px 12px rgba(0,0,0,.06);
+    transition:.2s;
+}
+
+.report:hover{
+    transform:translateY(-2px);
+}
+
+.report i{
+    font-size:27px;
+    color:#2563eb;
+    display:block;
+    margin-bottom:8px;
+}
+
+.report span{
     font-size:12px;
     font-weight:600;
 }
-.header-icon{
-    width:44px;height:44px;
-    display:flex;align-items:center;justify-content:center;
-    border-radius:13px;
-    background:rgba(255,255,255,.18);
-    font-size:22px;
+
+/* BKU */
+
+.bku-box{
+    background:linear-gradient(135deg,#0f766e,#0891b2);
+    color:white;
+    border-radius:18px;
+    padding:20px;
+    margin-top:20px;
+    margin-bottom:25px;
 }
-.header h1{margin:18px 0 3px;font-size:22px}
-.header p{margin:0;font-size:12px;opacity:.92}
-.container{max-width:1050px;margin:auto;padding:18px 14px 35px}
-.section-title{
-    display:flex;align-items:center;gap:10px;
-    margin:18px 2px 12px;
+
+.bku-box h3{
+    font-size:17px;
+    margin-bottom:5px;
 }
-.section-icon{
-    width:38px;height:38px;
-    display:flex;align-items:center;justify-content:center;
-    border-radius:11px;
-    background:#e0f2fe;color:#0284c7;font-size:18px;
+
+.bku-box p{
+    font-size:12px;
+    opacity:.9;
+    margin-bottom:15px;
 }
-.section-title h2{margin:0;font-size:16px}
-.section-title p{margin:2px 0 0;font-size:10px;color:#64748b}
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:12px;
-}
-.menu-card{
-    background:#fff;
-    border-radius:17px;
-    padding:15px;
-    display:flex;
-    align-items:center;
-    gap:13px;
-    box-shadow:0 5px 18px rgba(15,23,42,.07);
-    border:1px solid #e2e8f0;
-    transition:.2s;
-}
-.menu-card:hover{
-    transform:translateY(-2px);
-    box-shadow:0 9px 24px rgba(15,23,42,.11);
-}
-.menu-icon{
-    width:50px;height:50px;min-width:50px;
-    border-radius:14px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:21px;
-}
-.unit-icon{background:#e0f2fe;color:#0284c7}
-.report-icon{background:#f0fdf4;color:#16a34a}
-.menu-content{flex:1;min-width:0}
-.menu-content h3{margin:0;font-size:13px;font-weight:700}
-.menu-content p{
-    margin:4px 0 0;
-    font-size:10px;color:#64748b;line-height:1.45;
-}
-.open-btn{
+
+.bku-button{
     display:inline-flex;
     align-items:center;
-    justify-content:center;
-    gap:5px;
-    margin-top:8px;
-    padding:7px 10px;
-    border-radius:9px;
-    background:#eff6ff;
-    color:#0369a1;
+    gap:8px;
+    background:white;
+    color:#0f766e;
+    padding:10px 15px;
+    border-radius:10px;
     text-decoration:none;
-    font-size:10px;
-    font-weight:700;
-    border:1px solid #dbeafe;
+    font-size:13px;
+    font-weight:600;
 }
-.open-btn:hover{background:#dbeafe}
-.arrow{color:#94a3b8;font-size:15px}
-.info-box{
-    margin-top:20px;
-    padding:13px 15px;
-    border-radius:14px;
-    background:#f8fafc;
-    border:1px solid #e2e8f0;
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    padding:30px 10px;
     color:#64748b;
-    font-size:10px;
-    line-height:1.6;
+    font-size:11px;
 }
-.info-box strong{color:#334155}
-@media(max-width:520px){
-    .container{padding:14px 11px 30px}
-    .grid{grid-template-columns:1fr;gap:10px}
-    .menu-card{padding:13px}
-    .header h1{font-size:20px}
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+    .unit-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .report-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
 }
+
+@media(max-width:500px){
+
+    .container{
+        padding:13px;
+    }
+
+    .rekap{
+        grid-template-columns:1fr;
+    }
+
+    .unit-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .report-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .header-text h1{
+        font-size:17px;
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- HEADER -->
+
 <header class="header">
-    <div class="header-top">
-        <a href="../dashboard.html" class="back-btn">
-            <i class="bi bi-arrow-left"></i> Kembali
-        </a>
-        <div class="header-icon">
-            <i class="bi bi-bank"></i>
-        </div>
-    </div>
-    <h1>Catat Pendapatan BUMDes</h1>
-    <p>Desa Muning Baru</p>
+
+<button class="back-btn" onclick="history.back()">
+<i class="bi bi-arrow-left"></i>
+</button>
+
+<div class="header-text">
+
+<h1>
+Catat Pendapatan BUMDes
+</h1>
+
+<p>
+BUMDes Surya Mitra Sehati Desa Muning Baru
+</p>
+
+</div>
+
 </header>
 
-<main class="container">
 
-<div class="section-title">
-    <div class="section-icon"><i class="bi bi-shop"></i></div>
-    <div>
-        <h2>Unit Usaha BUMDes</h2>
-        <p>Pilih unit untuk membuka pencatatan keuangan</p>
-    </div>
-</div>
+<div class="container">
 
-<section class="grid">
 
-<div class="menu-card">
-    <div class="menu-icon unit-icon"><i class="bi bi-fire"></i></div>
-    <div class="menu-content">
-        <h3>GAS LPG</h3>
-        <p>Pencatatan pendapatan Unit GAS</p>
-        <a class="open-btn" href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=2107140232#gid=2107140232" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Buka
-        </a>
-    </div>
-    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-</div>
+<!-- WELCOME -->
 
-<div class="menu-card">
-    <div class="menu-icon unit-icon"><i class="bi bi-droplet-fill"></i></div>
-    <div class="menu-content">
-        <h3>DEPO AIR</h3>
-        <p>Pencatatan pendapatan Unit Depo Air</p>
-        <a class="open-btn" href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=735544819#gid=735544819" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Buka
-        </a>
-    </div>
-    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-</div>
+<section class="welcome">
 
-<div class="menu-card">
-    <div class="menu-icon unit-icon"><i class="bi bi-fuel-pump-fill"></i></div>
-    <div class="menu-content">
-        <h3>UNIT BBM</h3>
-        <p>Pencatatan pendapatan Unit BBM</p>
-        <a class="open-btn" href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=47565504#gid=47565504" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Buka
-        </a>
-    </div>
-    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-</div>
+<h2>
+<i class="bi bi-bank"></i>
+Keuangan BUMDes
+</h2>
 
-<div class="menu-card">
-    <div class="menu-icon unit-icon"><i class="bi bi-journal-text"></i></div>
-    <div class="menu-content">
-        <h3>ATK</h3>
-        <p>Pencatatan pendapatan Unit ATK</p>
-        <a class="open-btn" href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=1918945751#gid=1918945751" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Buka
-        </a>
-    </div>
-    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-</div>
-
-<div class="menu-card">
-    <div class="menu-icon unit-icon"><i class="bi bi-building-fill"></i></div>
-    <div class="menu-content">
-        <h3>SEWA ASET BUMDes</h3>
-        <p>Pencatatan sewa aset BUMDes</p>
-        <a class="open-btn" href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=1614591629#gid=1614591629" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Buka
-        </a>
-    </div>
-    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-</div>
-
-<div class="menu-card">
-    <div class="menu-icon unit-icon"><i class="bi bi-wifi"></i></div>
-    <div class="menu-content">
-        <h3>INTERNET BUMDes</h3>
-        <p>Pencatatan pendapatan Internet</p>
-        <a class="open-btn" href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=853018540#gid=853018540" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Buka
-        </a>
-    </div>
-    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-</div>
-
-<div class="menu-card">
-    <div class="menu-icon unit-icon"><i class="bi bi-tree-fill"></i></div>
-    <div class="menu-content">
-        <h3>KETAPANG</h3>
-        <p>Pencatatan pendapatan Unit Ketapang</p>
-        <a class="open-btn" href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=221130272#gid=221130272" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Buka
-        </a>
-    </div>
-    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-</div>
+<p>
+Pantau pendapatan dan laporan keuangan seluruh unit usaha BUMDes Desa Muning Baru.
+</p>
 
 </section>
 
+
+<!-- REKAP -->
+
 <div class="section-title">
-    <div class="section-icon"><i class="bi bi-file-earmark-bar-graph-fill"></i></div>
-    <div>
-        <h2>Laporan Keuangan BUMDes</h2>
-        <p>Membuka laporan yang sudah ada di Google Spreadsheet</p>
-    </div>
+
+<i class="bi bi-bar-chart-fill"></i>
+
+Rekap Keuangan BUMDes
+
 </div>
 
-<section class="grid">
 
-<div class="menu-card">
-    <div class="menu-icon report-icon"><i class="bi bi-journal-check"></i></div>
-    <div class="menu-content">
-        <h3>BUKU KAS UMUM</h3>
-        <p>Membuka Buku Kas Umum BUMDes</p>
-        <a class="open-btn" href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=1364035363#gid=1364035363" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Buka
-        </a>
-    </div>
-    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+<section class="rekap">
+
+
+<div class="card penerimaan">
+
+<div class="card-icon">
+<i class="bi bi-arrow-down-circle-fill"></i>
 </div>
 
-<div class="menu-card">
-    <div class="menu-icon report-icon"><i class="bi bi-graph-up-arrow"></i></div>
-    <div class="menu-content">
-        <h3>ARUS KAS</h3>
-        <p>Membuka laporan arus kas BUMDes</p>
-        <a class="open-btn" href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=275137086#gid=275137086" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Buka
-        </a>
-    </div>
-    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+<small>Total Penerimaan</small>
+
+<h3>
+Rp 16.061.500
+</h3>
+
 </div>
 
-<div class="menu-card">
-    <div class="menu-icon report-icon"><i class="bi bi-cash-coin"></i></div>
-    <div class="menu-content">
-        <h3>LAPORAN LABA RUGI</h3>
-        <p>Membuka laporan laba rugi BUMDes</p>
-        <a class="open-btn" href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=984099141#gid=984099141" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Buka
-        </a>
-    </div>
-    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+
+<div class="card pengeluaran">
+
+<div class="card-icon">
+<i class="bi bi-arrow-up-circle-fill"></i>
 </div>
 
-<div class="menu-card">
-    <div class="menu-icon report-icon"><i class="bi bi-people-fill"></i></div>
-    <div class="menu-content">
-        <h3>PERUBAHAN MODAL</h3>
-        <p>Membuka laporan perubahan modal BUMDes</p>
-        <a class="open-btn" href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=1679659945#gid=1679659945" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Buka
-        </a>
-    </div>
-    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+<small>Total Pengeluaran</small>
+
+<h3>
+Rp 5.693.000
+</h3>
+
 </div>
 
-<div class="menu-card">
-    <div class="menu-icon report-icon"><i class="bi bi-balance-scale-fill"></i></div>
-    <div class="menu-content">
-        <h3>NERACA</h3>
-        <p>Membuka laporan neraca BUMDes</p>
-        <a class="open-btn" href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=1710794838#gid=1710794838" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Buka
-        </a>
-    </div>
-    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+
+<div class="card saldo">
+
+<div class="card-icon">
+<i class="bi bi-wallet2"></i>
 </div>
+
+<small>Saldo Akhir</small>
+
+<h3>
+Rp 10.368.500
+</h3>
+
+</div>
+
 
 </section>
 
-<div class="info-box">
-    <i class="bi bi-info-circle-fill"></i>
-    <strong>Catatan:</strong>
-    Tombol di halaman ini membuka Google Spreadsheet pada unit atau laporan yang dipilih.
-    Data keuangan tetap berada pada spreadsheet BUMDes yang sudah digunakan.
+
+<!-- BKU -->
+
+<section class="bku-box">
+
+<h3>
+<i class="bi bi-journal-text"></i>
+ Sumber Rekap: Buku Kas Umum
+</h3>
+
+<p>
+Rekap penerimaan, pengeluaran dan saldo BUMDes diambil dari Buku Kas Umum.
+</p>
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=1364035363#gid=1364035363"
+target="_blank"
+class="bku-button">
+
+<i class="bi bi-google"></i>
+
+Buka Buku Kas Umum
+
+</a>
+
+</section>
+
+
+<!-- UNIT -->
+
+<div class="section-title">
+
+<i class="bi bi-grid-fill"></i>
+
+Semua Unit Usaha BUMDes
+
 </div>
 
-</main>
+
+<section class="unit-grid">
+
+
+<!-- GAS -->
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=2107140232#gid=2107140232"
+target="_blank"
+class="unit">
+
+<div class="unit-icon gas">
+<i class="bi bi-fire"></i>
+</div>
+
+<h3>Gas LPG</h3>
+
+<span>Buku Kas Unit Gas</span>
+
+</a>
+
+
+<!-- DEPO -->
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=735544819#gid=735544819"
+target="_blank"
+class="unit">
+
+<div class="unit-icon depo">
+<i class="bi bi-droplet-fill"></i>
+</div>
+
+<h3>Depo Air</h3>
+
+<span>Buku Kas Unit Depo</span>
+
+</a>
+
+
+<!-- BBM -->
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=47565504#gid=47565504"
+target="_blank"
+class="unit">
+
+<div class="unit-icon bbm">
+<i class="bi bi-fuel-pump-fill"></i>
+</div>
+
+<h3>BBM</h3>
+
+<span>Buku Kas Unit BBM</span>
+
+</a>
+
+
+<!-- ATK -->
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=1918945751#gid=1918945751"
+target="_blank"
+class="unit">
+
+<div class="unit-icon atk">
+<i class="bi bi-pencil-fill"></i>
+</div>
+
+<h3>ATK</h3>
+
+<span>Buku Kas Unit ATK</span>
+
+</a>
+
+
+<!-- SEWA -->
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=1614591629#gid=1614591629"
+target="_blank"
+class="unit">
+
+<div class="unit-icon sewa">
+<i class="bi bi-house-fill"></i>
+</div>
+
+<h3>Sewa Aset</h3>
+
+<span>Sewa Aset BUMDes</span>
+
+</a>
+
+
+<!-- INTERNET -->
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=853018540#gid=853018540"
+target="_blank"
+class="unit">
+
+<div class="unit-icon internet">
+<i class="bi bi-wifi"></i>
+</div>
+
+<h3>Internet</h3>
+
+<span>Unit Internet BUMDes</span>
+
+</a>
+
+
+<!-- KETAPANG -->
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=221130272#gid=221130272"
+target="_blank"
+class="unit">
+
+<div class="unit-icon ketapang">
+<i class="bi bi-flower1"></i>
+</div>
+
+<h3>Ketapang</h3>
+
+<span>Unit Ketapang</span>
+
+</a>
+
+
+<!-- SAYUR -->
+
+<a
+href="#"
+class="unit"
+onclick="alert('Link unit Jual Beli Sayur belum diberikan.');return false;">
+
+<div class="unit-icon sayur">
+<i class="bi bi-basket-fill"></i>
+</div>
+
+<h3>Jual Beli Sayur</h3>
+
+<span>Unit Sayur</span>
+
+</a>
+
+
+</section>
+
+
+<!-- LAPORAN -->
+
+<div class="section-title">
+
+<i class="bi bi-file-earmark-bar-graph-fill"></i>
+
+Laporan Keuangan
+
+</div>
+
+
+<section class="report-grid">
+
+
+<!-- BKU -->
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=1364035363#gid=1364035363"
+target="_blank"
+class="report">
+
+<i class="bi bi-journal-text"></i>
+
+<span>Buku Kas Umum</span>
+
+</a>
+
+
+<!-- ARUS KAS -->
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=275137086#gid=275137086"
+target="_blank"
+class="report">
+
+<i class="bi bi-bar-chart-line-fill"></i>
+
+<span>Arus Kas</span>
+
+</a>
+
+
+<!-- LABA RUGI -->
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=984099141#gid=984099141"
+target="_blank"
+class="report">
+
+<i class="bi bi-graph-up-arrow"></i>
+
+<span>Laba Rugi</span>
+
+</a>
+
+
+<!-- PERUBAHAN MODAL -->
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=1679659945#gid=1679659945"
+target="_blank"
+class="report">
+
+<i class="bi bi-people-fill"></i>
+
+<span>Perubahan Modal</span>
+
+</a>
+
+
+<!-- NERACA -->
+
+<a
+href="https://docs.google.com/spreadsheets/d/1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat/edit?gid=1710794838#gid=1710794838"
+target="_blank"
+class="report">
+
+<i class="bi bi-balance-scale-fill"></i>
+
+<span>Neraca</span>
+
+</a>
+
+
+</section>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+Aplikasi 1 Pintu Desa Muning Baru<br>
+
+BUMDes Surya Mitra Sehati
+
+</div>
+
+
+</div>
+
+
 </body>
+
 </html>

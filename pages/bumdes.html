@@ -434,8 +434,8 @@ Rekap Keuangan BUMDes
 
 <small>Total Penerimaan</small>
 
-<h3>
-Rp 16.061.500
+<h3 id="totalPenerimaan">
+Memuat...
 </h3>
 
 </div>
@@ -449,8 +449,8 @@ Rp 16.061.500
 
 <small>Total Pengeluaran</small>
 
-<h3>
-Rp 5.693.000
+<h3 id="totalPengeluaran">
+Memuat...
 </h3>
 
 </div>
@@ -464,8 +464,8 @@ Rp 5.693.000
 
 <small>Saldo Akhir</small>
 
-<h3>
-Rp 10.368.500
+<h3 id="saldoAkhir">
+Memuat...
 </h3>
 
 </div>
@@ -761,6 +761,249 @@ BUMDes Surya Mitra Sehati
 
 
 </div>
+
+<script>
+
+const BKU_ID = "1ImlrPYGxdIP5yP2HU9WQtyqdm9-vdzat";
+const BKU_GID = "1364035363";
+
+
+function formatRupiah(nilai) {
+
+    return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        maximumFractionDigits: 0
+    }).format(nilai);
+
+}
+
+
+function angka(value) {
+
+    if (value === null || value === undefined) {
+        return 0;
+    }
+
+    if (typeof value === "number") {
+        return value;
+    }
+
+    let teks = String(value)
+        .replace(/[^\d,-]/g, "")
+        .replace(/\./g, "")
+        .replace(",", ".");
+
+    let hasil = parseFloat(teks);
+
+    return isNaN(hasil) ? 0 : hasil;
+
+}
+
+
+async function ambilDataBKU() {
+
+    try {
+
+        const query = encodeURIComponent(
+            "select G,H,I"
+        );
+
+        const url =
+            "https://docs.google.com/spreadsheets/d/" +
+            BKU_ID +
+            "/gviz/tq?tqx=out:json" +
+            "&gid=" + BKU_GID +
+            "&tq=" + query;
+
+
+        const response = await fetch(url);
+
+        const text = await response.text();
+
+
+        const awal = text.indexOf("{");
+        const akhir = text.lastIndexOf("}");
+
+
+        if (awal === -1 || akhir === -1) {
+
+            throw new Error(
+                "Data Google Sheet tidak terbaca"
+            );
+
+        }
+
+
+        const data = JSON.parse(
+            text.substring(
+                awal,
+                akhir + 1
+            )
+        );
+
+
+        const rows =
+            data.table.rows || [];
+
+
+        let penerimaan = 0;
+        let pengeluaran = 0;
+        let saldoTerakhir = 0;
+
+
+        rows.forEach(row => {
+
+            const cells = row.c || [];
+
+
+            /*
+             G = PENERIMAAN
+            */
+
+            if (
+                cells[0] &&
+                cells[0].v !== null &&
+                cells[0].v !== undefined
+            ) {
+
+                penerimaan += angka(
+                    cells[0].v
+                );
+
+            }
+
+
+            /*
+             H = PENGELUARAN
+            */
+
+            if (
+                cells[1] &&
+                cells[1].v !== null &&
+                cells[1].v !== undefined
+            ) {
+
+                pengeluaran += angka(
+                    cells[1].v
+                );
+
+            }
+
+
+            /*
+             I = SALDO
+
+             Jangan dijumlahkan.
+
+             Ambil saldo terakhir
+             yang tersedia.
+            */
+
+            if (
+                cells[2] &&
+                cells[2].v !== null &&
+                cells[2].v !== undefined
+            ) {
+
+                const nilai =
+                    angka(cells[2].v);
+
+
+                if (!isNaN(nilai)) {
+
+                    saldoTerakhir = nilai;
+
+                }
+
+            }
+
+        });
+
+
+        /*
+         TAMPILKAN KE HALAMAN
+        */
+
+        document.getElementById(
+            "totalPenerimaan"
+        ).textContent =
+            formatRupiah(
+                penerimaan
+            );
+
+
+        document.getElementById(
+            "totalPengeluaran"
+        ).textContent =
+            formatRupiah(
+                pengeluaran
+            );
+
+
+        document.getElementById(
+            "saldoAkhir"
+        ).textContent =
+            formatRupiah(
+                saldoTerakhir
+            );
+
+
+        console.log(
+            "Penerimaan:",
+            penerimaan
+        );
+
+
+        console.log(
+            "Pengeluaran:",
+            pengeluaran
+        );
+
+
+        console.log(
+            "Saldo:",
+            saldoTerakhir
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Gagal membaca BKU:",
+            error
+        );
+
+
+        document.getElementById(
+            "totalPenerimaan"
+        ).textContent =
+            "Tidak tersedia";
+
+
+        document.getElementById(
+            "totalPengeluaran"
+        ).textContent =
+            "Tidak tersedia";
+
+
+        document.getElementById(
+            "saldoAkhir"
+        ).textContent =
+            "Tidak tersedia";
+
+    }
+
+}
+
+
+/*
+Jalankan saat halaman dibuka
+*/
+
+ambilDataBKU();
+
+</script>
 
 
 </body>

@@ -806,8 +806,8 @@ async function ambilDataBKU() {
     try {
 
         const query = encodeURIComponent(
-            "select G,H,I"
-        );
+    "select G,H,I where B is not null"
+);
 
         const url =
             "https://docs.google.com/spreadsheets/d/" +

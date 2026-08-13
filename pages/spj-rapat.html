@@ -1,636 +1,309 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#2563eb">
-
-    <title>SPJ Rapat Desa</title>
-
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            background: #f1f5f9;
-            color: #0f172a;
-            font-family: Poppins, Arial, sans-serif;
-        }
-
-        .header {
-            height: 68px;
-            background: linear-gradient(135deg, #2563eb, #0ea5e9);
-            color: white;
-            display: flex;
-            align-items: center;
-            padding: 0 18px;
-            gap: 12px;
-            box-shadow: 0 3px 12px #0002;
-            position: sticky;
-            top: 0;
-            z-index: 5;
-        }
-
-        .back {
-            width: 38px;
-            height: 38px;
-            border: 0;
-            border-radius: 11px;
-            background: #ffffff25;
-            color: #fff;
-            font-size: 20px;
-        }
-
-        .title h2 {
-            font-size: 17px;
-            margin: 0;
-        }
-
-        .title p {
-            font-size: 9px;
-            margin: 3px 0 0;
-        }
-
-        .container {
-            width: min(1050px, calc(100% - 32px));
-            margin: 20px auto 40px;
-        }
-
-        .hero,
-        .card {
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 5px 18px #0f172a12;
-        }
-
-        .hero {
-            padding: 20px;
-            margin-bottom: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: 20px;
-            margin: 0 0 5px;
-            color: #1d4ed8;
-        }
-
-        .hero p {
-            margin: 0;
-            color: #64748b;
-            font-size: 11px;
-        }
-
-        .hero-icon {
-            width: 58px;
-            height: 58px;
-            border-radius: 16px;
-            background: #dbeafe;
-            color: #2563eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-        }
-
-        .card {
-            padding: 18px;
-            margin-bottom: 16px;
-        }
-
-        .ct {
-            font-weight: 700;
-            font-size: 15px;
-            color: #1e3a8a;
-            margin-bottom: 14px;
-        }
-
-        .form {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 13px;
-        }
-
-        .field {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .full {
-            grid-column: 1 / -1;
-        }
-
-        label {
-            font-size: 10px;
-            font-weight: 600;
-            color: #475569;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            padding: 10px;
-            font: 11px Poppins;
-        }
-
-        textarea {
-            min-height: 70px;
-        }
-
-        .progress {
-            background: #eff6ff;
-            border: 1px solid #dbeafe;
-            border-radius: 13px;
-            padding: 14px;
-            margin-bottom: 15px;
-        }
-
-        .pt {
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .track {
-            height: 9px;
-            background: #dbeafe;
-            border-radius: 99px;
-            overflow: hidden;
-        }
-
-        .bar {
-            height: 100%;
-            width: 0;
-            background: linear-gradient(90deg, #2563eb, #06b6d4);
-        }
-
-        .status {
-            font-size: 10px;
-            color: #64748b;
-            margin-top: 7px;
-        }
-
-        .docs {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 11px;
-        }
-
-        .doc {
-            border: 1px solid #fecaca;
-            border-radius: 13px;
-            padding: 13px;
-            display: flex;
-            align-items: center;
-            gap: 11px;
-            background: #fff;
-        }
-
-        .doc.done {
-            border-color: #bbf7d0;
-            background: #f0fdf4;
-        }
-
-        .di {
-            width: 42px;
-            height: 42px;
-            border-radius: 11px;
-            background: #eff6ff;
-            color: #2563eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex: none;
-        }
-
-        .done .di {
-            background: #dcfce7;
-            color: #16a34a;
-        }
-
-        .info {
-            flex: 1;
-        }
-
-        .name {
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .note {
-            font-size: 8px;
-            color: #64748b;
-            margin-top: 3px;
-        }
-
-        .btn {
-            border: 0;
-            border-radius: 9px;
-            padding: 8px 10px;
-            font: 600 9px Poppins;
-            cursor: pointer;
-        }
-
-        .up {
-            background: #2563eb;
-            color: #fff;
-        }
-
-        .ok {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        .drive {
-            background: linear-gradient(135deg, #0f766e, #0891b2);
-            color: #fff;
-            border-radius: 15px;
-            padding: 17px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-        }
-
-        .drive h3 {
-            font-size: 14px;
-            margin: 0 0 4px;
-        }
-
-        .drive p {
-            font-size: 9px;
-            margin: 0;
-        }
-
-        .drive a {
-            background: #fff;
-            color: #075985;
-            text-decoration: none;
-            border-radius: 9px;
-            padding: 10px 13px;
-            font-size: 10px;
-            font-weight: 700;
-        }
-
-        .actions {
-            text-align: right;
-        }
-
-        .main {
-            background: #2563eb;
-            color: #fff;
-        }
-
-        .print {
-            background: #fff;
-            border: 1px solid #cbd5e1;
-            margin-right: 7px;
-        }
-
-        .help {
-            font-size: 9px;
-            color: #64748b;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 700px) {
-            .container {
-                width: calc(100% - 18px);
-            }
-
-            .form,
-            .docs {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding: 15px;
-            }
-
-            .hero h1 {
-                font-size: 17px;
-            }
-
-            .card {
-                padding: 14px;
-            }
-
-            .drive {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .drive a {
-                width: 100%;
-                text-align: center;
-            }
-
-            .doc {
-                padding: 11px;
-            }
-        }
-
-        @media print {
-            .header,
-            .drive,
-            .actions,
-            .help {
-                display: none;
-            }
-
-            .container {
-                width: 100%;
-                margin: 0;
-            }
-
-            .card,
-            .hero {
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
+<title>SPJ Rapat Desa - Aplikasi 1 Pintu</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f1f5f9;color:#0f172a;font-family:Poppins,Arial,sans-serif}
+.header{height:68px;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;display:flex;align-items:center;padding:0 18px;gap:12px;box-shadow:0 3px 12px #0002;position:sticky;top:0;z-index:20}
+.back{width:38px;height:38px;border:0;border-radius:11px;background:#ffffff25;color:#fff;font-size:20px;cursor:pointer}.title h2{font-size:17px;margin:0}.title p{font-size:9px;margin:3px 0 0;opacity:.9}
+.container{width:min(1050px,calc(100% - 32px));margin:20px auto 40px}.hero,.card{background:#fff;border-radius:16px;box-shadow:0 5px 18px #0f172a12}.hero{padding:20px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.hero h1{font-size:20px;margin:0 0 5px;color:#1d4ed8}.hero p{margin:0;color:#64748b;font-size:11px}.hero-icon{width:58px;height:58px;border-radius:16px;background:#dbeafe;color:#2563eb;display:flex;align-items:center;justify-content:center;font-size:28px;flex:none}
+.card{padding:18px;margin-bottom:16px}.card-title{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;margin-bottom:14px;color:#1e3a8a}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}
+label{font-size:10px;font-weight:600;color:#475569}input,textarea{width:100%;border:1px solid #cbd5e1;border-radius:10px;padding:10px 11px;font-family:inherit;font-size:11px;outline:none;background:#fff}
+input:focus,textarea:focus{border-color:#2563eb;box-shadow:0 0 0 3px #2563eb14}textarea{min-height:72px;resize:vertical}
+.progress-wrap{background:#eff6ff;border:1px solid #dbeafe;border-radius:13px;padding:14px;margin-bottom:15px}.progress-top{display:flex;justify-content:space-between;font-size:11px;font-weight:600;margin-bottom:8px}
+.progress{height:9px;background:#dbeafe;border-radius:99px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#06b6d4);transition:.3s}
+.status{font-size:10px;color:#64748b;margin-top:7px}.status strong{color:#dc2626}.complete strong{color:#16a34a}
+.docs{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.doc{border:1px solid #e2e8f0;border-radius:13px;padding:13px;display:flex;align-items:center;gap:11px;background:#fff}.doc.done{border-color:#bbf7d0;background:#f0fdf4}
+.doc-icon{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:#eff6ff;color:#2563eb;font-size:20px;flex:none}.doc.done .doc-icon{background:#dcfce7;color:#16a34a}
+.doc-info{min-width:0;flex:1}.doc-name{font-size:11px;font-weight:700}.doc-note{font-size:8px;color:#64748b;margin-top:3px}.doc-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.btn{border:0;border-radius:9px;padding:8px 10px;font-family:inherit;font-size:9px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px}.btn-upload{background:#2563eb;color:#fff}.btn-ok{background:#dcfce7;color:#166534}.btn-view{background:#f1f5f9;color:#334155}
+input[type=file]{display:none}.drive{background:linear-gradient(135deg,#0f766e,#0891b2);color:#fff;border-radius:15px;padding:17px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.drive h3{font-size:14px;margin:0 0 4px}.drive p{font-size:9px;margin:0;opacity:.9}.drive a{background:#fff;color:#075985;text-decoration:none;border-radius:9px;padding:10px 13px;font-size:10px;font-weight:700;white-space:nowrap}
+.actions{display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap}.btn-main{background:#2563eb;color:#fff;padding:11px 16px}.btn-print{background:#fff;border:1px solid #cbd5e1;color:#334155;padding:11px 16px}.btn-reset{background:#fee2e2;color:#991b1b;padding:11px 16px}
+.help{font-size:9px;color:#64748b;line-height:1.7;margin-top:12px}.upload-status{display:none;margin-top:13px;padding:11px 13px;border-radius:10px;font-size:10px;line-height:1.5}.upload-status.info{display:block;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}.upload-status.success{display:block;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0}.upload-status.error{display:block;background:#fef2f2;color:#991b1b;border:1px solid #fecaca}.btn-main:disabled{opacity:.65;cursor:not-allowed}
+@media(max-width:700px){.container{width:calc(100% - 18px);margin:12px auto 28px}.hero{padding:15px}.hero h1{font-size:17px}.hero-icon{width:48px;height:48px;font-size:23px}.form-grid,.docs{grid-template-columns:1fr}.card{padding:14px}.drive{align-items:flex-start;flex-direction:column}.drive a{width:100%;text-align:center}.doc{padding:11px}.doc-actions{justify-content:flex-start}.actions{justify-content:stretch}.actions .btn{flex:1}}
+@media print{.header,.actions,.drive,.help,.btn-upload,.btn-view,.upload-status{display:none!important}.container{width:100%;margin:0}.hero,.card{box-shadow:none;border:1px solid #ddd}}
+</style>
 </head>
-
 <body>
 
-    <header class="header">
-        <button class="back" onclick="history.back()">
-            <i class="bi bi-arrow-left"></i>
-        </button>
+<header class="header">
+<button class="back" onclick="history.back()" title="Kembali"><i class="bi bi-arrow-left"></i></button>
+<div class="title"><h2>SPJ Rapat Desa</h2><p>Aplikasi 1 Pintu • Pemerintah Desa Muning Baru</p></div>
+</header>
 
-        <div class="title">
-            <h2>SPJ Rapat Desa</h2>
-            <p>Aplikasi 1 Pintu • Pemerintah Desa Muning Baru</p>
-        </div>
-    </header>
+<main class="container">
 
-    <main class="container">
+<section class="hero">
+<div>
+<h1><i class="bi bi-folder-check"></i> Kelengkapan SPJ Rapat</h1>
+<p>Catat kegiatan rapat dan pastikan seluruh dokumen pertanggungjawaban sudah lengkap.</p>
+</div>
+<div class="hero-icon"><i class="bi bi-clipboard2-check"></i></div>
+</section>
 
-        <section class="hero">
-            <div>
-                <h1>
-                    <i class="bi bi-folder-check"></i>
-                    Kelengkapan SPJ Rapat
-                </h1>
-                <p>
-                    Catat kegiatan rapat dan pastikan seluruh dokumen pertanggungjawaban lengkap.
-                </p>
+<section class="card">
+<div class="card-title"><i class="bi bi-calendar-event"></i> Informasi Kegiatan Rapat</div>
+<div class="form-grid">
+<div class="field"><label>Tanggal Rapat</label><input id="tanggal" type="date"></div>
+<div class="field"><label>Nama / Judul Kegiatan</label><input id="nama" type="text" placeholder="Contoh: Rapat Penyusunan RKPDes"></div>
+<div class="field"><label>Tempat</label><input id="tempat" type="text" placeholder="Contoh: Kantor Desa Muning Baru"></div>
+<div class="field"><label>Jumlah Peserta</label><input id="peserta" type="number" min="0" placeholder="Jumlah peserta"></div>
+<div class="field full"><label>Keterangan</label><textarea id="keterangan" placeholder="Keterangan tambahan kegiatan..."></textarea></div>
+</div>
+</section>
+
+<section class="card">
+<div class="card-title"><i class="bi bi-check2-square"></i> Checklist Dokumen SPJ</div>
+<div class="progress-wrap">
+<div class="progress-top"><span>Kelengkapan SPJ</span><span id="count">0 / 7</span></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div class="status" id="status">Masih ada dokumen yang belum lengkap.</div>
+</div>
+<div class="docs" id="docs"></div>
+</section>
+
+<section class="card">
+<div class="card-title"><i class="bi bi-cloud-arrow-up"></i> Penyimpanan Dokumen</div>
+<div class="drive">
+<div><h3><i class="bi bi-google"></i> Folder Google Drive SPJ Rapat</h3><p>File akan disimpan otomatis ke folder Google Drive SPJ Rapat Desa.</p></div>
+<a id="driveLink" href="#" target="_blank" rel="noopener"><i class="bi bi-folder2-open"></i> Buka Folder Google Drive</a>
+</div>
+<div class="upload-status" id="uploadStatus"></div>
+<p class="help">Pilih dokumen pada setiap bagian. Setelah semua dokumen tersedia, klik <b>Simpan &amp; Upload SPJ</b>. File akan dikirim ke Google Apps Script dan disimpan ke Google Drive.</p>
+</section>
+
+<section class="card">
+<div class="actions">
+<button class="btn btn-reset" onclick="resetSPJ()"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
+<button class="btn btn-print" onclick="window.print()"><i class="bi bi-printer"></i> Cetak Checklist</button>
+<button class="btn btn-main" id="saveButton" onclick="saveAndUploadSPJ()"><i class="bi bi-cloud-arrow-up"></i> Simpan &amp; Upload SPJ</button>
+</div>
+</section>
+
+</main>
+
+<script>
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyH54e4u_TR8F2ec78ovsadlxk_yQvRW8dtOAObcQ84nRjnsUJSBskD4K12g53VApq-/exec";
+const DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1a5NP903TTFL4PuZMjOm0ozCqRQ7k-uS_?usp=drive_link";
+
+const documents = [
+    {id:"undangan",name:"Undangan",icon:"bi-envelope-paper-fill",note:"Surat undangan rapat"},
+    {id:"daftarHadir",name:"Daftar Hadir",icon:"bi-people-fill",note:"Daftar peserta yang hadir"},
+    {id:"notulen",name:"Notulen / Berita Acara",icon:"bi-file-earmark-text-fill",note:"Notulen atau berita acara rapat"},
+    {id:"fotoKegiatan",name:"Foto Kegiatan Rapat",icon:"bi-camera-fill",note:"Dokumentasi kegiatan rapat"},
+    {id:"fotoNasi",name:"Foto Nasi Kotak",icon:"bi-box-seam-fill",note:"Foto nasi kotak / konsumsi"},
+    {id:"fotoSnack",name:"Foto Snack",icon:"bi-cup-hot-fill",note:"Foto snack / kudapan"},
+    {id:"nota",name:"Nota",icon:"bi-receipt-cutoff",note:"Nota / bukti pembelian"}
+];
+
+const state = {};
+documents.forEach(item => state[item.id] = null);
+
+function renderDocuments() {
+    const container = document.getElementById("docs");
+    container.innerHTML = "";
+
+    documents.forEach(item => {
+        const file = state[item.id];
+        const done = file !== null;
+        const element = document.createElement("div");
+
+        element.className = "doc " + (done ? "done" : "");
+
+        element.innerHTML = `
+            <div class="doc-icon"><i class="bi ${item.icon}"></i></div>
+            <div class="doc-info">
+                <div class="doc-name">${item.name}</div>
+                <div class="doc-note">${file ? escapeHtml(file.name) : item.note}</div>
             </div>
-
-            <div class="hero-icon">
-                <i class="bi bi-clipboard2-check"></i>
+            <div class="doc-actions">
+                <label class="btn ${done ? "btn-ok" : "btn-upload"}">
+                    <i class="bi ${done ? "bi-check-lg" : "bi-upload"}"></i>
+                    ${done ? "Dipilih" : "Pilih File"}
+                    <input type="file" accept="image/*,.pdf,.doc,.docx" onchange="selectFile('${item.id}',this)">
+                </label>
+                ${done ? `<button type="button" class="btn btn-view" onclick="removeFile('${item.id}')"><i class="bi bi-x-lg"></i> Ganti</button>` : ""}
             </div>
-        </section>
+        `;
 
-        <section class="card">
-            <div class="ct">
-                <i class="bi bi-calendar-event"></i>
-                Informasi Kegiatan Rapat
-            </div>
+        container.appendChild(element);
+    });
 
-            <div class="form">
-                <div class="field">
-                    <label>Tanggal Rapat</label>
-                    <input id="tanggal" type="date">
-                </div>
+    updateProgress();
+}
 
-                <div class="field">
-                    <label>Nama / Judul Kegiatan</label>
-                    <input
-                        id="nama"
-                        placeholder="Contoh: Rapat Penyusunan RKPDes"
-                    >
-                </div>
+function selectFile(id, input) {
+    if (!input.files || !input.files.length) return;
+    state[id] = input.files[0];
+    renderDocuments();
+}
 
-                <div class="field">
-                    <label>Tempat</label>
-                    <input
-                        id="tempat"
-                        placeholder="Kantor Desa Muning Baru"
-                    >
-                </div>
+function removeFile(id) {
+    state[id] = null;
+    renderDocuments();
+}
 
-                <div class="field">
-                    <label>Jumlah Peserta</label>
-                    <input id="peserta" type="number" min="0">
-                </div>
+function updateProgress() {
+    const total = documents.length;
+    const completed = documents.filter(item => state[item.id] !== null).length;
+    document.getElementById("count").textContent = completed + " / " + total;
+    document.getElementById("bar").style.width = (completed / total * 100) + "%";
 
-                <div class="field full">
-                    <label>Keterangan</label>
-                    <textarea
-                        id="ket"
-                        placeholder="Keterangan tambahan..."
-                    ></textarea>
-                </div>
-            </div>
-        </section>
+    const status = document.getElementById("status");
 
-        <section class="card">
-            <div class="ct">
-                <i class="bi bi-check2-square"></i>
-                Checklist Dokumen SPJ
-            </div>
+    if (completed === total) {
+        status.className = "status complete";
+        status.innerHTML = `<strong><i class="bi bi-check-circle-fill"></i> SPJ LENGKAP.</strong> Semua 7 dokumen sudah dipilih.`;
+    } else {
+        status.className = "status";
+        status.innerHTML = `Masih ada <strong>${total - completed} dokumen</strong> yang belum dipilih.`;
+    }
+}
 
-            <div class="progress">
-                <div class="pt">
-                    <span>Kelengkapan SPJ</span>
-                    <span id="count">0 / 7</span>
-                </div>
+async function saveAndUploadSPJ() {
+    const tanggal = document.getElementById("tanggal").value.trim();
+    const namaKegiatan = document.getElementById("nama").value.trim();
+    const tempat = document.getElementById("tempat").value.trim();
+    const peserta = document.getElementById("peserta").value.trim();
+    const keterangan = document.getElementById("keterangan").value.trim();
 
-                <div class="track">
-                    <div class="bar" id="bar"></div>
-                </div>
+    if (!tanggal) {
+        showStatus("error","Tanggal rapat belum diisi.");
+        return;
+    }
 
-                <div class="status" id="status">
-                    Masih ada dokumen yang belum lengkap.
-                </div>
-            </div>
+    if (!namaKegiatan) {
+        showStatus("error","Nama / judul kegiatan belum diisi.");
+        return;
+    }
 
-            <div class="docs" id="docs"></div>
-        </section>
+    const missing = documents.filter(item => state[item.id] === null);
 
-        <section class="card">
-            <div class="ct">
-                <i class="bi bi-cloud-arrow-up"></i>
-                Penyimpanan Dokumen
-            </div>
+    if (missing.length > 0) {
+        showStatus("error","SPJ belum lengkap. Masih ada " + missing.length + " dokumen yang belum dipilih.");
+        return;
+    }
 
-            <div class="drive">
-                <div>
-                    <h3>
-                        <i class="bi bi-google"></i>
-                        Folder Google Drive SPJ Rapat
-                    </h3>
-                    <p>
-                        Buka folder Drive untuk melihat dan menyimpan berkas SPJ.
-                    </p>
-                </div>
+    const button = document.getElementById("saveButton");
+    button.disabled = true;
+    button.innerHTML = `<i class="bi bi-arrow-repeat"></i> Mengupload...`;
+    showStatus("info","Sedang mengirim dokumen ke Google Drive. Mohon tunggu...");
 
-                <a id="drive" target="_blank">Buka Folder Google Drive</a>
-            </div>
+    try {
+        const files = {};
 
-            <p class="help">
-                Catatan: halaman ini menjadi checklist. Tombol upload dapat dikembangkan
-                dengan Google Apps Script agar file otomatis masuk ke folder berdasarkan kegiatan.
-            </p>
-        </section>
-
-        <section class="card">
-            <div class="actions">
-                <button class="btn print" onclick="print()">
-                    Cetak Checklist
-                </button>
-
-                <button class="btn main" onclick="save()">
-                    Simpan Data
-                </button>
-            </div>
-        </section>
-
-    </main>
-
-    <script>
-        const DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1a5NP903TTFL4PuZMjOm0ozCqRQ7k-uS_?usp=drive_link";
-
-        const docs = [
-            [
-                "undangan",
-                "Undangan",
-                "bi-envelope-paper-fill",
-                "Surat undangan rapat"
-            ],
-            [
-                "hadir",
-                "Daftar Hadir",
-                "bi-people-fill",
-                "Daftar peserta yang hadir"
-            ],
-            [
-                "notulen",
-                "Notulen / Berita Acara",
-                "bi-file-earmark-text-fill",
-                "Notulen atau berita acara"
-            ],
-            [
-                "kegiatan",
-                "Foto Kegiatan Rapat",
-                "bi-camera-fill",
-                "Dokumentasi kegiatan"
-            ],
-            [
-                "nasi",
-                "Foto Nasi Kotak",
-                "bi-box-seam-fill",
-                "Foto nasi kotak/konsumsi"
-            ],
-            [
-                "snack",
-                "Foto Snack",
-                "bi-cup-hot-fill",
-                "Foto snack/kudapan"
-            ],
-            [
-                "nota",
-                "Nota",
-                "bi-receipt-cutoff",
-                "Nota/bukti pembelian"
-            ]
-        ];
-
-        let state = Object.fromEntries(
-            docs.map(item => [item[0], false])
-        );
-
-        function render() {
-            document.querySelector("#docs").innerHTML = docs
-                .map(d => `
-                    <div class="doc ${state[d[0]] ? "done" : ""}">
-                        <div class="di">
-                            <i class="bi ${d[2]}"></i>
-                        </div>
-
-                        <div class="info">
-                            <div class="name">${d[1]}</div>
-                            <div class="note">${d[3]}</div>
-                        </div>
-
-                        <label class="btn ${state[d[0]] ? "ok" : "up"}">
-                            ${state[d[0]] ? "✓ Lengkap" : "Tandai"}
-                            <input
-                                type="file"
-                                hidden
-                                accept="image/*,.pdf,.doc,.docx"
-                                onchange="mark('${d[0]}',this)"
-                            >
-                        </label>
-                    </div>
-                `)
-                .join("");
-
-            update();
+        for (const item of documents) {
+            files[item.id] = await fileToBase64(state[item.id]);
         }
 
-        function mark(id, e) {
-            if (e.files.length) {
-                state[id] = true;
-            }
+        const payload = {
+            namaKegiatan,
+            tanggal,
+            tempat,
+            peserta,
+            keterangan,
+            files
+        };
 
-            render();
-        }
+        /*
+         * Google Apps Script menerima POST.
+         * no-cors membuat request dari GitHub Pages dapat dikirim.
+         */
+        await fetch(APPS_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {"Content-Type":"text/plain;charset=utf-8"},
+            body: JSON.stringify(payload)
+        });
 
-        function update() {
-            const n = docs.filter(d => state[d[0]]).length;
+        showStatus("success","✓ Dokumen sudah dikirim ke Google Apps Script. Silakan buka Google Drive untuk memeriksa folder SPJ.");
+        saveLocalBackup();
 
-            document.querySelector("#count").textContent = `${n} / 7`;
-            document.querySelector("#bar").style.width = `${n / 7 * 100}%`;
+    } catch (error) {
+        console.error(error);
+        showStatus("error","Upload gagal. Periksa koneksi internet dan coba lagi.");
+    }
 
-            document.querySelector("#status").innerHTML = n === 7
-                ? "<b style='color:#16a34a'>✓ SPJ LENGKAP — semua 7 dokumen sudah ditandai.</b>"
-                : `Masih ada <b style='color:#dc2626'>${7 - n} dokumen</b> yang belum lengkap.`;
-        }
+    button.disabled = false;
+    button.innerHTML = `<i class="bi bi-cloud-arrow-up"></i> Simpan &amp; Upload SPJ`;
+}
 
-        function save() {
-            localStorage.setItem(
-                "spjRapat",
-                JSON.stringify({
-                    tanggal: tanggal.value,
-                    nama: nama.value,
-                    tempat: tempat.value,
-                    peserta: peserta.value,
-                    ket: ket.value,
-                    state
-                })
-            );
+function fileToBase64(file) {
+    return new Promise((resolve,reject) => {
+        const reader = new FileReader();
 
-            alert("Data SPJ berhasil disimpan di perangkat ini.");
-        }
+        reader.onload = () => {
+            const result = reader.result;
+            const comma = result.indexOf(",");
 
-        drive.href = DRIVE_FOLDER_URL;
-        render();
-    </script>
+            resolve({
+                fileName: file.name,
+                mimeType: file.type || "application/octet-stream",
+                data: result.substring(comma + 1)
+            });
+        };
+
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+}
+
+function saveLocalBackup() {
+    const data = {
+        tanggal: document.getElementById("tanggal").value,
+        nama: document.getElementById("nama").value,
+        tempat: document.getElementById("tempat").value,
+        peserta: document.getElementById("peserta").value,
+        keterangan: document.getElementById("keterangan").value,
+        waktu: new Date().toISOString()
+    };
+
+    localStorage.setItem("spjRapatTerakhir",JSON.stringify(data));
+}
+
+function showStatus(type,message) {
+    const element = document.getElementById("uploadStatus");
+    element.className = "upload-status " + type;
+    element.innerHTML = message;
+}
+
+function resetSPJ() {
+    if (!confirm("Hapus semua data dan pilihan file pada formulir ini?")) return;
+
+    documents.forEach(item => state[item.id] = null);
+
+    document.getElementById("tanggal").value = "";
+    document.getElementById("nama").value = "";
+    document.getElementById("tempat").value = "";
+    document.getElementById("peserta").value = "";
+    document.getElementById("keterangan").value = "";
+
+    document.getElementById("uploadStatus").className = "upload-status";
+    document.getElementById("uploadStatus").innerHTML = "";
+
+    renderDocuments();
+}
+
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+document.getElementById("driveLink").href = DRIVE_FOLDER_URL;
+renderDocuments();
+</script>
 
 </body>
-
 </html>

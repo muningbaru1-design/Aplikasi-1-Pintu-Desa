@@ -8,27 +8,47 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f1f5f9;color:#0f172a;font-family:Poppins,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:#f1f5f9;color:#0f172a;font-family:Poppins,Arial,sans-serif}
 .header{height:68px;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;display:flex;align-items:center;padding:0 18px;gap:12px;box-shadow:0 3px 12px #0002;position:sticky;top:0;z-index:20}
-.back{width:38px;height:38px;border:0;border-radius:11px;background:#ffffff25;color:#fff;font-size:20px;cursor:pointer}.title h2{font-size:17px;margin:0}.title p{font-size:9px;margin:3px 0 0;opacity:.9}
-.container{width:min(1050px,calc(100% - 32px));margin:20px auto 40px}.hero,.card{background:#fff;border-radius:16px;box-shadow:0 5px 18px #0f172a12}.hero{padding:20px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:15px}
-.hero h1{font-size:20px;margin:0 0 5px;color:#1d4ed8}.hero p{margin:0;color:#64748b;font-size:11px}.hero-icon{width:58px;height:58px;border-radius:16px;background:#dbeafe;color:#2563eb;display:flex;align-items:center;justify-content:center;font-size:28px;flex:none}
+.back{width:38px;height:38px;border:0;border-radius:11px;background:#ffffff25;color:#fff;font-size:20px;cursor:pointer}
+.title h2{font-size:17px;margin:0}.title p{font-size:9px;margin:3px 0 0;opacity:.9}
+.container{width:min(1050px,calc(100% - 32px));margin:20px auto 40px}
+.hero,.card{background:#fff;border-radius:16px;box-shadow:0 5px 18px #0f172a12}
+.hero{padding:20px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.hero h1{font-size:20px;margin:0 0 5px;color:#1d4ed8}.hero p{margin:0;color:#64748b;font-size:11px}
+.hero-icon{width:58px;height:58px;border-radius:16px;background:#dbeafe;color:#2563eb;display:flex;align-items:center;justify-content:center;font-size:28px;flex:none}
 .card{padding:18px;margin-bottom:16px}.card-title{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;margin-bottom:14px;color:#1e3a8a}
 .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}
-label{font-size:10px;font-weight:600;color:#475569}input,textarea{width:100%;border:1px solid #cbd5e1;border-radius:10px;padding:10px 11px;font-family:inherit;font-size:11px;outline:none;background:#fff}
+label{font-size:10px;font-weight:600;color:#475569}
+input,textarea{width:100%;border:1px solid #cbd5e1;border-radius:10px;padding:10px 11px;font-family:inherit;font-size:11px;outline:none;background:#fff}
 input:focus,textarea:focus{border-color:#2563eb;box-shadow:0 0 0 3px #2563eb14}textarea{min-height:72px;resize:vertical}
-.progress-wrap{background:#eff6ff;border:1px solid #dbeafe;border-radius:13px;padding:14px;margin-bottom:15px}.progress-top{display:flex;justify-content:space-between;font-size:11px;font-weight:600;margin-bottom:8px}
+.progress-wrap{background:#eff6ff;border:1px solid #dbeafe;border-radius:13px;padding:14px;margin-bottom:15px}
+.progress-top{display:flex;justify-content:space-between;font-size:11px;font-weight:600;margin-bottom:8px}
 .progress{height:9px;background:#dbeafe;border-radius:99px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#06b6d4);transition:.3s}
 .status{font-size:10px;color:#64748b;margin-top:7px}.status strong{color:#dc2626}.complete strong{color:#16a34a}
-.docs{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.doc{border:1px solid #e2e8f0;border-radius:13px;padding:13px;display:flex;align-items:center;gap:11px;background:#fff}.doc.done{border-color:#bbf7d0;background:#f0fdf4}
-.doc-icon{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:#eff6ff;color:#2563eb;font-size:20px;flex:none}.doc.done .doc-icon{background:#dcfce7;color:#16a34a}
-.doc-info{min-width:0;flex:1}.doc-name{font-size:11px;font-weight:700}.doc-note{font-size:8px;color:#64748b;margin-top:3px}.doc-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.btn{border:0;border-radius:9px;padding:8px 10px;font-family:inherit;font-size:9px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px}.btn-upload{background:#2563eb;color:#fff}.btn-ok{background:#dcfce7;color:#166534}.btn-view{background:#f1f5f9;color:#334155}
-input[type=file]{display:none}.drive{background:linear-gradient(135deg,#0f766e,#0891b2);color:#fff;border-radius:15px;padding:17px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.docs{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.doc{border:1px solid #e2e8f0;border-radius:13px;padding:13px;display:flex;align-items:center;gap:11px;background:#fff}
+.doc.done{border-color:#bbf7d0;background:#f0fdf4}.doc-icon{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:#eff6ff;color:#2563eb;font-size:20px;flex:none}
+.doc.done .doc-icon{background:#dcfce7;color:#16a34a}.doc-info{min-width:0;flex:1}.doc-name{font-size:11px;font-weight:700}.doc-note{font-size:8px;color:#64748b;margin-top:3px}
+.doc-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.btn{border:0;border-radius:9px;padding:8px 10px;font-family:inherit;font-size:9px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px}
+.btn-upload{background:#2563eb;color:#fff}.btn-ok{background:#dcfce7;color:#166534}.btn-view{background:#f1f5f9;color:#334155}
+input[type=file]{display:none}
+.drive{background:linear-gradient(135deg,#0f766e,#0891b2);color:#fff;border-radius:15px;padding:17px;display:flex;align-items:center;justify-content:space-between;gap:15px}
 .drive h3{font-size:14px;margin:0 0 4px}.drive p{font-size:9px;margin:0;opacity:.9}.drive a{background:#fff;color:#075985;text-decoration:none;border-radius:9px;padding:10px 13px;font-size:10px;font-weight:700;white-space:nowrap}
-.actions{display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap}.btn-main{background:#2563eb;color:#fff;padding:11px 16px}.btn-print{background:#fff;border:1px solid #cbd5e1;color:#334155;padding:11px 16px}.btn-reset{background:#fee2e2;color:#991b1b;padding:11px 16px}
-.help{font-size:9px;color:#64748b;line-height:1.7;margin-top:12px}.upload-status{display:none;margin-top:13px;padding:11px 13px;border-radius:10px;font-size:10px;line-height:1.5}.upload-status.info{display:block;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}.upload-status.success{display:block;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0}.upload-status.error{display:block;background:#fef2f2;color:#991b1b;border:1px solid #fecaca}.btn-main:disabled{opacity:.65;cursor:not-allowed}
-@media(max-width:700px){.container{width:calc(100% - 18px);margin:12px auto 28px}.hero{padding:15px}.hero h1{font-size:17px}.hero-icon{width:48px;height:48px;font-size:23px}.form-grid,.docs{grid-template-columns:1fr}.card{padding:14px}.drive{align-items:flex-start;flex-direction:column}.drive a{width:100%;text-align:center}.doc{padding:11px}.doc-actions{justify-content:flex-start}.actions{justify-content:stretch}.actions .btn{flex:1}}
+.actions{display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap}
+.btn-main{background:#2563eb;color:#fff;padding:11px 16px}.btn-print{background:#fff;border:1px solid #cbd5e1;color:#334155;padding:11px 16px}.btn-reset{background:#fee2e2;color:#991b1b;padding:11px 16px}
+.help{font-size:9px;color:#64748b;line-height:1.7;margin-top:12px}
+.upload-status{display:none;margin-top:13px;padding:11px 13px;border-radius:10px;font-size:10px;line-height:1.5}
+.upload-status.info{display:block;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+.upload-status.success{display:block;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0}
+.upload-status.error{display:block;background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+.btn-main:disabled{opacity:.65;cursor:not-allowed}
+@media(max-width:700px){
+.container{width:calc(100% - 18px);margin:12px auto 28px}.hero{padding:15px}.hero h1{font-size:17px}.hero-icon{width:48px;height:48px;font-size:23px}
+.form-grid,.docs{grid-template-columns:1fr}.card{padding:14px}.drive{align-items:flex-start;flex-direction:column}.drive a{width:100%;text-align:center}
+.doc{padding:11px}.doc-actions{justify-content:flex-start}.actions{justify-content:stretch}.actions .btn{flex:1}
+}
 @media print{.header,.actions,.drive,.help,.btn-upload,.btn-view,.upload-status{display:none!important}.container{width:100%;margin:0}.hero,.card{box-shadow:none;border:1px solid #ddd}}
 </style>
 </head>
@@ -91,253 +111,158 @@ input[type=file]{display:none}.drive{background:linear-gradient(135deg,#0f766e,#
 </main>
 
 <script>
-const APPS_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbx4enQk4_xUXWqIc7IWpxn4zkssdtW2S5RLrinToSsfGQFwGkUDGTWC_C4EvL98UM70/exec";
+/*
+ * SETELAH DEPLOY WEB APP GOOGLE APPS SCRIPT:
+ * tempel URL /exec pada APPS_SCRIPT_URL di bawah.
+ */
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyh05H7zyS3EFH37oSZPbH4wo0j4u6mWzPGsn42MpDlxt3OtWLCVISpzeuRwadPt8N_/exec";
 
 const DRIVE_FOLDER_URL =
 "https://drive.google.com/drive/folders/1a5NP903TTFL4PuZMjOm0ozCqRQ7k-uS_?usp=drive_link";
 
 const documents = [
-    {id:"undangan",name:"Undangan",scriptName:"Undangan",icon:"bi-envelope-paper-fill",note:"Surat undangan rapat"},
-    {id:"daftarHadir",name:"Daftar Hadir",scriptName:"Daftar Hadir",icon:"bi-people-fill",note:"Daftar peserta yang hadir"},
-    {id:"notulen",name:"Notulen / Berita Acara",scriptName:"Notulen/Berita Acara",icon:"bi-file-earmark-text-fill",note:"Notulen atau berita acara rapat"},
-    {id:"fotoKegiatan",name:"Foto Kegiatan Rapat",scriptName:"Foto Kegiatan Rapat",icon:"bi-camera-fill",note:"Dokumentasi kegiatan rapat"},
-    {id:"fotoNasi",name:"Foto Nasi Kotak",scriptName:"Foto Nasi Kotak",icon:"bi-box-seam-fill",note:"Foto nasi kotak / konsumsi"},
-    {id:"fotoSnack",name:"Foto Snack",scriptName:"Foto Snack",icon:"bi-cup-hot-fill",note:"Foto snack / kudapan"},
-    {id:"nota",name:"Nota",scriptName:"Nota",icon:"bi-receipt-cutoff",note:"Nota / bukti pembelian"}
+ {id:"undangan",name:"Undangan",scriptName:"Undangan",icon:"bi-envelope-paper-fill",note:"Surat undangan rapat"},
+ {id:"daftarHadir",name:"Daftar Hadir",scriptName:"Daftar Hadir",icon:"bi-people-fill",note:"Daftar peserta yang hadir"},
+ {id:"notulen",name:"Notulen / Berita Acara",scriptName:"Notulen/Berita Acara",icon:"bi-file-earmark-text-fill",note:"Notulen atau berita acara rapat"},
+ {id:"fotoKegiatan",name:"Foto Kegiatan Rapat",scriptName:"Foto Kegiatan Rapat",icon:"bi-camera-fill",note:"Dokumentasi kegiatan rapat"},
+ {id:"fotoNasi",name:"Foto Nasi Kotak",scriptName:"Foto Nasi Kotak",icon:"bi-box-seam-fill",note:"Foto nasi kotak / konsumsi"},
+ {id:"fotoSnack",name:"Foto Snack",scriptName:"Foto Snack",icon:"bi-cup-hot-fill",note:"Foto snack / kudapan"},
+ {id:"nota",name:"Nota",scriptName:"Nota",icon:"bi-receipt-cutoff",note:"Nota / bukti pembelian"}
 ];
 
 const state = {};
 documents.forEach(item => state[item.id] = null);
 
-const params = new URLSearchParams(window.location.search);
-const presetNoUrut = params.get("noUrut") || params.get("no_urut") || "";
-const presetNomorSurat = params.get("nomorSurat") || params.get("nomor_surat") || "";
-
-function renderDocuments() {
-    const container = document.getElementById("docs");
-    container.innerHTML = "";
-
-    documents.forEach(item => {
-        const file = state[item.id];
-        const done = file !== null;
-        const element = document.createElement("div");
-
-        element.className = "doc " + (done ? "done" : "");
-
-        element.innerHTML = `
-            <div class="doc-icon"><i class="bi ${item.icon}"></i></div>
-            <div class="doc-info">
-                <div class="doc-name">${item.name}</div>
-                <div class="doc-note">${file ? escapeHtml(file.name) : item.note}</div>
-            </div>
-            <div class="doc-actions">
-                <label class="btn ${done ? "btn-ok" : "btn-upload"}">
-                    <i class="bi ${done ? "bi-check-lg" : "bi-upload"}"></i>
-                    ${done ? "Dipilih" : "Pilih File"}
-                    <input type="file" accept="image/*,.pdf,.doc,.docx" onchange="selectFile('${item.id}',this)">
-                </label>
-                ${done ? `<button type="button" class="btn btn-view" onclick="removeFile('${item.id}')"><i class="bi bi-x-lg"></i> Ganti</button>` : ""}
-            </div>
-        `;
-
-        container.appendChild(element);
-    });
-
-    updateProgress();
+function renderDocuments(){
+ const container=document.getElementById("docs"); container.innerHTML="";
+ documents.forEach(item=>{
+  const file=state[item.id], done=!!file;
+  const el=document.createElement("div"); el.className="doc "+(done?"done":"");
+  el.innerHTML=`
+   <div class="doc-icon"><i class="bi ${item.icon}"></i></div>
+   <div class="doc-info"><div class="doc-name">${item.name}</div>
+   <div class="doc-note">${file?escapeHtml(file.name):item.note}</div></div>
+   <div class="doc-actions">
+    <label class="btn ${done?"btn-ok":"btn-upload"}"><i class="bi ${done?"bi-check-lg":"bi-upload"}"></i>
+    ${done?"Dipilih":"Pilih File"}<input type="file" accept="image/*,.pdf,.doc,.docx" onchange="selectFile('${item.id}',this)"></label>
+    ${done?`<button type="button" class="btn btn-view" onclick="removeFile('${item.id}')"><i class="bi bi-x-lg"></i> Ganti</button>`:""}
+   </div>`;
+  container.appendChild(el);
+ });
+ updateProgress();
 }
 
-function selectFile(id,input) {
-    if (!input.files || !input.files.length) return;
-    state[id] = input.files[0];
-    renderDocuments();
+function selectFile(id,input){ if(input.files&&input.files.length){state[id]=input.files[0];renderDocuments();} }
+function removeFile(id){state[id]=null;renderDocuments();}
+
+function updateProgress(){
+ const total=documents.length;
+ const completed=documents.filter(x=>state[x.id]).length;
+ document.getElementById("count").textContent=completed+" / "+total;
+ document.getElementById("bar").style.width=(completed/total*100)+"%";
+ const s=document.getElementById("status");
+ if(completed===total){s.className="status complete";s.innerHTML='<strong><i class="bi bi-check-circle-fill"></i> SPJ LENGKAP.</strong> Semua 7 dokumen sudah dipilih.';}
+ else{s.className="status";s.innerHTML=`Masih ada <strong>${total-completed} dokumen</strong> yang belum dipilih.`;}
 }
 
-function removeFile(id) {
-    state[id] = null;
-    renderDocuments();
+async function saveAndUploadSPJ(){
+ if(!APPS_SCRIPT_URL||APPS_SCRIPT_URL.indexOf("PASTE_")===0){
+  showStatus("error","URL Web App Apps Script belum dimasukkan ke spj-rapat.html."); return;
+ }
+
+ const tanggal=document.getElementById("tanggal").value.trim();
+ const namaKegiatan=document.getElementById("nama").value.trim();
+ const tempat=document.getElementById("tempat").value.trim();
+ const peserta=document.getElementById("peserta").value.trim();
+ const keterangan=document.getElementById("keterangan").value.trim();
+
+ if(!tanggal){showStatus("error","Tanggal rapat belum diisi.");return;}
+ if(!namaKegiatan){showStatus("error","Nama / judul kegiatan belum diisi.");return;}
+
+ const missing=documents.filter(x=>!state[x.id]);
+ if(missing.length){showStatus("error","SPJ belum lengkap. Masih ada "+missing.length+" dokumen yang belum dipilih.");return;}
+
+ const button=document.getElementById("saveButton");
+ button.disabled=true; button.innerHTML='<i class="bi bi-arrow-repeat"></i> Mengupload...';
+ showStatus("info","Sedang mengirim 7 dokumen ke Google Drive. Mohon tunggu...");
+
+ try{
+  const files=[];
+  for(const item of documents){
+   const f=await fileToBase64(state[item.id]);
+   files.push({jenis:item.scriptName,name:f.fileName,mimeType:f.mimeType,base64:f.base64});
+  }
+
+  const payload={
+   tanggal: tanggal,
+   namaKegiatan: namaKegiatan,
+   acara: namaKegiatan,
+   tempat: tempat,
+   jumlahPeserta: peserta,
+   peserta: peserta,
+   keterangan: keterangan,
+   files: files
+  };
+
+  const response=await fetch(APPS_SCRIPT_URL,{
+   method:"POST",
+   headers:{"Content-Type":"text/plain;charset=utf-8"},
+   body:JSON.stringify(payload)
+  });
+
+  let result=null;
+  try{result=await response.json();}catch(e){}
+
+  if(result && result.success===false) throw new Error(result.message||"Apps Script menolak data.");
+
+  if(result && result.folderUrl){
+   showStatus("success",
+    `✓ SPJ berhasil disimpan. <a href="${result.folderUrl}" target="_blank" rel="noopener">Buka Folder SPJ</a>`);
+  }else{
+   showStatus("success","✓ Data dan 7 dokumen sudah dikirim ke sistem SPJ Rapat Desa.");
+  }
+
+ }catch(error){
+  console.error(error);
+  showStatus("error","Upload gagal: "+escapeHtml(error.message||"Periksa koneksi dan URL Apps Script."));
+ }
+
+ button.disabled=false;
+ button.innerHTML='<i class="bi bi-cloud-arrow-up"></i> Simpan &amp; Upload SPJ';
 }
 
-function updateProgress() {
-    const total = documents.length;
-    const completed = documents.filter(item => state[item.id] !== null).length;
-
-    document.getElementById("count").textContent =
-        completed + " / " + total;
-
-    document.getElementById("bar").style.width =
-        (completed / total * 100) + "%";
-
-    const status = document.getElementById("status");
-
-    if (completed === total) {
-        status.className = "status complete";
-        status.innerHTML =
-            `<strong><i class="bi bi-check-circle-fill"></i> SPJ LENGKAP.</strong> Semua 7 dokumen sudah dipilih.`;
-    } else {
-        status.className = "status";
-        status.innerHTML =
-            `Masih ada <strong>${total - completed} dokumen</strong> yang belum dipilih.`;
-    }
+function fileToBase64(file){
+ return new Promise((resolve,reject)=>{
+  const reader=new FileReader();
+  reader.onload=()=>{
+   const result=reader.result, comma=result.indexOf(",");
+   resolve({fileName:file.name,mimeType:file.type||"application/octet-stream",base64:result.substring(comma+1)});
+  };
+  reader.onerror=reject;
+  reader.readAsDataURL(file);
+ });
 }
 
-async function saveAndUploadSPJ() {
-    const tanggal = document.getElementById("tanggal").value.trim();
-    const namaKegiatan = document.getElementById("nama").value.trim();
-    const tempat = document.getElementById("tempat").value.trim();
-    const peserta = document.getElementById("peserta").value.trim();
-    const keterangan = document.getElementById("keterangan").value.trim();
-
-    if (!tanggal) {
-        showStatus("error","Tanggal rapat belum diisi.");
-        return;
-    }
-
-    if (!namaKegiatan) {
-        showStatus("error","Nama / judul kegiatan belum diisi.");
-        return;
-    }
-
-    const missing = documents.filter(item => state[item.id] === null);
-
-    if (missing.length > 0) {
-        showStatus("error",
-            "SPJ belum lengkap. Masih ada " + missing.length +
-            " dokumen yang belum dipilih.");
-        return;
-    }
-
-    const button = document.getElementById("saveButton");
-    button.disabled = true;
-    button.innerHTML =
-        `<i class="bi bi-arrow-repeat"></i> Mengupload...`;
-
-    showStatus("info",
-        "Sedang mengirim 7 dokumen ke Google Drive dan mencatatnya ke Rekap Rapat/Musdes. Mohon tunggu...");
-
-    try {
-        const files = [];
-
-        for (const item of documents) {
-            const converted = await fileToBase64(state[item.id]);
-
-            files.push({
-                jenis: item.scriptName,
-                name: converted.fileName,
-                mimeType: converted.mimeType,
-                base64: converted.base64
-            });
-        }
-
-        const payload = {
-            noUrut: presetNoUrut,
-            nomorSurat: presetNomorSurat,
-            tanggal: tanggal,
-            acara: namaKegiatan,
-            namaKegiatan: namaKegiatan,
-            tempat: tempat,
-            peserta: peserta,
-            jumlahPeserta: peserta,
-            keterangan: keterangan,
-            files: files
-        };
-
-        await fetch(APPS_SCRIPT_URL,{
-            method:"POST",
-            mode:"no-cors",
-            headers:{
-                "Content-Type":"text/plain;charset=utf-8"
-            },
-            body:JSON.stringify(payload)
-        });
-
-        showStatus("success",
-            "✓ 7 dokumen sudah dikirim. Folder SPJ dibuat di Google Drive dan data diarahkan ke Rekap Rapat/Musdes. Silakan periksa Rekap dan Drive.");
-
-        saveLocalBackup();
-
-    } catch(error) {
-        console.error(error);
-        showStatus("error",
-            "Upload gagal. Periksa koneksi internet dan konfigurasi Google Apps Script.");
-    }
-
-    button.disabled = false;
-    button.innerHTML =
-        `<i class="bi bi-cloud-arrow-up"></i> Simpan &amp; Upload SPJ`;
+function showStatus(type,message){
+ const el=document.getElementById("uploadStatus");
+ el.className="upload-status "+type; el.innerHTML=message;
 }
 
-function fileToBase64(file) {
-    return new Promise((resolve,reject) => {
-        const reader = new FileReader();
-
-        reader.onload = () => {
-            const result = reader.result;
-            const comma = result.indexOf(",");
-
-            resolve({
-                fileName:file.name,
-                mimeType:file.type || "application/octet-stream",
-                base64:result.substring(comma + 1)
-            });
-        };
-
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
-    });
+function resetSPJ(){
+ if(!confirm("Hapus semua data dan pilihan file pada formulir ini?"))return;
+ documents.forEach(x=>state[x.id]=null);
+ ["tanggal","nama","tempat","peserta","keterangan"].forEach(id=>document.getElementById(id).value="");
+ document.getElementById("uploadStatus").className="upload-status";
+ document.getElementById("uploadStatus").innerHTML="";
+ renderDocuments();
 }
 
-function saveLocalBackup() {
-    const data = {
-        tanggal:document.getElementById("tanggal").value,
-        nama:document.getElementById("nama").value,
-        tempat:document.getElementById("tempat").value,
-        peserta:document.getElementById("peserta").value,
-        keterangan:document.getElementById("keterangan").value,
-        waktu:new Date().toISOString()
-    };
-
-    localStorage.setItem(
-        "spjRapatTerakhir",
-        JSON.stringify(data)
-    );
+function escapeHtml(value){
+ return String(value).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
 }
 
-function showStatus(type,message) {
-    const element = document.getElementById("uploadStatus");
-    element.className = "upload-status " + type;
-    element.innerHTML = message;
-}
-
-function resetSPJ() {
-    if (!confirm("Hapus semua data dan pilihan file pada formulir ini?")) return;
-
-    documents.forEach(item => state[item.id] = null);
-
-    document.getElementById("tanggal").value = "";
-    document.getElementById("nama").value = "";
-    document.getElementById("tempat").value = "";
-    document.getElementById("peserta").value = "";
-    document.getElementById("keterangan").value = "";
-
-    document.getElementById("uploadStatus").className = "upload-status";
-    document.getElementById("uploadStatus").innerHTML = "";
-
-    renderDocuments();
-}
-
-function escapeHtml(value) {
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-}
-
-document.getElementById("driveLink").href = DRIVE_FOLDER_URL;
+document.getElementById("driveLink").href=DRIVE_FOLDER_URL;
 renderDocuments();
 </script>
-
 </body>
 </html>

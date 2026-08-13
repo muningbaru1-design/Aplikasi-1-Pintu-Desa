@@ -93,6 +93,14 @@ link:"pages/menu.html?kategori=produkhukum"
 },
 
 {
+    id:"rapat v2",
+    nama:"Catat Rapat Versi 2",
+    icon:"bi-pencil-square",
+    warna:"#14B8A6",
+    link:"pages/spj-rapat.html"
+},
+
+{
     id: "laporan-kader",
     nama: "Laporan Kegiatan Kader Desa",
     icon: "bi-clipboard2-check-fill",

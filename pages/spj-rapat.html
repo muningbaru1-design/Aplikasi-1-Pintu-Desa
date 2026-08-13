@@ -91,21 +91,28 @@ input[type=file]{display:none}.drive{background:linear-gradient(135deg,#0f766e,#
 </main>
 
 <script>
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyH54e4u_TR8F2ec78ovsadlxk_yQvRW8dtOAObcQ84nRjnsUJSBskD4K12g53VApq-/exec";
-const DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1a5NP903TTFL4PuZMjOm0ozCqRQ7k-uS_?usp=drive_link";
+const APPS_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbx4enQk4_xUXWqIc7IWpxn4zkssdtW2S5RLrinToSsfGQFwGkUDGTWC_C4EvL98UM70/exec";
+
+const DRIVE_FOLDER_URL =
+"https://drive.google.com/drive/folders/1a5NP903TTFL4PuZMjOm0ozCqRQ7k-uS_?usp=drive_link";
 
 const documents = [
-    {id:"undangan",name:"Undangan",icon:"bi-envelope-paper-fill",note:"Surat undangan rapat"},
-    {id:"daftarHadir",name:"Daftar Hadir",icon:"bi-people-fill",note:"Daftar peserta yang hadir"},
-    {id:"notulen",name:"Notulen / Berita Acara",icon:"bi-file-earmark-text-fill",note:"Notulen atau berita acara rapat"},
-    {id:"fotoKegiatan",name:"Foto Kegiatan Rapat",icon:"bi-camera-fill",note:"Dokumentasi kegiatan rapat"},
-    {id:"fotoNasi",name:"Foto Nasi Kotak",icon:"bi-box-seam-fill",note:"Foto nasi kotak / konsumsi"},
-    {id:"fotoSnack",name:"Foto Snack",icon:"bi-cup-hot-fill",note:"Foto snack / kudapan"},
-    {id:"nota",name:"Nota",icon:"bi-receipt-cutoff",note:"Nota / bukti pembelian"}
+    {id:"undangan",name:"Undangan",scriptName:"Undangan",icon:"bi-envelope-paper-fill",note:"Surat undangan rapat"},
+    {id:"daftarHadir",name:"Daftar Hadir",scriptName:"Daftar Hadir",icon:"bi-people-fill",note:"Daftar peserta yang hadir"},
+    {id:"notulen",name:"Notulen / Berita Acara",scriptName:"Notulen/Berita Acara",icon:"bi-file-earmark-text-fill",note:"Notulen atau berita acara rapat"},
+    {id:"fotoKegiatan",name:"Foto Kegiatan Rapat",scriptName:"Foto Kegiatan Rapat",icon:"bi-camera-fill",note:"Dokumentasi kegiatan rapat"},
+    {id:"fotoNasi",name:"Foto Nasi Kotak",scriptName:"Foto Nasi Kotak",icon:"bi-box-seam-fill",note:"Foto nasi kotak / konsumsi"},
+    {id:"fotoSnack",name:"Foto Snack",scriptName:"Foto Snack",icon:"bi-cup-hot-fill",note:"Foto snack / kudapan"},
+    {id:"nota",name:"Nota",scriptName:"Nota",icon:"bi-receipt-cutoff",note:"Nota / bukti pembelian"}
 ];
 
 const state = {};
 documents.forEach(item => state[item.id] = null);
+
+const params = new URLSearchParams(window.location.search);
+const presetNoUrut = params.get("noUrut") || params.get("no_urut") || "";
+const presetNomorSurat = params.get("nomorSurat") || params.get("nomor_surat") || "";
 
 function renderDocuments() {
     const container = document.getElementById("docs");
@@ -140,7 +147,7 @@ function renderDocuments() {
     updateProgress();
 }
 
-function selectFile(id, input) {
+function selectFile(id,input) {
     if (!input.files || !input.files.length) return;
     state[id] = input.files[0];
     renderDocuments();
@@ -154,17 +161,23 @@ function removeFile(id) {
 function updateProgress() {
     const total = documents.length;
     const completed = documents.filter(item => state[item.id] !== null).length;
-    document.getElementById("count").textContent = completed + " / " + total;
-    document.getElementById("bar").style.width = (completed / total * 100) + "%";
+
+    document.getElementById("count").textContent =
+        completed + " / " + total;
+
+    document.getElementById("bar").style.width =
+        (completed / total * 100) + "%";
 
     const status = document.getElementById("status");
 
     if (completed === total) {
         status.className = "status complete";
-        status.innerHTML = `<strong><i class="bi bi-check-circle-fill"></i> SPJ LENGKAP.</strong> Semua 7 dokumen sudah dipilih.`;
+        status.innerHTML =
+            `<strong><i class="bi bi-check-circle-fill"></i> SPJ LENGKAP.</strong> Semua 7 dokumen sudah dipilih.`;
     } else {
         status.className = "status";
-        status.innerHTML = `Masih ada <strong>${total - completed} dokumen</strong> yang belum dipilih.`;
+        status.innerHTML =
+            `Masih ada <strong>${total - completed} dokumen</strong> yang belum dipilih.`;
     }
 }
 
@@ -188,52 +201,70 @@ async function saveAndUploadSPJ() {
     const missing = documents.filter(item => state[item.id] === null);
 
     if (missing.length > 0) {
-        showStatus("error","SPJ belum lengkap. Masih ada " + missing.length + " dokumen yang belum dipilih.");
+        showStatus("error",
+            "SPJ belum lengkap. Masih ada " + missing.length +
+            " dokumen yang belum dipilih.");
         return;
     }
 
     const button = document.getElementById("saveButton");
     button.disabled = true;
-    button.innerHTML = `<i class="bi bi-arrow-repeat"></i> Mengupload...`;
-    showStatus("info","Sedang mengirim dokumen ke Google Drive. Mohon tunggu...");
+    button.innerHTML =
+        `<i class="bi bi-arrow-repeat"></i> Mengupload...`;
+
+    showStatus("info",
+        "Sedang mengirim 7 dokumen ke Google Drive dan mencatatnya ke Rekap Rapat/Musdes. Mohon tunggu...");
 
     try {
-        const files = {};
+        const files = [];
 
         for (const item of documents) {
-            files[item.id] = await fileToBase64(state[item.id]);
+            const converted = await fileToBase64(state[item.id]);
+
+            files.push({
+                jenis: item.scriptName,
+                name: converted.fileName,
+                mimeType: converted.mimeType,
+                base64: converted.base64
+            });
         }
 
         const payload = {
-            namaKegiatan,
-            tanggal,
-            tempat,
-            peserta,
-            keterangan,
-            files
+            noUrut: presetNoUrut,
+            nomorSurat: presetNomorSurat,
+            tanggal: tanggal,
+            acara: namaKegiatan,
+            namaKegiatan: namaKegiatan,
+            tempat: tempat,
+            peserta: peserta,
+            jumlahPeserta: peserta,
+            keterangan: keterangan,
+            files: files
         };
 
-        /*
-         * Google Apps Script menerima POST.
-         * no-cors membuat request dari GitHub Pages dapat dikirim.
-         */
-        await fetch(APPS_SCRIPT_URL, {
-            method: "POST",
-            mode: "no-cors",
-            headers: {"Content-Type":"text/plain;charset=utf-8"},
-            body: JSON.stringify(payload)
+        await fetch(APPS_SCRIPT_URL,{
+            method:"POST",
+            mode:"no-cors",
+            headers:{
+                "Content-Type":"text/plain;charset=utf-8"
+            },
+            body:JSON.stringify(payload)
         });
 
-        showStatus("success","✓ Dokumen sudah dikirim ke Google Apps Script. Silakan buka Google Drive untuk memeriksa folder SPJ.");
+        showStatus("success",
+            "✓ 7 dokumen sudah dikirim. Folder SPJ dibuat di Google Drive dan data diarahkan ke Rekap Rapat/Musdes. Silakan periksa Rekap dan Drive.");
+
         saveLocalBackup();
 
-    } catch (error) {
+    } catch(error) {
         console.error(error);
-        showStatus("error","Upload gagal. Periksa koneksi internet dan coba lagi.");
+        showStatus("error",
+            "Upload gagal. Periksa koneksi internet dan konfigurasi Google Apps Script.");
     }
 
     button.disabled = false;
-    button.innerHTML = `<i class="bi bi-cloud-arrow-up"></i> Simpan &amp; Upload SPJ`;
+    button.innerHTML =
+        `<i class="bi bi-cloud-arrow-up"></i> Simpan &amp; Upload SPJ`;
 }
 
 function fileToBase64(file) {
@@ -245,9 +276,9 @@ function fileToBase64(file) {
             const comma = result.indexOf(",");
 
             resolve({
-                fileName: file.name,
-                mimeType: file.type || "application/octet-stream",
-                data: result.substring(comma + 1)
+                fileName:file.name,
+                mimeType:file.type || "application/octet-stream",
+                base64:result.substring(comma + 1)
             });
         };
 
@@ -258,15 +289,18 @@ function fileToBase64(file) {
 
 function saveLocalBackup() {
     const data = {
-        tanggal: document.getElementById("tanggal").value,
-        nama: document.getElementById("nama").value,
-        tempat: document.getElementById("tempat").value,
-        peserta: document.getElementById("peserta").value,
-        keterangan: document.getElementById("keterangan").value,
-        waktu: new Date().toISOString()
+        tanggal:document.getElementById("tanggal").value,
+        nama:document.getElementById("nama").value,
+        tempat:document.getElementById("tempat").value,
+        peserta:document.getElementById("peserta").value,
+        keterangan:document.getElementById("keterangan").value,
+        waktu:new Date().toISOString()
     };
 
-    localStorage.setItem("spjRapatTerakhir",JSON.stringify(data));
+    localStorage.setItem(
+        "spjRapatTerakhir",
+        JSON.stringify(data)
+    );
 }
 
 function showStatus(type,message) {

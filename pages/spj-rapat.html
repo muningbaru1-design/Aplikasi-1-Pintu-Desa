@@ -50,6 +50,34 @@ input[type=file]{display:none}
 .doc{padding:11px}.doc-actions{justify-content:flex-start}.actions{justify-content:stretch}.actions .btn{flex:1}
 }
 @media print{.header,.actions,.drive,.help,.btn-upload,.btn-view,.upload-status{display:none!important}.container{width:100%;margin:0}.hero,.card{box-shadow:none;border:1px solid #ddd}}
+
+/* ===== FITUR CARI & LENGKAPI SPJ ===== */
+.saved-tools{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.saved-tools .btn{flex:1;min-width:180px}
+.spj-id-box{display:none;margin-top:13px;padding:12px 14px;border-radius:11px;background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;font-size:10px}
+.spj-id-box strong{font-size:13px}
+.saved-list{display:none;margin-top:14px}
+.saved-item{border:1px solid #e2e8f0;border-radius:13px;padding:13px;margin-bottom:9px;background:#fff}
+.saved-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.saved-name{font-size:11px;font-weight:700}
+.saved-meta{font-size:9px;color:#64748b;margin-top:4px;line-height:1.6}
+.saved-status{font-size:9px;font-weight:700;border-radius:999px;padding:5px 8px;white-space:nowrap;background:#fff7ed;color:#c2410c}
+.saved-status.complete{background:#f0fdf4;color:#15803d}
+.saved-actions{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+.saved-actions .btn{font-size:9px}
+.search-row{display:flex;gap:8px}
+.search-row input{flex:1}
+.search-row .btn{flex:none}
+.modal-backdrop{display:none;position:fixed;inset:0;background:#0f172a88;z-index:100;padding:18px;overflow:auto}
+.modal{width:min(760px,100%);margin:30px auto;background:#fff;border-radius:18px;box-shadow:0 15px 50px #0004;overflow:hidden}
+.modal-head{padding:15px 17px;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.modal-head h3{margin:0;font-size:14px}
+.modal-close{border:0;background:#ffffff25;color:#fff;width:34px;height:34px;border-radius:9px;cursor:pointer;font-size:18px}
+.modal-body{padding:16px}
+.result-info{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;margin-bottom:13px;font-size:10px;line-height:1.7}
+.result-info strong{color:#1e3a8a}
+@media(max-width:700px){.search-row{flex-direction:column}.saved-head{flex-direction:column}.saved-status{align-self:flex-start}}
+
 </style>
 </head>
 <body>
@@ -68,6 +96,31 @@ input[type=file]{display:none}
 </div>
 <div class="hero-icon"><i class="bi bi-clipboard2-check"></i></div>
 </section>
+
+
+<section class="card">
+  <div class="card-title"><i class="bi bi-search"></i> Cari / Lanjutkan SPJ</div>
+  <div class="search-row">
+    <input id="searchSpjId" type="text" placeholder="Masukkan SPJ ID, contoh: SPJ-20260813-001">
+    <button class="btn btn-main" type="button" onclick="searchSPJ()"><i class="bi bi-search"></i> Cari SPJ</button>
+  </div>
+  <div class="saved-tools">
+    <button class="btn btn-view" type="button" onclick="toggleSavedList()"><i class="bi bi-folder2-open"></i> 📂 Lihat SPJ Tersimpan</button>
+    <button class="btn btn-print" type="button" onclick="startNewSPJ()"><i class="bi bi-plus-circle"></i> SPJ Baru</button>
+  </div>
+  <div class="saved-list" id="savedList"></div>
+  <div class="spj-id-box" id="spjIdBox"></div>
+</section>
+
+<div class="modal-backdrop" id="spjModal" onclick="closeModalOnBackdrop(event)">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modalTitle">SPJ Tersimpan</h3>
+      <button class="modal-close" type="button" onclick="closeSPJModal()">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
 
 <section class="card">
 <div class="card-title"><i class="bi bi-calendar-event"></i> Informasi Kegiatan Rapat</div>
@@ -97,14 +150,14 @@ input[type=file]{display:none}
 <a id="driveLink" href="#" target="_blank" rel="noopener"><i class="bi bi-folder2-open"></i> Buka Folder Google Drive</a>
 </div>
 <div class="upload-status" id="uploadStatus"></div>
-<p class="help">Pilih dokumen pada setiap bagian. Setelah semua dokumen tersedia, klik <b>Simpan &amp; Upload SPJ</b>. File akan dikirim ke Google Apps Script dan disimpan ke Google Drive.</p>
+<p class="help">Pilih dokumen yang sudah tersedia. SPJ boleh disimpan meskipun belum 7 dokumen. Klik <b>Simpan &amp; Lengkapi SPJ</b> untuk menyimpan; Anda dapat kembali melalui <b>📂 Lihat SPJ Tersimpan</b> atau SPJ ID.</p>
 </section>
 
 <section class="card">
 <div class="actions">
 <button class="btn btn-reset" onclick="resetSPJ()"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
 <button class="btn btn-print" onclick="window.print()"><i class="bi bi-printer"></i> Cetak Checklist</button>
-<button class="btn btn-main" id="saveButton" onclick="saveAndUploadSPJ()"><i class="bi bi-cloud-arrow-up"></i> Simpan &amp; Upload SPJ</button>
+<button class="btn btn-main" id="saveButton" onclick="saveAndUploadSPJ()"><i class="bi bi-cloud-arrow-up"></i> Simpan &amp; Lengkapi SPJ</button>
 </div>
 </section>
 
@@ -130,105 +183,455 @@ const documents = [
  {id:"nota",name:"Nota",scriptName:"Nota",icon:"bi-receipt-cutoff",note:"Nota / bukti pembelian"}
 ];
 
+
 const state = {};
 documents.forEach(item => state[item.id] = null);
 
+let currentSPJId = "";
+let currentMode = "new"; // new | edit
+let savedListVisible = false;
+
 function renderDocuments(){
- const container=document.getElementById("docs"); container.innerHTML="";
- documents.forEach(item=>{
-  const file=state[item.id], done=!!file;
-  const el=document.createElement("div"); el.className="doc "+(done?"done":"");
-  el.innerHTML=`
-   <div class="doc-icon"><i class="bi ${item.icon}"></i></div>
-   <div class="doc-info"><div class="doc-name">${item.name}</div>
-   <div class="doc-note">${file?escapeHtml(file.name):item.note}</div></div>
-   <div class="doc-actions">
-    <label class="btn ${done?"btn-ok":"btn-upload"}"><i class="bi ${done?"bi-check-lg":"bi-upload"}"></i>
-    ${done?"Dipilih":"Pilih File"}<input type="file" accept="image/*,.pdf,.doc,.docx" onchange="selectFile('${item.id}',this)"></label>
-    ${done?`<button type="button" class="btn btn-view" onclick="removeFile('${item.id}')"><i class="bi bi-x-lg"></i> Ganti</button>`:""}
-   </div>`;
-  container.appendChild(el);
- });
- updateProgress();
+  const container=document.getElementById("docs");
+  container.innerHTML="";
+  documents.forEach(item=>{
+    const file=state[item.id], done=!!file;
+    const el=document.createElement("div");
+    el.className="doc "+(done?"done":"");
+    el.innerHTML=`
+      <div class="doc-icon"><i class="bi ${item.icon}"></i></div>
+      <div class="doc-info">
+        <div class="doc-name">${item.name}</div>
+        <div class="doc-note">${file?escapeHtml(file.name):item.note}</div>
+      </div>
+      <div class="doc-actions">
+        <label class="btn ${done?"btn-ok":"btn-upload"}">
+          <i class="bi ${done?"bi-check-lg":"bi-upload"}"></i>
+          ${done?"Dipilih":"Pilih File"}
+          <input type="file" accept="image/*,.pdf,.doc,.docx" onchange="selectFile('${item.id}',this)">
+        </label>
+        ${done?`<button type="button" class="btn btn-view" onclick="removeFile('${item.id}')"><i class="bi bi-x-lg"></i> Ganti</button>`:""}
+      </div>`;
+    container.appendChild(el);
+  });
+  updateProgress();
 }
 
-function selectFile(id,input){ if(input.files&&input.files.length){state[id]=input.files[0];renderDocuments();} }
-function removeFile(id){state[id]=null;renderDocuments();}
+function selectFile(id,input){
+  if(input.files&&input.files.length){
+    state[id]=input.files[0];
+    renderDocuments();
+  }
+}
+
+function removeFile(id){
+  state[id]=null;
+  renderDocuments();
+}
 
 function updateProgress(){
- const total=documents.length;
- const completed=documents.filter(x=>state[x.id]).length;
- document.getElementById("count").textContent=completed+" / "+total;
- document.getElementById("bar").style.width=(completed/total*100)+"%";
- const s=document.getElementById("status");
- if(completed===total){s.className="status complete";s.innerHTML='<strong><i class="bi bi-check-circle-fill"></i> SPJ LENGKAP.</strong> Semua 7 dokumen sudah dipilih.';}
- else{s.className="status";s.innerHTML=`Masih ada <strong>${total-completed} dokumen</strong> yang belum dipilih.`;}
+  const total=documents.length;
+  const completed=documents.filter(x=>state[x.id]).length;
+  document.getElementById("count").textContent=completed+" / "+total;
+  document.getElementById("bar").style.width=(completed/total*100)+"%";
+  const s=document.getElementById("status");
+
+  if(completed===total){
+    s.className="status complete";
+    s.innerHTML='<strong><i class="bi bi-check-circle-fill"></i> SPJ LENGKAP.</strong> Semua 7 dokumen tersedia/dipilih.';
+  }else{
+    s.className="status";
+    s.innerHTML=`Masih ada <strong>${total-completed} dokumen</strong> yang belum tersedia/dipilih.`;
+  }
 }
 
 async function saveAndUploadSPJ(){
- if(!APPS_SCRIPT_URL||APPS_SCRIPT_URL.indexOf("PASTE_")===0){
-  showStatus("error","URL Web App Apps Script belum dimasukkan ke spj-rapat.html."); return;
- }
-
- const tanggal=document.getElementById("tanggal").value.trim();
- const namaKegiatan=document.getElementById("nama").value.trim();
- const tempat=document.getElementById("tempat").value.trim();
- const peserta=document.getElementById("peserta").value.trim();
- const keterangan=document.getElementById("keterangan").value.trim();
-
- if(!tanggal){showStatus("error","Tanggal rapat belum diisi.");return;}
- if(!namaKegiatan){showStatus("error","Nama / judul kegiatan belum diisi.");return;}
-
- const missing=documents.filter(x=>!state[x.id]);
- if(missing.length){showStatus("error","SPJ belum lengkap. Masih ada "+missing.length+" dokumen yang belum dipilih.");return;}
-
- const button=document.getElementById("saveButton");
- button.disabled=true; button.innerHTML='<i class="bi bi-arrow-repeat"></i> Mengupload...';
- showStatus("info","Sedang mengirim 7 dokumen ke Google Drive. Mohon tunggu...");
-
- try{
-  const files=[];
-  for(const item of documents){
-   const f=await fileToBase64(state[item.id]);
-   files.push({jenis:item.scriptName,name:f.fileName,mimeType:f.mimeType,base64:f.base64});
+  if(!APPS_SCRIPT_URL||APPS_SCRIPT_URL.indexOf("PASTE_")===0){
+    showStatus("error","URL Web App Apps Script belum dimasukkan ke spj-rapat.html.");
+    return;
   }
 
-  const payload={
-   tanggal: tanggal,
-   namaKegiatan: namaKegiatan,
-   acara: namaKegiatan,
-   tempat: tempat,
-   jumlahPeserta: peserta,
-   peserta: peserta,
-   keterangan: keterangan,
-   files: files
-  };
+  const tanggal=document.getElementById("tanggal").value.trim();
+  const namaKegiatan=document.getElementById("nama").value.trim();
+  const tempat=document.getElementById("tempat").value.trim();
+  const peserta=document.getElementById("peserta").value.trim();
+  const keterangan=document.getElementById("keterangan").value.trim();
 
+  if(!tanggal){showStatus("error","Tanggal rapat belum diisi.");return;}
+  if(!namaKegiatan){showStatus("error","Nama / judul kegiatan belum diisi.");return;}
+
+  const selected=documents.filter(x=>state[x.id]);
+  if(!selected.length){
+    showStatus("error","Pilih minimal 1 dokumen sebelum menyimpan SPJ.");
+    return;
+  }
+
+  const button=document.getElementById("saveButton");
+  button.disabled=true;
+  button.innerHTML='<i class="bi bi-arrow-repeat"></i> Menyimpan...';
+
+  showStatus("info",
+    currentMode==="edit"
+      ? "Sedang menambahkan dokumen ke SPJ yang tersimpan..."
+      : "Sedang menyimpan SPJ dan dokumen yang tersedia..."
+  );
+
+  try{
+    const files=[];
+    for(const item of selected){
+      const f=await fileToBase64(state[item.id]);
+      files.push({
+        jenis:item.scriptName,
+        name:f.fileName,
+        mimeType:f.mimeType,
+        base64:f.base64
+      });
+    }
+
+    const payload={
+      action: currentMode==="edit" ? "lengkapi" : "simpan",
+      spjId: currentMode==="edit" ? currentSPJId : "",
+      tanggal: tanggal,
+      namaKegiatan: namaKegiatan,
+      acara: namaKegiatan,
+      tempat: tempat,
+      jumlahPeserta: peserta,
+      peserta: peserta,
+      keterangan: keterangan,
+      files: files
+    };
+
+    const result=await postToAppsScript(payload);
+
+    if(result && result.success===false){
+      throw new Error(result.message||"Apps Script menolak data.");
+    }
+
+    currentSPJId=result.spjId||currentSPJId;
+    currentMode="edit";
+
+    if(result.folderUrl){
+      document.getElementById("driveLink").href=result.folderUrl;
+    }
+
+    showSPJId(result.spjId, result.status);
+
+    const docsCount=result.totalDocuments||result.filesUploaded||selected.length;
+    if(result.status==="LENGKAP 7/7"){
+      showStatus("success",
+        `✓ SPJ ${escapeHtml(result.spjId||"")} sudah <b>LENGKAP 7/7</b>. `+
+        (result.folderUrl?`<a href="${result.folderUrl}" target="_blank" rel="noopener">Buka Folder SPJ</a>`:"")
+      );
+    }else{
+      showStatus("success",
+        `✓ SPJ ${escapeHtml(result.spjId||"")} tersimpan dengan <b>${escapeHtml(String(result.status||docsCount+"/7"))}</b>. `+
+        `Dokumen yang kurang dapat dilengkapi kapan saja melalui SPJ ID atau daftar SPJ tersimpan.`
+      );
+    }
+
+    clearSelectedFilesOnly();
+    updateProgress();
+    await refreshSavedListIfVisible();
+
+  }catch(error){
+    console.error(error);
+    showStatus("error","Upload gagal: "+escapeHtml(error.message||"Periksa koneksi dan URL Apps Script."));
+  }finally{
+    button.disabled=false;
+    button.innerHTML='<i class="bi bi-cloud-arrow-up"></i> Simpan &amp; Lengkapi SPJ';
+  }
+}
+
+async function postToAppsScript(payload){
   const response=await fetch(APPS_SCRIPT_URL,{
-   method:"POST",
-   headers:{"Content-Type":"text/plain;charset=utf-8"},
-   body:JSON.stringify(payload)
+    method:"POST",
+    headers:{"Content-Type":"text/plain;charset=utf-8"},
+    body:JSON.stringify(payload)
   });
 
   let result=null;
-  try{result=await response.json();}catch(e){}
-
-  if(result && result.success===false) throw new Error(result.message||"Apps Script menolak data.");
-
-  if(result && result.folderUrl){
-   showStatus("success",
-    `✓ SPJ berhasil disimpan. <a href="${result.folderUrl}" target="_blank" rel="noopener">Buka Folder SPJ</a>`);
-  }else{
-   showStatus("success","✓ Data dan 7 dokumen sudah dikirim ke sistem SPJ Rapat Desa.");
+  try{
+    result=await response.json();
+  }catch(e){
+    throw new Error("Respons Apps Script tidak dapat dibaca.");
   }
 
- }catch(error){
-  console.error(error);
-  showStatus("error","Upload gagal: "+escapeHtml(error.message||"Periksa koneksi dan URL Apps Script."));
- }
+  if(!result) throw new Error("Respons Apps Script kosong.");
+  return result;
+}
 
- button.disabled=false;
- button.innerHTML='<i class="bi bi-cloud-arrow-up"></i> Simpan &amp; Upload SPJ';
+async function searchSPJ(){
+  const spjId=document.getElementById("searchSpjId").value.trim();
+  if(!spjId){
+    showStatus("error","Masukkan SPJ ID terlebih dahulu.");
+    return;
+  }
+
+  showStatus("info","Mencari SPJ "+escapeHtml(spjId)+"...");
+
+  try{
+    const result=await postToAppsScript({
+      action:"cari",
+      spjId:spjId
+    });
+
+    if(result.success===false) throw new Error(result.message||"SPJ tidak ditemukan.");
+
+    loadExistingSPJ(result);
+    showStatus("success",
+      `✓ SPJ <b>${escapeHtml(result.spjId)}</b> ditemukan. `+
+      `Status: <b>${escapeHtml(result.status)}</b>.`
+    );
+  }catch(error){
+    showStatus("error",escapeHtml(error.message||"SPJ tidak ditemukan."));
+  }
+}
+
+async function toggleSavedList(){
+  const box=document.getElementById("savedList");
+  if(savedListVisible){
+    box.style.display="none";
+    savedListVisible=false;
+    return;
+  }
+
+  box.style.display="block";
+  savedListVisible=true;
+  box.innerHTML='<div class="result-info"><i class="bi bi-arrow-repeat"></i> Memuat daftar SPJ tersimpan...</div>';
+
+  try{
+    const result=await postToAppsScript({action:"daftar"});
+    if(result.success===false) throw new Error(result.message||"Gagal mengambil daftar SPJ.");
+
+    renderSavedList(result.items||[]);
+  }catch(error){
+    box.innerHTML=`<div class="result-info" style="color:#991b1b">${escapeHtml(error.message||"Gagal mengambil daftar SPJ.")}</div>`;
+  }
+}
+
+function renderSavedList(items){
+  const box=document.getElementById("savedList");
+
+  if(!items.length){
+    box.innerHTML='<div class="result-info">Belum ada SPJ tersimpan.</div>';
+    return;
+  }
+
+  box.innerHTML=items.map(item=>{
+    const complete=item.status==="LENGKAP 7/7";
+    return `
+      <div class="saved-item">
+        <div class="saved-head">
+          <div>
+            <div class="saved-name">${escapeHtml(item.tanggal||"-")} — ${escapeHtml(item.namaKegiatan||"-")}</div>
+            <div class="saved-meta">
+              SPJ ID: <b>${escapeHtml(item.spjId)}</b><br>
+              ${escapeHtml(item.status||"")}
+            </div>
+          </div>
+          <span class="saved-status ${complete?"complete":""}">${escapeHtml(item.status||"")}</span>
+        </div>
+        <div class="saved-actions">
+          <button class="btn btn-view" type="button" onclick="openSavedSPJ('${escapeJs(item.spjId)}')">
+            <i class="bi bi-eye"></i> ${complete?"Lihat":"Lengkapi"}
+          </button>
+          ${item.folderUrl?`<a class="btn btn-ok" href="${escapeAttr(item.folderUrl)}" target="_blank" rel="noopener"><i class="bi bi-folder2-open"></i> Folder</a>`:""}
+        </div>
+      </div>`;
+  }).join("");
+}
+
+async function openSavedSPJ(spjId){
+  closeSPJModal();
+  document.getElementById("searchSpjId").value=spjId;
+  await searchSPJ();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function loadExistingSPJ(result){
+  currentSPJId=result.spjId||"";
+  currentMode="edit";
+
+  document.getElementById("tanggal").value=toDateInputValue(result.tanggal);
+  document.getElementById("nama").value=result.namaKegiatan||"";
+  document.getElementById("tempat").value=result.tempat||"";
+  document.getElementById("peserta").value=result.jumlahPeserta||"";
+  document.getElementById("keterangan").value=result.keterangan||"";
+
+  documents.forEach(item=>{
+    state[item.id]=null;
+  });
+
+  (result.documents||[]).forEach(doc=>{
+    const item=documents.find(x=>x.scriptName===doc.jenis);
+    if(item && doc.ada){
+      // Placeholder object: dokumen lama tetap dianggap tersedia.
+      state[item.id]={
+        name:"Dokumen sudah tersimpan",
+        existing:true,
+        url:doc.url||""
+      };
+    }
+  });
+
+  renderDocuments();
+  showSPJId(result.spjId,result.status);
+
+  if(result.folderUrl){
+    document.getElementById("driveLink").href=result.folderUrl;
+  }
+
+  // Pada mode edit, tombol pilih file hanya untuk dokumen yang belum ada.
+  renderExistingDocumentUI(result.documents||[]);
+}
+
+function renderExistingDocumentUI(documentsFromServer){
+  const byJenis={};
+  documentsFromServer.forEach(x=>byJenis[x.jenis]=x);
+
+  const container=document.getElementById("docs");
+  container.innerHTML="";
+
+  documents.forEach(item=>{
+    const serverDoc=byJenis[item.scriptName];
+    const existing=!!(serverDoc&&serverDoc.ada);
+    const selected=state[item.id]&&!state[item.id].existing;
+    const file=state[item.id];
+
+    const el=document.createElement("div");
+    el.className="doc "+(existing||selected?"done":"");
+
+    let note;
+    if(selected){
+      note=escapeHtml(file.name);
+    }else if(existing){
+      note="Dokumen sudah tersimpan di SPJ";
+    }else{
+      note=item.note+" — belum ada";
+    }
+
+    el.innerHTML=`
+      <div class="doc-icon"><i class="bi ${existing||selected?"bi-check-circle-fill":item.icon}"></i></div>
+      <div class="doc-info">
+        <div class="doc-name">${item.name}</div>
+        <div class="doc-note">${note}</div>
+      </div>
+      <div class="doc-actions">
+        ${existing&&serverDoc.url?`<a class="btn btn-view" href="${escapeAttr(serverDoc.url)}" target="_blank" rel="noopener"><i class="bi bi-eye"></i> Lihat</a>`:""}
+        ${!existing?`
+          <label class="btn ${selected?"btn-ok":"btn-upload"}">
+            <i class="bi ${selected?"bi-check-lg":"bi-upload"}"></i>
+            ${selected?"Dipilih":"Pilih File"}
+            <input type="file" accept="image/*,.pdf,.doc,.docx" onchange="selectFile('${item.id}',this);renderExistingDocumentUI(${JSON.stringify(documentsFromServer).replace(/</g,"\\u003c")})">
+          </label>
+        `:""}
+        ${selected?`<button type="button" class="btn btn-view" onclick="removeFile('${item.id}');renderExistingDocumentUI(${JSON.stringify(documentsFromServer).replace(/</g,"\\u003c")})"><i class="bi bi-x-lg"></i> Ganti</button>`:""}
+      </div>`;
+    container.appendChild(el);
+  });
+
+  updateProgressExisting(documentsFromServer);
+}
+
+function updateProgressExisting(serverDocs){
+  const existingCount=serverDocs.filter(x=>x.ada).length;
+  const newCount=documents.filter(x=>state[x.id]&&!state[x.id].existing).length;
+  const total=Math.min(7,existingCount+newCount);
+
+  document.getElementById("count").textContent=total+" / 7";
+  document.getElementById("bar").style.width=(total/7*100)+"%";
+
+  const s=document.getElementById("status");
+  if(total===7){
+    s.className="status complete";
+    s.innerHTML='<strong><i class="bi bi-check-circle-fill"></i> SPJ LENGKAP.</strong> Semua 7 dokumen sudah tersedia.';
+  }else{
+    s.className="status";
+    s.innerHTML=`Masih ada <strong>${7-total} dokumen</strong> yang belum tersedia. Pilih dokumen yang kurang lalu simpan.`;
+  }
+}
+
+function clearSelectedFilesOnly(){
+  documents.forEach(item=>{
+    if(!state[item.id] || !state[item.id].existing){
+      state[item.id]=null;
+    }
+  });
+}
+
+function showSPJId(spjId,status){
+  const box=document.getElementById("spjIdBox");
+  if(!spjId){
+    box.style.display="none";
+    box.innerHTML="";
+    return;
+  }
+  box.style.display="block";
+  box.innerHTML=
+    `SPJ ID: <strong>${escapeHtml(spjId)}</strong>`+
+    (status?`<br>Status saat ini: <b>${escapeHtml(status)}</b>`:"");
+}
+
+function startNewSPJ(){
+  currentSPJId="";
+  currentMode="new";
+  document.getElementById("searchSpjId").value="";
+  showSPJId("","");
+  documents.forEach(x=>state[x.id]=null);
+  ["tanggal","nama","tempat","peserta","keterangan"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("driveLink").href=DRIVE_FOLDER_URL;
+  document.getElementById("uploadStatus").className="upload-status";
+  document.getElementById("uploadStatus").innerHTML="";
+  renderDocuments();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function resetSPJ(){
+  if(!confirm("Hapus data formulir saat ini? Jika SPJ sudah tersimpan di Drive, data tersebut tidak dihapus."))return;
+  startNewSPJ();
+}
+
+async function refreshSavedListIfVisible(){
+  if(savedListVisible){
+    try{
+      const result=await postToAppsScript({action:"daftar"});
+      if(result.success!==false) renderSavedList(result.items||[]);
+    }catch(e){}
+  }
+}
+
+function closeSPJModal(){
+  document.getElementById("spjModal").style.display="none";
+}
+
+function closeModalOnBackdrop(event){
+  if(event.target.id==="spjModal") closeSPJModal();
+}
+
+function escapeJs(value){
+  return String(value).replace(/\\/g,"\\\\").replace(/'/g,"\\'");
+}
+
+function escapeAttr(value){
+  return escapeHtml(value);
+}
+
+function toDateInputValue(value){
+  if(!value) return "";
+  const s=String(value);
+  if(/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+
+  const m=s.match(/^(\d{2})-(\d{2})-(\d{4})$/);
+  if(m) return `${m[3]}-${m[2]}-${m[1]}`;
+
+  const d=new Date(s);
+  if(!isNaN(d.getTime())){
+    const y=d.getFullYear();
+    const mo=String(d.getMonth()+1).padStart(2,"0");
+    const day=String(d.getDate()).padStart(2,"0");
+    return `${y}-${mo}-${day}`;
+  }
+  return "";
 }
 
 function fileToBase64(file){
@@ -262,6 +665,9 @@ function escapeHtml(value){
 }
 
 document.getElementById("driveLink").href=DRIVE_FOLDER_URL;
+document.getElementById("searchSpjId").addEventListener("keydown",function(e){
+  if(e.key==="Enter") searchSPJ();
+});
 renderDocuments();
 </script>
 </body>

@@ -13,6 +13,14 @@ const gridMenu = [
 },
 
 {
+    id:"agenda",
+    nama:"Agenda & Kalender Desa",
+    icon:"bi-calendar-event-fill",
+    warna:"#2563EB",
+    link:"pages/agenda.html"
+},
+
+{
     id: "rpjmdes",
     nama: "Capaian RPJMDes",
     icon: "bi-bar-chart-line-fill",

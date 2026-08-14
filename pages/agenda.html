@@ -1,0 +1,3437 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color"
+          content="#2563eb">
+          <button
+    type="button"
+    class="btn-kembali"
+    onclick="history.back()">
+    <i class="bi bi-arrow-left"></i>
+    Kembali
+</button>
+
+    <title>
+        Agenda & Kalender Desa - Desa Muning Baru
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            background: #f1f5f9;
+
+            color: #0f172a;
+
+            font-family:
+                Poppins,
+                Arial,
+                sans-serif;
+
+        }
+
+
+        .container {
+
+            width: 100%;
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 20px;
+
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .hero {
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 18px 20px;
+
+            margin-bottom: 18px;
+
+            box-shadow:
+                0 5px 18px rgba(
+                    15,
+                    23,
+                    42,
+                    .06
+                );
+
+        }
+
+
+        .hero h1 {
+
+            margin: 0;
+
+            color: #2563eb;
+
+            font-size: 21px;
+
+            font-weight: 700;
+
+        }
+
+
+        .hero p {
+
+            margin: 4px 0 0;
+
+            color: #64748b;
+
+            font-size: 11px;
+
+        }
+
+
+        /* =========================================
+           STATISTIK
+        ========================================= */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .stat {
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            box-shadow:
+                0 5px 18px rgba(
+                    15,
+                    23,
+                    42,
+                    .05
+                );
+
+        }
+
+
+        .stat-icon {
+
+            width: 38px;
+
+            height: 38px;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 18px;
+
+        }
+
+
+        .blue {
+
+            background: #dbeafe;
+
+            color: #2563eb;
+
+        }
+
+
+        .green {
+
+            background: #dcfce7;
+
+            color: #16a34a;
+
+        }
+
+
+        .orange {
+
+            background: #fef3c7;
+
+            color: #d97706;
+
+        }
+
+
+        .stat small {
+
+            display: block;
+
+            color: #64748b;
+
+            font-size: 8px;
+
+        }
+
+
+        .stat strong {
+
+            display: block;
+
+            font-size: 19px;
+
+            margin-top: 2px;
+
+        }
+
+
+        /* =========================================
+           SEARCH
+        ========================================= */
+
+        .toolbar {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .search {
+
+            flex: 1;
+
+            position: relative;
+
+        }
+
+
+        .search i {
+
+            position: absolute;
+
+            left: 12px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color: #94a3b8;
+
+        }
+
+
+        .search input {
+
+            width: 100%;
+
+            height: 42px;
+
+            border: 1px solid #dbe3ee;
+
+            border-radius: 10px;
+
+            padding:
+                0 12px 0 36px;
+
+            outline: none;
+
+            font-family: inherit;
+
+            background: white;
+
+        }
+
+
+        .search input:focus {
+
+            border-color: #2563eb;
+
+        }
+
+
+        .btn {
+
+            border: 0;
+
+            border-radius: 10px;
+
+            padding:
+                0 14px;
+
+            height: 42px;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 11px;
+
+            font-weight: 500;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 6px;
+
+        }
+
+
+        .btn-primary {
+
+            background: #2563eb;
+
+            color: white;
+
+        }
+
+
+        .btn-danger {
+
+            background: white;
+
+            color: #dc2626;
+
+            border: 1px solid #fecaca;
+
+        }
+
+
+        .btn-secondary {
+
+            background: #f1f5f9;
+
+            color: #334155;
+
+        }
+
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .card {
+
+            background: white;
+
+            border-radius: 15px;
+
+            margin-bottom: 15px;
+
+            box-shadow:
+                0 5px 18px rgba(
+                    15,
+                    23,
+                    42,
+                    .05
+                );
+
+            overflow: hidden;
+
+        }
+
+
+        .card-header {
+
+            padding: 14px 15px;
+
+            border-bottom:
+                1px solid #e2e8f0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+        }
+
+
+        .card-header h3 {
+
+            margin: 0;
+
+            font-size: 13px;
+
+        }
+
+
+        .card-header small {
+
+            display: block;
+
+            margin-top: 2px;
+
+            color: #94a3b8;
+
+            font-size: 8px;
+
+        }
+
+
+        /* =========================================
+           CALENDAR
+        ========================================= */
+
+        .calendar {
+
+            padding: 15px;
+
+        }
+
+
+        .calendar-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .month-title {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+        }
+
+
+        .calendar-nav {
+
+            width: 32px;
+
+            height: 32px;
+
+            border: 0;
+
+            border-radius: 9px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            cursor: pointer;
+
+        }
+
+
+        .weekdays,
+        .calendar-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(7, 1fr);
+
+            gap: 5px;
+
+        }
+
+
+        .weekday {
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 8px;
+
+            padding-bottom: 3px;
+
+        }
+
+
+        .day {
+
+            min-height: 52px;
+
+            border:
+                1px solid #e2e8f0;
+
+            border-radius: 8px;
+
+            padding: 6px;
+
+            cursor: pointer;
+
+            position: relative;
+
+            background: white;
+
+            font-size: 9px;
+
+        }
+
+
+        .day:hover {
+
+            border-color: #93c5fd;
+
+            background: #eff6ff;
+
+        }
+
+
+        .day.other {
+
+            color: #cbd5e1;
+
+            background: #f8fafc;
+
+        }
+
+
+        .day.today {
+
+            border:
+                2px solid #2563eb;
+
+        }
+
+
+        .day-number {
+
+            font-weight: 600;
+
+        }
+
+
+        .event-dot {
+
+            position: absolute;
+
+            bottom: 5px;
+
+            left: 7px;
+
+            width: 5px;
+
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: #2563eb;
+
+        }
+
+
+        .event-count {
+
+            position: absolute;
+
+            right: 5px;
+
+            bottom: 3px;
+
+            font-size: 7px;
+
+            color: #2563eb;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =========================================
+           LIST AGENDA
+        ========================================= */
+
+        .agenda-list {
+
+            padding: 10px 15px 15px;
+
+        }
+
+
+        .agenda-item {
+
+            border:
+                1px solid #e2e8f0;
+
+            border-radius: 12px;
+
+            padding: 12px;
+
+            margin-bottom: 8px;
+
+            display: flex;
+
+            gap: 12px;
+
+            align-items: flex-start;
+
+        }
+
+
+        .agenda-date {
+
+            width: 48px;
+
+            min-width: 48px;
+
+            height: 52px;
+
+            border-radius: 10px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .agenda-date strong {
+
+            font-size: 17px;
+
+            line-height: 1;
+
+        }
+
+
+        .agenda-date small {
+
+            font-size: 7px;
+
+            margin-top: 3px;
+
+        }
+
+
+        .agenda-info {
+
+            flex: 1;
+
+            min-width: 0;
+
+        }
+
+
+        .agenda-info h4 {
+
+            margin: 0;
+
+            font-size: 12px;
+
+        }
+
+
+        .agenda-info p {
+
+            margin: 4px 0;
+
+            color: #64748b;
+
+            font-size: 9px;
+
+        }
+
+
+        .agenda-meta {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 5px;
+
+        }
+
+
+        .badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 3px;
+
+            background: #f1f5f9;
+
+            color: #475569;
+
+            padding:
+                4px 7px;
+
+            border-radius: 20px;
+
+            font-size: 7px;
+
+        }
+
+
+        .badge-blue {
+
+            background: #dbeafe;
+
+            color: #1d4ed8;
+
+        }
+
+
+        .badge-green {
+
+            background: #dcfce7;
+
+            color: #15803d;
+
+        }
+
+
+        .badge-orange {
+
+            background: #fef3c7;
+
+            color: #b45309;
+
+        }
+
+
+        .agenda-actions {
+
+            display: flex;
+
+            gap: 5px;
+
+        }
+
+
+        .icon-btn {
+
+            width: 30px;
+
+            height: 30px;
+
+            border: 0;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+        }
+
+
+        .icon-btn.delete {
+
+            background: #fef2f2;
+
+            color: #dc2626;
+
+        }
+
+
+        .empty {
+
+            text-align: center;
+
+            padding: 35px 10px;
+
+            color: #94a3b8;
+
+            font-size: 10px;
+
+        }
+
+
+        /* =========================================
+           MODAL
+        ========================================= */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(
+                    15,
+                    23,
+                    42,
+                    .5
+                );
+
+            z-index: 999;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 15px;
+
+        }
+
+
+        .modal.show {
+
+            display: flex;
+
+        }
+
+
+        .modal-box {
+
+            width: 100%;
+
+            max-width: 520px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 18px;
+
+        }
+
+
+        .modal-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .modal-header h3 {
+
+            margin: 0;
+
+            font-size: 15px;
+
+        }
+
+
+        .close {
+
+            border: 0;
+
+            background: #f1f5f9;
+
+            width: 32px;
+
+            height: 32px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+        }
+
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 10px;
+
+        }
+
+
+        .form-group {
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .form-group.full {
+
+            grid-column: 1 / -1;
+
+        }
+
+
+        label {
+
+            display: block;
+
+            font-size: 9px;
+
+            font-weight: 600;
+
+            margin-bottom: 5px;
+
+            color: #334155;
+
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            border:
+                1px solid #dbe3ee;
+
+            border-radius: 9px;
+
+            padding: 9px 10px;
+
+            outline: none;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            background: white;
+
+        }
+
+
+        textarea {
+
+            min-height: 75px;
+
+            resize: vertical;
+
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color: #2563eb;
+
+        }
+
+
+        .modal-footer {
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+
+            margin-top: 10px;
+
+        }
+
+
+        /* =========================================
+           LOADING
+        ========================================= */
+
+        .loading {
+
+            position: fixed;
+
+            left: 50%;
+
+            top: 18px;
+
+            transform:
+                translateX(-50%);
+
+            background: #0f172a;
+
+            color: white;
+
+            padding:
+                8px 13px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+
+            z-index: 2000;
+
+            display: none;
+
+        }
+
+
+        .loading.show {
+
+            display: block;
+
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (
+            max-width: 700px
+        ) {
+
+            .container {
+
+                padding: 10px;
+
+            }
+
+
+            .stats {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .toolbar {
+
+                flex-wrap: wrap;
+
+            }
+
+
+            .search {
+
+                flex-basis: 100%;
+
+            }
+
+
+            .day {
+
+                min-height: 45px;
+
+            }
+
+
+            .form-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .form-group.full {
+
+                grid-column: auto;
+
+            }
+
+
+            .agenda-item {
+
+                gap: 8px;
+
+            }
+
+
+            .agenda-actions {
+
+                flex-direction: column;
+
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div id="loading"
+     class="loading">
+
+    Menyimpan...
+
+</div>
+
+
+<main class="container">
+
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <section class="hero">
+
+        <h1>
+
+            <i class="bi bi-calendar2-event"></i>
+
+            Agenda & Kalender Desa
+
+        </h1>
+
+        <p>
+
+            Kelola jadwal rapat, Musdes,
+            Posyandu, kegiatan desa,
+            dan agenda lainnya.
+
+        </p>
+
+    </section>
+
+
+    <!-- =====================================
+         STATISTIK
+    ====================================== -->
+
+    <section class="stats">
+
+
+        <div class="stat">
+
+            <div class="stat-icon blue">
+
+                <i class="bi bi-calendar-day"></i>
+
+            </div>
+
+            <div>
+
+                <small>
+                    Agenda Hari Ini
+                </small>
+
+                <strong id="statToday">
+                    0
+                </strong>
+
+                <small>
+                    Kegiatan
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon green">
+
+                <i class="bi bi-calendar-event"></i>
+
+            </div>
+
+            <div>
+
+                <small>
+                    Agenda Mendatang
+                </small>
+
+                <strong id="statUpcoming">
+                    0
+                </strong>
+
+                <small>
+                    Kegiatan
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon orange">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+            </div>
+
+            <div>
+
+                <small>
+                    Agenda Selesai
+                </small>
+
+                <strong id="statDone">
+                    0
+                </strong>
+
+                <small>
+                    Kegiatan
+                </small>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         TOOLBAR
+    ====================================== -->
+
+    <section class="toolbar">
+
+
+        <div class="search">
+
+            <i class="bi bi-search"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari agenda, lokasi, penanggung jawab...">
+
+        </div>
+
+
+        <button
+            class="btn btn-primary"
+            onclick="bukaModal()">
+
+            <i class="bi bi-plus-lg"></i>
+
+            Tambah Agenda
+
+        </button>
+
+
+        <button
+            class="btn btn-danger"
+            onclick="hapusSemua()">
+
+            <i class="bi bi-trash3"></i>
+
+            Hapus Semua
+
+        </button>
+
+
+    </section>
+
+
+    <!-- =====================================
+         KALENDER
+    ====================================== -->
+
+    <section class="card">
+
+
+        <div class="card-header">
+
+            <div>
+
+                <h3>
+
+                    <i class="bi bi-calendar3"></i>
+
+                    Kalender Kegiatan
+
+                </h3>
+
+                <small>
+                    Klik tanggal untuk melihat agenda
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="calendar">
+
+
+            <div class="calendar-top">
+
+
+                <button
+                    class="calendar-nav"
+                    onclick="bulanSebelumnya()">
+
+                    <i class="bi bi-chevron-left"></i>
+
+                </button>
+
+
+                <div
+                    class="month-title"
+                    id="monthTitle">
+
+                </div>
+
+
+                <button
+                    class="calendar-nav"
+                    onclick="bulanBerikutnya()">
+
+                    <i class="bi bi-chevron-right"></i>
+
+                </button>
+
+
+            </div>
+
+
+            <div class="weekdays">
+
+                <div class="weekday">Min</div>
+
+                <div class="weekday">Sen</div>
+
+                <div class="weekday">Sel</div>
+
+                <div class="weekday">Rab</div>
+
+                <div class="weekday">Kam</div>
+
+                <div class="weekday">Jum</div>
+
+                <div class="weekday">Sab</div>
+
+            </div>
+
+
+            <div
+                id="calendarGrid"
+                class="calendar-grid">
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         DAFTAR AGENDA
+    ====================================== -->
+
+    <section class="card">
+
+
+        <div class="card-header">
+
+            <div>
+
+                <h3>
+
+                    <i class="bi bi-list-task"></i>
+
+                    Daftar Agenda
+
+                </h3>
+
+                <small>
+                    Semua agenda kegiatan desa
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="agendaList"
+            class="agenda-list">
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================================
+     MODAL TAMBAH / EDIT
+========================================= -->
+
+<div
+    id="modal"
+    class="modal">
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+
+            <h3 id="modalTitle">
+
+                Tambah Agenda
+
+            </h3>
+
+
+            <button
+                class="close"
+                onclick="tutupModal()">
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+
+        </div>
+
+
+        <form
+            id="agendaForm"
+            onsubmit="simpanAgenda(event)">
+
+
+            <input
+                type="hidden"
+                id="agendaId">
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Tanggal
+                    </label>
+
+                    <input
+                        type="date"
+                        id="tanggal"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Jam
+                    </label>
+
+                    <input
+                        type="time"
+                        id="jam">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Jenis Kegiatan
+                    </label>
+
+                    <select
+                        id="jenis"
+                        required>
+
+                        <option value="">
+                            Pilih Jenis
+                        </option>
+
+                        <option value="Rapat">
+                            Rapat
+                        </option>
+
+                        <option value="Musdes">
+                            Musdes
+                        </option>
+
+                        <option value="Posyandu">
+                            Posyandu
+                        </option>
+
+                        <option value="Kegiatan Desa">
+                            Kegiatan Desa
+                        </option>
+
+                        <option value="Pelatihan">
+                            Pelatihan
+                        </option>
+
+                        <option value="Gotong Royong">
+                            Gotong Royong
+                        </option>
+
+                        <option value="Lainnya">
+                            Lainnya
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <select
+                        id="status">
+
+                        <option value="Akan Datang">
+                            Akan Datang
+                        </option>
+
+                        <option value="Berlangsung">
+                            Berlangsung
+                        </option>
+
+                        <option value="Selesai">
+                            Selesai
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Judul Kegiatan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="judul"
+                        placeholder="Contoh: Rapat Penyusunan RKPDes"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Lokasi
+                    </label>
+
+                    <input
+                        type="text"
+                        id="lokasi"
+                        placeholder="Kantor Desa Muning Baru">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Penanggung Jawab
+                    </label>
+
+                    <input
+                        type="text"
+                        id="penanggungJawab"
+                        placeholder="Nama / Jabatan">
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Keterangan
+                    </label>
+
+                    <textarea
+                        id="keterangan"
+                        placeholder="Keterangan tambahan..."></textarea>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="modal-footer">
+
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="tutupModal()">
+
+                    Batal
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+
+                    <i class="bi bi-save"></i>
+
+                    Simpan Agenda
+
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   KONFIGURASI GOOGLE APPS SCRIPT
+   SATU URL UNTUK LOAD + SIMPAN + EDIT + HAPUS
+========================================= */
+
+const APPS_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzHN1pIBCuDsy8Ic14fkNBQeau7R1EXaetZ45PKJTp-qqjawYLDJKJT6SvTknfWWEh0nA/exec";
+
+
+/* =========================================
+   KONFIGURASI
+========================================= */
+
+const STORAGE_KEY =
+"agendaDesaMuningBaru";
+
+
+let agendaData = [];
+
+
+let currentDate =
+new Date();
+
+
+/* =========================================
+   ELEMENT
+========================================= */
+
+const modal =
+document.getElementById("modal");
+
+const agendaForm =
+document.getElementById("agendaForm");
+
+const agendaList =
+document.getElementById("agendaList");
+
+const calendarGrid =
+document.getElementById("calendarGrid");
+
+const monthTitle =
+document.getElementById("monthTitle");
+
+const searchInput =
+document.getElementById("searchInput");
+
+
+/* =========================================
+   BULAN
+========================================= */
+
+const namaBulan = [
+
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+
+];
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+function loading(show, text = "Memproses...") {
+
+    const el =
+        document.getElementById("loading");
+
+    el.textContent = text;
+
+    el.classList.toggle(
+        "show",
+        show
+    );
+
+}
+
+
+/* =========================================
+   LOAD DATA GOOGLE SHEETS
+========================================= */
+
+async function loadFromGoogleSheets() {
+
+    loading(
+        true,
+        "Mengambil data agenda..."
+    );
+
+
+    try {
+
+        const response =
+            await fetch(
+                APPS_SCRIPT_URL +
+                "?action=get"
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result &&
+            result.success
+        ) {
+
+            agendaData =
+                Array.isArray(result.data)
+                    ? result.data
+                    : [];
+
+
+            simpanLocal();
+
+            renderAll();
+
+            loading(
+                false
+            );
+
+            return true;
+
+        }
+
+
+        throw new Error(
+            result.message ||
+            "Data tidak dapat diambil"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Gagal mengambil Google Sheets:",
+            error
+        );
+
+
+        // Gunakan cadangan lokal
+        loadLocal();
+
+
+        renderAll();
+
+
+        loading(
+            false
+        );
+
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================
+   SIMPAN KE GOOGLE SHEETS
+========================================= */
+async function saveToGoogleSheets(
+    agenda,
+    action
+) {
+
+    const payload = {
+
+        action: action,
+
+        id: agenda.id,
+
+        tanggal: agenda.tanggal,
+
+        jam: agenda.jam,
+
+        jenis: agenda.jenis,
+
+        judul: agenda.judul,
+
+        lokasi: agenda.lokasi,
+
+        penanggungJawab:
+            agenda.penanggungJawab,
+
+        status:
+            agenda.status,
+
+        keterangan:
+            agenda.keterangan
+
+    };
+
+
+    const response =
+        await fetch(
+            APPS_SCRIPT_URL,
+            {
+
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+
+                },
+
+                body:
+                    JSON.stringify(
+                        payload
+                    )
+
+            }
+        );
+
+
+    const result =
+        await response.json();
+
+
+    if (
+        !result ||
+        !result.success
+    ) {
+
+        throw new Error(
+
+            result.message ||
+
+            "Google Sheets gagal menyimpan data"
+
+        );
+
+    }
+
+
+    return result;
+
+}
+
+
+/* =========================================
+   LOCAL STORAGE
+========================================= */
+
+function simpanLocal() {
+
+    localStorage.setItem(
+
+        STORAGE_KEY,
+
+        JSON.stringify(
+            agendaData
+        )
+
+    );
+
+}
+
+
+function loadLocal() {
+
+    try {
+
+        agendaData =
+            JSON.parse(
+                localStorage.getItem(
+                    STORAGE_KEY
+                )
+            ) || [];
+
+    } catch (error) {
+
+        agendaData = [];
+
+    }
+
+}
+
+
+/* =========================================
+   FORMAT TANGGAL
+========================================= */
+
+function formatTanggal(
+    tanggal
+) {
+
+    if (!tanggal)
+        return "";
+
+
+    const d =
+        new Date(
+            tanggal +
+            "T00:00:00"
+        );
+
+
+    return d.toLocaleDateString(
+        "id-ID",
+        {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+/* =========================================
+   TANGGAL HARI INI
+========================================= */
+
+function todayString() {
+
+    const d =
+        new Date();
+
+
+    const y =
+        d.getFullYear();
+
+
+    const m =
+        String(
+            d.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const day =
+        String(
+            d.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    return `${y}-${m}-${day}`;
+
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+function statusBadge(
+    status
+) {
+
+    if (
+        status ===
+        "Selesai"
+    ) {
+
+        return `
+            <span class="badge badge-green">
+                <i class="bi bi-check-circle"></i>
+                Selesai
+            </span>
+        `;
+
+    }
+
+
+    if (
+        status ===
+        "Berlangsung"
+    ) {
+
+        return `
+            <span class="badge badge-orange">
+                <i class="bi bi-play-circle"></i>
+                Berlangsung
+            </span>
+        `;
+
+    }
+
+
+    return `
+        <span class="badge badge-blue">
+            <i class="bi bi-clock"></i>
+            Akan Datang
+        </span>
+    `;
+
+}
+
+
+/* =========================================
+   RENDER SEMUA
+========================================= */
+
+function renderAll() {
+
+    renderStats();
+
+    renderCalendar();
+
+    renderList();
+
+}
+
+
+/* =========================================
+   STATISTIK
+========================================= */
+
+function renderStats() {
+
+    const today =
+        todayString();
+
+
+    const todayCount =
+        agendaData.filter(
+            item =>
+                item.tanggal ===
+                today
+        ).length;
+
+
+    const upcoming =
+        agendaData.filter(
+            item =>
+                item.tanggal >
+                today &&
+                item.status !==
+                "Selesai"
+        ).length;
+
+
+    const done =
+        agendaData.filter(
+            item =>
+                item.status ===
+                "Selesai" ||
+                item.tanggal <
+                today
+        ).length;
+
+
+    document.getElementById(
+        "statToday"
+    ).textContent =
+        todayCount;
+
+
+    document.getElementById(
+        "statUpcoming"
+    ).textContent =
+        upcoming;
+
+
+    document.getElementById(
+        "statDone"
+    ).textContent =
+        done;
+
+}
+
+
+/* =========================================
+   KALENDER
+========================================= */
+
+function renderCalendar() {
+
+    const year =
+        currentDate.getFullYear();
+
+
+    const month =
+        currentDate.getMonth();
+
+
+    monthTitle.textContent =
+        namaBulan[month] +
+        " " +
+        year;
+
+
+    calendarGrid.innerHTML =
+        "";
+
+
+    const firstDay =
+        new Date(
+            year,
+            month,
+            1
+        ).getDay();
+
+
+    const daysInMonth =
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
+
+
+    const previousMonthDays =
+        new Date(
+            year,
+            month,
+            0
+        ).getDate();
+
+
+    const totalCells =
+        Math.ceil(
+            (
+                firstDay +
+                daysInMonth
+            ) / 7
+        ) * 7;
+
+
+    for (
+        let i = 0;
+        i < totalCells;
+        i++
+    ) {
+
+        let dayNumber;
+
+        let cellDate;
+
+        let otherMonth = false;
+
+
+        if (
+            i < firstDay
+        ) {
+
+            dayNumber =
+                previousMonthDays -
+                firstDay +
+                i +
+                1;
+
+
+            cellDate =
+                new Date(
+                    year,
+                    month - 1,
+                    dayNumber
+                );
+
+
+            otherMonth = true;
+
+        } else if (
+            i >=
+            firstDay +
+            daysInMonth
+        ) {
+
+            dayNumber =
+                i -
+                (
+                    firstDay +
+                    daysInMonth
+                ) +
+                1;
+
+
+            cellDate =
+                new Date(
+                    year,
+                    month + 1,
+                    dayNumber
+                );
+
+
+            otherMonth = true;
+
+        } else {
+
+            dayNumber =
+                i -
+                firstDay +
+                1;
+
+
+            cellDate =
+                new Date(
+                    year,
+                    month,
+                    dayNumber
+                );
+
+        }
+
+
+        const dateString =
+            cellDate.getFullYear() +
+            "-" +
+            String(
+                cellDate.getMonth() + 1
+            ).padStart(
+                2,
+                "0"
+            ) +
+            "-" +
+            String(
+                cellDate.getDate()
+            ).padStart(
+                2,
+                "0"
+            );
+
+
+        const events =
+            agendaData.filter(
+                item =>
+                    item.tanggal ===
+                    dateString
+            );
+
+
+        const div =
+            document.createElement(
+                "div"
+            );
+
+
+        div.className =
+            "day" +
+            (
+                otherMonth
+                    ? " other"
+                    : ""
+            );
+
+
+        if (
+            dateString ===
+            todayString()
+        ) {
+
+            div.classList.add(
+                "today"
+            );
+
+        }
+
+
+        div.innerHTML = `
+
+            <div class="day-number">
+
+                ${dayNumber}
+
+            </div>
+
+            ${
+                events.length
+                    ? `
+                    <div class="event-dot"></div>
+
+                    <div class="event-count">
+                        ${events.length}
+                    </div>
+                    `
+                    : ""
+            }
+
+        `;
+
+
+        div.onclick =
+            function() {
+
+                if (
+                    events.length
+                ) {
+
+                    searchInput.value =
+                        "";
+
+                    renderList(
+                        dateString
+                    );
+
+                    document
+                        .querySelector(
+                            ".card:last-child"
+                        )
+                        .scrollIntoView({
+                            behavior:
+                                "smooth"
+                        });
+
+                } else {
+
+                    bukaModal(
+                        dateString
+                    );
+
+                }
+
+            };
+
+
+        calendarGrid.appendChild(
+            div
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   DAFTAR
+========================================= */
+
+function renderList(
+    filterDate = null
+) {
+
+    let data =
+        [...agendaData];
+
+
+    const search =
+        searchInput
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    if (search) {
+
+        data =
+            data.filter(
+                item =>
+
+                    String(
+                        item.judul
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    String(
+                        item.lokasi
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    String(
+                        item.penanggungJawab
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    String(
+                        item.jenis
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+            );
+
+    }
+
+
+    if (filterDate) {
+
+        data =
+            data.filter(
+                item =>
+                    item.tanggal ===
+                    filterDate
+            );
+
+    }
+
+
+    data.sort(
+        function(a, b) {
+
+            const x =
+                (
+                    a.tanggal +
+                    " " +
+                    a.jam
+                );
+
+            const y =
+                (
+                    b.tanggal +
+                    " " +
+                    b.jam
+                );
+
+
+            return x.localeCompare(y);
+
+        }
+    );
+
+
+    if (!data.length) {
+
+        agendaList.innerHTML = `
+
+            <div class="empty">
+
+                <i
+                    class="bi bi-calendar-x"
+                    style="
+                        font-size:28px;
+                        display:block;
+                        margin-bottom:8px;
+                    "
+                ></i>
+
+                Belum ada agenda.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    agendaList.innerHTML =
+        data.map(
+            item =>
+                agendaItemHTML(
+                    item
+                )
+        ).join("");
+
+}
+
+
+/* =========================================
+   HTML ITEM
+========================================= */
+
+function agendaItemHTML(
+    item
+) {
+
+    const d =
+        item.tanggal
+            ? new Date(
+                item.tanggal +
+                "T00:00:00"
+            )
+            : new Date();
+
+
+    const tanggal =
+        d.getDate();
+
+
+    const bulan =
+        namaBulan[
+            d.getMonth()
+        ].substring(
+            0,
+            3
+        );
+
+
+    return `
+
+        <div class="agenda-item">
+
+
+            <div class="agenda-date">
+
+                <strong>
+                    ${tanggal}
+                </strong>
+
+                <small>
+                    ${bulan}
+                </small>
+
+            </div>
+
+
+            <div class="agenda-info">
+
+
+                <h4>
+                    ${escapeHTML(
+                        item.judul
+                    )}
+                </h4>
+
+
+                <p>
+
+                    ${
+                        item.keterangan
+                            ? escapeHTML(
+                                item.keterangan
+                            )
+                            : "Tidak ada keterangan"
+                    }
+
+                </p>
+
+
+                <div class="agenda-meta">
+
+
+                    <span class="badge">
+
+                        <i class="bi bi-tag"></i>
+
+                        ${escapeHTML(
+                            item.jenis
+                        )}
+
+                    </span>
+
+
+                    ${
+                        item.jam
+                            ? `
+                            <span class="badge">
+
+                                <i class="bi bi-clock"></i>
+
+                                ${escapeHTML(
+                                    item.jam
+                                )}
+
+                            </span>
+                            `
+                            : ""
+                    }
+
+
+                    ${
+                        item.lokasi
+                            ? `
+                            <span class="badge">
+
+                                <i class="bi bi-geo-alt"></i>
+
+                                ${escapeHTML(
+                                    item.lokasi
+                                )}
+
+                            </span>
+                            `
+                            : ""
+                    }
+
+
+                    ${
+                        item.penanggungJawab
+                            ? `
+                            <span class="badge">
+
+                                <i class="bi bi-person"></i>
+
+                                ${escapeHTML(
+                                    item.penanggungJawab
+                                )}
+
+                            </span>
+                            `
+                            : ""
+                    }
+
+
+                    ${statusBadge(
+                        item.status
+                    )}
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="agenda-actions">
+
+
+                <button
+                    class="icon-btn"
+                    title="Edit"
+                    onclick="editAgenda('${item.id}')">
+
+                    <i class="bi bi-pencil"></i>
+
+                </button>
+
+
+                <button
+                    class="icon-btn delete"
+                    title="Hapus"
+                    onclick="hapusAgenda('${item.id}')">
+
+                    <i class="bi bi-trash"></i>
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHTML(
+    value
+) {
+
+    return String(
+        value || ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+function bukaModal(
+    tanggal = null
+) {
+
+    agendaForm.reset();
+
+
+    document.getElementById(
+        "agendaId"
+    ).value = "";
+
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        "Tambah Agenda";
+
+
+    document.getElementById(
+        "status"
+    ).value =
+        "Akan Datang";
+
+
+    if (tanggal) {
+
+        document.getElementById(
+            "tanggal"
+        ).value =
+            tanggal;
+
+    } else {
+
+        document.getElementById(
+            "tanggal"
+        ).value =
+            todayString();
+
+    }
+
+
+    modal.classList.add(
+        "show"
+    );
+
+}
+
+
+function tutupModal() {
+
+    modal.classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =========================================
+   SIMPAN AGENDA
+========================================= */
+
+async function simpanAgenda(
+    event
+) {
+
+    event.preventDefault();
+
+
+    const id =
+        document.getElementById(
+            "agendaId"
+        ).value ||
+        crypto.randomUUID();
+
+
+    const agenda = {
+
+        id: id,
+
+        tanggal:
+            document.getElementById(
+                "tanggal"
+            ).value,
+
+        jam:
+            document.getElementById(
+                "jam"
+            ).value,
+
+        jenis:
+            document.getElementById(
+                "jenis"
+            ).value,
+
+        judul:
+            document.getElementById(
+                "judul"
+            ).value.trim(),
+
+        lokasi:
+            document.getElementById(
+                "lokasi"
+            ).value.trim(),
+
+        penanggungJawab:
+            document.getElementById(
+                "penanggungJawab"
+            ).value.trim(),
+
+        status:
+            document.getElementById(
+                "status"
+            ).value,
+
+        keterangan:
+            document.getElementById(
+                "keterangan"
+            ).value.trim()
+
+    };
+
+
+    const existing =
+        agendaData.findIndex(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+
+    const action =
+        existing >= 0
+            ? "update"
+            : "add";
+
+
+    loading(
+        true,
+        action === "add"
+            ? "Menyimpan agenda..."
+            : "Memperbarui agenda..."
+    );
+
+
+    try {
+
+        /*
+         * SIMPAN KE GOOGLE SHEETS
+         */
+
+        await saveToGoogleSheets(
+            agenda,
+            action
+        );
+
+
+        /*
+         * UPDATE LOCAL
+         */
+
+        if (
+            existing >= 0
+        ) {
+
+            agendaData[
+                existing
+            ] = agenda;
+
+        } else {
+
+            agendaData.push(
+                agenda
+            );
+
+        }
+
+
+        simpanLocal();
+
+
+        renderAll();
+
+
+        tutupModal();
+
+
+        loading(
+            false
+        );
+
+
+        alert(
+            action === "add"
+                ? "Agenda berhasil disimpan ke Google Sheets."
+                : "Agenda berhasil diperbarui."
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        /*
+         * JIKA GOOGLE SHEETS GAGAL,
+         * TETAP SIMPAN LOKAL SEBAGAI CADANGAN
+         */
+
+        if (
+            existing >= 0
+        ) {
+
+            agendaData[
+                existing
+            ] = agenda;
+
+        } else {
+
+            agendaData.push(
+                agenda
+            );
+
+        }
+
+
+        simpanLocal();
+
+        renderAll();
+
+        tutupModal();
+
+
+        loading(
+            false
+        );
+
+
+        alert(
+            "Agenda tersimpan di perangkat, tetapi belum masuk Google Sheets.\n\n" +
+            "Periksa koneksi Apps Script."
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   EDIT
+========================================= */
+
+function editAgenda(
+    id
+) {
+
+    const item =
+        agendaData.find(
+            agenda =>
+                String(
+                    agenda.id
+                ) ===
+                String(id)
+        );
+
+
+    if (!item) {
+
+        alert(
+            "Data agenda tidak ditemukan."
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "agendaId"
+    ).value =
+        item.id;
+
+
+    document.getElementById(
+        "tanggal"
+    ).value =
+        item.tanggal || "";
+
+
+    document.getElementById(
+        "jam"
+    ).value =
+        item.jam || "";
+
+
+    document.getElementById(
+        "jenis"
+    ).value =
+        item.jenis || "";
+
+
+    document.getElementById(
+        "judul"
+    ).value =
+        item.judul || "";
+
+
+    document.getElementById(
+        "lokasi"
+    ).value =
+        item.lokasi || "";
+
+
+    document.getElementById(
+        "penanggungJawab"
+    ).value =
+        item.penanggungJawab || "";
+
+
+    document.getElementById(
+        "status"
+    ).value =
+        item.status ||
+        "Akan Datang";
+
+
+    document.getElementById(
+        "keterangan"
+    ).value =
+        item.keterangan || "";
+
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        "Edit Agenda";
+
+
+    modal.classList.add(
+        "show"
+    );
+
+}
+
+
+/* =========================================
+   HAPUS
+========================================= */
+
+async function hapusAgenda(
+    id
+) {
+
+    const item =
+        agendaData.find(
+            agenda =>
+                String(
+                    agenda.id
+                ) ===
+                String(id)
+        );
+
+
+    if (!item)
+        return;
+
+
+    const yakin =
+        confirm(
+            "Hapus agenda:\n\n" +
+            item.judul +
+            "?"
+        );
+
+
+    if (!yakin)
+        return;
+
+
+    loading(
+        true,
+        "Menghapus agenda..."
+    );
+
+
+    try {
+
+        await saveToGoogleSheets(
+
+            {
+                id: item.id,
+
+                tanggal:
+                    item.tanggal,
+
+                jam:
+                    item.jam,
+
+                jenis:
+                    item.jenis,
+
+                judul:
+                    item.judul,
+
+                lokasi:
+                    item.lokasi,
+
+                penanggungJawab:
+                    item.penanggungJawab,
+
+                status:
+                    item.status,
+
+                keterangan:
+                    item.keterangan
+
+            },
+
+            "delete"
+
+        );
+
+
+        agendaData =
+            agendaData.filter(
+                agenda =>
+                    String(
+                        agenda.id
+                    ) !==
+                    String(id)
+            );
+
+
+        simpanLocal();
+
+        renderAll();
+
+
+        loading(
+            false
+        );
+
+
+        alert(
+            "Agenda berhasil dihapus."
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        loading(
+            false
+        );
+
+
+        alert(
+            "Gagal menghapus agenda dari Google Sheets.\n\n" +
+            error.message
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   HAPUS SEMUA
+========================================= */
+
+async function hapusSemua() {
+
+    if (
+        !agendaData.length
+    ) {
+
+        alert(
+            "Belum ada agenda."
+        );
+
+        return;
+
+    }
+
+
+    const yakin =
+        confirm(
+            "PERHATIAN!\n\n" +
+            "Semua agenda akan dihapus dari Google Sheets.\n\n" +
+            "Lanjutkan?"
+        );
+
+
+    if (!yakin)
+        return;
+
+
+    loading(
+        true,
+        "Menghapus semua agenda..."
+    );
+
+
+    try {
+
+        for (
+            const item
+            of agendaData
+        ) {
+
+            await saveToGoogleSheets(
+
+                {
+                    id: item.id
+                },
+
+                "delete"
+
+            );
+
+        }
+
+
+        agendaData = [];
+
+        simpanLocal();
+
+        renderAll();
+
+
+        loading(
+            false
+        );
+
+
+        alert(
+            "Semua agenda berhasil dihapus."
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        loading(
+            false
+        );
+
+
+        alert(
+            "Sebagian data mungkin sudah terhapus.\n\n" +
+            error.message
+        );
+
+
+        /*
+         * Ambil ulang data dari Google Sheets
+         */
+
+        loadFromGoogleSheets();
+
+    }
+
+}
+
+
+/* =========================================
+   NAVIGASI BULAN
+========================================= */
+
+function bulanSebelumnya() {
+
+    currentDate.setMonth(
+        currentDate.getMonth() - 1
+    );
+
+    renderCalendar();
+
+}
+
+
+function bulanBerikutnya() {
+
+    currentDate.setMonth(
+        currentDate.getMonth() + 1
+    );
+
+    renderCalendar();
+
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+searchInput.addEventListener(
+
+    "input",
+
+    function() {
+
+        renderList();
+
+    }
+
+);
+
+
+/* =========================================
+   TUTUP MODAL KLIK LUAR
+========================================= */
+
+modal.addEventListener(
+
+    "click",
+
+    function(event) {
+
+        if (
+            event.target ===
+            modal
+        ) {
+
+            tutupModal();
+
+        }
+
+    }
+
+);
+
+
+/* =========================================
+   ESC
+========================================= */
+
+document.addEventListener(
+
+    "keydown",
+
+    function(event) {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            tutupModal();
+
+        }
+
+    }
+
+);
+
+
+/* =========================================
+   MULAI APLIKASI
+========================================= */
+
+loadLocal();
+
+renderAll();
+
+
+/*
+ * Ambil data terbaru dari
+ * Google Sheets.
+ */
+
+loadFromGoogleSheets();
+
+
+</script>
+
+
+</body>
+
+</html>

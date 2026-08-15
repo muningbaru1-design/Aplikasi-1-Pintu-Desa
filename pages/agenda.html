@@ -1779,14 +1779,17 @@ async function loadFromGoogleSheets() {
         ) {
 
             agendaData =
-                Array.isArray(result.data)
-                    ? result.data
-                    : [];
+    Array.isArray(result.data)
+        ? result.data
+        : [];
 
+console.log("=== DATA AGENDA DARI GOOGLE SHEETS ===");
+console.table(agendaData);
+console.log("Tanggal hari ini:", todayString());
 
-            simpanLocal();
+simpanLocal();
 
-            renderAll();
+renderAll();
 
             loading(
                 false
@@ -2102,23 +2105,40 @@ function renderStats() {
         ).length;
 
 
+    /*
+       AGENDA MENDATANG
+
+       Agenda hari ini juga dihitung sebagai mendatang
+       selama statusnya belum Selesai.
+
+       Data tanggal dari Code.gs sudah berbentuk:
+       YYYY-MM-DD
+    */
     const upcoming =
         agendaData.filter(
             item =>
-                item.tanggal >
-                today &&
-                item.status !==
+                String(item.tanggal || "") >= today &&
+                String(item.status || "").trim() !==
                 "Selesai"
         ).length;
 
 
+    /*
+       AGENDA SELESAI
+
+       Tetap menghitung:
+       - status Selesai
+       - tanggal yang sudah lewat
+    */
     const done =
         agendaData.filter(
             item =>
-                item.status ===
+                String(item.status || "").trim() ===
                 "Selesai" ||
-                item.tanggal <
-                today
+                (
+                    String(item.tanggal || "") &&
+                    String(item.tanggal) < today
+                )
         ).length;
 
 

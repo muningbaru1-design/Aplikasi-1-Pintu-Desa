@@ -1,0 +1,611 @@
+/* =========================================================
+   SIDEBAR APLIKASI 1 PINTU
+   DESA MUNING BARU
+   ========================================================= */
+
+
+/* =========================================================
+   SIDEBAR UTAMA
+   ========================================================= */
+
+#sidebarAplikasi {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 280px;
+
+    height: 100vh;
+
+    background: #ffffff;
+
+    border-right: 1px solid #e5e7eb;
+
+    box-shadow:
+        4px 0 18px rgba(0,0,0,0.08);
+
+    z-index: 9999;
+
+    overflow-y: auto;
+
+    font-family: 'Poppins', sans-serif;
+
+    transform: translateX(0);
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+#sidebarAplikasi .sidebar-logo {
+
+    text-align: center;
+
+    padding-top: 22px;
+
+    padding-bottom: 8px;
+
+}
+
+
+#sidebarAplikasi .sidebar-logo img {
+
+    width: 70px;
+
+    height: 70px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 3px solid #16a34a;
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,0.12);
+
+}
+
+
+/* =========================================================
+   JUDUL SIDEBAR
+   ========================================================= */
+
+#sidebarAplikasi .sidebar-title {
+
+    text-align: center;
+
+    padding:
+        0 18px 18px;
+
+    border-bottom:
+        1px solid #eeeeee;
+
+}
+
+
+#sidebarAplikasi .sidebar-title h2 {
+
+    margin:
+        4px 0 2px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #166534;
+
+}
+
+
+#sidebarAplikasi .sidebar-title p {
+
+    margin: 0;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #374151;
+
+}
+
+
+#sidebarAplikasi .sidebar-title small {
+
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 11px;
+
+    color: #6b7280;
+
+}
+
+
+/* =========================================================
+   AREA MENU
+   ========================================================= */
+
+#sidebarAplikasi .sidebar-menu {
+
+    padding:
+        12px 10px 30px;
+
+}
+
+
+/* =========================================================
+   KELOMPOK MENU
+   ========================================================= */
+
+#sidebarAplikasi .sidebar-group {
+
+    margin-bottom: 3px;
+
+}
+
+
+/* =========================================================
+   TOMBOL KATEGORI
+   ========================================================= */
+
+#sidebarAplikasi
+.sidebar-group-header {
+
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        12px 12px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    color: #374151;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    text-align: left;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+
+}
+
+
+#sidebarAplikasi
+.sidebar-group-header span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+#sidebarAplikasi
+.sidebar-group-header span i {
+
+    width: 22px;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    color: #16a34a;
+
+}
+
+
+/* =========================================================
+   PANAH
+   ========================================================= */
+
+#sidebarAplikasi
+.sidebar-arrow {
+
+    font-size: 12px;
+
+    transition:
+        transform 0.25s ease;
+
+}
+
+
+#sidebarAplikasi
+.sidebar-group.open
+.sidebar-arrow {
+
+    transform:
+        rotate(180deg);
+
+}
+
+
+/* =========================================================
+   HOVER KATEGORI
+   ========================================================= */
+
+#sidebarAplikasi
+.sidebar-group-header:hover {
+
+    background: #f0fdf4;
+
+    color: #166534;
+
+}
+
+
+/* =========================================================
+   SUBMENU
+   ========================================================= */
+
+#sidebarAplikasi
+.sidebar-submenu {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease;
+
+    padding-left: 12px;
+
+}
+
+
+#sidebarAplikasi
+.sidebar-submenu.show {
+
+    max-height: 500px;
+
+    opacity: 1;
+
+}
+
+
+/* =========================================================
+   LINK SUBMENU
+   ========================================================= */
+
+#sidebarAplikasi
+.sidebar-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 38px;
+
+    padding:
+        7px 12px;
+
+    margin:
+        2px 0;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        padding-left 0.2s ease;
+
+}
+
+
+#sidebarAplikasi
+.sidebar-link i {
+
+    width: 20px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: #9ca3af;
+
+}
+
+
+/* =========================================================
+   HOVER LINK
+   ========================================================= */
+
+#sidebarAplikasi
+.sidebar-link:hover {
+
+    background:
+        #f0fdf4;
+
+    color:
+        #166534;
+
+    padding-left:
+        17px;
+
+}
+
+
+#sidebarAplikasi
+.sidebar-link:hover i {
+
+    color:
+        #16a34a;
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+#sidebarAplikasi::-webkit-scrollbar {
+
+    width: 5px;
+
+}
+
+
+#sidebarAplikasi::-webkit-scrollbar-track {
+
+    background:
+        transparent;
+
+}
+
+
+#sidebarAplikasi::-webkit-scrollbar-thumb {
+
+    background:
+        #d1d5db;
+
+    border-radius:
+        10px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    #sidebarAplikasi {
+
+        width:
+            280px;
+
+        transform:
+            translateX(-100%);
+
+    }
+
+
+    #sidebarAplikasi.sidebar-open {
+
+        transform:
+            translateX(0);
+
+    }
+
+
+    body.sidebar-layout {
+
+        padding-left:
+            0;
+
+    }
+
+}
+
+/* =========================================================
+   GESER AREA MENU DASHBOARD KE KANAN
+   SIDEBAR TETAP 280PX
+========================================================= */
+
+@media (min-width: 901px) {
+
+    /* =========================================
+       AREA GRID MENU
+    ========================================= */
+
+    #gridMenu {
+
+        margin-left: 280px !important;
+
+        width: calc(100% - 280px) !important;
+
+        box-sizing: border-box;
+
+    }
+
+
+    /* =========================================
+       AGENDA DASHBOARD
+       Supaya tidak tertutup sidebar
+    ========================================= */
+
+    .agenda-home {
+
+        margin-left: 280px !important;
+
+        width: calc(100% - 280px) !important;
+
+        box-sizing: border-box;
+
+    }
+
+
+    /* =========================================
+       KOTAK PENCARIAN
+       Jika ada
+    ========================================= */
+
+    #searchMenu,
+    .search-menu,
+    .menu-search {
+
+        margin-left: 280px !important;
+
+        width: calc(100% - 280px) !important;
+
+        box-sizing: border-box;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   Tidak digeser
+========================================================= */
+
+@media (max-width: 900px) {
+
+    #gridMenu,
+    .agenda-home,
+    #searchMenu,
+    .search-menu,
+    .menu-search {
+
+        margin-left: 0 !important;
+
+        width: 100% !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   OVERLAY MOBILE
+   ========================================================= */
+
+#sidebarOverlay {
+
+    display: none;
+
+}
+
+
+@media (max-width: 900px) {
+
+    #sidebarOverlay {
+
+        position: fixed;
+
+        inset: 0;
+
+        background:
+            rgba(0,0,0,0.35);
+
+        z-index:
+            9998;
+
+    }
+
+
+    #sidebarOverlay.show {
+
+        display: block;
+
+    }
+
+}
+
+
+/* =========================================================
+   TOMBOL BUKA SIDEBAR
+   ========================================================= */
+
+#sidebarToggle {
+
+    display: none;
+
+}
+
+
+@media (max-width: 900px) {
+
+    #sidebarToggle {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        position: fixed;
+
+        top: 15px;
+
+        left: 15px;
+
+        width: 42px;
+
+        height: 42px;
+
+        border: none;
+
+        border-radius: 10px;
+
+        background:
+            #16a34a;
+
+        color:
+            #ffffff;
+
+        font-size: 20px;
+
+        cursor: pointer;
+
+        z-index:
+            9997;
+
+        box-shadow:
+            0 3px 10px rgba(0,0,0,0.15);
+
+    }
+
+}

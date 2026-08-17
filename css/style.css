@@ -2148,3 +2148,53 @@ color:#0F766E;
     }
 
 }
+
+/* =========================================================
+   MENU HP - 3 KOLOM
+========================================================= */
+
+@media (max-width: 600px) {
+
+    #gridMenu {
+        display: grid !important;
+
+        grid-template-columns:
+            repeat(3, 1fr) !important;
+
+        gap: 8px !important;
+
+        padding: 8px !important;
+    }
+
+
+    #gridMenu .grid-item {
+
+        min-height: 85px !important;
+
+        padding: 10px 5px !important;
+
+        border-radius: 10px !important;
+
+    }
+
+
+    #gridMenu .grid-item i {
+
+        font-size: 24px !important;
+
+        margin-bottom: 5px !important;
+
+    }
+
+
+    #gridMenu .grid-item h6 {
+
+        font-size: 10px !important;
+
+        line-height: 1.2 !important;
+
+        margin: 0 !important;
+
+    }
+
+}

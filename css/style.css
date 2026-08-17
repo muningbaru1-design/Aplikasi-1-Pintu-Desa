@@ -2134,3 +2134,17 @@ color:#0F766E;
     }
 
 }
+
+/* =========================================================
+   GESER JUDUL HEADER AGAR TIDAK TERTUTUP SIDEBAR
+========================================================= */
+
+@media (min-width: 901px) {
+
+    .header .title {
+
+        margin-left: 250px !important;
+
+    }
+
+}

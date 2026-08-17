@@ -314,10 +314,7 @@ function buatSidebar() {
 
         <div class="sidebar-logo">
 
-            <img
-                src="assets/logo/logo-desa.jpg"
-                onerror="this.src='../assets/logo/logo-desa.jpg';"
-                alt="Logo Desa">
+            <img src="assets/logo/logo-aplikasi-1-pintu.png" class="sidebar-logo-img">
 
         </div>
 
@@ -519,3 +516,4 @@ if (
     buatSidebar();
 
 }
+

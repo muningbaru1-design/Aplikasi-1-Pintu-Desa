@@ -62,7 +62,7 @@ const SIDEBAR_DATA = [
             {
                 nama: "Prodeskel",
                 icon: "bi-bar-chart",
-                link: "#"
+                link: "https://prodeskel.binapemdes.kemendagri.go.id/mpublik/"
             }
 
         ]
@@ -79,13 +79,13 @@ const SIDEBAR_DATA = [
             {
                 nama: "Data Rumah",
                 icon: "bi-house-fill",
-                link: "#"
+                link:"pages/rumah.html"
             },
 
             {
                 nama: "Peta Desa",
                 icon: "bi-geo-alt-fill",
-                link: "#"
+                link:"pages/peta.html"
             }
 
         ]
@@ -102,13 +102,13 @@ const SIDEBAR_DATA = [
             {
                 nama: "Posyandu",
                 icon: "bi-heart-pulse",
-                link: "#"
+                link: "pages/laporan-kader.html"
             },
 
             {
                 nama: "SIP Bumilnya",
                 icon: "bi-person-heart",
-                link: "#"
+                link: "https://muningbaru1-design.github.io/sipbumil-muningbaru/"
             }
 
         ]
@@ -125,13 +125,13 @@ const SIDEBAR_DATA = [
             {
                 nama: "Usulan ke Puskesos",
                 icon: "bi-file-earmark-plus",
-                link: "#"
+                link: "https://docs.google.com/forms/d/e/1FAIpQLSfUwsKc4zKw9w_fuB5LQWpTySfxfKGQp1If9U6mZm1ZUYSVLw/viewform"
             },
 
             {
                 nama: "Data Penerima Bansos",
                 icon: "bi-person-check-fill",
-                link: "#"
+                link: "https://docs.google.com/spreadsheets/d/1SvbdpvKH9RzGoMbNyoP25wYRkY1m8keK/edit?gid=1709621883#gid=1709621883"
             }
 
         ]
@@ -148,13 +148,13 @@ const SIDEBAR_DATA = [
             {
                 nama: "Catat Rapat",
                 icon: "bi-pencil-square",
-                link: "#"
+                link:"pages/spj-rapat.html"
             },
 
             {
                 nama: "Kumpulan Undangan",
                 icon: "bi-envelope-fill",
-                link: "#"
+                link:"pages/undangan.html"
             }
 
         ]
@@ -171,19 +171,19 @@ const SIDEBAR_DATA = [
             {
                 nama: "Capaian RPJMDes",
                 icon: "bi-bar-chart-line-fill",
-                link: "#"
+                link: "pages/rpjmdes.html"
             },
 
             {
                 nama: "Capaian RPJMDes Rinci",
                 icon: "bi-bar-chart-line",
-                link: "#"
+                link: "pages/rpjmdes-v2.html"
             },
 
             {
                 nama: "Upload SPJ",
                 icon: "bi-cloud-arrow-up-fill",
-                link: "#"
+                link:"pages/upload-spj.html"
             }
 
         ]
@@ -200,13 +200,13 @@ const SIDEBAR_DATA = [
             {
                 nama: "Produk Hukum Desa",
                 icon: "bi-bank2",
-                link: "#"
+                link:"pages/menu.html?kategori=produkhukum"
             },
 
             {
                 nama: "Lembaga dan Kelompok Desa",
                 icon: "bi-people-fill",
-                link: "#"
+                link:"pages/lembaga-desa.html"
             }
 
         ]
@@ -223,19 +223,19 @@ const SIDEBAR_DATA = [
             {
                 nama: "Catat PADes",
                 icon: "bi-cash-coin",
-                link: "#"
+                link: "pages/pades.html"
             },
 
             {
                 nama: "Catat Pendapatan BUMDes",
                 icon: "bi-bank",
-                link: "#"
+                link:"pages/bumdes.html"
             },
 
             {
                 nama: "Tanda Terima Gaji",
                 icon: "bi-receipt",
-                link: "#"
+                link: "pages/tanda-terima-gaji.html"
             }
 
         ]
@@ -252,7 +252,7 @@ const SIDEBAR_DATA = [
             {
                 nama: "Website Desa",
                 icon: "bi-globe2",
-                link: "#"
+                link: "https://muningbaru1.blogspot.com/"
             },
 
             {
@@ -516,4 +516,3 @@ if (
     buatSidebar();
 
 }
-

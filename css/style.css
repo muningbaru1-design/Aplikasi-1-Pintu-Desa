@@ -2220,3 +2220,41 @@ color:#0F766E;
     }
 
 }
+
+/* =========================================================
+   MENU HP - 3 KOLOM
+========================================================= */
+
+@media (max-width: 600px) {
+
+    #gridMenu.grid-menu {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        padding: 10px !important;
+        box-sizing: border-box;
+    }
+
+    /* Semua kartu menu yang dibuat oleh menu.js */
+    #gridMenu.grid-menu > * {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box;
+        padding: 12px 6px !important;
+        min-height: 120px !important;
+        border-radius: 14px !important;
+    }
+
+    /* Ukuran icon */
+    #gridMenu.grid-menu > * i {
+        font-size: 25px !important;
+    }
+
+    /* Tulisan menu */
+    #gridMenu.grid-menu > * {
+        font-size: 11px !important;
+        line-height: 1.3 !important;
+        text-align: center;
+    }
+
+}

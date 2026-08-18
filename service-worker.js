@@ -1,4 +1,4 @@
-const CACHE_NAME = "aplikasi-1-pintu-v1";
+const CACHE_NAME = "aplikasi-1-pintu-v2";
 
 self.addEventListener(
     "install",

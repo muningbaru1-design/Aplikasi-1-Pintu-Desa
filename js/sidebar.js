@@ -314,7 +314,7 @@ function buatSidebar() {
 
         <div class="sidebar-logo">
 
-            <img src="assets/logo/logo-aplikasi-1-pintu.png" class="sidebar-logo-img">
+            <img src="assets/logo/logo-aplikasi-1-pintu.jpg" class="sidebar-logo-img">
 
         </div>
 

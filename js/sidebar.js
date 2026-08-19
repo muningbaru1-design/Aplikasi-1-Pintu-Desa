@@ -21,25 +21,25 @@ const SIDEBAR_DATA = [
             {
                 nama: "Kependudukan",
                 icon: "bi-people",
-                link: "#"
+                link: "pages/menu.html?kategori=penduduk"
             },
 
             {
                 nama: "Pembangunan",
                 icon: "bi-building",
-                link: "#"
+                link: "pages/menu.html?kategori=pembangunan"
             },
 
             {
                 nama: "Umum",
                 icon: "bi-folder",
-                link: "#"
+                link: "pages/menu.html?kategori=umum"
             },
 
             {
                 nama: "Keuangan",
                 icon: "bi-cash-stack",
-                link: "#"
+                link: "pages/menu.html?kategori=keuangan"
             }
 
         ]

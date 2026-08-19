@@ -127,7 +127,7 @@ link:"pages/menu.html?kategori=produkhukum"
 {
     nama: "Data Penerima Bansos",
     icon: "bi-gift",
-    link: "pages/menu.html?kategori=bansos"
+    link: "pages/bansos.html"
 },
 
 {

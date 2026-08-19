@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Data Penerima Bansos - Desa Muning Baru
+    </title>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: 'Poppins', sans-serif;
+
+            background: #f3f6fb;
+
+            color: #1f2937;
+
+        }
+
+
+        /* ==============================
+           HEADER
+        ============================== */
+
+        .header {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f766e,
+                    #16a34a
+                );
+
+            color: white;
+
+            padding: 18px 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0,0,0,.12);
+
+        }
+
+
+        .btn-kembali {
+
+            width: 45px;
+
+            height: 45px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: #0f766e;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .header-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,255,255,.18);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .header-icon i {
+
+            font-size: 27px;
+
+        }
+
+
+        .header-text {
+
+            flex: 1;
+
+        }
+
+
+        .header-text h1 {
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            margin: 0;
+
+        }
+
+
+        .header-text p {
+
+            margin-top: 3px;
+
+            font-size: 12px;
+
+            opacity: .9;
+
+        }
+
+
+        /* ==============================
+           KONTEN
+        ============================== */
+
+        .container {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 25px;
+
+        }
+
+
+        .judul {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            margin-bottom: 22px;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0,0,0,.07);
+
+        }
+
+
+        .judul h2 {
+
+            color: #0f766e;
+
+            font-size: 20px;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .judul p {
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* ==============================
+           GRID MENU
+        ============================== */
+
+        .menu-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+        }
+
+
+        /* ==============================
+           KARTU MENU
+        ============================== */
+
+        .menu-card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            min-height: 160px;
+
+            padding: 20px 12px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            color: #1f2937;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0,0,0,.08);
+
+            transition:
+                .25s ease;
+
+        }
+
+
+        .menu-card:hover {
+
+            transform:
+                translateY(-6px);
+
+            box-shadow:
+                0 12px 25px
+                rgba(0,0,0,.14);
+
+        }
+
+
+        .menu-icon {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 17px;
+
+            background:
+                #ecfdf5;
+
+            color: #16a34a;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 13px;
+
+        }
+
+
+        .menu-icon i {
+
+            font-size: 30px;
+
+        }
+
+
+        .menu-card h3 {
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            line-height: 1.35;
+
+            margin: 0;
+
+        }
+
+
+        .menu-card p {
+
+            font-size: 11px;
+
+            color: #9ca3af;
+
+            margin-top: 5px;
+
+        }
+
+
+        /* ==============================
+           WARNA ICON
+        ============================== */
+
+        .pkh .menu-icon {
+
+            color: #7c3aed;
+            background: #f5f3ff;
+
+        }
+
+
+        .bpnt .menu-icon {
+
+            color: #2563eb;
+            background: #eff6ff;
+
+        }
+
+
+        .blt .menu-icon {
+
+            color: #16a34a;
+            background: #f0fdf4;
+
+        }
+
+
+        .rastrada .menu-icon {
+
+            color: #ea580c;
+            background: #fff7ed;
+
+        }
+
+
+        .berupaya .menu-icon {
+
+            color: #db2777;
+            background: #fdf2f8;
+
+        }
+
+
+        .jadup .menu-icon {
+
+            color: #0891b2;
+            background: #ecfeff;
+
+        }
+
+
+        .bpn .menu-icon {
+
+            color: #ca8a04;
+            background: #fefce8;
+
+        }
+
+
+        .disabilitas .menu-icon {
+
+            color: #4f46e5;
+            background: #eef2ff;
+
+        }
+
+
+        .prs .menu-icon {
+
+            color: #0f766e;
+            background: #f0fdfa;
+
+        }
+
+
+        .baznas .menu-icon {
+
+            color: #dc2626;
+            background: #fef2f2;
+
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        .footer {
+
+            text-align: center;
+
+            color: #9ca3af;
+
+            font-size: 11px;
+
+            padding: 30px 10px;
+
+        }
+
+
+        /* ==============================
+           TABLET
+        ============================== */
+
+        @media (max-width: 900px) {
+
+            .menu-grid {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+
+            }
+
+        }
+
+
+        /* ==============================
+           HP
+        ============================== */
+
+        @media (max-width: 600px) {
+
+            .header {
+
+                padding: 13px 12px;
+
+                gap: 9px;
+
+            }
+
+
+            .btn-kembali {
+
+                width: 40px;
+
+                height: 40px;
+
+                font-size: 19px;
+
+            }
+
+
+            .header-icon {
+
+                width: 42px;
+
+                height: 42px;
+
+                border-radius: 12px;
+
+            }
+
+
+            .header-icon i {
+
+                font-size: 22px;
+
+            }
+
+
+            .header-text h1 {
+
+                font-size: 16px;
+
+            }
+
+
+            .header-text p {
+
+                font-size: 10px;
+
+            }
+
+
+            .container {
+
+                padding: 12px;
+
+            }
+
+
+            .judul {
+
+                padding: 16px;
+
+                margin-bottom: 15px;
+
+            }
+
+
+            .judul h2 {
+
+                font-size: 17px;
+
+            }
+
+
+            .judul p {
+
+                font-size: 11px;
+
+            }
+
+
+            /* 3 KOLOM HP */
+
+            .menu-grid {
+
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+
+                gap: 9px;
+
+            }
+
+
+            .menu-card {
+
+                min-height: 125px;
+
+                padding: 12px 5px;
+
+                border-radius: 14px;
+
+            }
+
+
+            .menu-icon {
+
+                width: 44px;
+
+                height: 44px;
+
+                border-radius: 12px;
+
+                margin-bottom: 8px;
+
+            }
+
+
+            .menu-icon i {
+
+                font-size: 22px;
+
+            }
+
+
+            .menu-card h3 {
+
+                font-size: 10px;
+
+                line-height: 1.3;
+
+            }
+
+
+            .menu-card p {
+
+                font-size: 8px;
+
+                margin-top: 3px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         HEADER
+    ============================== -->
+
+    <header class="header">
+
+
+        <a href="../dashboard.html"
+           class="btn-kembali"
+           title="Kembali">
+
+            <i class="bi bi-arrow-left"></i>
+
+        </a>
+
+
+        <div class="header-icon">
+
+            <i class="bi bi-gift"></i>
+
+        </div>
+
+
+        <div class="header-text">
+
+            <h1>
+                Data Penerima Bansos
+            </h1>
+
+            <p>
+                Desa Muning Baru
+            </p>
+
+        </div>
+
+
+    </header>
+
+
+    <!-- ==============================
+         KONTEN
+    ============================== -->
+
+    <main class="container">
+
+
+        <section class="judul">
+
+            <h2>
+                Data Penerima Bantuan Sosial
+            </h2>
+
+            <p>
+                Silakan pilih jenis program bantuan
+                untuk melihat dan mengelola data
+                penerima bantuan sosial Desa Muning Baru.
+            </p>
+
+        </section>
+
+
+        <!-- ==============================
+             10 MENU BANSOS
+        ============================== -->
+
+        <section class="menu-grid">
+
+
+            <!-- PKH -->
+
+            <a href="bansos-pkh.html"
+               class="menu-card pkh">
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-people"></i>
+
+                </div>
+
+                <h3>
+                    PKH
+                </h3>
+
+                <p>
+                    Program Keluarga Harapan
+                </p>
+
+            </a>
+
+
+            <!-- BPNT -->
+
+            <a href="bansos-bpnt.html"
+               class="menu-card bpnt">
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-basket"></i>
+
+                </div>
+
+                <h3>
+                    BPNT
+                </h3>
+
+                <p>
+                    Bantuan Pangan Non Tunai
+                </p>
+
+            </a>
+
+
+            <!-- BLT -->
+
+            <a href="bansos-blt.html"
+               class="menu-card blt">
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-cash-stack"></i>
+
+                </div>
+
+                <h3>
+                    BLT
+                </h3>
+
+                <p>
+                    Bantuan Langsung Tunai
+                </p>
+
+            </a>
+
+
+            <!-- RASTRADA -->
+
+            <a href="bansos-rastrada.html"
+               class="menu-card rastrada">
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-bag"></i>
+
+                </div>
+
+                <h3>
+                    RASTRADA
+                </h3>
+
+                <p>
+                    Data Penerima
+                </p>
+
+            </a>
+
+
+            <!-- BERUPAYA -->
+
+            <a href="bansos-berupaya.html"
+               class="menu-card berupaya">
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-person-heart"></i>
+
+                </div>
+
+                <h3>
+                    BERUPAYA
+                </h3>
+
+                <p>
+                    Anak Yatim
+                </p>
+
+            </a>
+
+
+            <!-- JADUP -->
+
+            <a href="bansos-jadup.html"
+               class="menu-card jadup">
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-person"></i>
+
+                </div>
+
+                <h3>
+                    JADUP
+                </h3>
+
+                <p>
+                    Lansia
+                </p>
+
+            </a>
+
+
+            <!-- BPN -->
+
+            <a href="bansos-bpn.html"
+               class="menu-card bpn">
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-box-seam"></i>
+
+                </div>
+
+                <h3>
+                    BPN
+                </h3>
+
+                <p>
+                    Beras Pangan Nasional
+                </p>
+
+            </a>
+
+
+            <!-- DISABILITAS -->
+
+            <a href="bansos-disabilitas.html"
+               class="menu-card disabilitas">
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-universal-access"></i>
+
+                </div>
+
+                <h3>
+                    Disabilitas
+                </h3>
+
+                <p>
+                    Data Penerima
+                </p>
+
+            </a>
+
+
+            <!-- PRS -->
+
+            <a href="bansos-prs.html"
+               class="menu-card prs">
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-house-heart"></i>
+
+                </div>
+
+                <h3>
+                    Program PRS
+                </h3>
+
+                <p>
+                    Rumah Sejahtera
+                </p>
+
+            </a>
+
+
+            <!-- BAZNAS -->
+
+            <a href="bansos-baznas.html"
+               class="menu-card baznas">
+
+                <div class="menu-icon">
+
+                    <i class="bi bi-heart"></i>
+
+                </div>
+
+                <h3>
+                    BAZNAS
+                </h3>
+
+                <p>
+                    Data Penerima
+                </p>
+
+            </a>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer class="footer">
+
+        Aplikasi 1 Pintu Desa Muning Baru
+
+    </footer>
+
+
+</body>
+
+</html>

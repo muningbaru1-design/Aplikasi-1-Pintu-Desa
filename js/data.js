@@ -61,11 +61,19 @@ link:"pages/menu.html?kategori=produkhukum"
 },
 
 {
+    id:"verifikasi-spj",
+    nama:"Verifikasi SPJ",
+    icon:"bi-check2-square",
+    warna:"#059669",
+    link:"pages/verifikasi-spj.html"
+},
+
+{
     id:"gaji",
     nama:"Tanda Terima Gaji",
     icon:"bi-cash-stack",
     warna:"#F59E0B",
-     link: "pages/tanda-terima-gaji.html"
+    link: "pages/tanda-terima-gaji.html"
 },
 
 {
@@ -114,6 +122,12 @@ link:"pages/menu.html?kategori=produkhukum"
     icon: "bi-clipboard2-check-fill",
     warna: "#EC4899",
     link: "pages/laporan-kader.html"
+},
+
+{
+    nama: "Data Penerima Bansos",
+    icon: "bi-gift",
+    link: "pages/menu.html?kategori=bansos"
 },
 
 {

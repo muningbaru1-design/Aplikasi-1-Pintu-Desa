@@ -1158,7 +1158,7 @@
 
         <button
             class="btn btn-blue"
-            onclick="ambilDataPKH()">
+            onclick="ambilDataBPNT()">
 
             <i class="bi bi-arrow-clockwise"></i>
 
@@ -1237,7 +1237,7 @@
                 </thead>
 
 
-                <tbody id="tabelPKH">
+                <tbody id="tabelBPNT">
 
                     <tr>
 
@@ -1284,7 +1284,7 @@
 
 <div
     class="modal"
-    id="modalPKH">
+    id="modalBPNT">
 
 
     <div class="modal-box">
@@ -1310,7 +1310,7 @@
 
         <form
             class="form"
-            id="formPKH">
+            id="formBPNT">
 
 
             <input
@@ -1469,12 +1469,14 @@ const CSV_URL =
 const API_URL =
 "https://script.google.com/macros/s/AKfycbxB6Mdhpm_vTCZuZ3mpYoFg8n9pRtVXDDhdCOn-1Gc5oCSA2NqgdLIviejvCHSEooSVWg/exec";
 
+const PROGRAM = "bpnt";
+
 
 /* =========================================
    DATA
 ========================================= */
 
-let dataPKH = [];
+let dataBPNT = [];
 
 let dataTampil = [];
 
@@ -1488,7 +1490,7 @@ const perHalaman = 10;
 ========================================= */
 
 const tabel =
-document.getElementById("tabelPKH");
+document.getElementById("tabelBPNT");
 
 const searchInput =
 document.getElementById("searchInput");
@@ -1701,7 +1703,7 @@ function parseCSV(csv) {
    AMBIL DATA
 ========================================= */
 
-async function ambilDataPKH() {
+async function ambilDataBPNT() {
 
     tampilLoading();
 
@@ -1736,12 +1738,12 @@ async function ambilDataPKH() {
             await response.text();
 
 
-        dataPKH =
+        dataBPNT =
             parseCSV(csv);
 
 
         dataTampil =
-            [...dataPKH];
+            [...dataBPNT];
 
 
         halaman = 1;
@@ -1826,11 +1828,11 @@ function tampilLoading() {
 function updateStatistik() {
 
     const total =
-        dataPKH.length;
+        dataBPNT.length;
 
 
     const aktif =
-        dataPKH.filter(
+        dataBPNT.filter(
             item =>
                 String(item.status)
                 .toLowerCase()
@@ -1843,7 +1845,7 @@ function updateStatistik() {
 
 
     const tidakAktif =
-        dataPKH.filter(
+        dataBPNT.filter(
             item =>
                 String(item.status)
                 .toLowerCase()
@@ -2159,7 +2161,7 @@ searchInput.addEventListener(
 
 
         dataTampil =
-            dataPKH.filter(
+            dataBPNT.filter(
                 item => {
 
                     return [
@@ -2213,12 +2215,12 @@ function bukaTambah() {
 
 
     document.getElementById(
-        "formPKH"
+        "formBPNT"
     ).reset();
 
 
     document.getElementById(
-        "modalPKH"
+        "modalBPNT"
     ).classList.add("active");
 
 }
@@ -2231,7 +2233,7 @@ function bukaTambah() {
 function bukaEdit(rowNumber) {
 
     const item =
-        dataPKH.find(
+        dataBPNT.find(
             data =>
                 Number(data._row) ===
                 Number(rowNumber)
@@ -2304,7 +2306,7 @@ function bukaEdit(rowNumber) {
 
 
     document.getElementById(
-        "modalPKH"
+        "modalBPNT"
     ).classList.add("active");
 
 }
@@ -2317,7 +2319,7 @@ function bukaEdit(rowNumber) {
 function tutupModal() {
 
     document.getElementById(
-        "modalPKH"
+        "modalBPNT"
     ).classList.remove("active");
 
 }
@@ -2341,52 +2343,55 @@ async function simpanData() {
         ).value;
 
 
-    const data = {
+   const data = {
 
-        action:
-            row
-            ? "update"
-            : "add",
+    action:
+        row
+        ? "update"
+        : "add",
 
-        _row:
-            row || "",
+    // WAJIB untuk halaman BPNT
+    program: PROGRAM,
 
-        nik:
-            document.getElementById(
-                "nik"
-            ).value.trim(),
+    _row:
+        row || "",
 
-        kk:
-            document.getElementById(
-                "kk"
-            ).value.trim(),
+    nik:
+        document.getElementById(
+            "nik"
+        ).value.trim(),
 
-        "nama penerima":
-            document.getElementById(
-                "nama"
-            ).value.trim(),
+    kk:
+        document.getElementById(
+            "kk"
+        ).value.trim(),
 
-        alamat:
-            document.getElementById(
-                "alamat"
-            ).value.trim(),
+    "nama penerima":
+        document.getElementById(
+            "nama"
+        ).value.trim(),
 
-        rt:
-            document.getElementById(
-                "rt"
-            ).value.trim(),
+    alamat:
+        document.getElementById(
+            "alamat"
+        ).value.trim(),
 
-        status:
-            document.getElementById(
-                "status"
-            ).value,
+    rt:
+        document.getElementById(
+            "rt"
+        ).value.trim(),
 
-        keterangan:
-            document.getElementById(
-                "keterangan"
-            ).value.trim()
+    status:
+        document.getElementById(
+            "status"
+        ).value,
 
-    };
+    keterangan:
+        document.getElementById(
+            "keterangan"
+        ).value.trim()
+
+};
 
 
     if (!data.nik) {
@@ -2471,7 +2476,7 @@ async function simpanData() {
         tutupModal();
 
 
-        await ambilDataPKH();
+        await ambilDataBPNT();
 
 
     } catch (error) {
@@ -2508,7 +2513,7 @@ async function simpanData() {
 async function hapusData(rowNumber) {
 
     const item =
-        dataPKH.find(
+        dataBPNT.find(
             data =>
                 Number(data._row) ===
                 Number(rowNumber)
@@ -2562,15 +2567,18 @@ async function hapusData(rowNumber) {
                     },
 
                     body:
-                        JSON.stringify({
+    JSON.stringify({
 
-                            action:
-                                "delete",
+        action:
+            "delete",
 
-                            _row:
-                                rowNumber
+        program:
+            PROGRAM,
 
-                        })
+        _row:
+            rowNumber
+
+    })
 
                 }
             );
@@ -2598,7 +2606,7 @@ async function hapusData(rowNumber) {
         );
 
 
-        await ambilDataPKH();
+        await ambilDataBPNT();
 
 
     } catch (error) {
@@ -2667,7 +2675,7 @@ function escapeHTML(value) {
 ========================================= */
 
 document
-    .getElementById("modalPKH")
+    .getElementById("modalBPNT")
     .addEventListener(
         "click",
         function (event) {
@@ -2688,7 +2696,7 @@ document
    LOAD DATA PERTAMA
 ========================================= */
 
-ambilDataPKH();
+ambilDataBPNT();
 
 
 </script>

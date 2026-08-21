@@ -3,1022 +3,1041 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <title>Data Penerima BLT - Desa Muning Baru</title>
+<title>Data Penerima BLT - Desa Muning Baru</title>
 
-    <link rel="stylesheet"
-          href="../css/sidebar.css">
+<link rel="stylesheet"
+      href="../css/sidebar.css">
 
-    <link rel="stylesheet"
-          href="../css/style.css">
+<link rel="stylesheet"
+      href="../css/style.css">
 
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
 
 
-    <style>
+<style>
 
-        * {
-            box-sizing: border-box;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        body {
+body {
 
-            margin: 0;
+    margin: 0;
 
-            font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 
-            background: #f3f6fb;
+    background: #f3f6fb;
 
-            color: #1f2937;
+    color: #1f2937;
 
-        }
+}
 
 
-        /* =========================
-           HEADER
-        ========================= */
+/* =========================
+   HEADER
+========================= */
 
-        .blt-header {
+.blt-header {
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #0f766e,
-                    #16a34a
-                );
+    background:
+        linear-gradient(
+            135deg,
+            #0f766e,
+            #16a34a
+        );
 
-            color: white;
+    color: white;
 
-            padding: 18px 20px;
+    padding: 18px 20px;
 
-            display: flex;
+    display: flex;
 
-            align-items: center;
+    align-items: center;
 
-            gap: 15px;
+    gap: 15px;
 
-            box-shadow:
-                0 4px 15px
-                rgba(0,0,0,.12);
+    box-shadow:
+        0 4px 15px
+        rgba(0,0,0,.12);
 
-        }
+}
 
 
-        .back-btn {
+.back-btn {
 
-            width: 45px;
+    width: 45px;
 
-            height: 45px;
+    height: 45px;
 
-            border: none;
+    border: none;
 
-            border-radius: 12px;
+    border-radius: 12px;
 
-            background: white;
+    background: white;
 
-            color: #0f766e;
+    color: #0f766e;
 
-            font-size: 21px;
+    font-size: 21px;
 
-            cursor: pointer;
+    cursor: pointer;
 
-            display: flex;
+    display: flex;
 
-            align-items: center;
+    align-items: center;
 
-            justify-content: center;
+    justify-content: center;
 
-        }
+}
 
 
-        .blt-title {
+.blt-title {
 
-            flex: 1;
+    flex: 1;
 
-        }
+}
 
 
-        .blt-title h1 {
+.blt-title h1 {
 
-            margin: 0;
+    margin: 0;
 
-            font-size: 23px;
+    font-size: 23px;
 
-            font-weight: 700;
+    font-weight: 700;
 
-        }
+}
 
 
-        .blt-title p {
+.blt-title p {
 
-            margin: 3px 0 0;
+    margin: 3px 0 0;
 
-            font-size: 13px;
+    font-size: 13px;
 
-            opacity: .9;
+    opacity: .9;
 
-        }
+}
 
 
-        /* =========================
-           CONTAINER
-        ========================= */
+/* =========================
+   CONTAINER
+========================= */
 
-        .container {
+.container {
 
-            max-width: 1400px;
+    max-width: 1400px;
 
-            margin: auto;
+    margin: auto;
 
-            padding: 20px;
+    padding: 20px;
 
-        }
+}
 
 
-        /* =========================
-           STATISTIK
-        ========================= */
+/* =========================
+   STATISTIK
+========================= */
 
-        .stats {
+.stats {
 
-            display: grid;
+    display: grid;
 
-            grid-template-columns:
-                repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
-            gap: 15px;
+    gap: 15px;
 
-            margin-bottom: 20px;
+    margin-bottom: 20px;
 
-        }
+}
 
 
-        .stat-card {
+.stat-card {
 
-            background: white;
+    background: white;
 
-            border-radius: 16px;
+    border-radius: 16px;
 
-            padding: 20px;
+    padding: 20px;
 
-            box-shadow:
-                0 5px 18px
-                rgba(0,0,0,.07);
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.07);
 
-        }
+}
 
 
-        .stat-card .icon {
+.stat-card .icon {
 
-            width: 45px;
+    width: 45px;
 
-            height: 45px;
+    height: 45px;
 
-            border-radius: 12px;
+    border-radius: 12px;
 
-            display: flex;
+    display: flex;
 
-            align-items: center;
+    align-items: center;
 
-            justify-content: center;
+    justify-content: center;
 
-            background: #ecfdf5;
+    background: #ecfdf5;
 
-            color: #16a34a;
+    color: #16a34a;
 
-            font-size: 22px;
+    font-size: 22px;
 
-            margin-bottom: 10px;
+    margin-bottom: 10px;
 
-        }
+}
 
 
-        .stat-card h2 {
+.stat-card h2 {
 
-            margin: 0;
+    margin: 0;
 
-            font-size: 28px;
+    font-size: 28px;
 
-            color: #111827;
+    color: #111827;
 
-        }
+}
 
 
-        .stat-card p {
+.stat-card p {
 
-            margin: 3px 0 0;
+    margin: 3px 0 0;
 
-            color: #6b7280;
+    color: #6b7280;
 
-            font-size: 13px;
+    font-size: 13px;
 
-        }
+}
 
 
-        /* =========================
-           TOOLBAR
-        ========================= */
+/* =========================
+   TOOLBAR
+========================= */
 
-        .toolbar {
+.toolbar {
 
-            background: white;
+    background: white;
 
-            padding: 15px;
+    padding: 15px;
 
-            border-radius: 16px;
+    border-radius: 16px;
 
-            box-shadow:
-                0 5px 18px
-                rgba(0,0,0,.07);
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.07);
 
-            margin-bottom: 20px;
+    margin-bottom: 20px;
 
-            display: flex;
+    display: flex;
 
-            gap: 10px;
+    gap: 10px;
 
-            flex-wrap: wrap;
+    flex-wrap: wrap;
 
-        }
+}
 
 
-        .search {
+.search {
 
-            flex: 1;
+    flex: 1;
 
-            min-width: 250px;
+    min-width: 250px;
 
-            position: relative;
+    position: relative;
 
-        }
+}
 
 
-        .search i {
+.search i {
 
-            position: absolute;
+    position: absolute;
 
-            left: 13px;
+    left: 13px;
 
-            top: 50%;
+    top: 50%;
 
-            transform: translateY(-50%);
+    transform: translateY(-50%);
 
-            color: #6b7280;
+    color: #6b7280;
 
-        }
+}
 
 
-        .search input {
+.search input {
 
-            width: 100%;
+    width: 100%;
 
-            padding: 12px 15px 12px 42px;
+    padding: 12px 15px 12px 42px;
 
-            border:
-                1px solid #d1d5db;
+    border:
+        1px solid #d1d5db;
 
-            border-radius: 10px;
+    border-radius: 10px;
 
-            outline: none;
+    outline: none;
 
-            font-family: Poppins;
+    font-family: Poppins;
 
-            font-size: 14px;
+    font-size: 14px;
 
-        }
+}
 
 
-        .search input:focus {
+.search input:focus {
 
-            border-color: #16a34a;
+    border-color: #16a34a;
 
-            box-shadow:
-                0 0 0 3px
-                rgba(22,163,74,.1);
+    box-shadow:
+        0 0 0 3px
+        rgba(22,163,74,.1);
 
-        }
+}
 
 
-        .btn {
+.btn {
 
-            border: none;
+    border: none;
 
-            border-radius: 10px;
+    border-radius: 10px;
 
-            padding: 11px 16px;
+    padding: 11px 16px;
 
-            font-family: Poppins;
+    font-family: Poppins;
 
-            font-weight: 600;
+    font-weight: 600;
 
-            cursor: pointer;
+    cursor: pointer;
 
-            display: inline-flex;
+    display: inline-flex;
 
-            align-items: center;
+    align-items: center;
 
-            justify-content: center;
+    justify-content: center;
 
-            gap: 7px;
+    gap: 7px;
 
-            transition: .2s;
+    transition: .2s;
 
-        }
+}
 
 
-        .btn:hover {
+.btn:hover {
 
-            transform: translateY(-1px);
+    transform: translateY(-1px);
 
-        }
+}
 
 
-        .btn-primary {
+.btn:disabled {
 
-            background: #16a34a;
+    opacity: .6;
 
-            color: white;
+    cursor: not-allowed;
 
-        }
+    transform: none;
 
+}
 
-        .btn-blue {
 
-            background: #2563eb;
+.btn-primary {
 
-            color: white;
+    background: #16a34a;
 
-        }
+    color: white;
 
+}
 
-        .btn-gray {
 
-            background: #6b7280;
+.btn-blue {
 
-            color: white;
+    background: #2563eb;
 
-        }
+    color: white;
 
+}
 
-        /* =========================
-           TABLE
-        ========================= */
 
-        .table-card {
+.btn-gray {
 
-            background: white;
+    background: #6b7280;
 
-            border-radius: 16px;
+    color: white;
 
-            box-shadow:
-                0 5px 18px
-                rgba(0,0,0,.07);
+}
 
-            overflow: hidden;
 
-        }
+/* =========================
+   TABLE
+========================= */
 
+.table-card {
 
-        .table-header {
+    background: white;
 
-            padding: 17px 20px;
+    border-radius: 16px;
 
-            border-bottom:
-                1px solid #e5e7eb;
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.07);
 
-            display: flex;
+    overflow: hidden;
 
-            justify-content: space-between;
+}
 
-            align-items: center;
 
-        }
+.table-header {
 
+    padding: 17px 20px;
 
-        .table-header h3 {
+    border-bottom:
+        1px solid #e5e7eb;
 
-            margin: 0;
+    display: flex;
 
-            font-size: 17px;
+    justify-content: space-between;
 
-        }
+    align-items: center;
 
+}
 
-        .table-responsive {
 
-            width: 100%;
+.table-header h3 {
 
-            overflow-x: auto;
+    margin: 0;
 
-        }
+    font-size: 17px;
 
+}
 
-        table {
 
-            width: 100%;
+.table-responsive {
 
-            border-collapse: collapse;
+    width: 100%;
 
-            min-width: 1100px;
+    overflow-x: auto;
 
-        }
+}
 
 
-        th {
+table {
 
-            background: #0f766e;
+    width: 100%;
 
-            color: white;
+    border-collapse: collapse;
 
-            padding: 12px;
+    min-width: 1100px;
 
-            font-size: 13px;
+}
 
-            text-align: left;
 
-            white-space: nowrap;
+th {
 
-        }
+    background: #0f766e;
 
+    color: white;
 
-        td {
+    padding: 12px;
 
-            padding: 11px 12px;
+    font-size: 13px;
 
-            border-bottom:
-                1px solid #e5e7eb;
+    text-align: left;
 
-            font-size: 13px;
+    white-space: nowrap;
 
-            white-space: nowrap;
+}
 
-        }
 
+td {
 
-        tbody tr:hover {
+    padding: 11px 12px;
 
-            background: #f0fdfa;
+    border-bottom:
+        1px solid #e5e7eb;
 
-        }
+    font-size: 13px;
 
+    white-space: nowrap;
 
-        .status {
+}
 
-            display: inline-block;
 
-            padding: 5px 10px;
+tbody tr:hover {
 
-            border-radius: 20px;
+    background: #f0fdfa;
 
-            font-size: 11px;
+}
 
-            font-weight: 600;
 
-        }
+/* =========================
+   STATUS
+========================= */
 
+.status {
 
-        .status-aktif {
+    display: inline-block;
 
-            background: #dcfce7;
+    padding: 5px 10px;
 
-            color: #166534;
+    border-radius: 20px;
 
-        }
+    font-size: 11px;
 
+    font-weight: 600;
 
-        .status-tidak {
+}
 
-            background: #fee2e2;
 
-            color: #991b1b;
+.status-aktif {
 
-        }
+    background: #dcfce7;
 
+    color: #166534;
 
-        .aksi {
+}
 
-            display: flex;
 
-            gap: 6px;
+.status-tidak {
 
-        }
+    background: #fee2e2;
 
+    color: #991b1b;
 
-        .btn-action {
+}
 
-            width: 34px;
 
-            height: 34px;
+/* =========================
+   AKSI
+========================= */
 
-            border: none;
+.aksi {
 
-            border-radius: 8px;
+    display: flex;
 
-            cursor: pointer;
+    gap: 6px;
 
-            color: white;
+}
 
-            font-size: 15px;
 
-        }
+.btn-action {
 
+    width: 34px;
 
-        .btn-edit {
+    height: 34px;
 
-            background: #2563eb;
+    border: none;
 
-        }
+    border-radius: 8px;
 
+    cursor: pointer;
 
-        .btn-delete {
+    color: white;
 
-            background: #dc2626;
+    font-size: 15px;
 
-        }
+}
 
 
-        /* =========================
-           EMPTY
-        ========================= */
+.btn-edit {
 
-        .empty {
+    background: #2563eb;
 
-            padding: 50px 20px;
+}
 
-            text-align: center;
 
-            color: #6b7280;
+.btn-delete {
 
-        }
+    background: #dc2626;
 
+}
 
-        .empty i {
 
-            font-size: 40px;
+/* =========================
+   EMPTY
+========================= */
 
-            color: #9ca3af;
+.empty {
 
-        }
+    padding: 50px 20px;
 
+    text-align: center;
 
-        .empty h3 {
+    color: #6b7280;
 
-            margin: 10px 0 5px;
+}
 
-            color: #374151;
 
-        }
+.empty i {
 
+    font-size: 40px;
 
-        /* =========================
-           PAGINATION
-        ========================= */
+    color: #9ca3af;
 
-        .pagination {
+}
 
-            padding: 18px;
 
-            display: flex;
+.empty h3 {
 
-            justify-content: center;
+    margin: 10px 0 5px;
 
-            align-items: center;
+    color: #374151;
 
-            gap: 10px;
+}
 
-            flex-wrap: wrap;
 
-        }
+/* =========================
+   PAGINATION
+========================= */
 
+.pagination {
 
-        .pagination button {
+    padding: 18px;
 
-            border: none;
+    display: flex;
 
-            background: #16a34a;
+    justify-content: center;
 
-            color: white;
+    align-items: center;
 
-            padding: 8px 14px;
+    gap: 10px;
 
-            border-radius: 8px;
+    flex-wrap: wrap;
 
-            cursor: pointer;
+}
 
-            font-family: Poppins;
 
-        }
+.pagination button {
 
+    border: none;
 
-        .pagination button:disabled {
+    background: #16a34a;
 
-            background: #d1d5db;
+    color: white;
 
-            cursor: not-allowed;
+    padding: 8px 14px;
 
-        }
+    border-radius: 8px;
 
+    cursor: pointer;
 
-        .page-info {
+    font-family: Poppins;
 
-            font-size: 13px;
+}
 
-            font-weight: 600;
 
-        }
+.pagination button:disabled {
 
+    background: #d1d5db;
 
-        /* =========================
-           MODAL
-        ========================= */
+    cursor: not-allowed;
 
-        .modal {
+}
 
-            position: fixed;
 
-            inset: 0;
+.page-info {
 
-            background:
-                rgba(0,0,0,.5);
+    font-size: 13px;
 
-            display: none;
+    font-weight: 600;
 
-            align-items: center;
+}
 
-            justify-content: center;
 
-            padding: 15px;
+/* =========================
+   MODAL
+========================= */
 
-            z-index: 10000;
+.modal {
 
-        }
+    position: fixed;
 
+    inset: 0;
 
-        .modal.active {
+    background:
+        rgba(0,0,0,.5);
 
-            display: flex;
+    display: none;
 
-        }
+    align-items: center;
 
+    justify-content: center;
 
-        .modal-box {
+    padding: 15px;
 
-            background: white;
+    z-index: 10000;
 
-            width: 100%;
+}
 
-            max-width: 700px;
 
-            max-height: 90vh;
+.modal.active {
 
-            overflow-y: auto;
+    display: flex;
 
-            border-radius: 18px;
+}
 
-            box-shadow:
-                0 20px 50px
-                rgba(0,0,0,.25);
 
-        }
+.modal-box {
 
+    background: white;
 
-        .modal-head {
+    width: 100%;
 
-            padding: 18px 20px;
+    max-width: 700px;
 
-            background: #0f766e;
+    max-height: 90vh;
 
-            color: white;
+    overflow-y: auto;
 
-            display: flex;
+    border-radius: 18px;
 
-            align-items: center;
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.25);
 
-            justify-content: space-between;
+}
 
-        }
 
+.modal-head {
 
-        .modal-head h3 {
+    padding: 18px 20px;
 
-            margin: 0;
+    background: #0f766e;
 
-            font-size: 18px;
+    color: white;
 
-        }
+    display: flex;
 
+    align-items: center;
 
-        .modal-close {
+    justify-content: space-between;
 
-            border: none;
+}
 
-            background: transparent;
 
-            color: white;
+.modal-head h3 {
 
-            font-size: 24px;
+    margin: 0;
 
-            cursor: pointer;
+    font-size: 18px;
 
-        }
+}
 
 
-        .form {
+.modal-close {
 
-            padding: 20px;
+    border: none;
 
-            display: grid;
+    background: transparent;
 
-            grid-template-columns:
-                repeat(2, 1fr);
+    color: white;
 
-            gap: 15px;
+    font-size: 24px;
 
-        }
+    cursor: pointer;
 
+}
 
-        .form-group {
 
-            display: flex;
+.form {
 
-            flex-direction: column;
+    padding: 20px;
 
-            gap: 6px;
+    display: grid;
 
-        }
+    grid-template-columns:
+        repeat(2, 1fr);
 
+    gap: 15px;
 
-        .form-group.full {
+}
 
-            grid-column:
-                1 / -1;
 
-        }
+.form-group {
 
+    display: flex;
 
-        .form-group label {
+    flex-direction: column;
 
-            font-size: 13px;
+    gap: 6px;
 
-            font-weight: 600;
+}
 
-            color: #374151;
 
-        }
+.form-group.full {
 
+    grid-column:
+        1 / -1;
 
-        .form-group input,
+}
 
-        .form-group select,
 
-        .form-group textarea {
+.form-group label {
 
-            width: 100%;
+    font-size: 13px;
 
-            padding: 11px;
+    font-weight: 600;
 
-            border:
-                1px solid #d1d5db;
+    color: #374151;
 
-            border-radius: 9px;
+}
 
-            outline: none;
 
-            font-family: Poppins;
+.form-group input,
 
-            font-size: 13px;
+.form-group select,
 
-        }
+.form-group textarea {
 
+    width: 100%;
 
-        .form-group textarea {
+    padding: 11px;
 
-            min-height: 80px;
+    border:
+        1px solid #d1d5db;
 
-            resize: vertical;
+    border-radius: 9px;
 
-        }
+    outline: none;
 
+    font-family: Poppins;
 
-        .form-group input:focus,
+    font-size: 13px;
 
-        .form-group select:focus,
+}
 
-        .form-group textarea:focus {
 
-            border-color: #16a34a;
+.form-group textarea {
 
-        }
+    min-height: 80px;
 
+    resize: vertical;
 
-        .modal-footer {
+}
 
-            padding: 15px 20px;
 
-            border-top:
-                1px solid #e5e7eb;
+.form-group input:focus,
 
-            display: flex;
+.form-group select:focus,
 
-            justify-content: flex-end;
+.form-group textarea:focus {
 
-            gap: 10px;
+    border-color: #16a34a;
 
-        }
+}
 
 
-        /* =========================
-           LOADING
-        ========================= */
+.modal-footer {
 
-        .loading {
+    padding: 15px 20px;
 
-            padding: 50px;
+    border-top:
+        1px solid #e5e7eb;
 
-            text-align: center;
+    display: flex;
 
-            color: #6b7280;
+    justify-content: flex-end;
 
-        }
+    gap: 10px;
 
+}
 
-        .loading i {
 
-            font-size: 30px;
+/* =========================
+   LOADING
+========================= */
 
-            animation:
-                spin 1s linear infinite;
+.loading {
 
-        }
+    padding: 50px;
 
+    text-align: center;
 
-        @keyframes spin {
+    color: #6b7280;
 
-            from {
-                transform: rotate(0deg);
-            }
+}
 
-            to {
-                transform: rotate(360deg);
-            }
 
-        }
+.loading i {
 
+    font-size: 30px;
 
-        /* =========================
-           RESPONSIVE HP
-        ========================= */
+    animation:
+        spin 1s linear infinite;
 
-        @media (max-width: 600px) {
+}
 
-            .blt-header {
 
-                padding: 13px;
+@keyframes spin {
 
-            }
+    from {
+        transform: rotate(0deg);
+    }
 
+    to {
+        transform: rotate(360deg);
+    }
 
-            .blt-title h1 {
+}
 
-                font-size: 17px;
 
-            }
+/* =========================
+   RESPONSIVE
+========================= */
 
+@media (max-width: 600px) {
 
-            .blt-title p {
+    .blt-header {
 
-                font-size: 11px;
+        padding: 13px;
 
-            }
+    }
 
 
-            .container {
+    .blt-title h1 {
 
-                padding: 12px;
+        font-size: 17px;
 
-            }
+    }
 
 
-            .stats {
+    .blt-title p {
 
-                grid-template-columns:
-                    repeat(3, 1fr);
+        font-size: 11px;
 
-                gap: 8px;
+    }
 
-            }
 
+    .container {
 
-            .stat-card {
+        padding: 12px;
 
-                padding: 12px 7px;
+    }
 
-                text-align: center;
 
-            }
+    .stats {
 
+        grid-template-columns:
+            repeat(3, 1fr);
 
-            .stat-card .icon {
+        gap: 8px;
 
-                width: 35px;
+    }
 
-                height: 35px;
 
-                margin:
-                    0 auto 6px;
+    .stat-card {
 
-                font-size: 17px;
+        padding: 12px 7px;
 
-            }
+        text-align: center;
 
+    }
 
-            .stat-card h2 {
 
-                font-size: 21px;
+    .stat-card .icon {
 
-            }
+        width: 35px;
 
+        height: 35px;
 
-            .stat-card p {
+        margin:
+            0 auto 6px;
 
-                font-size: 9px;
+        font-size: 17px;
 
-            }
+    }
 
 
-            .toolbar {
+    .stat-card h2 {
 
-                padding: 10px;
+        font-size: 21px;
 
-            }
+    }
 
 
-            .search {
+    .stat-card p {
 
-                min-width: 100%;
+        font-size: 9px;
 
-            }
+    }
 
 
-            .toolbar .btn {
+    .toolbar {
 
-                flex: 1;
+        padding: 10px;
 
-                padding: 10px 8px;
+    }
 
-                font-size: 11px;
 
-            }
+    .search {
 
+        min-width: 100%;
 
-            .table-header {
+    }
 
-                padding: 13px;
 
-            }
+    .toolbar .btn {
 
+        flex: 1;
 
-            .table-header h3 {
+        padding: 10px 8px;
 
-                font-size: 14px;
+        font-size: 11px;
 
-            }
+    }
 
 
-            .form {
+    .table-header {
 
-                grid-template-columns:
-                    1fr;
+        padding: 13px;
 
-                padding: 15px;
+    }
 
-            }
 
+    .table-header h3 {
 
-            .form-group.full {
+        font-size: 14px;
 
-                grid-column: auto;
+    }
 
-            }
 
+    .form {
 
-            .modal-box {
+        grid-template-columns:
+            1fr;
 
-                max-height: 95vh;
+        padding: 15px;
 
-            }
+    }
 
-        }
 
-    </style>
+    .form-group.full {
+
+        grid-column: auto;
+
+    }
+
+
+    .modal-box {
+
+        max-height: 95vh;
+
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -1146,6 +1165,7 @@
 
 
         <button
+            type="button"
             class="btn btn-primary"
             onclick="bukaTambah()">
 
@@ -1157,6 +1177,7 @@
 
 
         <button
+            type="button"
             class="btn btn-blue"
             onclick="ambilDataBLT()">
 
@@ -1196,41 +1217,23 @@
 
                     <tr>
 
-                        <th>
-                            No
-                        </th>
+                        <th>No</th>
 
-                        <th>
-                            NIK
-                        </th>
+                        <th>NIK</th>
 
-                        <th>
-                            No. KK
-                        </th>
+                        <th>No. KK</th>
 
-                        <th>
-                            Nama Penerima
-                        </th>
+                        <th>Nama Penerima</th>
 
-                        <th>
-                            Alamat
-                        </th>
+                        <th>Alamat</th>
 
-                        <th>
-                            RT
-                        </th>
+                        <th>RT</th>
 
-                        <th>
-                            Status
-                        </th>
+                        <th>Status</th>
 
-                        <th>
-                            Keterangan
-                        </th>
+                        <th>Keterangan</th>
 
-                        <th>
-                            Aksi
-                        </th>
+                        <th>Aksi</th>
 
                     </tr>
 
@@ -1241,8 +1244,7 @@
 
                     <tr>
 
-                        <td
-                            colspan="9">
+                        <td colspan="9">
 
                             <div class="loading">
 
@@ -1298,6 +1300,7 @@
 
 
             <button
+                type="button"
                 class="modal-close"
                 onclick="tutupModal()">
 
@@ -1310,7 +1313,8 @@
 
         <form
             class="form"
-            id="formBLT">
+            id="formBLT"
+            onsubmit="event.preventDefault(); simpanData();">
 
 
             <input
@@ -1424,6 +1428,7 @@
         <div class="modal-footer">
 
             <button
+                type="button"
                 class="btn btn-gray"
                 onclick="tutupModal()">
 
@@ -1433,6 +1438,7 @@
 
 
             <button
+                type="button"
                 class="btn btn-primary"
                 id="btnSimpan"
                 onclick="simpanData()">
@@ -1455,7 +1461,7 @@
 
 
 /* =========================================
-   URL GOOGLE SHEETS CSV
+   GOOGLE SHEETS CSV - BLT
 ========================================= */
 
 const CSV_URL =
@@ -1463,17 +1469,22 @@ const CSV_URL =
 
 
 /* =========================================
-   URL GOOGLE APPS SCRIPT
+   GOOGLE APPS SCRIPT
 ========================================= */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbxB6Mdhpm_vTCZuZ3mpYoFg8n9pRtVXDDhdCOn-1Gc5oCSA2NqgdLIviejvCHSEooSVWg/exec";
 
+
+/* =========================================
+   PROGRAM
+========================================= */
+
 const PROGRAM = "blt";
 
 
 /* =========================================
-   DATA
+   DATA BLT
 ========================================= */
 
 let dataBLT = [];
@@ -1644,6 +1655,7 @@ function parseCSV(csv) {
 
                 const obj = {};
 
+
                 headers.forEach(
                     (header, i) => {
 
@@ -1700,7 +1712,7 @@ function parseCSV(csv) {
 
 
 /* =========================================
-   AMBIL DATA
+   AMBIL DATA BLT
 ========================================= */
 
 async function ambilDataBLT() {
@@ -1709,11 +1721,6 @@ async function ambilDataBLT() {
 
 
     try {
-
-        /*
-         * Tambahkan timestamp agar browser
-         * tidak menggunakan cache lama.
-         */
 
         const url =
             CSV_URL +
@@ -1738,7 +1745,7 @@ async function ambilDataBLT() {
             await response.text();
 
 
-        dataBPNT =
+        dataBLT =
             parseCSV(csv);
 
 
@@ -2010,6 +2017,7 @@ function tampilkanData() {
                             <div class="aksi">
 
                                 <button
+                                    type="button"
                                     class="btn-action btn-edit"
                                     title="Edit"
                                     onclick="bukaEdit(${item._row})">
@@ -2020,6 +2028,7 @@ function tampilkanData() {
 
 
                                 <button
+                                    type="button"
                                     class="btn-action btn-delete"
                                     title="Hapus"
                                     onclick="hapusData(${item._row})">
@@ -2085,6 +2094,7 @@ function buatPagination() {
     container.innerHTML = `
 
         <button
+            type="button"
             onclick="ubahHalaman(${halaman - 1})"
             ${halaman === 1 ? "disabled" : ""}>
 
@@ -2104,6 +2114,7 @@ function buatPagination() {
 
 
         <button
+            type="button"
             onclick="ubahHalaman(${halaman + 1})"
             ${
                 halaman === totalHalaman
@@ -2198,7 +2209,7 @@ searchInput.addEventListener(
 
 
 /* =========================================
-   TAMBAH
+   TAMBAH DATA
 ========================================= */
 
 function bukaTambah() {
@@ -2227,7 +2238,7 @@ function bukaTambah() {
 
 
 /* =========================================
-   EDIT
+   EDIT DATA
 ========================================= */
 
 function bukaEdit(rowNumber) {
@@ -2326,7 +2337,7 @@ function tutupModal() {
 
 
 /* =========================================
-   SIMPAN DATA
+   SIMPAN / UPDATE DATA
 ========================================= */
 
 async function simpanData() {
@@ -2343,55 +2354,61 @@ async function simpanData() {
         ).value;
 
 
-   const data = {
+    const data = {
 
-    action:
-        row
-        ? "update"
-        : "add",
+        action:
+            row
+            ? "update"
+            : "add",
 
-    // WAJIB untuk halaman BLT
-    program: PROGRAM,
+        /*
+         * INI SANGAT PENTING.
+         * Backend akan menerima:
+         * program = blt
+         */
 
-    _row:
-        row || "",
+        program:
+            PROGRAM,
 
-    nik:
-        document.getElementById(
-            "nik"
-        ).value.trim(),
+        _row:
+            row || "",
 
-    kk:
-        document.getElementById(
-            "kk"
-        ).value.trim(),
+        nik:
+            document.getElementById(
+                "nik"
+            ).value.trim(),
 
-    "nama penerima":
-        document.getElementById(
-            "nama"
-        ).value.trim(),
+        kk:
+            document.getElementById(
+                "kk"
+            ).value.trim(),
 
-    alamat:
-        document.getElementById(
-            "alamat"
-        ).value.trim(),
+        "nama penerima":
+            document.getElementById(
+                "nama"
+            ).value.trim(),
 
-    rt:
-        document.getElementById(
-            "rt"
-        ).value.trim(),
+        alamat:
+            document.getElementById(
+                "alamat"
+            ).value.trim(),
 
-    status:
-        document.getElementById(
-            "status"
-        ).value,
+        rt:
+            document.getElementById(
+                "rt"
+            ).value.trim(),
 
-    keterangan:
-        document.getElementById(
-            "keterangan"
-        ).value.trim()
+        status:
+            document.getElementById(
+                "status"
+            ).value,
 
-};
+        keterangan:
+            document.getElementById(
+                "keterangan"
+            ).value.trim()
+
+    };
 
 
     if (!data.nik) {
@@ -2432,7 +2449,9 @@ async function simpanData() {
 
         const response =
             await fetch(
-                API_URL,
+                API_URL +
+                "?t=" +
+                Date.now(),
                 {
 
                     method: "POST",
@@ -2461,7 +2480,7 @@ async function simpanData() {
 
             throw new Error(
                 result.message ||
-                "Gagal menyimpan data"
+                "Gagal menyimpan data BLT"
             );
 
         }
@@ -2469,7 +2488,7 @@ async function simpanData() {
 
         alert(
             result.message ||
-            "Data berhasil disimpan."
+            "Data BLT berhasil disimpan."
         );
 
 
@@ -2485,7 +2504,7 @@ async function simpanData() {
 
 
         alert(
-            "Gagal menyimpan data.\n\n" +
+            "Gagal menyimpan data BLT.\n\n" +
             error.message
         );
 
@@ -2534,7 +2553,7 @@ async function hapusData(rowNumber) {
     const yakin =
         confirm(
 
-            "Apakah Anda yakin ingin menghapus data:\n\n" +
+            "Apakah Anda yakin ingin menghapus data BLT:\n\n" +
 
             item.nama +
 
@@ -2554,7 +2573,9 @@ async function hapusData(rowNumber) {
 
         const response =
             await fetch(
-                API_URL,
+                API_URL +
+                "?t=" +
+                Date.now(),
                 {
 
                     method: "POST",
@@ -2567,18 +2588,22 @@ async function hapusData(rowNumber) {
                     },
 
                     body:
-    JSON.stringify({
+                        JSON.stringify({
 
-        action:
-            "delete",
+                            action:
+                                "delete",
 
-        program:
-            PROGRAM,
+                            /*
+                             * WAJIB BLT
+                             */
 
-        _row:
-            rowNumber
+                            program:
+                                PROGRAM,
 
-    })
+                            _row:
+                                rowNumber
+
+                        })
 
                 }
             );
@@ -2594,7 +2619,7 @@ async function hapusData(rowNumber) {
 
             throw new Error(
                 result.message ||
-                "Gagal menghapus data"
+                "Gagal menghapus data BLT"
             );
 
         }
@@ -2602,7 +2627,7 @@ async function hapusData(rowNumber) {
 
         alert(
             result.message ||
-            "Data berhasil dihapus."
+            "Data BLT berhasil dihapus."
         );
 
 
@@ -2615,7 +2640,7 @@ async function hapusData(rowNumber) {
 
 
         alert(
-            "Gagal menghapus data.\n\n" +
+            "Gagal menghapus data BLT.\n\n" +
             error.message
         );
 
@@ -2700,8 +2725,6 @@ ambilDataBLT();
 
 
 </script>
-
-
 
 
 </body>

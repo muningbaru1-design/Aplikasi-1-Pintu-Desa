@@ -1,0 +1,2722 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Data Penerima Pemasangan Listrik Gratis - Desa Muning Baru</title>
+
+<link rel="stylesheet"
+      href="../css/sidebar.css">
+
+<link rel="stylesheet"
+      href="../css/style.css">
+
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    font-family: 'Poppins', sans-serif;
+
+    background: #f3f6fb;
+
+    color: #1f2937;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.pln-header {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f766e,
+            #16a34a
+        );
+
+    color: white;
+
+    padding: 18px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0,0,0,.12);
+
+}
+
+
+.back-btn {
+
+    width: 45px;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: white;
+
+    color: #0f766e;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.pln-title {
+
+    flex: 1;
+
+}
+
+
+.pln-title h1 {
+
+    margin: 0;
+
+    font-size: 23px;
+
+    font-weight: 700;
+
+}
+
+
+.pln-title p {
+
+    margin: 3px 0 0;
+
+    font-size: 13px;
+
+    opacity: .9;
+
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    padding: 20px;
+
+}
+
+
+/* =========================
+   STATISTIK
+========================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.stat-card {
+
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.07);
+
+}
+
+
+.stat-card .icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #ecfdf5;
+
+    color: #16a34a;
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.stat-card h2 {
+
+    margin: 0;
+
+    font-size: 28px;
+
+    color: #111827;
+
+}
+
+
+.stat-card p {
+
+    margin: 3px 0 0;
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================
+   TOOLBAR
+========================= */
+
+.toolbar {
+
+    background: white;
+
+    padding: 15px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.07);
+
+    margin-bottom: 20px;
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.search {
+
+    flex: 1;
+
+    min-width: 250px;
+
+    position: relative;
+
+}
+
+
+.search i {
+
+    position: absolute;
+
+    left: 13px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #6b7280;
+
+}
+
+
+.search input {
+
+    width: 100%;
+
+    padding: 12px 15px 12px 42px;
+
+    border:
+        1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-family: Poppins;
+
+    font-size: 14px;
+
+}
+
+
+.search input:focus {
+
+    border-color: #16a34a;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(22,163,74,.1);
+
+}
+
+
+.btn {
+
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 11px 16px;
+
+    font-family: Poppins;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    transition: .2s;
+
+}
+
+
+.btn:hover {
+
+    transform: translateY(-1px);
+
+}
+
+
+.btn:disabled {
+
+    opacity: .6;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+.btn-primary {
+
+    background: #16a34a;
+
+    color: white;
+
+}
+
+
+.btn-blue {
+
+    background: #2563eb;
+
+    color: white;
+
+}
+
+
+.btn-gray {
+
+    background: #6b7280;
+
+    color: white;
+
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-card {
+
+    background: white;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.07);
+
+    overflow: hidden;
+
+}
+
+
+.table-header {
+
+    padding: 17px 20px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.table-header h3 {
+
+    margin: 0;
+
+    font-size: 17px;
+
+}
+
+
+.table-responsive {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 1100px;
+
+}
+
+
+th {
+
+    background: #0f766e;
+
+    color: white;
+
+    padding: 12px;
+
+    font-size: 13px;
+
+    text-align: left;
+
+    white-space: nowrap;
+
+}
+
+
+td {
+
+    padding: 11px 12px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+}
+
+
+tbody tr:hover {
+
+    background: #f0fdfa;
+
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+
+.status-aktif {
+
+    background: #dcfce7;
+
+    color: #166534;
+
+}
+
+
+.status-tidak {
+
+    background: #fee2e2;
+
+    color: #991b1b;
+
+}
+
+
+/* =========================
+   AKSI
+========================= */
+
+.aksi {
+
+    display: flex;
+
+    gap: 6px;
+
+}
+
+
+.btn-action {
+
+    width: 34px;
+
+    height: 34px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-size: 15px;
+
+}
+
+
+.btn-edit {
+
+    background: #2563eb;
+
+}
+
+
+.btn-delete {
+
+    background: #dc2626;
+
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty {
+
+    padding: 50px 20px;
+
+    text-align: center;
+
+    color: #6b7280;
+
+}
+
+
+.empty i {
+
+    font-size: 40px;
+
+    color: #9ca3af;
+
+}
+
+
+.empty h3 {
+
+    margin: 10px 0 5px;
+
+    color: #374151;
+
+}
+
+
+/* =========================
+   PAGINATION
+========================= */
+
+.pagination {
+
+    padding: 18px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.pagination button {
+
+    border: none;
+
+    background: #16a34a;
+
+    color: white;
+
+    padding: 8px 14px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-family: Poppins;
+
+}
+
+
+.pagination button:disabled {
+
+    background: #d1d5db;
+
+    cursor: not-allowed;
+
+}
+
+
+.page-info {
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.5);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 15px;
+
+    z-index: 10000;
+
+}
+
+
+.modal.active {
+
+    display: flex;
+
+}
+
+
+.modal-box {
+
+    background: white;
+
+    width: 100%;
+
+    max-width: 700px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.25);
+
+}
+
+
+.modal-head {
+
+    padding: 18px 20px;
+
+    background: #0f766e;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.modal-head h3 {
+
+    margin: 0;
+
+    font-size: 18px;
+
+}
+
+
+.modal-close {
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+}
+
+
+.form {
+
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+
+.form-group.full {
+
+    grid-column:
+        1 / -1;
+
+}
+
+
+.form-group label {
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #374151;
+
+}
+
+
+.form-group input,
+
+.form-group select,
+
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 11px;
+
+    border:
+        1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font-family: Poppins;
+
+    font-size: 13px;
+
+}
+
+
+.form-group textarea {
+
+    min-height: 80px;
+
+    resize: vertical;
+
+}
+
+
+.form-group input:focus,
+
+.form-group select:focus,
+
+.form-group textarea:focus {
+
+    border-color: #16a34a;
+
+}
+
+
+.modal-footer {
+
+    padding: 15px 20px;
+
+    border-top:
+        1px solid #e5e7eb;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+
+    padding: 50px;
+
+    text-align: center;
+
+    color: #6b7280;
+
+}
+
+
+.loading i {
+
+    font-size: 30px;
+
+    animation:
+        spin 1s linear infinite;
+
+}
+
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .pln-header {
+
+        padding: 13px;
+
+    }
+
+
+    .pln-title h1 {
+
+        font-size: 17px;
+
+    }
+
+
+    .pln-title p {
+
+        font-size: 11px;
+
+    }
+
+
+    .container {
+
+        padding: 12px;
+
+    }
+
+
+    .stats {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 8px;
+
+    }
+
+
+    .stat-card {
+
+        padding: 12px 7px;
+
+        text-align: center;
+
+    }
+
+
+    .stat-card .icon {
+
+        width: 35px;
+
+        height: 35px;
+
+        margin:
+            0 auto 6px;
+
+        font-size: 17px;
+
+    }
+
+
+    .stat-card h2 {
+
+        font-size: 21px;
+
+    }
+
+
+    .stat-card p {
+
+        font-size: 9px;
+
+    }
+
+
+    .toolbar {
+
+        padding: 10px;
+
+    }
+
+
+    .search {
+
+        min-width: 100%;
+
+    }
+
+
+    .toolbar .btn {
+
+        flex: 1;
+
+        padding: 10px 8px;
+
+        font-size: 11px;
+
+    }
+
+
+    .table-header {
+
+        padding: 13px;
+
+    }
+
+
+    .table-header h3 {
+
+        font-size: 14px;
+
+    }
+
+
+    .form {
+
+        grid-template-columns:
+            1fr;
+
+        padding: 15px;
+
+    }
+
+
+    .form-group.full {
+
+        grid-column: auto;
+
+    }
+
+
+    .modal-box {
+
+        max-height: 95vh;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="pln-header">
+
+    <button
+        class="back-btn"
+        onclick="history.back()">
+
+        <i class="bi bi-arrow-left"></i>
+
+    </button>
+
+
+    <div class="pln-title">
+
+        <h1>
+            Data Penerima Pemasangan Listrik Gratis
+        </h1>
+
+        <p>
+            Desa Muning Baru
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     CONTENT
+========================= -->
+
+<main class="container">
+
+
+    <!-- STATISTIK -->
+
+    <section class="stats">
+
+
+        <div class="stat-card">
+
+            <div class="icon">
+
+                <i class="bi bi-people"></i>
+
+            </div>
+
+            <h2 id="totalData">
+                0
+            </h2>
+
+            <p>
+                Total Penerima
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="icon">
+
+                <i class="bi bi-check-circle"></i>
+
+            </div>
+
+            <h2 id="totalAktif">
+                0
+            </h2>
+
+            <p>
+                Penerima Aktif
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="icon">
+
+                <i class="bi bi-x-circle"></i>
+
+            </div>
+
+            <h2 id="totalTidakAktif">
+                0
+            </h2>
+
+            <p>
+                Tidak Aktif
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- TOOLBAR -->
+
+    <section class="toolbar">
+
+
+        <div class="search">
+
+            <i class="bi bi-search"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari NIK, KK, nama, alamat...">
+
+        </div>
+
+
+        <button
+            type="button"
+            class="btn btn-primary"
+            onclick="bukaTambah()">
+
+            <i class="bi bi-plus-lg"></i>
+
+            Tambah
+
+        </button>
+
+
+        <button
+            type="button"
+            class="btn btn-blue"
+            onclick="ambilDataPLN()">
+
+            <i class="bi bi-arrow-clockwise"></i>
+
+            Refresh
+
+        </button>
+
+
+    </section>
+
+
+    <!-- TABEL -->
+
+    <section class="table-card">
+
+
+        <div class="table-header">
+
+            <h3>
+                Daftar Penerima Pemasangan Listrik Gratis
+            </h3>
+
+            <span id="jumlahTampil">
+                0 data
+            </span>
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>No</th>
+
+                        <th>NIK</th>
+
+                        <th>No. KK</th>
+
+                        <th>Nama Penerima</th>
+
+                        <th>Alamat</th>
+
+                        <th>RT</th>
+
+                        <th>Status</th>
+
+                        <th>Keterangan</th>
+
+                        <th>Aksi</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="tabelPLN">
+
+                    <tr>
+
+                        <td colspan="9">
+
+                            <div class="loading">
+
+                                <i class="bi bi-arrow-repeat"></i>
+
+                                <p>
+                                    Memuat data...
+                                </p>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div
+            class="pagination"
+            id="pagination">
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================
+     MODAL FORM
+========================= -->
+
+<div
+    class="modal"
+    id="modalPLN">
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-head">
+
+            <h3 id="modalTitle">
+                Tambah Penerima Pemasangan Listrik Gratis
+            </h3>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                onclick="tutupModal()">
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+
+        <form
+            class="form"
+            id="formPLN"
+            onsubmit="event.preventDefault(); simpanData();">
+
+
+            <input
+                type="hidden"
+                id="rowNumber">
+
+
+            <div class="form-group">
+
+                <label>
+                    NIK
+                </label>
+
+                <input
+                    type="text"
+                    id="nik"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    No. KK
+                </label>
+
+                <input
+                    type="text"
+                    id="kk">
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label>
+                    Nama Penerima
+                </label>
+
+                <input
+                    type="text"
+                    id="nama"
+                    required>
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label>
+                    Alamat
+                </label>
+
+                <input
+                    type="text"
+                    id="alamat">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    RT
+                </label>
+
+                <input
+                    type="text"
+                    id="rt">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Status
+                </label>
+
+                <select id="status">
+
+                    <option value="Aktif">
+                        Aktif
+                    </option>
+
+                    <option value="Tidak Aktif">
+                        Tidak Aktif
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label>
+                    Keterangan
+                </label>
+
+                <textarea
+                    id="keterangan"></textarea>
+
+            </div>
+
+
+        </form>
+
+
+        <div class="modal-footer">
+
+            <button
+                type="button"
+                class="btn btn-gray"
+                onclick="tutupModal()">
+
+                Batal
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                id="btnSimpan"
+                onclick="simpanData()">
+
+                <i class="bi bi-save"></i>
+
+                Simpan
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================================
+   GOOGLE SHEETS CSV - PLN
+========================================= */
+
+const CSV_URL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vTxVOzFyCaLXsc8LmOcjwawX3XPWmdpThRZO3ezWVrM9Z2r6ztk8A610oC5-mUQo8cZelkVWx4hdyOu/pub?gid=2016781963&single=true&output=csv";
+
+
+/* =========================================
+   GOOGLE APPS SCRIPT
+========================================= */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbzvN1Nq3ccIJWGAPOn6cF_LwBZDPWGGTzad0gthjfUxshay0e9OBPZWImg9qaiQ3w6kiw/exec";
+
+
+/* =========================================
+   PROGRAM
+========================================= */
+
+const PROGRAM = "pln";
+
+
+/* =========================================
+   DATA PLN
+========================================= */
+
+let dataPLN = [];
+
+let dataTampil = [];
+
+let halaman = 1;
+
+const perHalaman = 10;
+
+
+/* =========================================
+   ELEMENT
+========================================= */
+
+const tabel =
+document.getElementById("tabelPLN");
+
+const searchInput =
+document.getElementById("searchInput");
+
+
+/* =========================================
+   PARSER CSV
+========================================= */
+
+function parseCSV(csv) {
+
+    const rows = [];
+
+    let row = [];
+
+    let value = "";
+
+    let insideQuotes = false;
+
+
+    for (
+        let i = 0;
+        i < csv.length;
+        i++
+    ) {
+
+        const char = csv[i];
+
+        const next =
+            csv[i + 1];
+
+
+        if (
+            char === '"' &&
+            insideQuotes &&
+            next === '"'
+        ) {
+
+            value += '"';
+
+            i++;
+
+            continue;
+
+        }
+
+
+        if (char === '"') {
+
+            insideQuotes =
+                !insideQuotes;
+
+            continue;
+
+        }
+
+
+        if (
+            char === "," &&
+            !insideQuotes
+        ) {
+
+            row.push(value.trim());
+
+            value = "";
+
+            continue;
+
+        }
+
+
+        if (
+            (
+                char === "\n" ||
+                char === "\r"
+            )
+            &&
+            !insideQuotes
+        ) {
+
+            if (
+                char === "\r" &&
+                next === "\n"
+            ) {
+
+                i++;
+
+            }
+
+
+            row.push(value.trim());
+
+            value = "";
+
+
+            if (
+                row.some(
+                    cell => cell !== ""
+                )
+            ) {
+
+                rows.push(row);
+
+            }
+
+
+            row = [];
+
+            continue;
+
+        }
+
+
+        value += char;
+
+    }
+
+
+    if (
+        value !== "" ||
+        row.length > 0
+    ) {
+
+        row.push(value.trim());
+
+        rows.push(row);
+
+    }
+
+
+    if (rows.length < 2) {
+
+        return [];
+
+    }
+
+
+    const headers =
+        rows[0].map(
+            header =>
+                header
+                .trim()
+                .toLowerCase()
+        );
+
+
+    return rows
+        .slice(1)
+        .map(
+            (columns, index) => {
+
+                const obj = {};
+
+
+                headers.forEach(
+                    (header, i) => {
+
+                        obj[header] =
+                            columns[i]
+                            || "";
+
+                    }
+                );
+
+
+                return {
+
+                    nik:
+                        obj["nik"]
+                        || "",
+
+                    kk:
+                        obj["no. kk"]
+                        || obj["no kk"]
+                        || obj["kk"]
+                        || "",
+
+                    nama:
+                        obj["nama penerima"]
+                        || obj["nama"]
+                        || "",
+
+                    alamat:
+                        obj["alamat"]
+                        || "",
+
+                    rt:
+                        obj["rt"]
+                        || "",
+
+                    status:
+                        obj["status"]
+                        || "Aktif",
+
+                    keterangan:
+                        obj["keterangan"]
+                        || "",
+
+                    _row:
+                        index + 2
+
+                };
+
+            }
+        );
+
+}
+
+
+/* =========================================
+   AMBIL DATA PLN
+========================================= */
+
+async function ambilDataPLN() {
+
+    tampilLoading();
+
+    try {
+
+        const url =
+            CSV_URL +
+            "&t=" +
+            Date.now();
+
+        const response =
+            await fetch(url);
+
+        if (!response.ok) {
+
+            throw new Error(
+                "CSV gagal dimuat"
+            );
+
+        }
+
+        const csv =
+            await response.text();
+
+        dataPLN =
+            parseCSV(csv);
+
+        dataTampil =
+            [...dataPLN];
+
+        halaman = 1;
+
+        updateStatistik();
+
+        tampilkanData();
+
+    } catch (error) {
+
+        console.error(error);
+
+        tabel.innerHTML = `
+
+            <tr>
+
+                <td colspan="9">
+
+                    <div class="empty">
+
+                        <i class="bi bi-exclamation-triangle"></i>
+
+                        <h3>
+                            Data gagal dimuat
+                        </h3>
+
+                        <p>
+                            Periksa koneksi Google Sheets.
+                        </p>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+function tampilLoading() {
+
+    tabel.innerHTML = `
+
+        <tr>
+
+            <td colspan="9">
+
+                <div class="loading">
+
+                    <i class="bi bi-arrow-repeat"></i>
+
+                    <p>
+                        Memuat data...
+                    </p>
+
+                </div>
+
+            </td>
+
+        </tr>
+
+    `;
+
+}
+
+
+/* =========================================
+   STATISTIK
+========================================= */
+
+function updateStatistik() {
+
+    const total =
+        dataPLN.length;
+
+
+    const aktif =
+        dataPLN.filter(
+            item =>
+                String(item.status)
+                .toLowerCase()
+                .includes("aktif")
+                &&
+                !String(item.status)
+                .toLowerCase()
+                .includes("tidak")
+        ).length;
+
+
+    const tidakAktif =
+        dataPLN.filter(
+            item =>
+                String(item.status)
+                .toLowerCase()
+                .includes("tidak")
+        ).length;
+
+
+    document.getElementById(
+        "totalData"
+    ).textContent = total;
+
+
+    document.getElementById(
+        "totalAktif"
+    ).textContent = aktif;
+
+
+    document.getElementById(
+        "totalTidakAktif"
+    ).textContent = tidakAktif;
+
+}
+
+
+/* =========================================
+   TAMPILKAN DATA
+========================================= */
+
+function tampilkanData() {
+
+    const mulai =
+        (halaman - 1) *
+        perHalaman;
+
+
+    const akhir =
+        mulai + perHalaman;
+
+
+    const dataHalaman =
+        dataTampil.slice(
+            mulai,
+            akhir
+        );
+
+
+    if (
+        dataHalaman.length === 0
+    ) {
+
+        tabel.innerHTML = `
+
+            <tr>
+
+                <td colspan="9">
+
+                    <div class="empty">
+
+                        <i class="bi bi-inbox"></i>
+
+                        <h3>
+                            Data tidak ditemukan
+                        </h3>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        document.getElementById(
+            "jumlahTampil"
+        ).textContent =
+            "0 data";
+
+
+        buatPagination();
+
+        return;
+
+    }
+
+
+    tabel.innerHTML =
+        dataHalaman
+        .map(
+            (item, index) => {
+
+                const nomor =
+                    mulai +
+                    index +
+                    1;
+
+
+                const aktif =
+                    String(item.status)
+                    .toLowerCase()
+                    .includes("aktif")
+                    &&
+                    !String(item.status)
+                    .toLowerCase()
+                    .includes("tidak");
+
+
+                return `
+
+                    <tr>
+
+                        <td>
+                            ${nomor}
+                        </td>
+
+                        <td>
+                            ${escapeHTML(item.nik)}
+                        </td>
+
+                        <td>
+                            ${escapeHTML(item.kk)}
+                        </td>
+
+                        <td>
+                            <strong>
+                                ${escapeHTML(item.nama)}
+                            </strong>
+                        </td>
+
+                        <td>
+                            ${escapeHTML(item.alamat)}
+                        </td>
+
+                        <td>
+                            ${escapeHTML(item.rt)}
+                        </td>
+
+                        <td>
+
+                            <span class="status ${
+                                aktif
+                                ? "status-aktif"
+                                : "status-tidak"
+                            }">
+
+                                ${escapeHTML(
+                                    item.status
+                                )}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+                            ${escapeHTML(
+                                item.keterangan
+                            )}
+                        </td>
+
+                        <td>
+
+                            <div class="aksi">
+
+                                <button
+                                    type="button"
+                                    class="btn-action btn-edit"
+                                    title="Edit"
+                                    onclick="bukaEdit(${item._row})">
+
+                                    <i class="bi bi-pencil"></i>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="btn-action btn-delete"
+                                    title="Hapus"
+                                    onclick="hapusData(${item._row})">
+
+                                    <i class="bi bi-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+        )
+        .join("");
+
+
+    document.getElementById(
+        "jumlahTampil"
+    ).textContent =
+        `${dataTampil.length} data`;
+
+
+    buatPagination();
+
+}
+
+
+/* =========================================
+   PAGINATION
+========================================= */
+
+function buatPagination() {
+
+    const container =
+        document.getElementById(
+            "pagination"
+        );
+
+
+    const totalHalaman =
+        Math.ceil(
+            dataTampil.length /
+            perHalaman
+        );
+
+
+    if (
+        totalHalaman <= 1
+    ) {
+
+        container.innerHTML = "";
+
+        return;
+
+    }
+
+
+    container.innerHTML = `
+
+        <button
+            type="button"
+            onclick="ubahHalaman(${halaman - 1})"
+            ${halaman === 1 ? "disabled" : ""}>
+
+            <i class="bi bi-chevron-left"></i>
+
+        </button>
+
+
+        <span class="page-info">
+
+            Halaman
+            ${halaman}
+            dari
+            ${totalHalaman}
+
+        </span>
+
+
+        <button
+            type="button"
+            onclick="ubahHalaman(${halaman + 1})"
+            ${
+                halaman === totalHalaman
+                ? "disabled"
+                : ""
+            }>
+
+            <i class="bi bi-chevron-right"></i>
+
+        </button>
+
+    `;
+
+}
+
+
+function ubahHalaman(page) {
+
+    const total =
+        Math.ceil(
+            dataTampil.length /
+            perHalaman
+        );
+
+
+    if (
+        page < 1 ||
+        page > total
+    ) {
+
+        return;
+
+    }
+
+
+    halaman = page;
+
+    tampilkanData();
+
+}
+
+
+/* =========================================
+   PENCARIAN
+========================================= */
+
+searchInput.addEventListener(
+    "input",
+    function () {
+
+        const keyword =
+            this.value
+            .toLowerCase()
+            .trim();
+
+
+        dataTampil =
+            dataPLN.filter(
+                item => {
+
+                    return [
+
+                        item.nik,
+
+                        item.kk,
+
+                        item.nama,
+
+                        item.alamat,
+
+                        item.rt,
+
+                        item.status,
+
+                        item.keterangan
+
+                    ]
+                    .join(" ")
+                    .toLowerCase()
+                    .includes(keyword);
+
+                }
+            );
+
+
+        halaman = 1;
+
+        tampilkanData();
+
+    }
+);
+
+
+/* =========================================
+   TAMBAH DATA
+========================================= */
+
+function bukaTambah() {
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        "Tambah Penerima PLN";
+
+
+    document.getElementById(
+        "rowNumber"
+    ).value = "";
+
+
+    document.getElementById(
+        "formPLN"
+    ).reset();
+
+
+    document.getElementById(
+        "modalPLN"
+    ).classList.add("active");
+
+}
+
+
+/* =========================================
+   EDIT DATA
+========================================= */
+
+function bukaEdit(rowNumber) {
+
+    const item =
+        dataPLN.find(
+            data =>
+                Number(data._row) ===
+                Number(rowNumber)
+        );
+
+
+    if (!item) {
+
+        alert(
+            "Data tidak ditemukan."
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        "Edit Data Penerima PLN";
+
+
+    document.getElementById(
+        "rowNumber"
+    ).value =
+        item._row;
+
+
+    document.getElementById(
+        "nik"
+    ).value =
+        item.nik;
+
+
+    document.getElementById(
+        "kk"
+    ).value =
+        item.kk;
+
+
+    document.getElementById(
+        "nama"
+    ).value =
+        item.nama;
+
+
+    document.getElementById(
+        "alamat"
+    ).value =
+        item.alamat;
+
+
+    document.getElementById(
+        "rt"
+    ).value =
+        item.rt;
+
+
+    document.getElementById(
+        "status"
+    ).value =
+        item.status;
+
+
+    document.getElementById(
+        "keterangan"
+    ).value =
+        item.keterangan;
+
+
+    document.getElementById(
+        "modalPLN"
+    ).classList.add("active");
+
+}
+
+
+/* =========================================
+   TUTUP MODAL
+========================================= */
+
+function tutupModal() {
+
+    document.getElementById(
+        "modalPLN"
+    ).classList.remove("active");
+
+}
+
+
+/* =========================================
+   SIMPAN / UPDATE DATA
+========================================= */
+
+async function simpanData() {
+
+    const btn =
+        document.getElementById(
+            "btnSimpan"
+        );
+
+
+    const row =
+        document.getElementById(
+            "rowNumber"
+        ).value;
+
+
+    const data = {
+
+        action:
+            row
+            ? "update"
+            : "add",
+
+        /*
+         * INI SANGAT PENTING.
+         * Backend akan menerima:
+         * program = pln
+         */
+
+        program:
+            PROGRAM,
+
+        _row:
+            row || "",
+
+        nik:
+            document.getElementById(
+                "nik"
+            ).value.trim(),
+
+        kk:
+            document.getElementById(
+                "kk"
+            ).value.trim(),
+
+        "nama penerima":
+            document.getElementById(
+                "nama"
+            ).value.trim(),
+
+        alamat:
+            document.getElementById(
+                "alamat"
+            ).value.trim(),
+
+        rt:
+            document.getElementById(
+                "rt"
+            ).value.trim(),
+
+        status:
+            document.getElementById(
+                "status"
+            ).value,
+
+        keterangan:
+            document.getElementById(
+                "keterangan"
+            ).value.trim()
+
+    };
+
+
+    if (!data.nik) {
+
+        alert(
+            "NIK wajib diisi."
+        );
+
+        return;
+
+    }
+
+
+    if (!data["nama penerima"]) {
+
+        alert(
+            "Nama penerima wajib diisi."
+        );
+
+        return;
+
+    }
+
+
+    btn.disabled = true;
+
+
+    btn.innerHTML = `
+
+        <i class="bi bi-arrow-repeat"></i>
+
+        Menyimpan...
+
+    `;
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL +
+                "?t=" +
+                Date.now(),
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body:
+                        JSON.stringify(data)
+
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+                result.message ||
+                "Gagal menyimpan data PLN"
+            );
+
+        }
+
+
+        alert(
+            result.message ||
+            "Data PLN berhasil disimpan."
+        );
+
+
+        tutupModal();
+
+
+        await ambilDataPLN();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        alert(
+            "Gagal menyimpan data PLN.\n\n" +
+            error.message
+        );
+
+    }
+
+
+    btn.disabled = false;
+
+
+    btn.innerHTML = `
+
+        <i class="bi bi-save"></i>
+
+        Simpan
+
+    `;
+
+}
+
+
+/* =========================================
+   HAPUS DATA
+========================================= */
+
+async function hapusData(rowNumber) {
+
+    const item =
+        dataPLN.find(
+            data =>
+                Number(data._row) ===
+                Number(rowNumber)
+        );
+
+
+    if (!item) {
+
+        alert(
+            "Data tidak ditemukan."
+        );
+
+        return;
+
+    }
+
+
+    const yakin =
+        confirm(
+
+            "Apakah Anda yakin ingin menghapus data PLN:\n\n" +
+
+            item.nama +
+
+            "\n\nData yang dihapus tidak dapat dikembalikan."
+
+        );
+
+
+    if (!yakin) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL +
+                "?t=" +
+                Date.now(),
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            action:
+                                "delete",
+
+                            /*
+                             * WAJIB PLN
+                             */
+
+                            program:
+                                PROGRAM,
+
+                            _row:
+                                rowNumber
+
+                        })
+
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+                result.message ||
+                "Gagal menghapus data PLN"
+            );
+
+        }
+
+
+        alert(
+            result.message ||
+            "Data PLN berhasil dihapus."
+        );
+
+
+        await ambilDataPLN();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        alert(
+            "Gagal menghapus data PLN.\n\n" +
+            error.message
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHTML(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================
+   TUTUP MODAL KLIK LUAR
+========================================= */
+
+document
+    .getElementById("modalPLN")
+    .addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target === this
+            ) {
+
+                tutupModal();
+
+            }
+
+        }
+    );
+
+
+/* =========================================
+   LOAD DATA PERTAMA
+========================================= */
+
+ambilDataPLN();
+
+
+</script>
+
+
+</body>
+
+</html>

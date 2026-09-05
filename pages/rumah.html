@@ -553,6 +553,31 @@
 
     <div class="statistik-rumah">
 
+        <!-- JUMLAH PENDUDUK -->
+        <div class="kartu-statistik">
+            <div class="icon-statistik"><i class="bi bi-people-fill"></i></div>
+            <div><h3 id="totalPenduduk">0</h3><p>Jumlah Penduduk</p></div>
+        </div>
+
+        <!-- LAKI-LAKI -->
+        <div class="kartu-statistik">
+            <div class="icon-statistik"><i class="bi bi-person-fill"></i></div>
+            <div><h3 id="totalLakiLaki">0</h3><p>Laki-laki</p></div>
+        </div>
+
+        <!-- PEREMPUAN -->
+        <div class="kartu-statistik">
+            <div class="icon-statistik"><i class="bi bi-person-standing-dress"></i></div>
+            <div><h3 id="totalPerempuan">0</h3><p>Perempuan</p></div>
+        </div>
+
+        <!-- KEPALA KELUARGA -->
+        <div class="kartu-statistik">
+            <div class="icon-statistik"><i class="bi bi-house-heart-fill"></i></div>
+            <div><h3 id="totalKK">0</h3><p>Kepala Keluarga</p></div>
+        </div>
+
+
 
         <!-- TOTAL RUMAH -->
 
@@ -1210,6 +1235,79 @@ const INDEX_CT = 97;
 
 
 /* =================================================
+   STATISTIK PENDUDUK
+================================================= */
+
+function tampilkanStatistikPenduduk(rows) {
+
+    // Cari baris berdasarkan nama
+    const barisPenduduk = cariBaris(rows, "JUMLAH PENDUDUK");
+    const barisLaki = cariBaris(rows, "JUMLAH LAKI-LAKI");
+    const barisPerempuan = cariBaris(rows, "JUMLAH PEREMPUAN");
+    const barisKK = cariBaris(rows, "JUMLAH KEPALA KELUARGA");
+
+    // Kolom CR = index 95
+    const INDEX_CR = 95;
+
+    // Kolom CT = index 97
+    const INDEX_CT = 97;
+
+    // Jumlah Penduduk
+    let penduduk = 0;
+    if (barisPenduduk) {
+        penduduk = angkaBersih(barisPenduduk[INDEX_CR]);
+    }
+
+    // Laki-laki
+    let lakiLaki = 0;
+    if (barisLaki) {
+        lakiLaki = angkaBersih(barisLaki[INDEX_CR]);
+    }
+
+    // Perempuan
+    let perempuan = 0;
+    if (barisPerempuan) {
+        perempuan = angkaBersih(barisPerempuan[INDEX_CT]);
+    }
+
+    // Kepala Keluarga
+    let kepalaKeluarga = 0;
+    if (barisKK) {
+        kepalaKeluarga = angkaBersih(barisKK[INDEX_CT]);
+    }
+
+    // Tampilkan
+    const elPenduduk = document.getElementById("totalPenduduk");
+    const elLaki = document.getElementById("totalLakiLaki");
+    const elPerempuan = document.getElementById("totalPerempuan");
+    const elKK = document.getElementById("totalKK");
+
+    if (elPenduduk) {
+        elPenduduk.textContent = penduduk.toLocaleString("id-ID");
+    }
+
+    if (elLaki) {
+        elLaki.textContent = lakiLaki.toLocaleString("id-ID");
+    }
+
+    if (elPerempuan) {
+        elPerempuan.textContent = perempuan.toLocaleString("id-ID");
+    }
+
+    if (elKK) {
+        elKK.textContent = kepalaKeluarga.toLocaleString("id-ID");
+    }
+
+    console.log("STATISTIK PENDUDUK:", {
+        penduduk,
+        lakiLaki,
+        perempuan,
+        kepalaKeluarga
+    });
+}
+
+
+/* =================================================
    AMBIL DATA DARI GOOGLE SHEETS
 ================================================= */
 
@@ -1260,6 +1358,8 @@ async function ambilDataRumah() {
         const rows =
 
             parseCSV(text);
+
+            tampilkanStatistikPenduduk(rows);
 
 
         console.log(

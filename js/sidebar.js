@@ -131,7 +131,7 @@ const SIDEBAR_DATA = [
             {
                 nama: "Data Penerima Bansos",
                 icon: "bi-person-check-fill",
-                link: "https://docs.google.com/spreadsheets/d/1SvbdpvKH9RzGoMbNyoP25wYRkY1m8keK/edit?gid=1709621883#gid=1709621883"
+                link: "pages/bansos.html"
             }
 
         ]

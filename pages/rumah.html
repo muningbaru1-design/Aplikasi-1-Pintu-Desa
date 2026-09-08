@@ -491,6 +491,236 @@
         }
 
 
+    
+/* =========================================
+   PENYESUAIAN DASHBOARD ELEGAN
+========================================= */
+
+.statistik-rumah {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.kartu-statistik {
+    min-height: 86px;
+    padding: 16px;
+    border: 1px solid rgba(22,101,52,.06);
+}
+
+.icon-statistik {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    border-radius: 16px;
+    font-size: 30px;
+    box-shadow: 0 5px 12px rgba(21,128,61,.10);
+}
+
+.kartu-statistik h3 {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.kartu-statistik p {
+    font-size: 12px;
+}
+
+/* =========================================
+   DIAGRAM CAPAIAN
+========================================= */
+
+.diagram-capaian {
+    background: #fff;
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.07);
+}
+
+.diagram-capaian h2 {
+    margin: 0 0 6px;
+    color: #166534;
+    font-size: 21px;
+}
+
+.diagram-capaian h2 i {
+    margin-right: 8px;
+}
+
+.diagram-subjudul {
+    margin: 0 0 22px;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.diagram-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.kartu-diagram {
+    text-align: center;
+    padding: 5px;
+}
+
+.lingkaran-progress {
+    --persentase: 0%;
+    width: 145px;
+    height: 145px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #198754 var(--persentase),
+        #e5e7eb var(--persentase)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.lingkaran-progress::before {
+    content: "";
+    position: absolute;
+    width: 112px;
+    height: 112px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.isi-progress {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.isi-progress i {
+    font-size: 29px;
+    color: #198754;
+    margin-bottom: 4px;
+}
+
+.nilai-progress {
+    font-size: 20px;
+    font-weight: 800;
+    color: #166534;
+}
+
+.judul-diagram {
+    font-size: 14px;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.keterangan-diagram {
+    display: inline-block;
+    background: #ecfdf5;
+    color: #15803d;
+    padding: 7px 11px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+@media (max-width: 600px) {
+
+    .container-rumah {
+        padding: 16px;
+    }
+
+    .header-rumah {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .header-rumah h1 {
+        font-size: 23px;
+    }
+
+    .statistik-rumah {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+    }
+
+    .kartu-statistik {
+        min-height: 86px;
+        padding: 13px 10px;
+        gap: 11px;
+        border-radius: 16px;
+    }
+
+    .icon-statistik {
+        width: 54px;
+        height: 54px;
+        min-width: 54px;
+        border-radius: 14px;
+        font-size: 27px;
+    }
+
+    .kartu-statistik h3 {
+        font-size: 23px;
+    }
+
+    .kartu-statistik p {
+        font-size: 10px;
+        line-height: 1.25;
+    }
+
+    .diagram-capaian {
+        padding: 17px 10px;
+        border-radius: 17px;
+    }
+
+    .diagram-capaian h2 {
+        font-size: 18px;
+    }
+
+    .diagram-subjudul {
+        font-size: 11px;
+        line-height: 1.4;
+        margin-bottom: 18px;
+    }
+
+    .diagram-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3px;
+    }
+
+    .lingkaran-progress {
+        width: 88px;
+        height: 88px;
+        margin-bottom: 10px;
+    }
+
+    .lingkaran-progress::before {
+        width: 67px;
+        height: 67px;
+    }
+
+    .isi-progress i {
+        font-size: 18px;
+    }
+
+    .nilai-progress {
+        font-size: 12px;
+    }
+
+    .judul-diagram {
+        font-size: 10px;
+        line-height: 1.25;
+        min-height: 27px;
+    }
+
+    .keterangan-diagram {
+        font-size: 8px;
+        padding: 5px 6px;
+    }
+}
+
     </style>
 
 </head>
@@ -555,28 +785,47 @@
 
         <!-- JUMLAH PENDUDUK -->
         <div class="kartu-statistik">
-            <div class="icon-statistik"><i class="bi bi-people-fill"></i></div>
-            <div><h3 id="totalPenduduk">0</h3><p>Jumlah Penduduk</p></div>
+            <div class="icon-statistik">
+                <i class="bi bi-people-fill"></i>
+            </div>
+            <div>
+                <h3 id="totalPenduduk">0</h3>
+                <p>Jumlah Penduduk</p>
+            </div>
         </div>
 
         <!-- LAKI-LAKI -->
         <div class="kartu-statistik">
-            <div class="icon-statistik"><i class="bi bi-person-fill"></i></div>
-            <div><h3 id="totalLakiLaki">0</h3><p>Laki-laki</p></div>
+            <div class="icon-statistik">
+                <i class="bi bi-person-fill"></i>
+            </div>
+            <div>
+                <h3 id="totalLakiLaki">0</h3>
+                <p>Laki-laki</p>
+            </div>
         </div>
 
         <!-- PEREMPUAN -->
         <div class="kartu-statistik">
-            <div class="icon-statistik"><i class="bi bi-person-standing-dress"></i></div>
-            <div><h3 id="totalPerempuan">0</h3><p>Perempuan</p></div>
+            <div class="icon-statistik">
+                <i class="bi bi-person-standing-dress"></i>
+            </div>
+            <div>
+                <h3 id="totalPerempuan">0</h3>
+                <p>Perempuan</p>
+            </div>
         </div>
 
         <!-- KEPALA KELUARGA -->
         <div class="kartu-statistik">
-            <div class="icon-statistik"><i class="bi bi-house-heart-fill"></i></div>
-            <div><h3 id="totalKK">0</h3><p>Kepala Keluarga</p></div>
+            <div class="icon-statistik">
+                <i class="bi bi-house-heart-fill"></i>
+            </div>
+            <div>
+                <h3 id="totalKK">0</h3>
+                <p>Kepala Keluarga</p>
+            </div>
         </div>
-
 
 
         <!-- TOTAL RUMAH -->
@@ -875,6 +1124,100 @@
 
     </div>
 
+
+
+    <!-- =========================
+         DIAGRAM CAPAIAN
+    ========================= -->
+
+    <div class="diagram-capaian">
+
+        <h2>
+            <i class="bi bi-bar-chart-fill"></i>
+            Diagram Capaian
+        </h2>
+
+        <p class="diagram-subjudul">
+            Persentase rumah yang sudah memiliki fasilitas dasar dari total rumah.
+        </p>
+
+        <div class="diagram-grid">
+
+            <!-- AIR BERSIH -->
+            <div class="kartu-diagram">
+
+                <div
+                    class="lingkaran-progress"
+                    id="progressAir"
+                    style="--persentase: 0%;"
+                >
+                    <div class="isi-progress">
+                        <i class="bi bi-droplet-fill"></i>
+                        <div class="nilai-progress" id="persenAir">0%</div>
+                    </div>
+                </div>
+
+                <div class="judul-diagram">
+                    Memiliki Air Bersih
+                </div>
+
+                <div class="keterangan-diagram" id="ketAir">
+                    0 dari 0 rumah
+                </div>
+
+            </div>
+
+            <!-- WC -->
+            <div class="kartu-diagram">
+
+                <div
+                    class="lingkaran-progress"
+                    id="progressWC"
+                    style="--persentase: 0%;"
+                >
+                    <div class="isi-progress">
+                        <i class="bi bi-house-check-fill"></i>
+                        <div class="nilai-progress" id="persenWC">0%</div>
+                    </div>
+                </div>
+
+                <div class="judul-diagram">
+                    Memiliki WC
+                </div>
+
+                <div class="keterangan-diagram" id="ketWC">
+                    0 dari 0 rumah
+                </div>
+
+            </div>
+
+            <!-- PLN -->
+            <div class="kartu-diagram">
+
+                <div
+                    class="lingkaran-progress"
+                    id="progressPLN"
+                    style="--persentase: 0%;"
+                >
+                    <div class="isi-progress">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                        <div class="nilai-progress" id="persenPLN">0%</div>
+                    </div>
+                </div>
+
+                <div class="judul-diagram">
+                    Memiliki Listrik (PLN)
+                </div>
+
+                <div class="keterangan-diagram" id="ketPLN">
+                    0 dari 0 rumah
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <!-- =========================
          INFORMASI
@@ -1234,76 +1577,137 @@ const INDEX_CT = 97;
 
 
 
+
 /* =================================================
-   STATISTIK PENDUDUK
+   TAMPILKAN STATISTIK PENDUDUK
 ================================================= */
 
 function tampilkanStatistikPenduduk(rows) {
 
-    // Cari baris berdasarkan nama
-    const barisPenduduk = cariBaris(rows, "JUMLAH PENDUDUK");
-    const barisLaki = cariBaris(rows, "JUMLAH LAKI-LAKI");
-    const barisPerempuan = cariBaris(rows, "JUMLAH PEREMPUAN");
-    const barisKK = cariBaris(rows, "JUMLAH KEPALA KELUARGA");
+    const barisPenduduk =
+        cariBaris(rows, "JUMLAH PENDUDUK") ||
+        cariBaris(rows, "TOTAL PENDUDUK");
 
-    // Kolom CR = index 95
-    const INDEX_CR = 95;
+    const barisLaki =
+        cariBaris(rows, "JUMLAH LAKI-LAKI") ||
+        cariBaris(rows, "JUMLAH LAKI LAKI");
 
-    // Kolom CT = index 97
-    const INDEX_CT = 97;
+    const barisPerempuan =
+        cariBaris(rows, "JUMLAH PEREMPUAN");
 
-    // Jumlah Penduduk
-    let penduduk = 0;
-    if (barisPenduduk) {
-        penduduk = angkaBersih(barisPenduduk[INDEX_CR]);
-    }
+    const barisKK =
+        cariBaris(rows, "JUMLAH KEPALA KELUARGA") ||
+        cariBaris(rows, "TOTAL KK") ||
+        cariBaris(rows, "JUMLAH KK");
 
-    // Laki-laki
-    let lakiLaki = 0;
-    if (barisLaki) {
-        lakiLaki = angkaBersih(barisLaki[INDEX_CR]);
-    }
+    const penduduk = barisPenduduk
+        ? angkaBersih(barisPenduduk[INDEX_CR])
+        : 0;
 
-    // Perempuan
-    let perempuan = 0;
-    if (barisPerempuan) {
-        perempuan = angkaBersih(barisPerempuan[INDEX_CT]);
-    }
+    const lakiLaki = barisLaki
+        ? angkaBersih(barisLaki[INDEX_CR])
+        : 0;
 
-    // Kepala Keluarga
-    let kepalaKeluarga = 0;
-    if (barisKK) {
-        kepalaKeluarga = angkaBersih(barisKK[INDEX_CT]);
-    }
+    // Sesuai rekap spreadsheet:
+    // PEREMPUAN dan KEPALA KELUARGA berada di kolom CT.
+    const perempuan = barisPerempuan
+        ? angkaBersih(barisPerempuan[INDEX_CT])
+        : 0;
 
-    // Tampilkan
-    const elPenduduk = document.getElementById("totalPenduduk");
-    const elLaki = document.getElementById("totalLakiLaki");
-    const elPerempuan = document.getElementById("totalPerempuan");
-    const elKK = document.getElementById("totalKK");
+    const kepalaKeluarga = barisKK
+        ? angkaBersih(barisKK[INDEX_CT])
+        : 0;
 
-    if (elPenduduk) {
-        elPenduduk.textContent = penduduk.toLocaleString("id-ID");
-    }
+    document.getElementById("totalPenduduk").innerText =
+        penduduk.toLocaleString("id-ID");
 
-    if (elLaki) {
-        elLaki.textContent = lakiLaki.toLocaleString("id-ID");
-    }
+    document.getElementById("totalLakiLaki").innerText =
+        lakiLaki.toLocaleString("id-ID");
 
-    if (elPerempuan) {
-        elPerempuan.textContent = perempuan.toLocaleString("id-ID");
-    }
+    document.getElementById("totalPerempuan").innerText =
+        perempuan.toLocaleString("id-ID");
 
-    if (elKK) {
-        elKK.textContent = kepalaKeluarga.toLocaleString("id-ID");
-    }
+    document.getElementById("totalKK").innerText =
+        kepalaKeluarga.toLocaleString("id-ID");
 
-    console.log("STATISTIK PENDUDUK:", {
+    console.log({
         penduduk,
         lakiLaki,
         perempuan,
         kepalaKeluarga
     });
+}
+
+
+/* =================================================
+   DIAGRAM CAPAIAN
+================================================= */
+
+function tampilkanDiagramCapaian(
+    totalRumah,
+    totalAir,
+    totalWC,
+    totalPLN
+) {
+
+    if (!totalRumah || totalRumah <= 0) {
+        return;
+    }
+
+    const persenAir =
+        (totalAir / totalRumah) * 100;
+
+    const persenWC =
+        (totalWC / totalRumah) * 100;
+
+    const persenPLN =
+        (totalPLN / totalRumah) * 100;
+
+    const air = Math.min(persenAir, 100);
+    const wc = Math.min(persenWC, 100);
+    const pln = Math.min(persenPLN, 100);
+
+    const progressAir =
+        document.getElementById("progressAir");
+
+    const progressWC =
+        document.getElementById("progressWC");
+
+    const progressPLN =
+        document.getElementById("progressPLN");
+
+    progressAir.style.setProperty(
+        "--persentase",
+        air.toFixed(2) + "%"
+    );
+
+    progressWC.style.setProperty(
+        "--persentase",
+        wc.toFixed(2) + "%"
+    );
+
+    progressPLN.style.setProperty(
+        "--persentase",
+        pln.toFixed(2) + "%"
+    );
+
+    document.getElementById("persenAir").innerText =
+        air.toFixed(2).replace(".", ",") + "%";
+
+    document.getElementById("persenWC").innerText =
+        wc.toFixed(2).replace(".", ",") + "%";
+
+    document.getElementById("persenPLN").innerText =
+        pln.toFixed(2).replace(".", ",") + "%";
+
+    document.getElementById("ketAir").innerText =
+        `${totalAir.toLocaleString("id-ID")} dari ${totalRumah.toLocaleString("id-ID")} rumah`;
+
+    document.getElementById("ketWC").innerText =
+        `${totalWC.toLocaleString("id-ID")} dari ${totalRumah.toLocaleString("id-ID")} rumah`;
+
+    document.getElementById("ketPLN").innerText =
+        `${totalPLN.toLocaleString("id-ID")} dari ${totalRumah.toLocaleString("id-ID")} rumah`;
 }
 
 
@@ -1359,7 +1763,8 @@ async function ambilDataRumah() {
 
             parseCSV(text);
 
-            tampilkanStatistikPenduduk(rows);
+        // Statistik penduduk
+        tampilkanStatistikPenduduk(rows);
 
 
         console.log(
@@ -1561,6 +1966,14 @@ async function ambilDataRumah() {
 
             );
 
+
+        // Diagram capaian fasilitas
+        tampilkanDiagramCapaian(
+            totalRumah,
+            totalAir,
+            totalWC,
+            totalPLN
+        );
 
         /* =========================================
            TAMPILKAN DATA

@@ -13,6 +13,12 @@ const gridMenu = [
 },
 
 {
+    nama: "Aduan Masyarakat",
+    icon: "bi-megaphone-fill",
+    link: "pages/aduan-masyarakat.html"
+},
+
+{
     id:"agenda",
     nama:"Agenda & Kalender Desa",
     icon:"bi-calendar-event-fill",

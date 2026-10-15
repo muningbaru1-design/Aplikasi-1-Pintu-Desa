@@ -11,7 +11,7 @@
 <header class="header"><button type="button" onclick="kembali()" title="Kembali"><i class="bi bi-arrow-left"></i></button><div><h1>Buku Register Nikah</h1><p>Administrasi Umum — Desa Muning Baru</p></div></header>
 <main class="container">
 <section class="banner"><img src="assets/cover/BUKU-REGISTER-NIKAH.jpg" alt="Sampul Buku Register Nikah" onerror="this.style.display='none'"><div><h2>Buku Register Nikah</h2><p>Administrasi Kaur Tata Usaha &amp; Umum<br>Pemerintah Desa Muning Baru</p></div></section>
-<div class="notice"><strong><i class="bi bi-info-circle"></i> Informasi penyimpanan</strong><br>Data dan foto tersimpan pada browser/perangkat ini dan tidak otomatis tersinkron ke perangkat lain. Karena memuat data pribadi, gunakan hanya untuk uji coba sampai penyimpanan terpusat dan akses petugas diamankan.</div>
+<div class="notice"><strong><i class="bi bi-info-circle"></i> Informasi penyimpanan</strong><br>Data disimpan ke Google Sheets dan foto di Google Drive melalui layanan Apps Script. Pastikan akses spreadsheet dan folder foto hanya diberikan kepada petugas berwenang.</div>
 <section class="panel form-panel"><h2 class="panel-title" id="judulForm"><i class="bi bi-journal-text"></i> Input Data Register Nikah</h2><p class="description">Isi data sesuai dokumen dan hasil verifikasi petugas.</p>
 <form id="formNikah"><input type="hidden" id="editId"><div class="grid"><div class="field"><label for="nomorRegister">Nomor Register</label><input id="nomorRegister" placeholder="Contoh: RN-001" required></div><div class="field"><label for="tanggalNikah">Tanggal Pernikahan</label><input id="tanggalNikah" type="date" required></div></div>
 <div class="grid"><section><h3>Data Calon Suami</h3><div class="foto-upload"><label for="fotoSuami">Foto Calon Suami</label><img id="previewFotoSuami" class="foto-preview" alt="Pratinjau foto calon suami" src=""><input type="file" id="fotoSuami" accept="image/*"><span class="foto-hint">Pilih foto dari HP atau komputer. Maksimal 5 MB; foto akan dikompres.</span></div>
@@ -49,18 +49,59 @@ const STORAGE_KEY="muningbaru_register_nikah_v1";
 const fields=["nomorRegister","tanggalNikah","namaSuami","nikSuami","ttlSuami","alamatSuami","ibuSuami","ayahSuami","namaIstri","nikIstri","ttlIstri","alamatIstri","ibuIstri","ayahIstri","keterangan"];
 const PLACEHOLDER_SUAMI='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="120" height="145"%3E%3Crect width="100%25" height="100%25" fill="%23edf2ef"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" fill="%236b7b73" font-size="12"%3EFoto Suami%3C/text%3E%3C/svg%3E';
 const PLACEHOLDER_ISTRI='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="120" height="145"%3E%3Crect width="100%25" height="100%25" fill="%23edf2ef"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" fill="%236b7b73" font-size="12"%3EFoto Istri%3C/text%3E%3C/svg%3E';
-let fotoSuamiData="",fotoIstriData="";
-function bacaData(){try{const d=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");return Array.isArray(d)?d:[]}catch(e){console.error(e);return[]}}
-function simpanSemua(data){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data));return true}catch(e){console.error(e);alert("Data gagal disimpan. Penyimpanan browser mungkin penuh. Coba foto yang lebih kecil atau hapus data uji coba.");return false}}
+let fotoSuamiData="",fotoIstriData="",dataAktif=[];
+async function kirimKeGoogleSheets(payload){
+  const response=await fetch(APPS_SCRIPT_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
+  if(!response.ok) throw new Error("Gagal menghubungi server (HTTP "+response.status+").");
+  const hasil=await response.json();
+  if(!hasil.success) throw new Error(hasil.message||"Permintaan gagal diproses Apps Script.");
+  return hasil;
+}
+function simpanCache(data){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data));}catch(e){console.warn("Cache lokal tidak tersimpan",e)}}
+function bacaData(){return dataAktif}
 function escapeHTML(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c])}
 function prosesFoto(file,previewId,jenis){if(!file)return;if(!file.type.startsWith("image/")){alert("Silakan pilih file gambar.");return}if(file.size>5*1024*1024){alert("Ukuran foto maksimal 5 MB.");document.getElementById(jenis==="suami"?"fotoSuami":"fotoIstri").value="";return}const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{const canvas=document.createElement("canvas"),batas=600;let w=img.width,h=img.height;if(w>h&&w>batas){h=Math.round(h*batas/w);w=batas}else if(h>=w&&h>batas){w=Math.round(w*batas/h);h=batas}canvas.width=w;canvas.height=h;canvas.getContext("2d").drawImage(img,0,0,w,h);const hasil=canvas.toDataURL("image/jpeg",.68);if(jenis==="suami")fotoSuamiData=hasil;else fotoIstriData=hasil;document.getElementById(previewId).src=hasil};img.onerror=()=>alert("Foto tidak dapat dibaca. Coba pilih gambar lain.");img.src=e.target.result};reader.onerror=()=>alert("Gagal membaca file foto.");reader.readAsDataURL(file)}
-document.getElementById("fotoSuami").addEventListener("change",function(){prosesFoto(this.files[0],"previewFotoSuami","suami")});document.getElementById("fotoIstri").addEventListener("change",function(){prosesFoto(this.files[0],"previewFotoIstri","istri")});
+document.getElementById("fotoSuami").addEventListener("change",function(){prosesFoto(this.files[0],"previewFotoSuami","suami")});
+document.getElementById("fotoIstri").addEventListener("change",function(){prosesFoto(this.files[0],"previewFotoIstri","istri")});
 function ambilForm(){const x={};fields.forEach(id=>x[id]=document.getElementById(id).value.trim());x.fotoSuami=fotoSuamiData;x.fotoIstri=fotoIstriData;return x}
-document.getElementById("formNikah").addEventListener("submit",function(e){e.preventDefault();const data=bacaData(),editId=document.getElementById("editId").value,item=ambilForm();if(!/^[0-9]{16}$/.test(item.nikSuami)){alert("NIK calon suami harus terdiri dari 16 angka.");return}if(!/^[0-9]{16}$/.test(item.nikIstri)){alert("NIK calon istri harus terdiri dari 16 angka.");return}if(data.some(r=>r.nomorRegister===item.nomorRegister&&r.id!==editId)){alert("Nomor register tersebut sudah digunakan.");return}if(editId){const i=data.findIndex(r=>r.id===editId);if(i<0){alert("Data yang akan diubah tidak ditemukan.");return}if(!item.fotoSuami)item.fotoSuami=data[i].fotoSuami||"";if(!item.fotoIstri)item.fotoIstri=data[i].fotoIstri||"";data[i]={...data[i],...item}}else{item.id=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random().toString(16).slice(2));item.dibuatPada=new Date().toISOString();data.push(item)}if(!simpanSemua(data))return;resetForm();tampilkanData();alert(editId?"Data register berhasil diperbarui.":"Data register berhasil disimpan.")});
-function tampilkanData(){const tbody=document.getElementById("daftarNikah"),data=bacaData();if(!data.length){tbody.innerHTML='<tr><td colspan="11" class="empty">Belum ada data register nikah.</td></tr>';return}tbody.innerHTML=data.map((x,i)=>`<tr><td>${i+1}</td><td>${escapeHTML(x.nomorRegister)}</td><td>${escapeHTML(x.tanggalNikah)}</td><td>${x.fotoSuami?`<img class="row-photo" src="${x.fotoSuami}" alt="Foto suami">`:"—"}</td><td>${escapeHTML(x.namaSuami)}</td><td>${escapeHTML(x.nikSuami)}</td><td>${x.fotoIstri?`<img class="row-photo" src="${x.fotoIstri}" alt="Foto istri">`:"—"}</td><td>${escapeHTML(x.namaIstri)}</td><td>${escapeHTML(x.nikIstri)}</td><td>${escapeHTML(x.keterangan)}</td><td class="no-print"><div class="table-action"><button type="button" style="background:#e6f3ec;color:#087b55" onclick="editData('${x.id}')" title="Edit"><i class="bi bi-pencil"></i></button><button type="button" style="background:#fdeaea;color:#c62828" onclick="hapusData('${x.id}')" title="Hapus"><i class="bi bi-trash"></i></button></div></td></tr>`).join("")}
-function editData(id){const x=bacaData().find(r=>r.id===id);if(!x){alert("Data tidak ditemukan.");return}fields.forEach(f=>document.getElementById(f).value=x[f]||"");document.getElementById("editId").value=x.id;fotoSuamiData=x.fotoSuami||"";fotoIstriData=x.fotoIstri||"";document.getElementById("previewFotoSuami").src=fotoSuamiData||PLACEHOLDER_SUAMI;document.getElementById("previewFotoIstri").src=fotoIstriData||PLACEHOLDER_ISTRI;document.getElementById("fotoSuami").value="";document.getElementById("fotoIstri").value="";document.getElementById("judulForm").innerHTML='<i class="bi bi-pencil-square"></i> Edit Data Register Nikah';window.scrollTo({top:0,behavior:"smooth"})}
-function hapusData(id){const data=bacaData(),x=data.find(r=>r.id===id);if(!x){alert("Data tidak ditemukan.");return}if(!confirm("Hapus data register nikah ini dari browser?"))return;if(!simpanSemua(data.filter(r=>r.id!==id)))return;tampilkanData();alert("Data telah dihapus dari browser ini.")}
+function normalisasiData(x){return {...x,fotoSuami:x.fotoSuamiUrl||x.fotoSuami||"",fotoIstri:x.fotoIstriUrl||x.fotoIstri||""}}
+async function muatDariGoogleSheets(tampilkanPesan=false){
+  try{
+    const hasil=await kirimKeGoogleSheets({action:"list"});
+    dataAktif=(hasil.data||[]).map(normalisasiData);
+    simpanCache(dataAktif);tampilkanData();
+    if(tampilkanPesan) alert("Data berhasil dimuat dari Google Sheets.");
+  }catch(error){
+    console.error(error);tampilkanData();
+    if(tampilkanPesan) alert("Gagal memuat data dari Google Sheets: "+error.message+"\nPeriksa URL/deployment Apps Script dan izin aksesnya.");
+  }
+}
+document.getElementById("formNikah").addEventListener("submit",async function(e){
+  e.preventDefault();
+  const editId=document.getElementById("editId").value,item=ambilForm();
+  if(!/^[0-9]{16}$/.test(item.nikSuami)){alert("NIK calon suami harus terdiri dari 16 angka.");return}
+  if(!/^[0-9]{16}$/.test(item.nikIstri)){alert("NIK calon istri harus terdiri dari 16 angka.");return}
+  if(dataAktif.some(r=>r.nomorRegister===item.nomorRegister&&String(r.id)!==String(editId))){alert("Nomor register tersebut sudah digunakan.");return}
+  item.id=editId||((crypto.randomUUID&&crypto.randomUUID())||String(Date.now())+Math.random().toString(16).slice(2));
+  const tombol=this.querySelector('button[type="submit"]');
+  tombol.disabled=true;tombol.textContent="Menyimpan ke Google Sheets...";
+  try{
+    const hasil=await kirimKeGoogleSheets({action:"save",data:item});
+    await muatDariGoogleSheets(false);
+    resetForm();
+    alert(hasil.message||(editId?"Data berhasil diperbarui.":"Data berhasil disimpan."));
+  }catch(error){
+    console.error(error);
+    alert("GAGAL menyimpan ke Google Sheets/Drive. Data belum dipastikan tersimpan.\n\nPesan: "+error.message+"\n\nPeriksa ID folder foto, izin Apps Script, dan deployment Web App.");
+  }finally{
+    tombol.disabled=false;tombol.innerHTML='<i class="bi bi-save"></i> Simpan Data';
+  }
+});
+function tampilkanData(){const tbody=document.getElementById("daftarNikah"),data=dataAktif;if(!data.length){tbody.innerHTML='<tr><td colspan="11" class="empty">Belum ada data dari Google Sheets. Pastikan layanan terhubung, lalu muat ulang halaman.</td></tr>';return}tbody.innerHTML=data.map((x,i)=>`<tr><td>${i+1}</td><td>${escapeHTML(x.nomorRegister)}</td><td>${escapeHTML(x.tanggalNikah)}</td><td>${x.fotoSuami?`<img class="row-photo" src="${escapeHTML(x.fotoSuami)}" alt="Foto suami">`:"—"}</td><td>${escapeHTML(x.namaSuami)}</td><td>${escapeHTML(x.nikSuami)}</td><td>${x.fotoIstri?`<img class="row-photo" src="${escapeHTML(x.fotoIstri)}" alt="Foto istri">`:"—"}</td><td>${escapeHTML(x.namaIstri)}</td><td>${escapeHTML(x.nikIstri)}</td><td>${escapeHTML(x.keterangan)}</td><td class="no-print"><div class="table-action"><button type="button" style="background:#e6f3ec;color:#087b55" onclick="editData('${String(x.id).replace(/'/g,"\\'")}')" title="Edit"><i class="bi bi-pencil"></i></button><button type="button" style="background:#fdeaea;color:#c62828" onclick="hapusData('${String(x.id).replace(/'/g,"\\'")}')" title="Hapus"><i class="bi bi-trash"></i></button></div></td></tr>`).join("")}
+function editData(id){const x=dataAktif.find(r=>String(r.id)===String(id));if(!x){alert("Data tidak ditemukan.");return}fields.forEach(f=>document.getElementById(f).value=x[f]||"");document.getElementById("editId").value=x.id;fotoSuamiData=x.fotoSuami||"";fotoIstriData=x.fotoIstri||"";document.getElementById("previewFotoSuami").src=fotoSuamiData||PLACEHOLDER_SUAMI;document.getElementById("previewFotoIstri").src=fotoIstriData||PLACEHOLDER_ISTRI;document.getElementById("fotoSuami").value="";document.getElementById("fotoIstri").value="";document.getElementById("judulForm").innerHTML='<i class="bi bi-pencil-square"></i> Edit Data Register Nikah';window.scrollTo({top:0,behavior:"smooth"})}
+async function hapusData(id){const x=dataAktif.find(r=>String(r.id)===String(id));if(!x)return;if(!confirm("Hapus data register nikah ini dari Google Sheets?"))return;try{const hasil=await kirimKeGoogleSheets({action:"delete",id:id});await muatDariGoogleSheets(false);alert(hasil.message||"Data berhasil dihapus.");}catch(error){console.error(error);alert("Gagal menghapus data dari Google Sheets: "+error.message)}}
 function resetForm(){document.getElementById("formNikah").reset();document.getElementById("editId").value="";fotoSuamiData="";fotoIstriData="";document.getElementById("previewFotoSuami").src=PLACEHOLDER_SUAMI;document.getElementById("previewFotoIstri").src=PLACEHOLDER_ISTRI;document.getElementById("judulForm").innerHTML='<i class="bi bi-journal-text"></i> Input Data Register Nikah'}
 function kembali(){if(history.length>1)history.back();else location.href="index.html"}
-document.getElementById("previewFotoSuami").src=PLACEHOLDER_SUAMI;document.getElementById("previewFotoIstri").src=PLACEHOLDER_ISTRI;tampilkanData();
+document.getElementById("previewFotoSuami").src=PLACEHOLDER_SUAMI;document.getElementById("previewFotoIstri").src=PLACEHOLDER_ISTRI;
+muatDariGoogleSheets(false);
 </script></body></html>

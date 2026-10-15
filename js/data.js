@@ -20,7 +20,7 @@ const gridMenu = [
 
 {
     nama: "Buku Register Nikah",
-    icon: "bi-megaphone-fill",
+    icon: "bi bi-people-fill",
     link: "pages/buku-register-nikah.html"
 },
 

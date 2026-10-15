@@ -19,6 +19,12 @@ const gridMenu = [
 },
 
 {
+    nama: "Buku Register Nikah",
+    icon: "bi-megaphone-fill",
+    link: "pages/buku-register-nikah.html"
+},
+
+{
     id:"agenda",
     nama:"Agenda & Kalender Desa",
     icon:"bi-calendar-event-fill",
